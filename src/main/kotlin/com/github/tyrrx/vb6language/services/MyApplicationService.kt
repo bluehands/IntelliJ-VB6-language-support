@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.tyrrx.vb6language.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.tyrrx.vb6language.MyBundle
 
 class MyApplicationService {
 
