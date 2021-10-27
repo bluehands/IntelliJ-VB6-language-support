@@ -9,6 +9,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.tyrrx.vb6language.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.tyrrx.vb6language.services.MyProjectService"/>
+        <fileType name="Visual Basic 6.0" language="VisualBasic6" extensions="cls" fieldName="INSTANCE" implementationClass="com.github.tyrrx.vb6language.VisualBasic6FileType"/>
     </extensions>
 
     <applicationListeners>
