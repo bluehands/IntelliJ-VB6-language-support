@@ -7,13 +7,14 @@ import com.intellij.openapi.util.NlsSafe
 import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon
 
-class VisualBasic6FileType : LanguageFileType(VisualBasic6Language()) {
+class VisualBasic6ClassFileType : LanguageFileType(VisualBasic6Language.INSTANCE) {
+
     override fun getName(): @NonNls String {
         return "Visual Basic 6.0"
     }
 
     override fun getDescription(): @NlsContexts.Label String {
-        return "desc"
+        return "Visual Basic 6.0 class file"
     }
 
     override fun getDefaultExtension(): @NlsSafe String {
@@ -21,10 +22,10 @@ class VisualBasic6FileType : LanguageFileType(VisualBasic6Language()) {
     }
 
     override fun getIcon(): Icon? {
-        return IconLoader.findIcon("/assets/vb6icon.png")
+        return IconLoader.findIcon("/assets/vb6icon1.png")
     }
 
     companion object {
-        val INSTANCE = VisualBasic6FileType()
+        val INSTANCE = VisualBasic6ClassFileType()
     }
 }

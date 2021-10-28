@@ -1,4 +1,4 @@
 package com.github.tyrrx.vb6language
 
-class VisualBasic6File {
+class VisualBasic6ClassFile {
 }
