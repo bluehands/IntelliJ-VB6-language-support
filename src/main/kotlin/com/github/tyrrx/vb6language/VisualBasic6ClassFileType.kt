@@ -22,7 +22,7 @@ class VisualBasic6ClassFileType : LanguageFileType(VisualBasic6Language.INSTANCE
     }
 
     override fun getIcon(): Icon? {
-        return IconLoader.findIcon("/assets/vb6icon1.png")
+        return IconLoader.findIcon("/assets/vb6icon16x16.png")
     }
 
     companion object {
