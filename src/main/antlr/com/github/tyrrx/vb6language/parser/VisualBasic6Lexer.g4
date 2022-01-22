@@ -455,7 +455,7 @@ IDENTIFIER: LETTER LETTERORDIGIT*;
 
 // whitespace, line breaks, comments, ...
 
-LINE_CONTINUATION: ' ' '_' '\r'? '\n' -> skip;
+LINE_CONTINUATION: ' ' '_' '\r'? '\n' -> channel(HIDDEN);
 
 NEWLINE: WS? ('\r'? '\n' | COLON ' ') WS?;
 
@@ -463,7 +463,7 @@ COMMENT:
 	WS? ('\'' | COLON? REM ' ') (
 		LINE_CONTINUATION
 		| ~ ('\n' | '\r')
-	)* -> skip;
+	)* -> channel(HIDDEN);
 
 WS: [ \t]+;
 
