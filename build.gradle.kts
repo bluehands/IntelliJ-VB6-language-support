@@ -14,6 +14,8 @@ plugins {
     id("org.jetbrains.changelog") version "1.3.0"
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.12"
+    // ANTLR Plugin
+    id("org.gradle.antlr")
 }
 
 group = properties("pluginGroup")
@@ -22,6 +24,12 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    implementation("org.antlr:antlr4-intellij-adaptor:0.1")
+    antlr("org.antlr:antlr4:4.9.2")
+
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
@@ -51,6 +59,11 @@ qodana {
 }
 
 tasks {
+
+    generateGrammarSource {
+        arguments = arguments + listOf("-visitor", "-package", "com.github.tyrrx.vb6language.grammar", "-Xexact-output-dir")
+    }
+
     // Set the JVM compatibility versions
     properties("javaVersion").let {
         withType<JavaCompile> {
@@ -120,3 +133,4 @@ tasks {
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
     }
 }
+
