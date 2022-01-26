@@ -25,7 +25,10 @@ class VisualBasic6ClassFileType : LanguageFileType(VisualBasic6Language.INSTANCE
         return IconLoader.findIcon("/assets/vb6icon16x16.png")
     }
 
+
+
     companion object {
+        @JvmStatic
         val INSTANCE = VisualBasic6ClassFileType()
     }
 }

@@ -61,7 +61,20 @@ qodana {
 tasks {
 
     generateGrammarSource {
-        arguments = arguments + listOf("-visitor", "-package", "com.github.tyrrx.vb6language.grammar", "-Xexact-output-dir")
+        arguments = arguments + listOf("-visitor", "-package", "com.github.tyrrx.vb6language.parser", "-Xexact-output-dir")
+
+        doLast {
+            val parserPackagePath = "${outputDirectory.canonicalPath}/com/github/tyrrx/vb6language/parser"
+            file(parserPackagePath).mkdirs()
+            copy {
+                from(outputDirectory.canonicalPath)
+                into(parserPackagePath)
+                include("VisualBasic6*")
+            }
+            delete(fileTree(outputDirectory.canonicalPath) {
+                include("VisualBasic6*")
+            })
+        }
     }
 
     // Set the JVM compatibility versions
