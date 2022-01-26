@@ -90,7 +90,7 @@ cp_Properties:
     ;
 
 cp_SingleProperty:
-	WS? implicitCallStmt_InStmt WS? EQ WS? '$'? cp_PropertyValue FRX_OFFSET? NEWLINE+;
+	WS? implicitCallStmt_InStmt WS? EQ WS? DOLLAR? cp_PropertyValue FRX_OFFSET? NEWLINE+;
 
 cp_PropertyName: (OBJECT DOT)? ambiguousIdentifier (
 		LPAREN literal RPAREN
