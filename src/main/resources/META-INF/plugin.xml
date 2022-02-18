@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.tyrrx.vb6language</id>
-    <name>vb6-language</name>
+    <name>Vb6-Language</name>
     <vendor>tyrrx</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -9,10 +9,10 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.tyrrx.vb6language.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.tyrrx.vb6language.services.MyProjectService"/>
-        <fileType name="Visual Basic 6.0" language="VisualBasic6" extensions="cls" fieldName="INSTANCE"
-                  implementationClass="com.github.tyrrx.vb6language.VisualBasic6ClassFileType"/>
+        <fileType name="Visual Basic 6.0" language="VisualBasic6" extensions="cls" fieldName="INSTANCE" implementationClass="com.github.tyrrx.vb6language.VisualBasic6ClassFileType"/>
         <lang.syntaxHighlighterFactory
-                implementationClass="com.github.tyrrx.vb6language.VisualBasic6SyntaxHighlighterFactory"/>
+                language="VisualBasic6"
+                implementationClass="com.github.tyrrx.vb6language.highlighter.VisualBasic6SyntaxHighlighterFactory"/>
         <lang.parserDefinition language="VisualBasic6"
                                implementationClass="com.github.tyrrx.vb6language.VisualBasic6ParserDefinition"/>
     </extensions>
