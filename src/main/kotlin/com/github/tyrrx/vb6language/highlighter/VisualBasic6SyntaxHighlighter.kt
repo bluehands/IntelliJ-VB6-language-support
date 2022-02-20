@@ -2,6 +2,7 @@ package com.github.tyrrx.vb6language.highlighter
 
 import com.github.tyrrx.vb6language.VisualBasic6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
+import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.HighlighterColors
@@ -10,9 +11,9 @@ import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributes
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.psi.tree.IElementType
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
+import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 
 class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
-
 
     override fun getHighlightingLexer(): Lexer {
         val lexer = VisualBasic6Lexer(null)
@@ -232,10 +233,12 @@ class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
         VisualBasic6Lexer.OCTALLITERAL
     )
 
+
     private val elementTypeTextAttributeKeyMap = mergeAll(
         VisualBasic6Lexer.COMMENT mapsTo COMMENT,
         VisualBasic6Lexer.IDENTIFIER mapsTo IDENTIFIER,
         VisualBasic6Lexer.ERRCHAR mapsTo BAD_CHARACTER,
+        VisualBasic6Lexer.STRINGLITERAL mapsTo STRINGS,
         braces mapsTo BRACES,
         parentheses mapsTo PARENTHESES,
         brackets mapsTo BRACKETS,
@@ -245,6 +248,15 @@ class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
 
 
     companion object {
+
+        init {
+            PSIElementTypeFactory.defineLanguageIElementTypes(
+                VisualBasic6Language.INSTANCE,
+                VisualBasic6Parser.tokenNames,
+                VisualBasic6Parser.ruleNames
+            )
+        }
+
         val BACKGROUND = createTextAttributesKey(
             "VB6_BACKGROUND",
             DefaultLanguageHighlighterColors.TEMPLATE_LANGUAGE_COLOR
@@ -315,8 +327,6 @@ class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
             DefaultLanguageHighlighterColors.FUNCTION_CALL
 
         )
-
-
     }
 }
 

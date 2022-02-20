@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.highlighter
 
-import com.github.tyrrx.vb6language.VisualBasic6ParserDefinition
+import com.github.tyrrx.vb6language.psi.VisualBasic6ParserDefinition
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.tree.IElementType
 
