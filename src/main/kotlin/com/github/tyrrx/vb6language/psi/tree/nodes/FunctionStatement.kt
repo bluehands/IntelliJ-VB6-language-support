@@ -1,7 +1,8 @@
 package com.github.tyrrx.vb6language.psi.tree.nodes
 
 import com.github.tyrrx.vb6language.VisualBasic6Language
-import com.github.tyrrx.vb6language.psi.tree.tryFindIdentifierInSubtree
+import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.findIdentifierInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
@@ -28,6 +29,12 @@ class FunctionStatement(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameI
     }
 
     override fun getNameIdentifier(): PsiElement? {
-        return tryFindIdentifierInSubtree(this)
+        return findIdentifierInSubtree(this)
+    }
+
+    object Factory : IPsiNodeFactory<FunctionStatement> {
+        override fun createPsiNode(node: ASTNode): FunctionStatement {
+            return FunctionStatement(node)
+        }
     }
 }

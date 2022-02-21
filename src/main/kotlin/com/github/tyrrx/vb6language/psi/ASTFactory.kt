@@ -8,6 +8,7 @@ import com.intellij.psi.impl.source.tree.PsiWhiteSpaceImpl
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.TokenSet
 
+@Suppress("DuplicatedCode")
 class ASTFactory : DefaultASTFactoryImpl() {
 
     private val logger = Logger.getInstance(ASTFactory::class.java)
@@ -46,9 +47,10 @@ class ASTFactory : DefaultASTFactoryImpl() {
             }
         return resultHashMap
     }
+
+    private infix fun TokenSet.mapsTo(that: ILeafFactory): Map<IElementType, ILeafFactory> {
+        return this.types.associateWith { that }
+    }
 }
 
-private infix fun TokenSet.mapsTo(that: ILeafFactory): Map<IElementType, ILeafFactory> {
-    return this.types.associateWith { that }
-}
 

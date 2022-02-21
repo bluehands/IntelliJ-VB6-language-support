@@ -15,6 +15,6 @@ class VisualBasic6ParserAdaptor(@NotNull parser: VisualBasic6Parser) :
             return (parser as VisualBasic6Parser).startRule()
         }
         // Todo change
-        return (parser as VisualBasic6Parser).startRule()
+        TODO("Not implemented")
     }
 }
