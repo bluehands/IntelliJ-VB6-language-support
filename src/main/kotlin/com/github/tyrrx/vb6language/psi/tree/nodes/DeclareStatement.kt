@@ -10,7 +10,7 @@ import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
 // Todo is the ScopeNode interface necessary?
-class DeclareStatement(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameIdentifierOwner {
+class DeclareStatement(node: ASTNode) : ANTLRPsiNode(node), PsiNameIdentifierOwner {
 	override fun setName(name: String): PsiElement {
 		TODO("Not yet implemented")
 	}
@@ -21,10 +21,6 @@ class DeclareStatement(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameId
 
 	override fun getNameIdentifier(): PsiElement? {
 		return this.findIdentifierInSubtree()
-	}
-
-	override fun resolve(element: PsiNamedElement?): PsiElement? {
-		TODO("Not yet implemented")
 	}
 
 	object Factory : IPsiNodeFactory<DeclareStatement> {
