@@ -1,6 +1,7 @@
 package com.github.tyrrx.vb6language.psi
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
+import com.github.tyrrx.vb6language.psi.tree.nodes.DeclareStatement
 import com.github.tyrrx.vb6language.psi.tree.nodes.FunctionStatement
 import com.github.tyrrx.vb6language.psi.tree.nodes.Module
 import com.github.tyrrx.vb6language.psi.tree.nodes.SubStatement
@@ -24,6 +25,7 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_functionStmt -> FunctionStatement.Factory
 				VisualBasic6Parser.RULE_subStmt -> SubStatement.Factory
 				VisualBasic6Parser.RULE_module -> Module.Factory
+				VisualBasic6Parser.RULE_declareStmt -> DeclareStatement.Factory
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
 						return ANTLRPsiNode(node)
