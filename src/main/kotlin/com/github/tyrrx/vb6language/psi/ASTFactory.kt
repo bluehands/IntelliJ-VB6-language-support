@@ -8,10 +8,9 @@ import com.intellij.psi.tree.IElementType
 
 class ASTFactory : DefaultASTFactoryImpl() {
     override fun createLeaf(type: IElementType, text: CharSequence): LeafElement {
-
         return when (type) {
-            VB6TokenSets.identifiers.types -> IdentifierPsiLeaf(type, text)
-            in VB6TokenSets.identifiers.types -> PsiWhiteSpaceImpl(text)
+            in VB6TokenSets.identifiers.types -> IdentifierPsiLeaf(type, text)
+            in VB6TokenSets.whitespaces.types -> PsiWhiteSpaceImpl(text)
             else -> super.createLeaf(type, text)
         }
     }
