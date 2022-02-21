@@ -23,8 +23,6 @@ import org.antlr.intellij.adaptor.lexer.TokenIElementType
 class VisualBasic6ParserDefinition : ParserDefinition {
 
     companion object {
-
-
         init {
             PSIElementTypeFactory.defineLanguageIElementTypes(
                 VisualBasic6Language.INSTANCE,
@@ -32,33 +30,6 @@ class VisualBasic6ParserDefinition : ParserDefinition {
                 VisualBasic6Parser.ruleNames
             )
         }
-
-        @JvmStatic
-        val tokens: List<TokenIElementType> = PSIElementTypeFactory.getTokenIElementTypes(VisualBasic6Language.INSTANCE)
-
-        @JvmStatic
-        val rules: List<RuleIElementType> = PSIElementTypeFactory.getRuleIElementTypes(VisualBasic6Language.INSTANCE)
-
-        @JvmStatic
-        val FILE = IFileElementType(VisualBasic6Language.INSTANCE)
-
-        val COMMENTS: TokenSet = PSIElementTypeFactory.createTokenSet(
-            VisualBasic6Language.INSTANCE,
-            VisualBasic6Lexer.COMMENT
-        )
-
-        val STRING: TokenSet = PSIElementTypeFactory.createTokenSet(
-            VisualBasic6Language.INSTANCE,
-            VisualBasic6Lexer.STRINGLITERAL
-        )
-
-        val WHITESPACES: TokenSet = PSIElementTypeFactory.createTokenSet(
-            VisualBasic6Language.INSTANCE,
-            VisualBasic6Lexer.WS,
-            VisualBasic6Lexer.NEWLINE
-        )
-        val IDENTIFIER: IElementType = tokens[VisualBasic6Lexer.IDENTIFIER]
-
     }
 
     override fun createLexer(project: Project?): Lexer {
@@ -72,15 +43,15 @@ class VisualBasic6ParserDefinition : ParserDefinition {
     }
 
     override fun getFileNodeType(): IFileElementType {
-        return FILE
+        return VB6TokenIElementTypes.file
     }
 
     override fun getCommentTokens(): TokenSet {
-        return COMMENTS
+        return VB6TokenSets.comments
     }
 
     override fun getStringLiteralElements(): TokenSet {
-        return STRING
+        return VB6TokenSets.stringLiterals
     }
 
     override fun createElement(node: ASTNode): PsiElement {

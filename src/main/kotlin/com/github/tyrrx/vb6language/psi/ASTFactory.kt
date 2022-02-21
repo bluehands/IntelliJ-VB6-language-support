@@ -10,8 +10,8 @@ class ASTFactory : DefaultASTFactoryImpl() {
     override fun createLeaf(type: IElementType, text: CharSequence): LeafElement {
 
         return when (type) {
-            VisualBasic6ParserDefinition.IDENTIFIER -> IdentifierPsiLeaf(type, text)
-            in VisualBasic6ParserDefinition.WHITESPACES -> PsiWhiteSpaceImpl(text)
+            VB6TokenSets.identifiers.types -> IdentifierPsiLeaf(type, text)
+            in VB6TokenSets.identifiers.types -> PsiWhiteSpaceImpl(text)
             else -> super.createLeaf(type, text)
         }
     }
