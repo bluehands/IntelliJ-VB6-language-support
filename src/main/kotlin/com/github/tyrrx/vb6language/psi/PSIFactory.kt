@@ -1,8 +1,8 @@
 package com.github.tyrrx.vb6language.psi
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.FunctionStatement
-import com.github.tyrrx.vb6language.psi.tree.SubStatement
+import com.github.tyrrx.vb6language.psi.tree.nodes.FunctionStatement
+import com.github.tyrrx.vb6language.psi.tree.nodes.SubStatement
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import org.antlr.intellij.adaptor.lexer.RuleIElementType

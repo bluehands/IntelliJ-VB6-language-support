@@ -1,16 +1,14 @@
-package com.github.tyrrx.vb6language.psi.tree
+package com.github.tyrrx.vb6language.psi.tree.nodes
 
 import com.github.tyrrx.vb6language.VisualBasic6Language
+import com.github.tyrrx.vb6language.psi.tree.tryFindIdentifierInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
 import com.intellij.psi.PsiNamedElement
-import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.util.ui.tree.TreeUtil
 import org.antlr.intellij.adaptor.SymtabUtils
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.intellij.adaptor.psi.ScopeNode
-import kotlin.reflect.typeOf
 
 class FunctionStatement(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameIdentifierOwner {
 
@@ -30,6 +28,6 @@ class FunctionStatement(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameI
     }
 
     override fun getNameIdentifier(): PsiElement? {
-        return PsiTreeUtil.findChildOfType(this, IdentifierPsiLeaf::class.java)
+        return tryFindIdentifierInSubtree(this)
     }
 }
