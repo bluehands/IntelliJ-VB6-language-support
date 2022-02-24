@@ -26,6 +26,11 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_subStmt -> SubStatement.Factory
 				VisualBasic6Parser.RULE_module -> Module.Factory
 				VisualBasic6Parser.RULE_declareStmt -> DeclareStatement.Factory
+				VisualBasic6Parser.RULE_ambiguousIdentifier -> object : IPsiNodeFactory<PsiElement> {
+					override fun createPsiNode(node: ASTNode): PsiElement {
+						return ANTLRPsiNode(node)
+					}
+				}
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
 						return ANTLRPsiNode(node)
