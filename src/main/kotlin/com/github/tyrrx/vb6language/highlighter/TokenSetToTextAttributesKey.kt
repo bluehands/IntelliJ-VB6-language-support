@@ -7,4 +7,3 @@ import com.intellij.psi.tree.TokenSet
 infix fun TokenSet.mapsTo(that: TextAttributesKey): Map<IElementType, TextAttributesKey> {
     return this.types.associateWith { that }
 }
-
