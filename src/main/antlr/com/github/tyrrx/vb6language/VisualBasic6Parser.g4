@@ -48,7 +48,7 @@ moduleHeader: VERSION WS DOUBLELITERAL (WS CLASS)?;
 moduleConfig: BEGIN NEWLINE+ moduleConfigElement+ END NEWLINE+;
 
 moduleConfigElement:
-	ambiguousIdentifier WS? EQ WS? literal NEWLINE;
+	ambiguousIdentifier WS? EQ WS? literal NEWLINE; //TODO check type of identifier
 
 moduleAttributes: (attributeStmt NEWLINE+)+;
 
@@ -92,7 +92,7 @@ cp_Properties:
 cp_SingleProperty:
 	WS? implicitCallStmt_InStmt WS? EQ WS? DOLLAR? cp_PropertyValue FRX_OFFSET? NEWLINE+;
 
-cp_PropertyName: (OBJECT DOT)? ambiguousIdentifier (
+cp_PropertyName: (OBJECT DOT)? ambiguousIdentifier ( // TODO never used?
 		LPAREN literal RPAREN
 	)? (DOT ambiguousIdentifier (LPAREN literal RPAREN)?)*
     ;
@@ -111,7 +111,7 @@ cp_NestedProperty:
 
 cp_ControlType: complexType;
 
-cp_ControlIdentifier: ambiguousIdentifier;
+cp_ControlIdentifier: ambiguousIdentifier; // definition control name
 
 // block ----------------------------------
 
@@ -212,14 +212,14 @@ constStmt: (publicPrivateGlobalVisibility WS)? CONST WS constSubStmt (
 	)*;
 
 constSubStmt:
-	ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt;
+	ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt; // definition const
 
 dateStmt: DATE WS? EQ WS? valueStmt;
 
 declareStmt: (visibility WS)? DECLARE WS (
 		FUNCTION typeHint?
 		| SUB
-	) WS ambiguousIdentifier typeHint? WS LIB WS STRINGLITERAL (
+	) WS ambiguousIdentifier typeHint? WS LIB WS STRINGLITERAL ( // definition
 		WS ALIAS WS STRINGLITERAL
 	)? (WS? argList)? (WS asTypeClause)?;
 
@@ -254,18 +254,18 @@ doLoopStmt:
 
 endStmt: END;
 
-enumerationStmt: (publicPrivateVisibility WS)? ENUM WS ambiguousIdentifier NEWLINE+ (
+enumerationStmt: (publicPrivateVisibility WS)? ENUM WS ambiguousIdentifier NEWLINE+ ( // definition enum name
 		enumerationStmt_Constant
 	)* END_ENUM;
 
 enumerationStmt_Constant:
-	ambiguousIdentifier (WS? EQ WS? valueStmt)? NEWLINE+;
+	ambiguousIdentifier (WS? EQ WS? valueStmt)? NEWLINE+; // definition enum member
 
 eraseStmt: ERASE WS valueStmt (WS? COMMA WS? valueStmt)*;
 
 errorStmt: ERROR WS valueStmt;
 
-eventStmt: (visibility WS)? EVENT WS ambiguousIdentifier WS? argList;
+eventStmt: (visibility WS)? EVENT WS ambiguousIdentifier WS? argList; // definition event
 
 exitStmt:
 	EXIT_DO
@@ -278,20 +278,20 @@ exitStmt:
 filecopyStmt: FILECOPY WS valueStmt WS? COMMA WS? valueStmt;
 
 forEachStmt:
-	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS valueStmt NEWLINE+ (
+	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS valueStmt NEWLINE+ ( // definition for each; implicit reference in value statement
 		block NEWLINE+
-	)? NEXT (WS ambiguousIdentifier)?;
+	)? NEXT (WS ambiguousIdentifier)?; // reference to for each definition
 
 forNextStmt:
-	FOR WS iCS_S_VariableOrProcedureCall typeHint? (
+	FOR WS iCS_S_VariableOrProcedureCall typeHint? ( // reference
 		WS asTypeClause
 	)? WS? EQ WS? valueStmt WS TO WS valueStmt (
 		WS STEP WS valueStmt
 	)? NEWLINE+ (block NEWLINE+)? NEXT (
-		WS ambiguousIdentifier typeHint?
+		WS ambiguousIdentifier typeHint? // reference
 	)?;
 
-functionStmt: (visibility WS)? (STATIC WS)? FUNCTION WS ambiguousIdentifier (
+functionStmt: (visibility WS)? (STATIC WS)? FUNCTION WS ambiguousIdentifier ( // definition
 		WS? argList
 	)? (WS asTypeClause)? NEWLINE+ (block NEWLINE+)? END_FUNCTION;
 
@@ -319,7 +319,7 @@ ifElseIfBlockStmt:
 
 ifElseBlockStmt: ELSE NEWLINE+ (block NEWLINE+)?;
 
-implementsStmt: IMPLEMENTS WS ambiguousIdentifier;
+implementsStmt: IMPLEMENTS WS ambiguousIdentifier; // reference
 
 inputStmt: INPUT WS valueStmt (WS? COMMA WS? valueStmt)+;
 
@@ -406,15 +406,15 @@ outputList_Expression: (SPC | TAB) (
 
 printStmt: PRINT WS valueStmt WS? COMMA (WS? outputList)?;
 
-propertyGetStmt: (visibility WS)? (STATIC WS)? PROPERTY_GET WS ambiguousIdentifier typeHint? (
+propertyGetStmt: (visibility WS)? (STATIC WS)? PROPERTY_GET WS ambiguousIdentifier typeHint? ( // definition?
 		WS? argList
 	)? (WS asTypeClause)? NEWLINE+ (block NEWLINE+)? END_PROPERTY;
 
-propertySetStmt: (visibility WS)? (STATIC WS)? PROPERTY_SET WS ambiguousIdentifier (
+propertySetStmt: (visibility WS)? (STATIC WS)? PROPERTY_SET WS ambiguousIdentifier ( // definition?
 		WS? argList
 	)? NEWLINE+ (block NEWLINE+)? END_PROPERTY;
 
-propertyLetStmt: (visibility WS)? (STATIC WS)? PROPERTY_LET WS ambiguousIdentifier (
+propertyLetStmt: (visibility WS)? (STATIC WS)? PROPERTY_LET WS ambiguousIdentifier ( // definition?
 		WS? argList
 	)? NEWLINE+ (block NEWLINE+)? END_PROPERTY;
 
@@ -422,7 +422,7 @@ putStmt:
 	PUT WS valueStmt WS? COMMA WS? valueStmt? WS? COMMA WS? valueStmt;
 
 raiseEventStmt:
-	RAISEEVENT WS ambiguousIdentifier (
+	RAISEEVENT WS ambiguousIdentifier ( // reference event
 		WS? LPAREN WS? (argsCall WS?)? RPAREN
 	)?;
 
@@ -440,7 +440,7 @@ redimSubStmt:
 
 resetStmt: RESET;
 
-resumeStmt: RESUME (WS (NEXT | ambiguousIdentifier))?;
+resumeStmt: RESUME (WS (NEXT | ambiguousIdentifier))?; // reference resume
 
 returnStmt: RETURN;
 
@@ -485,18 +485,18 @@ setStmt: SET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt;
 
 stopStmt: STOP;
 
-subStmt: (visibility WS)? (STATIC WS)? SUB WS ambiguousIdentifier (
+subStmt: (visibility WS)? (STATIC WS)? SUB WS ambiguousIdentifier ( // definition sub
 		WS? argList
 	)? NEWLINE+ (block NEWLINE+)? END_SUB;
 
 timeStmt: TIME WS? EQ WS? valueStmt;
 
-typeStmt: (visibility WS)? TYPE WS ambiguousIdentifier NEWLINE+ (
+typeStmt: (visibility WS)? TYPE WS ambiguousIdentifier NEWLINE+ ( // definition type
 		typeStmt_Element
 	)* END_TYPE;
 
 typeStmt_Element:
-	ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? (
+	ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? ( // definition type element
 		WS asTypeClause
 	)? NEWLINE+;
 
@@ -540,7 +540,7 @@ variableListStmt:
 	variableSubStmt (WS? COMMA WS? variableSubStmt)*;
 
 variableSubStmt:
-	ambiguousIdentifier typeHint? (
+	ambiguousIdentifier typeHint? ( // definition variable
 		WS? LPAREN WS? (subscripts WS?)? RPAREN WS?
 	)? (WS asTypeClause)?;
 
@@ -560,14 +560,15 @@ writeStmt: WRITE WS valueStmt WS? COMMA (WS? outputList)?;
 explicitCallStmt: eCS_ProcedureCall | eCS_MemberProcedureCall;
 
 // parantheses are required in case of args -> empty parantheses are removed
+// explicit call statement
 eCS_ProcedureCall:
-	CALL WS ambiguousIdentifier typeHint? (
+	CALL WS ambiguousIdentifier typeHint? ( // reference to function or sub
 		WS? LPAREN WS? argsCall WS? RPAREN
 	)?;
 
 // parantheses are required in case of args -> empty parantheses are removed
 eCS_MemberProcedureCall:
-	CALL WS implicitCallStmt_InStmt? DOT WS? ambiguousIdentifier typeHint? (
+	CALL WS implicitCallStmt_InStmt? DOT WS? ambiguousIdentifier typeHint? ( // reference to member function of sub
 		WS? LPAREN WS? argsCall WS? RPAREN
 	)?;
 
@@ -578,10 +579,11 @@ implicitCallStmt_InBlock:
 
 // parantheses are forbidden in case of args variables cannot be called in blocks certainIdentifier
 // instead of ambiguousIdentifier for preventing ambiguity with statement keywords
-iCS_B_ProcedureCall: certainIdentifier (WS argsCall)?;
+// implicit call statment in block
+iCS_B_ProcedureCall: certainIdentifier (WS argsCall)?; // reference to function or sub
 
 iCS_B_MemberProcedureCall:
-	implicitCallStmt_InStmt? DOT ambiguousIdentifier typeHint? (
+	implicitCallStmt_InStmt? DOT ambiguousIdentifier typeHint? ( // reference to member function of sub
 		WS argsCall
 	)? dictionaryCallStmt?;
 
@@ -593,16 +595,16 @@ implicitCallStmt_InStmt:
 	| iCS_S_DictionaryCall;
 
 iCS_S_VariableOrProcedureCall:
-	ambiguousIdentifier typeHint? dictionaryCallStmt?;
+	ambiguousIdentifier typeHint? dictionaryCallStmt?; // reference to function or sub
 
 iCS_S_ProcedureOrArrayCall: (
-		ambiguousIdentifier
+		ambiguousIdentifier // reference to function sub or array?
 		| baseType
 		| iCS_S_NestedProcedureCall
 	) typeHint? WS? (LPAREN WS? (argsCall WS?)? RPAREN)+ dictionaryCallStmt?;
 
 iCS_S_NestedProcedureCall:
-	ambiguousIdentifier typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN;
+	ambiguousIdentifier typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN; // reference to function or sub
 
 iCS_S_MembersCall: (
 		iCS_S_VariableOrProcedureCall
@@ -626,12 +628,12 @@ argsCall: (argCall? WS? (COMMA | SEMICOLON) WS?)* argCall (
 argCall: ((BYVAL | BYREF | PARAMARRAY) WS)? valueStmt;
 
 dictionaryCallStmt:
-	EXCLAMATIONMARK ambiguousIdentifier typeHint?;
+	EXCLAMATIONMARK ambiguousIdentifier typeHint?; // reference to dictionary
 
 // atomic rules for statements
 argList: LPAREN (WS? arg (WS? COMMA WS? arg)*)? WS? RPAREN;
 
-arg: (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)? ambiguousIdentifier typeHint? (
+arg: (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)? ambiguousIdentifier typeHint? ( // definition of function or sub argument ?
 		WS? LPAREN WS? RPAREN
 	)? (WS asTypeClause)? (WS? argDefaultValue)?;
 
@@ -668,14 +670,14 @@ certainIdentifier:
 
 comparisonOperator: LT | LEQ | GT | GEQ | EQ | NEQ | IS | LIKE;
 
-complexType: ambiguousIdentifier (DOT ambiguousIdentifier)*;
+complexType: ambiguousIdentifier (DOT ambiguousIdentifier)*; // definition of complex type?
 
-fieldLength: MULT WS? (INTEGERLITERAL | ambiguousIdentifier);
+fieldLength: MULT WS? (INTEGERLITERAL | ambiguousIdentifier); // reference?
 
 letterrange:
-	certainIdentifier (WS? MINUS WS? certainIdentifier)?;
+	certainIdentifier (WS? MINUS WS? certainIdentifier)?; // definition of a range of valid letters
 
-lineLabel: ambiguousIdentifier COLON;
+lineLabel: ambiguousIdentifier COLON; // definition line label
 
 literal:
 	COLORLITERAL
