@@ -7,7 +7,7 @@ import com.intellij.openapi.fileTypes.FileType
 import com.intellij.psi.FileViewProvider
 import org.jetbrains.annotations.NotNull
 
-class VB6File(viewProvider: @NotNull FileViewProvider) : PsiFileBase(viewProvider, VB6Language.INSTANCE) {
+class VB6ClassFile(viewProvider: @NotNull FileViewProvider) : PsiFileBase(viewProvider, VB6Language.INSTANCE) {
     override fun getFileType(): FileType {
         return VB6ClassFileType.INSTANCE
     }

@@ -56,6 +56,6 @@ class VB6ParserDefinition : ParserDefinition {
     }
 
     override fun createFile(viewProvider: FileViewProvider): PsiFile {
-        return VB6File(viewProvider)
+        return VB6ClassFile(viewProvider)
     }
 }
