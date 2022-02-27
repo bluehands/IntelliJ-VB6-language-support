@@ -1,15 +1,13 @@
 package com.github.tyrrx.vb6language.psi
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.nodes.DeclareStatement
-import com.github.tyrrx.vb6language.psi.tree.nodes.FunctionStatement
-import com.github.tyrrx.vb6language.psi.tree.nodes.Module
-import com.github.tyrrx.vb6language.psi.tree.nodes.SubStatement
+import com.github.tyrrx.vb6language.psi.tree.nodes.DeclareDefinition
+import com.github.tyrrx.vb6language.psi.tree.nodes.FunctionDefinition
+import com.github.tyrrx.vb6language.psi.tree.nodes.ModuleDefinition
+import com.github.tyrrx.vb6language.psi.tree.nodes.SubroutineDefinition
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.PsiElement
-import com.intellij.psi.tree.IElementType
-import com.intellij.psi.tree.TokenSet
 import org.antlr.intellij.adaptor.lexer.RuleIElementType
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 
@@ -22,10 +20,10 @@ object PSIFactory {
 		val elementType = node.elementType
 		return if (elementType is RuleIElementType) {
 			when (elementType.ruleIndex) {
-				VisualBasic6Parser.RULE_functionStmt -> FunctionStatement.Factory
-				VisualBasic6Parser.RULE_subStmt -> SubStatement.Factory
-				VisualBasic6Parser.RULE_module -> Module.Factory
-				VisualBasic6Parser.RULE_declareStmt -> DeclareStatement.Factory
+				VisualBasic6Parser.RULE_functionStmt -> FunctionDefinition.Factory
+				VisualBasic6Parser.RULE_subStmt -> SubroutineDefinition.Factory
+				VisualBasic6Parser.RULE_module -> ModuleDefinition.Factory
+				VisualBasic6Parser.RULE_declareStmt -> DeclareDefinition.Factory
 				VisualBasic6Parser.RULE_ambiguousIdentifier -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
 						return ANTLRPsiNode(node)

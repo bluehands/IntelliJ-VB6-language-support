@@ -7,7 +7,7 @@ import com.intellij.psi.PsiNamedElement
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class Module(node: ASTNode) : ANTLRPsiNode(node), ScopeNode {
+class ModuleDefinition(node: ASTNode) : ANTLRPsiNode(node), ScopeNode {
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         TODO("Not yet implemented")
     }
@@ -16,9 +16,9 @@ class Module(node: ASTNode) : ANTLRPsiNode(node), ScopeNode {
         return super.getName()
     }
 
-    object Factory : IPsiNodeFactory<Module> {
-        override fun createPsiNode(node: ASTNode): Module {
-            return Module(node)
+    object Factory : IPsiNodeFactory<ModuleDefinition> {
+        override fun createPsiNode(node: ASTNode): ModuleDefinition {
+            return ModuleDefinition(node)
         }
     }
 }

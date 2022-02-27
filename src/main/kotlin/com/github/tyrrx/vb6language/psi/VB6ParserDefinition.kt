@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi
 
-import com.github.tyrrx.vb6language.VisualBasic6Language
-import com.github.tyrrx.vb6language.VisualBasic6ParserAdaptor
+import com.github.tyrrx.vb6language.VB6Language
+import com.github.tyrrx.vb6language.VB6ParserAdaptor
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.intellij.lang.ASTNode
@@ -12,20 +12,17 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
-import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
-import org.antlr.intellij.adaptor.lexer.RuleIElementType
-import org.antlr.intellij.adaptor.lexer.TokenIElementType
 
-class VisualBasic6ParserDefinition : ParserDefinition {
+class VB6ParserDefinition : ParserDefinition {
 
     companion object {
         init {
             PSIElementTypeFactory.defineLanguageIElementTypes(
-                VisualBasic6Language.INSTANCE,
+                VB6Language.INSTANCE,
                 VisualBasic6Parser.tokenNames,
                 VisualBasic6Parser.ruleNames
             )
@@ -34,12 +31,12 @@ class VisualBasic6ParserDefinition : ParserDefinition {
 
     override fun createLexer(project: Project?): Lexer {
         val lexer = VisualBasic6Lexer(null)
-        return ANTLRLexerAdaptor(VisualBasic6Language.INSTANCE, lexer)
+        return ANTLRLexerAdaptor(VB6Language.INSTANCE, lexer)
     }
 
     override fun createParser(project: Project?): PsiParser {
         val parser = VisualBasic6Parser(null)
-        return VisualBasic6ParserAdaptor(parser)
+        return VB6ParserAdaptor(parser)
     }
 
     override fun getFileNodeType(): IFileElementType {
@@ -59,6 +56,6 @@ class VisualBasic6ParserDefinition : ParserDefinition {
     }
 
     override fun createFile(viewProvider: FileViewProvider): PsiFile {
-        return VisualBasic6ClassPsiFileRoot(viewProvider)
+        return VB6File(viewProvider)
     }
 }

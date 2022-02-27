@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.nodes
 
-import com.github.tyrrx.vb6language.VisualBasic6Language
+import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.findIdentifierInSubtree
 import com.intellij.lang.ASTNode
@@ -11,10 +11,11 @@ import org.antlr.intellij.adaptor.SymtabUtils
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class SubStatement(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameIdentifierOwner {
+class FunctionDefinition(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameIdentifierOwner {
+
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         return SymtabUtils.resolve(
-            this, VisualBasic6Language.INSTANCE,
+            this, VB6Language.INSTANCE,
             element, "/ambiguousIdentifier/IDENTIFIER"
         )
     }
@@ -31,9 +32,9 @@ class SubStatement(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameIdenti
         return findIdentifierInSubtree(this)
     }
 
-    object Factory : IPsiNodeFactory<SubStatement> {
-        override fun createPsiNode(node: ASTNode): SubStatement {
-            return SubStatement(node)
+    object Factory : IPsiNodeFactory<FunctionDefinition> {
+        override fun createPsiNode(node: ASTNode): FunctionDefinition {
+            return FunctionDefinition(node)
         }
     }
 }

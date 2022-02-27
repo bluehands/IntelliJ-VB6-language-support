@@ -8,8 +8,8 @@ import org.antlr.v4.runtime.Parser
 import org.antlr.v4.runtime.tree.ParseTree
 import org.jetbrains.annotations.NotNull
 
-class VisualBasic6ParserAdaptor(@NotNull parser: VisualBasic6Parser) :
-    ANTLRParserAdaptor(VisualBasic6Language.INSTANCE, parser) {
+class VB6ParserAdaptor(@NotNull parser: VisualBasic6Parser) :
+    ANTLRParserAdaptor(VB6Language.INSTANCE, parser) {
     override fun parse(parser: Parser?, root: IElementType?): ParseTree {
         if (root is IFileElementType) {
             return (parser as VisualBasic6Parser).startRule()

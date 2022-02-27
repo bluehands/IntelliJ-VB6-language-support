@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.leafes
 
-import com.github.tyrrx.vb6language.VisualBasic6Language
+import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.github.tyrrx.vb6language.psi.ILeafFactory
 import com.github.tyrrx.vb6language.psi.VB6TokenIElementTypes
@@ -20,7 +20,7 @@ class IdentifierPsiLeaf(type: IElementType?, text: CharSequence?) : ANTLRPsiLeaf
 		// Todo valid?
 		val newIdentifier = Trees.createLeafFromText(
 			project,
-			VisualBasic6Language.INSTANCE,
+			VB6Language.INSTANCE,
 			context,
 			name,
 			VB6TokenIElementTypes.tokens[VisualBasic6Lexer.IDENTIFIER]

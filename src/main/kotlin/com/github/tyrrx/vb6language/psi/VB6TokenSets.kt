@@ -1,64 +1,64 @@
 package com.github.tyrrx.vb6language.psi
 
-import com.github.tyrrx.vb6language.VisualBasic6Language
+import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.intellij.psi.tree.TokenSet
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 
 object VB6TokenSets {
     val comments: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.COMMENT
     )
 
     val identifiers: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.IDENTIFIER
     )
 
     val errorChars: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.ERRCHAR
     )
 
     val stringLiterals: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.STRINGLITERAL
     )
 
     val numbers: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.INTEGERLITERAL,
         VisualBasic6Lexer.DOUBLELITERAL,
         VisualBasic6Lexer.OCTALLITERAL
     )
 
     val whitespaces: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.WS,
         VisualBasic6Lexer.NEWLINE
     )
 
     val braces: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.LBRACE,
         VisualBasic6Lexer.RBRACE
     )
 
     val parentheses: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.RPAREN,
         VisualBasic6Lexer.LPAREN
     )
 
     val brackets: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.L_SQUARE_BRACKET,
         VisualBasic6Lexer.R_SQUARE_BRACKET
     )
 
     val keywords: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VisualBasic6Language.INSTANCE,
+        VB6Language.INSTANCE,
         VisualBasic6Lexer.ACCESS,
         VisualBasic6Lexer.ADDRESSOF,
         VisualBasic6Lexer.ALIAS,

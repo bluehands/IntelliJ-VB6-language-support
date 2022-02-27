@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.highlighter
 
-import com.github.tyrrx.vb6language.VisualBasic6Language
+import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.VB6TokenSets
@@ -18,7 +18,7 @@ class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
 
     override fun getHighlightingLexer(): Lexer {
         val lexer = VisualBasic6Lexer(null)
-        return ANTLRLexerAdaptor(VisualBasic6Language.INSTANCE, lexer)
+        return ANTLRLexerAdaptor(VB6Language.INSTANCE, lexer)
     }
 
     override fun getTokenHighlights(tokenType: IElementType?): Array<TextAttributesKey> {
@@ -50,7 +50,7 @@ class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
 
         init {
             PSIElementTypeFactory.defineLanguageIElementTypes(
-                VisualBasic6Language.INSTANCE,
+                VB6Language.INSTANCE,
                 VisualBasic6Parser.tokenNames,
                 VisualBasic6Parser.ruleNames
             )

@@ -7,17 +7,17 @@ import com.intellij.openapi.util.NlsSafe
 import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon
 
-class VisualBasic6ClassFileType : LanguageFileType(VisualBasic6Language.INSTANCE) {
+class VB6ClassFileType : LanguageFileType(VB6Language.INSTANCE) {
 
-    override fun getName(): @NonNls String {
+    override fun getName(): String {
         return "Visual Basic 6.0"
     }
 
-    override fun getDescription(): @NlsContexts.Label String {
+    override fun getDescription(): String {
         return "Visual Basic 6.0 class file"
     }
 
-    override fun getDefaultExtension(): @NlsSafe String {
+    override fun getDefaultExtension(): String {
         return "cls"
     }
 
@@ -29,6 +29,6 @@ class VisualBasic6ClassFileType : LanguageFileType(VisualBasic6Language.INSTANCE
 
     companion object {
         @JvmStatic
-        val INSTANCE = VisualBasic6ClassFileType()
+        val INSTANCE = VB6ClassFileType()
     }
 }
