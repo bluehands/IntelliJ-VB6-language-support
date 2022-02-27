@@ -2,6 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.nodes
 
 import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.VB6SubroutineDeclaration
 import com.github.tyrrx.vb6language.psi.tree.findIdentifierInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -11,8 +12,7 @@ import org.antlr.intellij.adaptor.SymtabUtils
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class FunctionDefinition(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiNameIdentifierOwner {
-
+class VB6SubroutineDeclarationImpl(node: ASTNode) : ANTLRPsiNode(node), VB6SubroutineDeclaration {
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         return SymtabUtils.resolve(
             this, VB6Language.INSTANCE,
@@ -32,9 +32,9 @@ class FunctionDefinition(node: ASTNode) : ANTLRPsiNode(node), ScopeNode, PsiName
         return findIdentifierInSubtree(this)
     }
 
-    object Factory : IPsiNodeFactory<FunctionDefinition> {
-        override fun createPsiNode(node: ASTNode): FunctionDefinition {
-            return FunctionDefinition(node)
+    object Factory : IPsiNodeFactory<VB6SubroutineDeclarationImpl> {
+        override fun createPsiNode(node: ASTNode): VB6SubroutineDeclarationImpl {
+            return VB6SubroutineDeclarationImpl(node)
         }
     }
 }

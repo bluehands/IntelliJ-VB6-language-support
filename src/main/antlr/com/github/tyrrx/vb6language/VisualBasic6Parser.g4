@@ -406,15 +406,15 @@ outputList_Expression: (SPC | TAB) (
 
 printStmt: PRINT WS valueStmt WS? COMMA (WS? outputList)?;
 
-propertyGetStmt: (visibility WS)? (STATIC WS)? PROPERTY_GET WS ambiguousIdentifier typeHint? ( // definition?
+propertyGetStmt: (visibility WS)? (STATIC WS)? PROPERTY_GET WS ambiguousIdentifier typeHint? ( // definition property get
 		WS? argList
 	)? (WS asTypeClause)? NEWLINE+ (block NEWLINE+)? END_PROPERTY;
 
-propertySetStmt: (visibility WS)? (STATIC WS)? PROPERTY_SET WS ambiguousIdentifier ( // definition?
+propertySetStmt: (visibility WS)? (STATIC WS)? PROPERTY_SET WS ambiguousIdentifier ( // definition property set
 		WS? argList
 	)? NEWLINE+ (block NEWLINE+)? END_PROPERTY;
 
-propertyLetStmt: (visibility WS)? (STATIC WS)? PROPERTY_LET WS ambiguousIdentifier ( // definition?
+propertyLetStmt: (visibility WS)? (STATIC WS)? PROPERTY_LET WS ambiguousIdentifier ( // definition property let
 		WS? argList
 	)? NEWLINE+ (block NEWLINE+)? END_PROPERTY;
 
