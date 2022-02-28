@@ -12,7 +12,7 @@ import org.antlr.intellij.adaptor.SymtabUtils
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class VB6FunctionDeclarationImpl(node: ASTNode) : ANTLRPsiNode(node), VB6FunctionDeclaration {
+class VB6FunctionDeclarationImpl(node: ASTNode) : VB6PsiNode(node), VB6FunctionDeclaration {
 
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         return SymtabUtils.resolve(
@@ -30,7 +30,7 @@ class VB6FunctionDeclarationImpl(node: ASTNode) : ANTLRPsiNode(node), VB6Functio
     }
 
     override fun getNameIdentifier(): PsiElement? {
-        return findIdentifierInSubtree(this)
+        return this.findIdentifierInSubtree()
     }
 
     object Factory : IPsiNodeFactory<VB6FunctionDeclarationImpl> {

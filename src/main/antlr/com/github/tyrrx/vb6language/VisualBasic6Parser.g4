@@ -319,7 +319,7 @@ ifElseIfBlockStmt:
 
 ifElseBlockStmt: ELSE NEWLINE+ (block NEWLINE+)?;
 
-implementsStmt: IMPLEMENTS WS ambiguousIdentifier; // reference
+implementsStmt: IMPLEMENTS WS ambiguousIdentifier; // reference to abstract class / interface
 
 inputStmt: INPUT WS valueStmt (WS? COMMA WS? valueStmt)+;
 

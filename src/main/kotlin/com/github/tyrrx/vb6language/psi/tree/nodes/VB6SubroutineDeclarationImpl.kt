@@ -12,7 +12,7 @@ import org.antlr.intellij.adaptor.SymtabUtils
 import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class VB6SubroutineDeclarationImpl(node: ASTNode) : ANTLRPsiNode(node), VB6SubroutineDeclaration {
+class VB6SubroutineDeclarationImpl(node: ASTNode) : VB6PsiNode(node), VB6SubroutineDeclaration {
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         return SymtabUtils.resolve(
             this, VB6Language.INSTANCE,

@@ -11,7 +11,7 @@ import com.intellij.psi.tree.IElementType
 import org.antlr.intellij.adaptor.psi.ANTLRPsiLeafNode
 import org.antlr.intellij.adaptor.psi.Trees
 
-class IdentifierPsiLeaf(type: IElementType?, text: CharSequence?) : ANTLRPsiLeafNode(type, text), PsiNamedElement {
+class IdentifierPsiLeaf(type: IElementType?, text: CharSequence?) : VB6PsiLeaf(type, text), PsiNamedElement {
 	override fun getName(): String {
 		return text
 	}

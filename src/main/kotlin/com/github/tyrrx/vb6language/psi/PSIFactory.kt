@@ -1,10 +1,7 @@
 package com.github.tyrrx.vb6language.psi
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.nodes.DeclareDefinition
-import com.github.tyrrx.vb6language.psi.tree.nodes.VB6FunctionDeclarationImpl
-import com.github.tyrrx.vb6language.psi.tree.nodes.VB6ModuleDeclarationImpl
-import com.github.tyrrx.vb6language.psi.tree.nodes.VB6SubroutineDeclarationImpl
+import com.github.tyrrx.vb6language.psi.tree.nodes.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.PsiElement
@@ -24,6 +21,8 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_subStmt -> VB6SubroutineDeclarationImpl.Factory
 				VisualBasic6Parser.RULE_module -> VB6ModuleDeclarationImpl.Factory
 				VisualBasic6Parser.RULE_declareStmt -> DeclareDefinition.Factory
+				VisualBasic6Parser.RULE_literal -> VB6LiteralImpl.Factory
+				VisualBasic6Parser.RULE_attributeStmt -> VB6AttributeDeclarationImpl.Factory
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
 						return ANTLRPsiNode(node)
