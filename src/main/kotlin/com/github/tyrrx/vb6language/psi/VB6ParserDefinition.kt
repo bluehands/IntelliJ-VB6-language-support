@@ -40,7 +40,7 @@ class VB6ParserDefinition : ParserDefinition {
     }
 
     override fun getFileNodeType(): IFileElementType {
-        return VB6TokenIElementTypes.file
+        return VB6IElementTypes.file
     }
 
     override fun getCommentTokens(): TokenSet {

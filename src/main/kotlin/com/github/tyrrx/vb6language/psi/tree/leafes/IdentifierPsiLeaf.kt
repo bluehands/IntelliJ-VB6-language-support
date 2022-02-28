@@ -3,12 +3,11 @@ package com.github.tyrrx.vb6language.psi.tree.leafes
 import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.github.tyrrx.vb6language.psi.ILeafFactory
-import com.github.tyrrx.vb6language.psi.VB6TokenIElementTypes
+import com.github.tyrrx.vb6language.psi.VB6IElementTypes
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 import com.intellij.psi.impl.source.tree.LeafElement
 import com.intellij.psi.tree.IElementType
-import org.antlr.intellij.adaptor.psi.ANTLRPsiLeafNode
 import org.antlr.intellij.adaptor.psi.Trees
 
 class IdentifierPsiLeaf(type: IElementType?, text: CharSequence?) : VB6PsiLeaf(type, text), PsiNamedElement {
@@ -23,7 +22,7 @@ class IdentifierPsiLeaf(type: IElementType?, text: CharSequence?) : VB6PsiLeaf(t
 			VB6Language.INSTANCE,
 			context,
 			name,
-			VB6TokenIElementTypes.tokens[VisualBasic6Lexer.IDENTIFIER]
+			VB6IElementTypes.tokens[VisualBasic6Lexer.IDENTIFIER]
 		)
 		return this.replace(newIdentifier)
 	}

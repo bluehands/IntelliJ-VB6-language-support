@@ -37,7 +37,7 @@ moduleReference:
 	OBJECT WS? EQ WS? moduleReferenceValue (
 		SEMICOLON WS? moduleReferenceComponent
 	)? NEWLINE*
-              ;
+	;
 
 moduleReferenceValue: STRINGLITERAL;
 
