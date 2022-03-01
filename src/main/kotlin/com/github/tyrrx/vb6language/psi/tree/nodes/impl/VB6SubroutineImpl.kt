@@ -2,6 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.nodes.impl
 
 import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.leafes.IdentifierPsiLeaf
 import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Subroutine
 import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findIdentifierInSubtree
 import com.intellij.lang.ASTNode
@@ -22,10 +23,10 @@ class VB6SubroutineImpl(node: ASTNode) : VB6PsiNode(node), VB6Subroutine {
     }
 
     override fun getName(): String? {
-        return nameIdentifier?.text
+        return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): PsiElement? {
+    override fun getNameIdentifier(): IdentifierPsiLeaf? {
         return findIdentifierInSubtree(this)
     }
 
