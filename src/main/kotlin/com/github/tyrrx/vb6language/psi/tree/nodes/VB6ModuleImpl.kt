@@ -1,18 +1,16 @@
 package com.github.tyrrx.vb6language.psi.tree.nodes
 
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.VB6AttributeDeclaration
-import com.github.tyrrx.vb6language.psi.tree.VB6ModuleDeclaration
+import com.github.tyrrx.vb6language.psi.tree.VB6Attribute
+import com.github.tyrrx.vb6language.psi.tree.VB6Module
 import com.github.tyrrx.vb6language.psi.tree.VB6ModuleHeader
 import com.github.tyrrx.vb6language.psi.tree.findPsiElementsInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
-import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
-import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class VB6ModuleDeclarationImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleDeclaration {
-    override fun getModuleAttributes(): Collection<VB6AttributeDeclaration> {
+class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
+    override fun getModuleAttributes(): Collection<VB6Attribute> {
         return findPsiElementsInSubtree(this)
     }
 
@@ -36,15 +34,15 @@ class VB6ModuleDeclarationImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleDecla
         return nameIdentifier?.getLiterals()?.firstOrNull()?.getLiteralElement()?.text
     }
 
-    override fun getNameIdentifier(): VB6AttributeDeclaration? {
+    override fun getNameIdentifier(): VB6Attribute? {
         return getModuleAttributes().firstOrNull { declaration ->
             declaration.nameIdentifier?.text.equals("VB_Name")
         } // TODO or use file name?
     }
 
-    object Factory : IPsiNodeFactory<VB6ModuleDeclaration> {
-        override fun createPsiNode(node: ASTNode): VB6ModuleDeclarationImpl {
-            return VB6ModuleDeclarationImpl(node)
+    object Factory : IPsiNodeFactory<VB6Module> {
+        override fun createPsiNode(node: ASTNode): VB6ModuleImpl {
+            return VB6ModuleImpl(node)
         }
     }
 }

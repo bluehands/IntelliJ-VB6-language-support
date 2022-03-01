@@ -2,17 +2,14 @@ package com.github.tyrrx.vb6language.psi.tree.nodes
 
 import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.VB6FunctionDeclaration
+import com.github.tyrrx.vb6language.psi.tree.VB6Function
 import com.github.tyrrx.vb6language.psi.tree.findIdentifierInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiNameIdentifierOwner
 import com.intellij.psi.PsiNamedElement
 import org.antlr.intellij.adaptor.SymtabUtils
-import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
-import org.antlr.intellij.adaptor.psi.ScopeNode
 
-class VB6FunctionDeclarationImpl(node: ASTNode) : VB6PsiNode(node), VB6FunctionDeclaration {
+class VB6FunctionImpl(node: ASTNode) : VB6PsiNode(node), VB6Function {
 
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         return SymtabUtils.resolve(
@@ -33,9 +30,9 @@ class VB6FunctionDeclarationImpl(node: ASTNode) : VB6PsiNode(node), VB6FunctionD
         return this.findIdentifierInSubtree()
     }
 
-    object Factory : IPsiNodeFactory<VB6FunctionDeclarationImpl> {
-        override fun createPsiNode(node: ASTNode): VB6FunctionDeclarationImpl {
-            return VB6FunctionDeclarationImpl(node)
+    object Factory : IPsiNodeFactory<VB6FunctionImpl> {
+        override fun createPsiNode(node: ASTNode): VB6FunctionImpl {
+            return VB6FunctionImpl(node)
         }
     }
 }

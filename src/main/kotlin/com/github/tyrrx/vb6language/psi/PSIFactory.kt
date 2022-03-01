@@ -17,12 +17,12 @@ object PSIFactory {
 		val elementType = node.elementType
 		return if (elementType is RuleIElementType) {
 			when (elementType.ruleIndex) {
-				VisualBasic6Parser.RULE_functionStmt -> VB6FunctionDeclarationImpl.Factory
-				VisualBasic6Parser.RULE_subStmt -> VB6SubroutineDeclarationImpl.Factory
-				VisualBasic6Parser.RULE_module -> VB6ModuleDeclarationImpl.Factory
-				VisualBasic6Parser.RULE_declareStmt -> DeclareDefinition.Factory
+				VisualBasic6Parser.RULE_functionStmt -> VB6FunctionImpl.Factory
+				VisualBasic6Parser.RULE_subStmt -> VB6SubroutineImpl.Factory
+				VisualBasic6Parser.RULE_module -> VB6ModuleImpl.Factory
+				VisualBasic6Parser.RULE_declareStmt -> Declare.Factory
 				VisualBasic6Parser.RULE_literal -> VB6LiteralImpl.Factory
-				VisualBasic6Parser.RULE_attributeStmt -> VB6AttributeDeclarationImpl.Factory
+				VisualBasic6Parser.RULE_attributeStmt -> VB6AttributeImpl.Factory
 				VisualBasic6Parser.RULE_moduleHeader -> VB6ModuleHeaderImpl.Factory
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {

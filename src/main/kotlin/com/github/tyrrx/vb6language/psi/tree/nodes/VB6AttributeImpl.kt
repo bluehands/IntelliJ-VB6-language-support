@@ -1,14 +1,14 @@
 package com.github.tyrrx.vb6language.psi.tree.nodes
 
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.VB6AttributeDeclaration
+import com.github.tyrrx.vb6language.psi.tree.VB6Attribute
 import com.github.tyrrx.vb6language.psi.tree.VB6Literal
 import com.github.tyrrx.vb6language.psi.tree.findIdentifierInSubtree
 import com.github.tyrrx.vb6language.psi.tree.findLiteralsInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-class VB6AttributeDeclarationImpl(node: ASTNode) : VB6PsiNode(node), VB6AttributeDeclaration {
+class VB6AttributeImpl(node: ASTNode) : VB6PsiNode(node), VB6Attribute {
 
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
@@ -26,9 +26,9 @@ class VB6AttributeDeclarationImpl(node: ASTNode) : VB6PsiNode(node), VB6Attribut
         return this.findIdentifierInSubtree()
     }
 
-    object Factory : IPsiNodeFactory<VB6AttributeDeclaration>{
-        override fun createPsiNode(node: ASTNode): VB6AttributeDeclaration {
-            return VB6AttributeDeclarationImpl(node)
+    object Factory : IPsiNodeFactory<VB6Attribute>{
+        override fun createPsiNode(node: ASTNode): VB6Attribute {
+            return VB6AttributeImpl(node)
         }
     }
 }
