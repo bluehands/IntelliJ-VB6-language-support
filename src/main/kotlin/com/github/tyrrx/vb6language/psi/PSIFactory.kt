@@ -26,6 +26,7 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_moduleHeader -> VB6ModuleHeaderImpl.Factory
 				VisualBasic6Parser.RULE_moduleConfigElement -> VB6ModuleConfigElementImpl.Factory
 				VisualBasic6Parser.RULE_moduleConfig -> VB6ModuleConfigImpl.Factory
+				VisualBasic6Parser.RULE_visibility -> VB6VisibilityImpl.Factory
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
 						return ANTLRPsiNode(node)

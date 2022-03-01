@@ -2,14 +2,22 @@ package com.github.tyrrx.vb6language.psi.tree.nodes
 
 import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.VB6Function
-import com.github.tyrrx.vb6language.psi.tree.findIdentifierInSubtree
+import com.github.tyrrx.vb6language.psi.VB6IElementTypes
+import com.github.tyrrx.vb6language.psi.tree.*
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 import org.antlr.intellij.adaptor.SymtabUtils
 
 class VB6FunctionImpl(node: ASTNode) : VB6PsiNode(node), VB6Function {
+    override fun getVisibility(): VB6VisibilityEnum {
+        return findPsiElementInSubtree<VB6Visibility>(this)
+            ?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+    }
+
+    override fun isStatic(): Boolean {
+        return findLeafInChildrenByElementType(this, VB6IElementTypes.STATIC) != null
+    }
 
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         return SymtabUtils.resolve(

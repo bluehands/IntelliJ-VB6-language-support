@@ -17,4 +17,11 @@ object VB6IElementTypes: TokenType {
     val file = IFileElementType(VB6Language.INSTANCE)
 
     val CLASS = tokens[VisualBasic6Lexer.CLASS]
+
+    val PRIVATE = tokens[VisualBasic6Lexer.PRIVATE]
+    val PUBLIC = tokens[VisualBasic6Lexer.PUBLIC]
+    val FRIEND = tokens[VisualBasic6Lexer.FRIEND]
+    val GLOBAL = tokens[VisualBasic6Lexer.GLOBAL]
+
+    val STATIC = tokens[VisualBasic6Lexer.STATIC]
 }

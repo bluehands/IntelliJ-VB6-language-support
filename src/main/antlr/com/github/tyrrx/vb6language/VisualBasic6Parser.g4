@@ -76,7 +76,7 @@ moduleBody: moduleBodyElement (NEWLINE+ moduleBodyElement)*;
 
 moduleBodyElement:
 	moduleBlock
-	| moduleOption
+	| moduleOption // TODO always enter module block?
 	| declareStmt
 	| enumerationStmt
 	| eventStmt
