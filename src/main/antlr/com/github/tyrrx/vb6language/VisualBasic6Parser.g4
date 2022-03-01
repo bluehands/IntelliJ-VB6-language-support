@@ -48,7 +48,7 @@ moduleHeader: VERSION WS DOUBLELITERAL (WS CLASS)?;
 moduleConfig: BEGIN NEWLINE+ moduleConfigElement+ END NEWLINE+;
 
 moduleConfigElement:
-	ambiguousIdentifier WS? EQ WS? literal NEWLINE; //TODO check type of identifier
+	ambiguousIdentifier WS? EQ WS? literal NEWLINE; //definition
 
 moduleAttributes: (attributeStmt NEWLINE+)+;
 

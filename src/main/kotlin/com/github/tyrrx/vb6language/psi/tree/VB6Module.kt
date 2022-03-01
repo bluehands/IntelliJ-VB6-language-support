@@ -7,4 +7,5 @@ interface VB6Module : ScopeNode, PsiNameIdentifierOwner {
     fun getModuleAttributes(): Collection<VB6Attribute>
     fun getModuleHeaders(): Collection<VB6ModuleHeader>
     fun isClass(): Boolean
+    fun getModuleConfigElements(): Collection<VB6ModuleConfigElement>
 }

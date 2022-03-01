@@ -1,10 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.nodes
 
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.VB6Attribute
-import com.github.tyrrx.vb6language.psi.tree.VB6Module
-import com.github.tyrrx.vb6language.psi.tree.VB6ModuleHeader
-import com.github.tyrrx.vb6language.psi.tree.findPsiElementsInSubtree
+import com.github.tyrrx.vb6language.psi.tree.*
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
@@ -20,6 +17,10 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
 
     override fun isClass(): Boolean {
         return getModuleHeaders().firstOrNull()?.isClass() ?: false
+    }
+
+    override fun getModuleConfigElements(): Collection<VB6ModuleConfigElement> {
+        return findPsiElementInSubtree<VB6ModuleConfig>(this)?.getModuleConfigElements() ?: emptyList()
     }
 
     override fun resolve(element: PsiNamedElement?): PsiElement? {
