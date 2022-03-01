@@ -26,10 +26,15 @@ startRule: module EOF
          ;
 
 module:
-	WS? NEWLINE* (moduleHeader NEWLINE+)? moduleReferences? NEWLINE* controlProperties? NEWLINE*
-		moduleConfig? NEWLINE* moduleAttributes? NEWLINE* moduleOptions? NEWLINE* moduleBody?
-		NEWLINE* WS?
-      ;
+	WS? NEWLINE*
+	(moduleHeader NEWLINE+)?
+	moduleReferences? NEWLINE*
+	controlProperties? NEWLINE*
+	moduleConfig? NEWLINE*
+	moduleAttributes? NEWLINE*
+	moduleOptions? NEWLINE*
+	moduleBody? NEWLINE* WS?
+    ;
 
 moduleReferences: moduleReference+;
 
@@ -55,11 +60,17 @@ moduleAttributes: (attributeStmt NEWLINE+)+;
 moduleOptions: (moduleOption NEWLINE+)+;
 
 moduleOption:
-	OPTION_BASE WS INTEGERLITERAL		# optionBaseStmt
-	| OPTION_COMPARE WS (BINARY | TEXT)	# optionCompareStmt
-	| OPTION_EXPLICIT					# optionExplicitStmt
-	| OPTION_PRIVATE_MODULE				# optionPrivateModuleStmt
+	optionBaseStmt
+	| optionCompareStmt
+	| optionExplicitStmt
+	| optionPrivateModuleStmt
     ;
+
+optionBaseStmt: OPTION_BASE WS INTEGERLITERAL;
+optionCompareStmt: OPTION_COMPARE WS (BINARY | TEXT);
+optionExplicitStmt: OPTION_EXPLICIT;
+optionPrivateModuleStmt: OPTION_PRIVATE_MODULE;
+
 
 moduleBody: moduleBodyElement (NEWLINE+ moduleBodyElement)*;
 
