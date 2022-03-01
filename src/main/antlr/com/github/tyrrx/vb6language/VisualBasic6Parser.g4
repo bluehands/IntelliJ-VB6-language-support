@@ -522,29 +522,53 @@ unlockStmt:
 
 // operator precedence is represented by rule order
 valueStmt
-    : literal                                                       # vsLiteral
-    | LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN    # vsStruct
-    | NEW WS valueStmt                                              # vsNew
-    | typeOfStmt                                                    # vsTypeOf
-    | ADDRESSOF WS valueStmt                                        # vsAddressOf
-    | implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt              # vsAssign
-    | valueStmt WS? POW WS? valueStmt                               # vsPow
-    | (PLUS | MINUS) WS? valueStmt                                  # vsPlusMinus
-    | valueStmt WS? (MULT | DIV) WS? valueStmt                      # vsMultDiv
-    | valueStmt WS? (IDIV) WS? valueStmt                            # vsIDiv
-    | valueStmt WS? MOD WS? valueStmt                               # vsMod
-    | valueStmt WS? (PLUS | MINUS) WS? valueStmt                    # vsAddSub
-    | valueStmt WS? AMPERSAND WS? valueStmt                         # vsAmp
-    | valueStmt WS? (EQ | NEQ | LT | GT | LEQ | GEQ | LIKE | IS) WS? valueStmt # vsComp
-    | NOT (WS valueStmt | LPAREN WS? valueStmt WS? RPAREN)          # vsNot
-    | valueStmt WS? AND WS? valueStmt                               # vsAnd
-    | valueStmt WS? OR WS? valueStmt                                # vsOr
-    | valueStmt WS? XOR WS? valueStmt                               # vsXor
-    | valueStmt WS? EQV WS? valueStmt                               # vsEqv
-    | valueStmt WS? IMP WS? valueStmt                               # vsImp
-    | implicitCallStmt_InStmt                                       # vsICS
-    | midStmt                                                       # vsMid
+    : vsLiteral
+    | vsStruct
+    | vsNew
+    | vsTypeOf
+    | vsAddressOf
+    | vsAssign
+    | valueStmt vsPow
+    | vsPlusMinus
+    | valueStmt vsMultDiv
+    | valueStmt vsIDiv
+    | valueStmt vsMod
+    | valueStmt vsAddSub
+    | valueStmt vsAmp
+    | valueStmt vsComp
+    | vsNot
+    | valueStmt vsAnd
+    | valueStmt vsOr
+    | valueStmt vsXor
+    | valueStmt vsEqv
+    | valueStmt vsImp
+    | vsICS
+    | vsMid
     ;
+
+vsLiteral : literal;
+vsStruct: LPAREN WS? valueStmt (WS? COMMA WS? valueStmt)* WS? RPAREN;
+vsNew: NEW WS valueStmt;
+vsTypeOf: typeOfStmt;
+vsAddressOf: ADDRESSOF WS valueStmt;
+vsAssign: implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt;
+vsPow: WS? POW WS? valueStmt; // binary op
+vsPlusMinus: (PLUS | MINUS) WS? valueStmt;
+vsMultDiv: WS? (MULT | DIV) WS? valueStmt ; // binary op
+vsIDiv: WS? (IDIV) WS? valueStmt; // binary op
+vsMod: WS? MOD WS? valueStmt;// binary op
+vsAddSub: WS? (PLUS | MINUS) WS? valueStmt; // binary op
+vsAmp: WS? AMPERSAND WS? valueStmt; // binary op
+vsComp: WS? (EQ | NEQ | LT | GT | LEQ | GEQ | LIKE | IS) WS? valueStmt; // binary op
+vsNot: NOT (WS valueStmt | LPAREN WS? valueStmt WS? RPAREN);
+vsAnd: WS? AND WS? valueStmt; // binary op
+vsOr: WS? OR WS? valueStmt; // binary op
+vsXor: WS? XOR WS? valueStmt; // binary op
+vsEqv: WS? EQV WS? valueStmt; // binary op
+vsImp: WS? IMP WS? valueStmt; // binary op
+vsICS: implicitCallStmt_InStmt;
+vsMid: midStmt;
+
 variableStmt: (DIM | STATIC | visibility) WS (WITHEVENTS WS)? variableListStmt;
 
 variableListStmt:
