@@ -1,7 +1,7 @@
-package com.github.tyrrx.vb6language.psi.tree
+package com.github.tyrrx.vb6language.psi.tree.nodes.utils
 
 import com.github.tyrrx.vb6language.psi.tree.leafes.IdentifierPsiLeaf
-import com.github.tyrrx.vb6language.psi.tree.nodes.VB6LiteralImpl
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Literal
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
 import com.intellij.psi.util.PsiTreeUtil

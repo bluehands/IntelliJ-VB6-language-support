@@ -1,22 +1,25 @@
-package com.github.tyrrx.vb6language.psi.tree.nodes
+package com.github.tyrrx.vb6language.psi.tree.nodes.impl
 
 import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.VB6IElementTypes
-import com.github.tyrrx.vb6language.psi.tree.*
+import com.github.tyrrx.vb6language.psi.tree.leafes.IdentifierPsiLeaf
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Function
+import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findIdentifierInSubtree
+import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findLeafInChildrenByElementType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 import org.antlr.intellij.adaptor.SymtabUtils
 
 class VB6FunctionImpl(node: ASTNode) : VB6PsiNode(node), VB6Function {
-    override fun getVisibility(): VB6VisibilityEnum {
-        return findPsiElementInSubtree<VB6Visibility>(this)
-            ?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+
+    override fun getName(): String? {
+        return nameIdentifier?.name
     }
 
-    override fun isStatic(): Boolean {
-        return findLeafInChildrenByElementType(this, VB6IElementTypes.STATIC) != null
+    override fun getNameIdentifier(): IdentifierPsiLeaf? {
+        return findIdentifierInSubtree(this)
     }
 
     override fun resolve(element: PsiNamedElement?): PsiElement? {
@@ -28,14 +31,6 @@ class VB6FunctionImpl(node: ASTNode) : VB6PsiNode(node), VB6Function {
 
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
-    }
-
-    override fun getName(): String? {
-        return nameIdentifier?.text
-    }
-
-    override fun getNameIdentifier(): PsiElement? {
-        return this.findIdentifierInSubtree()
     }
 
     object Factory : IPsiNodeFactory<VB6FunctionImpl> {

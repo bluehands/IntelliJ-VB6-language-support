@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.nodes.*
+import com.github.tyrrx.vb6language.psi.tree.nodes.impl.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.PsiElement

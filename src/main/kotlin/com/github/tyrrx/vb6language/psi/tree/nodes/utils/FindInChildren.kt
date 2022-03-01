@@ -1,6 +1,5 @@
-package com.github.tyrrx.vb6language.psi.tree
+package com.github.tyrrx.vb6language.psi.tree.nodes.utils
 
-import com.github.tyrrx.vb6language.psi.tree.leafes.VB6PsiLeaf
 import com.intellij.psi.PsiElement
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.util.elementType

@@ -1,10 +1,10 @@
-package com.github.tyrrx.vb6language.psi.tree.nodes
+package com.github.tyrrx.vb6language.psi.tree.nodes.impl
 
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.VB6Literal
-import com.github.tyrrx.vb6language.psi.tree.VB6ModuleConfigElement
-import com.github.tyrrx.vb6language.psi.tree.findIdentifierInSubtree
-import com.github.tyrrx.vb6language.psi.tree.findPsiElementInSubtree
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Literal
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6ModuleConfigElement
+import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findIdentifierInSubtree
+import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findPsiElementInSubtree
 import com.github.tyrrx.vb6language.psi.tree.leafes.IdentifierPsiLeaf
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement

@@ -1,7 +1,9 @@
-package com.github.tyrrx.vb6language.psi.tree.nodes
+package com.github.tyrrx.vb6language.psi.tree.nodes.impl
 
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.*
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.*
+import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findPsiElementInSubtree
+import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findPsiElementsInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
