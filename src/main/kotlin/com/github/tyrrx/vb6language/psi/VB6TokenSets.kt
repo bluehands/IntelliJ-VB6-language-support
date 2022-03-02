@@ -8,7 +8,8 @@ import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 object VB6TokenSets {
     val comments: TokenSet = PSIElementTypeFactory.createTokenSet(
         VB6Language.INSTANCE,
-        VisualBasic6Lexer.COMMENT
+        VisualBasic6Lexer.COMMENT,
+        VisualBasic6Lexer.REMCOMMENT
     )
 
     val identifiers: TokenSet = PSIElementTypeFactory.createTokenSet(
@@ -30,7 +31,8 @@ object VB6TokenSets {
         VB6Language.INSTANCE,
         VisualBasic6Lexer.INTEGERLITERAL,
         VisualBasic6Lexer.DOUBLELITERAL,
-        //VisualBasic6Lexer.OCTALLITERAL
+        VisualBasic6Lexer.OCTLITERAL,
+        VisualBasic6Lexer.SHORTLITERAL
     )
 
     val whitespaces: TokenSet = PSIElementTypeFactory.createTokenSet(
@@ -39,11 +41,11 @@ object VB6TokenSets {
         VisualBasic6Lexer.NEWLINE
     )
 
-    val braces: TokenSet = PSIElementTypeFactory.createTokenSet(
-        VB6Language.INSTANCE,
-        //VisualBasic6Lexer.LBRACE,
-        //VisualBasic6Lexer.RBRACE
-    )
+//    val braces: TokenSet = PSIElementTypeFactory.createTokenSet(
+//        VB6Language.INSTANCE,
+//        //VisualBasic6Lexer.LBRACE,
+//        //VisualBasic6Lexer.RBRACE
+//    )
 
     val parentheses: TokenSet = PSIElementTypeFactory.createTokenSet(
         VB6Language.INSTANCE,
@@ -236,5 +238,28 @@ object VB6TokenSets {
         VisualBasic6Lexer.WITHEVENTS,
         VisualBasic6Lexer.WRITE,
         VisualBasic6Lexer.XOR
+    )
+
+    val symbols: TokenSet = PSIElementTypeFactory.createTokenSet(
+        VB6Language.INSTANCE,
+        VisualBasic6Lexer.AMPERSAND,
+        VisualBasic6Lexer.ASSIGN,
+        VisualBasic6Lexer.DIV,
+        VisualBasic6Lexer.EQ,
+        VisualBasic6Lexer.GEQ,
+        VisualBasic6Lexer.GT,
+        VisualBasic6Lexer.LEQ,
+        VisualBasic6Lexer.LPAREN,
+        VisualBasic6Lexer.LT,
+        VisualBasic6Lexer.MINUS,
+        VisualBasic6Lexer.MINUS_EQ,
+        VisualBasic6Lexer.MULT,
+        VisualBasic6Lexer.NEQ,
+        VisualBasic6Lexer.PLUS,
+        VisualBasic6Lexer.PLUS_EQ,
+        VisualBasic6Lexer.POW,
+        VisualBasic6Lexer.RPAREN,
+        VisualBasic6Lexer.L_SQUARE_BRACKET,
+        VisualBasic6Lexer.R_SQUARE_BRACKET,
     )
 }
