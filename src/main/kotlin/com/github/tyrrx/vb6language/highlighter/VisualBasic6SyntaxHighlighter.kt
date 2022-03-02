@@ -38,7 +38,7 @@ class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
         VB6TokenSets.identifiers mapsTo IDENTIFIER,
         VB6TokenSets.errorChars mapsTo BAD_CHARACTER,
         VB6TokenSets.stringLiterals mapsTo STRINGS,
-        VB6TokenSets.braces mapsTo BRACES,
+        //VB6TokenSets.braces mapsTo BRACES,
         VB6TokenSets.parentheses mapsTo PARENTHESES,
         VB6TokenSets.brackets mapsTo BRACKETS,
         VB6TokenSets.keywords mapsTo KEYWORDS,
