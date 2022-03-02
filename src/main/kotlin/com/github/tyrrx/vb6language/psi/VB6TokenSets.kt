@@ -30,7 +30,7 @@ object VB6TokenSets {
         VB6Language.INSTANCE,
         VisualBasic6Lexer.INTEGERLITERAL,
         VisualBasic6Lexer.DOUBLELITERAL,
-        VisualBasic6Lexer.OCTALLITERAL
+        //VisualBasic6Lexer.OCTALLITERAL
     )
 
     val whitespaces: TokenSet = PSIElementTypeFactory.createTokenSet(
@@ -41,8 +41,8 @@ object VB6TokenSets {
 
     val braces: TokenSet = PSIElementTypeFactory.createTokenSet(
         VB6Language.INSTANCE,
-        VisualBasic6Lexer.LBRACE,
-        VisualBasic6Lexer.RBRACE
+        //VisualBasic6Lexer.LBRACE,
+        //VisualBasic6Lexer.RBRACE
     )
 
     val parentheses: TokenSet = PSIElementTypeFactory.createTokenSet(
@@ -67,14 +67,13 @@ object VB6TokenSets {
         VisualBasic6Lexer.APPACTIVATE,
         VisualBasic6Lexer.APPEND,
         VisualBasic6Lexer.AS,
-        VisualBasic6Lexer.BEEP,
         VisualBasic6Lexer.BEGIN,
-        VisualBasic6Lexer.BEGINPROPERTY,
+        VisualBasic6Lexer.BEEP,
         VisualBasic6Lexer.BINARY,
-        VisualBasic6Lexer.BOOLEAN, //
+        VisualBasic6Lexer.BOOLEAN,
         VisualBasic6Lexer.BYVAL,
         VisualBasic6Lexer.BYREF,
-        VisualBasic6Lexer.BYTE, //
+        VisualBasic6Lexer.BYTE,
         VisualBasic6Lexer.CALL,
         VisualBasic6Lexer.CASE,
         VisualBasic6Lexer.CHDIR,
@@ -83,6 +82,7 @@ object VB6TokenSets {
         VisualBasic6Lexer.CLOSE,
         VisualBasic6Lexer.COLLECTION,
         VisualBasic6Lexer.CONST,
+        VisualBasic6Lexer.DATABASE,
         VisualBasic6Lexer.DATE,
         VisualBasic6Lexer.DECLARE,
         VisualBasic6Lexer.DEFBOOL,
@@ -100,7 +100,7 @@ object VB6TokenSets {
         VisualBasic6Lexer.DELETESETTING,
         VisualBasic6Lexer.DIM,
         VisualBasic6Lexer.DO,
-        VisualBasic6Lexer.DOUBLE, //
+        VisualBasic6Lexer.DOUBLE,
         VisualBasic6Lexer.EACH,
         VisualBasic6Lexer.ELSE,
         VisualBasic6Lexer.ELSEIF,
@@ -113,7 +113,6 @@ object VB6TokenSets {
         VisualBasic6Lexer.END_TYPE,
         VisualBasic6Lexer.END_WITH,
         VisualBasic6Lexer.END,
-        VisualBasic6Lexer.ENDPROPERTY,
         VisualBasic6Lexer.ENUM,
         VisualBasic6Lexer.EQV,
         VisualBasic6Lexer.ERASE,
@@ -139,11 +138,11 @@ object VB6TokenSets {
         VisualBasic6Lexer.IN,
         VisualBasic6Lexer.INPUT,
         VisualBasic6Lexer.IS,
-        VisualBasic6Lexer.INTEGER, //
+        VisualBasic6Lexer.INTEGER,
         VisualBasic6Lexer.KILL,
         VisualBasic6Lexer.LOAD,
         VisualBasic6Lexer.LOCK,
-        VisualBasic6Lexer.LONG, //
+        VisualBasic6Lexer.LONG,
         VisualBasic6Lexer.LOOP,
         VisualBasic6Lexer.LEN,
         VisualBasic6Lexer.LET,
@@ -154,6 +153,7 @@ object VB6TokenSets {
         VisualBasic6Lexer.LOCK_WRITE,
         VisualBasic6Lexer.LOCK_READ_WRITE,
         VisualBasic6Lexer.LSET,
+        VisualBasic6Lexer.MACRO_CONST,
         VisualBasic6Lexer.MACRO_IF,
         VisualBasic6Lexer.MACRO_ELSEIF,
         VisualBasic6Lexer.MACRO_ELSE,
@@ -168,7 +168,6 @@ object VB6TokenSets {
         VisualBasic6Lexer.NOT,
         VisualBasic6Lexer.NOTHING,
         VisualBasic6Lexer.NULL_,
-        VisualBasic6Lexer.OBJECT,
         VisualBasic6Lexer.ON,
         VisualBasic6Lexer.ON_ERROR,
         VisualBasic6Lexer.ON_LOCAL_ERROR,
@@ -187,6 +186,7 @@ object VB6TokenSets {
         VisualBasic6Lexer.PROPERTY_GET,
         VisualBasic6Lexer.PROPERTY_LET,
         VisualBasic6Lexer.PROPERTY_SET,
+        VisualBasic6Lexer.PTRSAFE,
         VisualBasic6Lexer.PUBLIC,
         VisualBasic6Lexer.PUT,
         VisualBasic6Lexer.RANDOM,
@@ -235,6 +235,6 @@ object VB6TokenSets {
         VisualBasic6Lexer.WITH,
         VisualBasic6Lexer.WITHEVENTS,
         VisualBasic6Lexer.WRITE,
-        VisualBasic6Lexer.XOR,
+        VisualBasic6Lexer.XOR
     )
 }

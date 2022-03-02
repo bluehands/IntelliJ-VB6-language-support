@@ -940,7 +940,7 @@ fragment TIMESEPARATOR : WS? (':' | '.') WS?;
 fragment AMPM : WS? (A M | P M | A | P);
 
 // whitespace, line breaks, comments, ...
-LINE_CONTINUATION : [ \t]+ UNDERSCORE '\r'? '\n' -> skip;
+LINE_CONTINUATION : [ \t]+ UNDERSCORE '\r'? '\n' -> channel(HIDDEN);
 NEWLINE : [\r\n\u2028\u2029]+;
 REMCOMMENT : COLON? REM WS (LINE_CONTINUATION | ~[\r\n\u2028\u2029])*;
 COMMENT : SINGLEQUOTE (LINE_CONTINUATION | ~[\r\n\u2028\u2029])*;
@@ -984,3 +984,13 @@ fragment W:[wW];
 fragment X:[xX];
 fragment Y:[yY];
 fragment Z:[zZ];
+
+/** "catch all" rule for any char not matche in a token rule of your
+ *  grammar. Lexers in Intellij must return all tokens good and bad.
+ *  There must be a token to cover all characters, which makes sense, for
+ *  an IDE. The parser however should not see these bad tokens because
+ *  it just confuses the issue. Hence, the hidden channel.
+ */
+ERRCHAR
+	:	.	-> channel(HIDDEN)
+	;
