@@ -43,6 +43,7 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_baseType-> VB6BaseTypeImpl.Factory
 				VisualBasic6Parser.RULE_complexType-> VB6ComplexTypeImpl.Factory
 				VisualBasic6Parser.RULE_fieldLength-> VB6FieldLengthImpl.Factory
+				VisualBasic6Parser.RULE_block-> VB6BlockImpl.Factory
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
 						return ANTLRPsiNode(node)
