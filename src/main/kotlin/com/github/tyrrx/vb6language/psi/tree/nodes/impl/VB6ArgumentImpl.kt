@@ -30,7 +30,7 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
             listOf(VB6IElementTypes.BYVAL, VB6IElementTypes.BYREF)
         )
         return when (findResult.elementType) {
-            null -> ByValOrRef.BYVALUE
+            null -> ByValOrRef.BYREFERENCE
             VB6IElementTypes.BYVAL -> ByValOrRef.BYVALUE
             VB6IElementTypes.BYREF -> ByValOrRef.BYREFERENCE
             else -> throw NotImplementedError("Only BYVAL or BYREF implemented")

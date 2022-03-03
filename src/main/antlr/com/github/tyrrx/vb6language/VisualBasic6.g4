@@ -639,7 +639,9 @@ dictionaryCallStmt : '!' ambiguousIdentifier typeHint?;
 
 argList : LPAREN (WS? arg (WS? ',' WS? arg)*)? WS? RPAREN;
 
-arg : (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)? ambiguousIdentifier typeHint? (WS? LPAREN WS? RPAREN)? (WS? asTypeClause)? (WS? argDefaultValue)?;
+arg : (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)?
+    ambiguousIdentifier typeHint? (WS? LPAREN WS? RPAREN)?
+    (WS? asTypeClause)? (WS? argDefaultValue)?;
 
 argDefaultValue : EQ WS? valueStmt;
 
@@ -656,7 +658,8 @@ ambiguousIdentifier :
 
 asTypeClause : AS WS? (NEW WS)? type_ (WS? fieldLength)?;
 
-baseType : BOOLEAN | BYTE | COLLECTION | DATE | DOUBLE | INTEGER | LONG | SINGLE | STRING (WS? MULT WS? valueStmt)? | VARIANT;
+baseType : BOOLEAN | BYTE | COLLECTION | DATE | DOUBLE | INTEGER | LONG | SINGLE
+    | STRING (WS? MULT WS? valueStmt)? | VARIANT;
 
 certainIdentifier :
 	IDENTIFIER (ambiguousKeyword | IDENTIFIER)*

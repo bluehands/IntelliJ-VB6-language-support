@@ -31,4 +31,6 @@ object VB6IElementTypes: TokenType {
     val BYREF = tokens[VisualBasic6Lexer.BYREF]
 
     val PARAMARRAY = tokens[VisualBasic6Lexer.PARAMARRAY]
+
+    val NEW = tokens[VisualBasic6Lexer.NEW]
 }
