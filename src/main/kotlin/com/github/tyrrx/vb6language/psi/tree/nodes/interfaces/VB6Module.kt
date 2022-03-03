@@ -12,7 +12,7 @@ interface VB6Module : ScopeNode, PsiNameIdentifierOwner {
     fun getModuleAttributes(): Collection<VB6Attribute>
     // TODO get module options
 
-    fun getFunctions(): Collection<VB6Function>
-    fun getSubroutines(): Collection<VB6Subroutine>
+    fun getFunctions(): Collection<VB6FunctionStatement>
+    fun getSubroutines(): Collection<VB6SubroutineStatement>
 
 }

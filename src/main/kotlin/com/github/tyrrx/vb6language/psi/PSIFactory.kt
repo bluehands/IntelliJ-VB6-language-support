@@ -17,8 +17,8 @@ object PSIFactory {
 		val elementType = node.elementType
 		return if (elementType is RuleIElementType) {
 			when (elementType.ruleIndex) {
-				VisualBasic6Parser.RULE_functionStmt -> VB6FunctionImpl.Factory
-				VisualBasic6Parser.RULE_subStmt -> VB6SubroutineImpl.Factory
+				VisualBasic6Parser.RULE_functionStmt -> VB6FunctionStatementImpl.Factory
+				VisualBasic6Parser.RULE_subStmt -> VB6SubroutineStatementImpl.Factory
 				VisualBasic6Parser.RULE_module -> VB6ModuleImpl.Factory
 				VisualBasic6Parser.RULE_declareStmt -> Declare.Factory
 				VisualBasic6Parser.RULE_literal -> VB6LiteralImpl.Factory
@@ -28,6 +28,10 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_moduleConfig -> VB6ModuleConfigImpl.Factory
 				VisualBasic6Parser.RULE_visibility -> VB6VisibilityImpl.Factory
 				VisualBasic6Parser.RULE_valueStmt -> VB6ValueImpl.Factory
+				VisualBasic6Parser.RULE_propertyGetStmt -> VB6PropertyGetStatementImpl.Factory
+				VisualBasic6Parser.RULE_propertySetStmt -> VB6PropertySetStatementImpl.Factory
+				VisualBasic6Parser.RULE_propertyLetStmt -> VB6PropertyLetStatementImpl.Factory
+				VisualBasic6Parser.RULE_macroStmt -> VB6MacroStatementImpl.Factory
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
 						return ANTLRPsiNode(node)

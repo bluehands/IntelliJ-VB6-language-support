@@ -13,11 +13,11 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
         return findPsiElementsInSubtree(this)
     }
 
-    override fun getFunctions(): Collection<VB6Function> {
+    override fun getFunctions(): Collection<VB6FunctionStatement> {
         return findPsiElementsInSubtree(this)
     }
 
-    override fun getSubroutines(): Collection<VB6Subroutine> {
+    override fun getSubroutines(): Collection<VB6SubroutineStatement> {
         return findPsiElementsInSubtree(this)
     }
 
