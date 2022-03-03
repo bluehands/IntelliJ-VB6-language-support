@@ -26,7 +26,7 @@ class VB6AsTypeClauseImpl(node: ASTNode) : VB6PsiNode(node), VB6AsTypeClause {
         return findFirstChildByType(this)
     }
 
-    override fun getType(): VB6TypeRule {
+    override fun getTypeRule(): VB6TypeRule {
        return findFirstChildByType(this)!!
     }
 }

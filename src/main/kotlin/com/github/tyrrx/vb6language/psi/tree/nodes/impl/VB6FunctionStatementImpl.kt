@@ -3,13 +3,21 @@ package com.github.tyrrx.vb6language.psi.tree.nodes.impl
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6AmbiguousIdentifier
 import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Argument
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6FunctionStatement
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.base.VB6Type
 import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 
 class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node), VB6FunctionStatement {
+
+    object Factory : IPsiNodeFactory<VB6FunctionStatementImpl> {
+        override fun createPsiNode(node: ASTNode): VB6FunctionStatementImpl {
+            return VB6FunctionStatementImpl(node)
+        }
+    }
 
     override fun getName(): String? {
         return nameIdentifier?.name
@@ -24,6 +32,16 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node), VB6FunctionSta
             ?.getArguments() ?: emptyList()
     }
 
+    override fun getReturnAsTypeClause(): VB6AsTypeClause? {
+        return findFirstChildByType(this)
+    }
+
+    override fun getReturnType(): VB6Type? {
+        return getReturnAsTypeClause()
+            ?.getTypeRule()
+            ?.getComplexOrBaseType()
+    }
+
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         TODO("Not yet implemented")
 //        return SymtabUtils.resolve(
@@ -36,9 +54,5 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node), VB6FunctionSta
         TODO("Not yet implemented")
     }
 
-    object Factory : IPsiNodeFactory<VB6FunctionStatementImpl> {
-        override fun createPsiNode(node: ASTNode): VB6FunctionStatementImpl {
-            return VB6FunctionStatementImpl(node)
-        }
-    }
+
 }

@@ -5,5 +5,5 @@ import com.intellij.psi.PsiElement
 interface VB6AsTypeClause:PsiElement {
     fun isAutoInitialized(): Boolean // default false
     fun getFieldLength(): VB6FieldLength?
-    fun getType(): VB6TypeRule
+    fun getTypeRule(): VB6TypeRule
 }

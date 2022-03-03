@@ -2,6 +2,8 @@ package com.github.tyrrx.vb6language.psi.tree.nodes.impl
 
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Argument
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6PropertySetStatement
 import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
@@ -22,6 +24,11 @@ class VB6PropertySetStatementImpl(node: ASTNode) : VB6PsiNode(node), VB6Property
 
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
+    }
+
+    override fun getArguments(): List<VB6Argument> {
+        return findFirstChildByType<VB6ArgumentList>(this)
+            ?.getArguments() ?: emptyList()
     }
 
     override fun getName(): String? {
