@@ -5,7 +5,7 @@ import com.github.tyrrx.vb6language.psi.tree.nodes.mixins.VB6IsStaticInChildrenM
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
 interface VB6PropertyStatement :
-    ScopeNode,
+    VB6BlockScope,
     VB6AmbiguousIdentifierOwner,
     VB6ArgumentOwner,
     VB6GetVisibilityFromChildrenMixin,

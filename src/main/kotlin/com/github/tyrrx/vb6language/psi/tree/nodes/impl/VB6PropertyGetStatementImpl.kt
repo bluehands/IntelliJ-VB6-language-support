@@ -17,6 +17,10 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node), VB6Property
         }
     }
 
+    override fun getBlock(): VB6Block? {
+        return findFirstChildByType(this)
+    }
+
     override fun resolve(element: PsiNamedElement?): PsiElement? {
         TODO("Not yet implemented")
     }
@@ -31,7 +35,7 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node), VB6Property
     }
 
     override fun getName(): String? {
-        return nameIdentifier?.name;
+        return nameIdentifier?.name
     }
 
     override fun getNameIdentifier(): VB6AmbiguousIdentifier? {

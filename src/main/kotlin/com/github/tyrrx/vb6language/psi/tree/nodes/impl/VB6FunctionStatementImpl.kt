@@ -1,10 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.nodes.impl
 
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6AmbiguousIdentifier
-import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Argument
-import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6FunctionStatement
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.*
 import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.base.VB6Type
 import com.github.tyrrx.vb6language.psi.tree.nodes.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
@@ -40,6 +37,10 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node), VB6FunctionSta
         return getReturnAsTypeClause()
             ?.getTypeRule()
             ?.getComplexOrBaseType()
+    }
+
+    override fun getBlock(): VB6Block? {
+        return findFirstChildByType(this)
     }
 
     override fun resolve(element: PsiNamedElement?): PsiElement? {
