@@ -1,4 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.nodes.interfaces
 
-interface VB6PropertyLetStatement: VB6Property {
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.base.VB6PropertyStatement
+
+interface VB6PropertyLetStatement: VB6PropertyStatement {
 }

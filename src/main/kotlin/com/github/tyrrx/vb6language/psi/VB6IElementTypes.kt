@@ -24,4 +24,11 @@ object VB6IElementTypes: TokenType {
     val GLOBAL = tokens[VisualBasic6Lexer.GLOBAL]
 
     val STATIC = tokens[VisualBasic6Lexer.STATIC]
+
+    val OPTIONAL = tokens[VisualBasic6Lexer.OPTIONAL]
+
+    val BYVAL = tokens[VisualBasic6Lexer.BYVAL]
+    val BYREF = tokens[VisualBasic6Lexer.BYREF]
+
+    val PARAMARRAY = tokens[VisualBasic6Lexer.PARAMARRAY]
 }

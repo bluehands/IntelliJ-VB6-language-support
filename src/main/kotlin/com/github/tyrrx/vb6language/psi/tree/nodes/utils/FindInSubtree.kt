@@ -14,14 +14,6 @@ inline fun <reified TResult: PsiElement> findPsiElementsInSubtree(subtreeRoot: P
     return PsiTreeUtil.findChildrenOfType(subtreeRoot, TResult::class.java);
 }
 
-fun findIdentifierInSubtree(subtreeRoot: PsiElement): IdentifierPsiLeaf? {
-    return findPsiElementInSubtree(subtreeRoot)
-}
-
-fun PsiNameIdentifierOwner.findIdentifierInSubtree(): IdentifierPsiLeaf? {
-    return findIdentifierInSubtree(this)
-}
-
 fun findLiteralsInSubtree(subtreeRoot: PsiElement): Collection<VB6Literal> {
     return findPsiElementsInSubtree(subtreeRoot)
 }

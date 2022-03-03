@@ -1,13 +1,12 @@
-package com.github.tyrrx.vb6language.psi.tree.nodes.interfaces
+package com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.base
 
 import com.github.tyrrx.vb6language.psi.tree.nodes.mixins.VB6GetVisibilityMixin
 import com.github.tyrrx.vb6language.psi.tree.nodes.mixins.VB6IsStaticMixin
-import com.intellij.psi.PsiNameIdentifierOwner
 import org.antlr.intellij.adaptor.psi.ScopeNode
 
-interface VB6Property :
+interface VB6PropertyStatement :
     ScopeNode,
-    PsiNameIdentifierOwner,
+    VB6AmbiguousIdentifierOwner,
     VB6GetVisibilityMixin,
     VB6IsStaticMixin {
 }

@@ -17,14 +17,15 @@ class IdentifierPsiLeaf(type: IElementType?, text: CharSequence?) : VB6PsiLeaf(t
 
 	override fun setName(name: String): PsiElement {
 		// Todo valid?
-		val newIdentifier = Trees.createLeafFromText(
-			project,
-			VB6Language.INSTANCE,
-			context,
-			name,
-			VB6IElementTypes.tokens[VisualBasic6Lexer.IDENTIFIER]
-		)
-		return this.replace(newIdentifier)
+//		val newIdentifier = Trees.createLeafFromText(
+//			project,
+//			VB6Language.INSTANCE,
+//			context,
+//			name,
+//			VB6IElementTypes.tokens[VisualBasic6Lexer.IDENTIFIER]
+//		)
+//		return this.replace(newIdentifier)
+		TODO("Not yet implemented")
 	}
 
 	object Factory : ILeafFactory {

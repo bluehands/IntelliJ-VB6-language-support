@@ -2,6 +2,10 @@ package com.github.tyrrx.vb6language.psi
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.tree.nodes.impl.*
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Argument
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6ArgumentDefaultValue
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6AsTypeClause
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.PsiElement
@@ -20,9 +24,8 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_functionStmt -> VB6FunctionStatementImpl.Factory
 				VisualBasic6Parser.RULE_subStmt -> VB6SubroutineStatementImpl.Factory
 				VisualBasic6Parser.RULE_module -> VB6ModuleImpl.Factory
-				VisualBasic6Parser.RULE_declareStmt -> Declare.Factory
 				VisualBasic6Parser.RULE_literal -> VB6LiteralImpl.Factory
-				VisualBasic6Parser.RULE_attributeStmt -> VB6AttributeImpl.Factory
+				//VisualBasic6Parser.RULE_attributeStmt -> VB6AttributeImpl.Factory
 				VisualBasic6Parser.RULE_moduleHeader -> VB6ModuleHeaderImpl.Factory
 				VisualBasic6Parser.RULE_moduleConfigElement -> VB6ModuleConfigElementImpl.Factory
 				VisualBasic6Parser.RULE_moduleConfig -> VB6ModuleConfigImpl.Factory
@@ -33,6 +36,12 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_propertyLetStmt -> VB6PropertyLetStatementImpl.Factory
 				VisualBasic6Parser.RULE_macroStmt -> VB6MacroStatementImpl.Factory
 				VisualBasic6Parser.RULE_typeHint -> VB6TypeHintImpl.Factory
+				VisualBasic6Parser.RULE_argList -> VB6ArgumentListImpl.Factory
+				VisualBasic6Parser.RULE_arg -> VB6ArgumentImpl.Factory
+				VisualBasic6Parser.RULE_ambiguousIdentifier -> VB6AmbiguousIdentifierImpl.Factory
+				VisualBasic6Parser.RULE_ambiguousKeyword -> VB6AmbiguousKeywordImpl.Factory
+				VisualBasic6Parser.RULE_argDefaultValue -> VB6ArgumentDefaultValueImpl.Factory
+				VisualBasic6Parser.RULE_asTypeClause -> VB6AsTypeClauseImpl.Factory
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
 						return ANTLRPsiNode(node)
