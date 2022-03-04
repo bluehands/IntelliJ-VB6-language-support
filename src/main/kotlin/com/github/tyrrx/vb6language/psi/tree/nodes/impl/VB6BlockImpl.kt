@@ -3,6 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.nodes.impl
 
 import com.github.tyrrx.vb6language.psi.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.VB6Block
+import com.github.tyrrx.vb6language.psi.tree.nodes.interfaces.base.VB6BlockStatement
 import com.intellij.lang.ASTNode
 
 class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
@@ -11,5 +12,9 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
         override fun createPsiNode(node: ASTNode): VB6Block {
             return VB6BlockImpl(node)
         }
+    }
+
+    override fun getBlockStatements(): List<VB6BlockStatement> {
+        TODO("Not yet implemented")
     }
 }

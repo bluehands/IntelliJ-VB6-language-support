@@ -168,7 +168,7 @@ attributeStmt : ATTRIBUTE WS implicitCallStmt_InStmt WS? EQ WS? literal (WS? ','
 block : blockStmt (endOfStatement blockStmt)* endOfStatement;
 
 blockStmt :
-	lineLabel
+	  lineLabel
     | appactivateStmt
 	| attributeStmt
 	| beepStmt
