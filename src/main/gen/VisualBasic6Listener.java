@@ -455,26 +455,52 @@ public interface VisualBasic6Listener extends ParseTreeListener {
 	 */
 	void exitGoToStmt(VisualBasic6Parser.GoToStmtContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code inlineIfThenElse}
-	 * labeled alternative in {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * Enter a parse tree produced by {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfThenElseStmt(VisualBasic6Parser.IfThenElseStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfThenElseStmt(VisualBasic6Parser.IfThenElseStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link VisualBasic6Parser#inlineIfThenElse}.
 	 * @param ctx the parse tree
 	 */
 	void enterInlineIfThenElse(VisualBasic6Parser.InlineIfThenElseContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code inlineIfThenElse}
-	 * labeled alternative in {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * Exit a parse tree produced by {@link VisualBasic6Parser#inlineIfThenElse}.
 	 * @param ctx the parse tree
 	 */
 	void exitInlineIfThenElse(VisualBasic6Parser.InlineIfThenElseContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code blockIfThenElse}
-	 * labeled alternative in {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * Enter a parse tree produced by {@link VisualBasic6Parser#thenBlockStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterThenBlockStmt(VisualBasic6Parser.ThenBlockStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link VisualBasic6Parser#thenBlockStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitThenBlockStmt(VisualBasic6Parser.ThenBlockStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link VisualBasic6Parser#elseBlockStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterElseBlockStmt(VisualBasic6Parser.ElseBlockStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link VisualBasic6Parser#elseBlockStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitElseBlockStmt(VisualBasic6Parser.ElseBlockStmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link VisualBasic6Parser#blockIfThenElse}.
 	 * @param ctx the parse tree
 	 */
 	void enterBlockIfThenElse(VisualBasic6Parser.BlockIfThenElseContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code blockIfThenElse}
-	 * labeled alternative in {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * Exit a parse tree produced by {@link VisualBasic6Parser#blockIfThenElse}.
 	 * @param ctx the parse tree
 	 */
 	void exitBlockIfThenElse(VisualBasic6Parser.BlockIfThenElseContext ctx);

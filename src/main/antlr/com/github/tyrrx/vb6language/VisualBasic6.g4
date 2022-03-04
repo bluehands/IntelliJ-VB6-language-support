@@ -305,9 +305,9 @@ exitStmt : EXIT_DO | EXIT_FOR | EXIT_FUNCTION | EXIT_PROPERTY | EXIT_SUB;
 filecopyStmt : FILECOPY WS valueStmt WS? ',' WS? valueStmt;
 
 forEachStmt :
-	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS valueStmt endOfStatement
+	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS valueStmt endOfStatement // definition
 	block?
-	NEXT (WS ambiguousIdentifier)?
+	NEXT (WS ambiguousIdentifier)? // reference
 ;
 
 forNextStmt :
@@ -328,10 +328,15 @@ goSubStmt : GOSUB WS valueStmt;
 
 goToStmt : GOTO WS valueStmt;
 
-ifThenElseStmt :
-	IF WS ifConditionStmt WS THEN WS blockStmt (WS ELSE WS blockStmt)?	# inlineIfThenElse
-	| ifBlockStmt ifElseIfBlockStmt* ifElseBlockStmt? END_IF			# blockIfThenElse
-;
+ifThenElseStmt : inlineIfThenElse | blockIfThenElse;
+
+inlineIfThenElse : IF WS ifConditionStmt WS THEN WS thenBlockStmt (WS ELSE WS elseBlockStmt)?;
+
+thenBlockStmt: blockStmt; // marker for then block statement
+
+elseBlockStmt: blockStmt; // marker for else block statement
+
+blockIfThenElse : ifBlockStmt ifElseIfBlockStmt* ifElseBlockStmt? END_IF;
 
 ifBlockStmt :
 	IF WS ifConditionStmt WS THEN endOfStatement
@@ -690,7 +695,7 @@ ambiguousKeyword :
 	BEEP | BEGIN | BINARY | BOOLEAN | BYVAL | BYREF | BYTE |
 	CALL | CASE | CLASS | CLOSE | CHDIR | CHDRIVE | COLLECTION | CONST |
 	DATABASE | DATE | DECLARE | DEFBOOL | DEFBYTE | DEFCUR | DEFDBL | DEFDATE | DEFDEC | DEFINT | DEFLNG | DEFOBJ | DEFSNG | DEFSTR | DEFVAR | DELETESETTING | DIM | DO | DOUBLE |
-	EACH | ELSE | ELSEIF | END | ENUM | EQV | ERASE | ERROR | EVENT |
+	EACH | /*ELSE | ELSEIF |*/ END | ENUM | EQV | ERASE | ERROR | EVENT | // remove else and else if to prevent matching
 	FALSE | FILECOPY | FRIEND | FOR | FUNCTION |
 	GET | GLOBAL | GOSUB | GOTO |
 	IF | IMP | IMPLEMENTS | IN | INPUT | IS | INTEGER |

@@ -543,6 +543,18 @@ public class VisualBasic6BaseListener implements VisualBasic6Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIfThenElseStmt(VisualBasic6Parser.IfThenElseStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfThenElseStmt(VisualBasic6Parser.IfThenElseStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterInlineIfThenElse(VisualBasic6Parser.InlineIfThenElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -550,6 +562,30 @@ public class VisualBasic6BaseListener implements VisualBasic6Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInlineIfThenElse(VisualBasic6Parser.InlineIfThenElseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterThenBlockStmt(VisualBasic6Parser.ThenBlockStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitThenBlockStmt(VisualBasic6Parser.ThenBlockStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterElseBlockStmt(VisualBasic6Parser.ElseBlockStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitElseBlockStmt(VisualBasic6Parser.ElseBlockStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

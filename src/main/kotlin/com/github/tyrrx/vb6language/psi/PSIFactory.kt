@@ -53,6 +53,7 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_chdriveStmt -> VB6ChdriveStmtImpl.Factory
 				VisualBasic6Parser.RULE_closeStmt -> VB6CloseStmtImpl.Factory
 				VisualBasic6Parser.RULE_constStmt -> VB6ConstStmtImpl.Factory
+				VisualBasic6Parser.RULE_constSubStmt -> VB6ConstSubStmtImpl.Factory // sub
 				VisualBasic6Parser.RULE_dateStmt -> VB6DateStmtImpl.Factory
 				VisualBasic6Parser.RULE_deleteSettingStmt -> VB6DeleteSettingStmtImpl.Factory
 				VisualBasic6Parser.RULE_deftypeStmt -> VB6DeftypeStmtImpl.Factory

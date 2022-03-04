@@ -5,4 +5,7 @@ import com.intellij.psi.PsiNameIdentifierOwner
 
 interface VB6AmbiguousIdentifierOwner: PsiNameIdentifierOwner {
     override fun getNameIdentifier(): VB6AmbiguousIdentifier?
+    override fun getName(): String? {
+        return nameIdentifier?.name
+    }
 }

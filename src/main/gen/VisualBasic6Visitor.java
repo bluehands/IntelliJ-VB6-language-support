@@ -278,15 +278,31 @@ public interface VisualBasic6Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitGoToStmt(VisualBasic6Parser.GoToStmtContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code inlineIfThenElse}
-	 * labeled alternative in {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * Visit a parse tree produced by {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfThenElseStmt(VisualBasic6Parser.IfThenElseStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VisualBasic6Parser#inlineIfThenElse}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitInlineIfThenElse(VisualBasic6Parser.InlineIfThenElseContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code blockIfThenElse}
-	 * labeled alternative in {@link VisualBasic6Parser#ifThenElseStmt}.
+	 * Visit a parse tree produced by {@link VisualBasic6Parser#thenBlockStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitThenBlockStmt(VisualBasic6Parser.ThenBlockStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VisualBasic6Parser#elseBlockStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitElseBlockStmt(VisualBasic6Parser.ElseBlockStmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link VisualBasic6Parser#blockIfThenElse}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
