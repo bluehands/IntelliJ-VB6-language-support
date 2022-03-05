@@ -138,7 +138,7 @@ moduleDeclarationsElement :
 	| eventStmt
 	| constStmt
 	| implementsStmt
-	| variableStmt
+	| moduleVariableStmt
 	| moduleOption
 	| typeStmt
 	| macroStmt
@@ -557,11 +557,15 @@ valueStmt :
 	| NOT WS? valueStmt 									# vsNot
 ;
 
-variableStmt : (DIM | STATIC | visibility) WS (WITHEVENTS WS)? variableListStmt; // definition
+variableStmt : (DIM | STATIC) WS variableListStmt; // definition
+
+moduleVariableStmt : (DIM | visibility) WS (WITHEVENTS WS)? variableListStmt; // definition
 
 variableListStmt : variableSubStmt (WS? ',' WS? variableSubStmt)*;
 
 variableSubStmt : ambiguousIdentifier (WS? LPAREN WS? (subscripts WS?)? RPAREN WS?)? typeHint? (WS asTypeClause)?;
+
+
 
 whileWendStmt :
 	WHILE WS valueStmt endOfStatement
