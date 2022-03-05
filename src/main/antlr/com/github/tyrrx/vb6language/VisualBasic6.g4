@@ -472,19 +472,19 @@ selectCaseStmt :
 	END_SELECT
 ;
 
-sC_Selection :
+sC_Selection : // Todo split rules to make them visible & implement
     IS WS? comparisonOperator WS? valueStmt                       # caseCondIs
     | valueStmt WS TO WS valueStmt                                # caseCondTo
     | valueStmt                                                   # caseCondValue
 ;
 
-sC_Case :
+sC_Case : // todo implement
 	CASE WS sC_Cond endOfStatement
 	block?
 ;
 
 // ELSE first, so that it is not interpreted as a variable call
-sC_Cond :
+sC_Cond : // Todo split rules to make them visible & implement
     ELSE                                                            # caseCondElse
     | sC_Selection (WS? ',' WS? sC_Selection)*                      # caseCondSelection
 ;
