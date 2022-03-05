@@ -1199,7 +1199,7 @@ public class VisualBasic6BaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSubscript_(VisualBasic6Parser.Subscript_Context ctx) { return visitChildren(ctx); }
+	@Override public T visitSubscriptElement(VisualBasic6Parser.SubscriptElementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

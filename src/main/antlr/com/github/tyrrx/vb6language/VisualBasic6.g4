@@ -654,9 +654,9 @@ arg : (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)?
 
 argDefaultValue : EQ WS? valueStmt;
 
-subscripts : subscript_ (WS? ',' WS? subscript_)*;
+subscripts : subscriptElement (WS? ',' WS? subscriptElement)*;
 
-subscript_ : (valueStmt WS TO WS)? valueStmt;
+subscriptElement : (valueStmt WS TO WS)? valueStmt;
 
 
 // atomic rules ----------------------------------

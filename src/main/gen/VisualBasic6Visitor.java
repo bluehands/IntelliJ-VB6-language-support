@@ -1064,11 +1064,11 @@ public interface VisualBasic6Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSubscripts(VisualBasic6Parser.SubscriptsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link VisualBasic6Parser#subscript_}.
+	 * Visit a parse tree produced by {@link VisualBasic6Parser#subscriptElement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSubscript_(VisualBasic6Parser.Subscript_Context ctx);
+	T visitSubscriptElement(VisualBasic6Parser.SubscriptElementContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link VisualBasic6Parser#ambiguousIdentifier}.
 	 * @param ctx the parse tree

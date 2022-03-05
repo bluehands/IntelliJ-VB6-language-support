@@ -40,25 +40,35 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_eventStmt -> VB6EventStmtImpl.Factory
 				VisualBasic6Parser.RULE_typeStmt -> VB6TypeStmtImpl.Factory
 				VisualBasic6Parser.RULE_moduleVariableStmt -> VB6ModuleVariableStmtImpl.Factory
-				// general
+				// general ---------------------------------------------------------------------------
 				VisualBasic6Parser.RULE_typeHint -> VB6TypeHintImpl.Factory
 				VisualBasic6Parser.RULE_argList -> VB6ArgumentListImpl.Factory
 				VisualBasic6Parser.RULE_arg -> VB6ArgumentImpl.Factory
-				VisualBasic6Parser.RULE_ambiguousIdentifier -> com.github.tyrrx.vb6language.psi.tree.impl.VB6AmbiguousIdentifierImpl.Factory
+
+				VisualBasic6Parser.RULE_ambiguousIdentifier -> VB6AmbiguousIdentifierImpl.Factory
 				VisualBasic6Parser.RULE_ambiguousKeyword -> VB6AmbiguousKeywordImpl.Factory
+
 				VisualBasic6Parser.RULE_argDefaultValue -> VB6ArgumentDefaultValueImpl.Factory
-				VisualBasic6Parser.RULE_asTypeClause -> VB6AsTypeClauseImpl.Factory
+
 				VisualBasic6Parser.RULE_type_ -> VB6TypeRuleImpl.Factory
 				VisualBasic6Parser.RULE_baseType-> VB6BaseTypeImpl.Factory
 				VisualBasic6Parser.RULE_complexType-> VB6ComplexTypeImpl.Factory
+				VisualBasic6Parser.RULE_asTypeClause -> VB6AsTypeClauseImpl.Factory
 				VisualBasic6Parser.RULE_fieldLength-> VB6FieldLengthImpl.Factory
+
 				VisualBasic6Parser.RULE_literal -> VB6LiteralImpl.Factory
 				VisualBasic6Parser.RULE_visibility -> VB6VisibilityImpl.Factory
 				VisualBasic6Parser.RULE_valueStmt -> VB6ValueImpl.Factory
-				//block ---------------------------------
+
+				VisualBasic6Parser.RULE_variableListStmt -> VB6VariableListStmtImpl.Factory
+				VisualBasic6Parser.RULE_variableSubStmt -> VB6VariableSubStmtImpl.Factory
+
+				VisualBasic6Parser.RULE_subscripts -> VB6SubscriptsImpl.Factory
+				VisualBasic6Parser.RULE_subscriptElement -> VB6SubscriptElementImpl.Factory
+				//block ---------------------------------------------------------------------------
 				VisualBasic6Parser.RULE_block-> VB6BlockImpl.Factory
 				VisualBasic6Parser.RULE_blockStmt-> VB6BlockStmtImpl.Factory
-				// block statements
+				// block statements ---------------------------------------------------------------------------
 				VisualBasic6Parser.RULE_lineLabel -> VB6LineLabelImpl.Factory
 				VisualBasic6Parser.RULE_appactivateStmt -> VB6AppactivateStmtImpl.Factory
 				VisualBasic6Parser.RULE_attributeStmt -> VB6AttributeStmtImpl.Factory

@@ -2043,13 +2043,13 @@ public class VisualBasic6BaseListener implements VisualBasic6Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSubscript_(VisualBasic6Parser.Subscript_Context ctx) { }
+	@Override public void enterSubscriptElement(VisualBasic6Parser.SubscriptElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSubscript_(VisualBasic6Parser.Subscript_Context ctx) { }
+	@Override public void exitSubscriptElement(VisualBasic6Parser.SubscriptElementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

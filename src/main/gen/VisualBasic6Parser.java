@@ -92,7 +92,7 @@ public class VisualBasic6Parser extends Parser {
 		RULE_iCS_S_ProcedureOrArrayCall = 122, RULE_iCS_S_MembersCall = 123, RULE_iCS_S_MemberCall = 124, 
 		RULE_iCS_S_DictionaryCall = 125, RULE_argsCall = 126, RULE_argCall = 127, 
 		RULE_dictionaryCallStmt = 128, RULE_argList = 129, RULE_arg = 130, RULE_argDefaultValue = 131, 
-		RULE_subscripts = 132, RULE_subscript_ = 133, RULE_ambiguousIdentifier = 134, 
+		RULE_subscripts = 132, RULE_subscriptElement = 133, RULE_ambiguousIdentifier = 134, 
 		RULE_asTypeClause = 135, RULE_baseType = 136, RULE_certainIdentifier = 137, 
 		RULE_comparisonOperator = 138, RULE_complexType = 139, RULE_fieldLength = 140, 
 		RULE_letterrange = 141, RULE_lineLabel = 142, RULE_literal = 143, RULE_type_ = 144, 
@@ -128,10 +128,11 @@ public class VisualBasic6Parser extends Parser {
 			"implicitCallStmt_InStmt", "iCS_S_VariableOrProcedureCall", "iCS_S_ProcedureOrArrayCall", 
 			"iCS_S_MembersCall", "iCS_S_MemberCall", "iCS_S_DictionaryCall", "argsCall", 
 			"argCall", "dictionaryCallStmt", "argList", "arg", "argDefaultValue", 
-			"subscripts", "subscript_", "ambiguousIdentifier", "asTypeClause", "baseType", 
-			"certainIdentifier", "comparisonOperator", "complexType", "fieldLength", 
-			"letterrange", "lineLabel", "literal", "type_", "typeHint", "visibility", 
-			"ambiguousKeyword", "remComment", "comment", "endOfLine", "endOfStatement"
+			"subscripts", "subscriptElement", "ambiguousIdentifier", "asTypeClause", 
+			"baseType", "certainIdentifier", "comparisonOperator", "complexType", 
+			"fieldLength", "letterrange", "lineLabel", "literal", "type_", "typeHint", 
+			"visibility", "ambiguousKeyword", "remComment", "comment", "endOfLine", 
+			"endOfStatement"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -15282,11 +15283,11 @@ public class VisualBasic6Parser extends Parser {
 	}
 
 	public static class SubscriptsContext extends ParserRuleContext {
-		public List<Subscript_Context> subscript_() {
-			return getRuleContexts(Subscript_Context.class);
+		public List<SubscriptElementContext> subscriptElement() {
+			return getRuleContexts(SubscriptElementContext.class);
 		}
-		public Subscript_Context subscript_(int i) {
-			return getRuleContext(Subscript_Context.class,i);
+		public SubscriptElementContext subscriptElement(int i) {
+			return getRuleContext(SubscriptElementContext.class,i);
 		}
 		public List<TerminalNode> WS() { return getTokens(VisualBasic6Parser.WS); }
 		public TerminalNode WS(int i) {
@@ -15320,7 +15321,7 @@ public class VisualBasic6Parser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(2502);
-			subscript_();
+			subscriptElement();
 			setState(2513);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,417,_ctx);
@@ -15351,7 +15352,7 @@ public class VisualBasic6Parser extends Parser {
 					}
 
 					setState(2510);
-					subscript_();
+					subscriptElement();
 					}
 					} 
 				}
@@ -15372,7 +15373,7 @@ public class VisualBasic6Parser extends Parser {
 		return _localctx;
 	}
 
-	public static class Subscript_Context extends ParserRuleContext {
+	public static class SubscriptElementContext extends ParserRuleContext {
 		public List<ValueStmtContext> valueStmt() {
 			return getRuleContexts(ValueStmtContext.class);
 		}
@@ -15384,28 +15385,28 @@ public class VisualBasic6Parser extends Parser {
 			return getToken(VisualBasic6Parser.WS, i);
 		}
 		public TerminalNode TO() { return getToken(VisualBasic6Parser.TO, 0); }
-		public Subscript_Context(ParserRuleContext parent, int invokingState) {
+		public SubscriptElementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_subscript_; }
+		@Override public int getRuleIndex() { return RULE_subscriptElement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof VisualBasic6Listener ) ((VisualBasic6Listener)listener).enterSubscript_(this);
+			if ( listener instanceof VisualBasic6Listener ) ((VisualBasic6Listener)listener).enterSubscriptElement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof VisualBasic6Listener ) ((VisualBasic6Listener)listener).exitSubscript_(this);
+			if ( listener instanceof VisualBasic6Listener ) ((VisualBasic6Listener)listener).exitSubscriptElement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof VisualBasic6Visitor ) return ((VisualBasic6Visitor<? extends T>)visitor).visitSubscript_(this);
+			if ( visitor instanceof VisualBasic6Visitor ) return ((VisualBasic6Visitor<? extends T>)visitor).visitSubscriptElement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Subscript_Context subscript_() throws RecognitionException {
-		Subscript_Context _localctx = new Subscript_Context(_ctx, getState());
-		enterRule(_localctx, 266, RULE_subscript_);
+	public final SubscriptElementContext subscriptElement() throws RecognitionException {
+		SubscriptElementContext _localctx = new SubscriptElementContext(_ctx, getState());
+		enterRule(_localctx, 266, RULE_subscriptElement);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{

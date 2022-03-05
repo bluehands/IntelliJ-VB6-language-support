@@ -1,0 +1,20 @@
+package com.github.tyrrx.vb6language.psi.tree.impl
+
+import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6SubscriptElement
+import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Subscripts
+import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
+import com.intellij.lang.ASTNode
+
+class VB6SubscriptsImpl(node: ASTNode) : VB6PsiNode(node), VB6Subscripts {
+
+    object Factory : IPsiNodeFactory<VB6Subscripts> {
+        override fun createPsiNode(node: ASTNode): VB6Subscripts {
+            return VB6SubscriptsImpl(node)
+        }
+    }
+
+    override fun getElements(): List<VB6SubscriptElement> {
+        return findPsiElementsInDirectChildrenByType(this)
+    }
+}

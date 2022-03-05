@@ -33,4 +33,6 @@ object VB6IElementTypes: TokenType {
     val PARAMARRAY = tokens[VisualBasic6Lexer.PARAMARRAY]
 
     val NEW = tokens[VisualBasic6Lexer.NEW]
+
+    val WITHEVENTS = tokens[VisualBasic6Lexer.WITHEVENTS]
 }

@@ -1777,15 +1777,15 @@ public interface VisualBasic6Listener extends ParseTreeListener {
 	 */
 	void exitSubscripts(VisualBasic6Parser.SubscriptsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link VisualBasic6Parser#subscript_}.
+	 * Enter a parse tree produced by {@link VisualBasic6Parser#subscriptElement}.
 	 * @param ctx the parse tree
 	 */
-	void enterSubscript_(VisualBasic6Parser.Subscript_Context ctx);
+	void enterSubscriptElement(VisualBasic6Parser.SubscriptElementContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link VisualBasic6Parser#subscript_}.
+	 * Exit a parse tree produced by {@link VisualBasic6Parser#subscriptElement}.
 	 * @param ctx the parse tree
 	 */
-	void exitSubscript_(VisualBasic6Parser.Subscript_Context ctx);
+	void exitSubscriptElement(VisualBasic6Parser.SubscriptElementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link VisualBasic6Parser#ambiguousIdentifier}.
 	 * @param ctx the parse tree
