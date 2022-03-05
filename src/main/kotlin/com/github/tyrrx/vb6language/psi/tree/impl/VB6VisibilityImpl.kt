@@ -2,8 +2,8 @@ package com.github.tyrrx.vb6language.psi.tree.impl
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6Visibility
-import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6VisibilityEnum
+import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Visibility
+import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6VisibilityEnum
 import com.intellij.lang.ASTNode
 import com.intellij.psi.util.elementType
 

@@ -30,7 +30,7 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun getNameIdentifier(): VB6AmbiguousIdentifier? {
-        return children[2] as VB6AmbiguousIdentifier
+        return findFirstChildByType(this)
     }
 
     override fun getName(): String? {

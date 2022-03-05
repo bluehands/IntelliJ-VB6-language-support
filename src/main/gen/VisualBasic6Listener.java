@@ -1507,6 +1507,16 @@ public interface VisualBasic6Listener extends ParseTreeListener {
 	 */
 	void exitVariableStmt(VisualBasic6Parser.VariableStmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link VisualBasic6Parser#moduleVariableStmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterModuleVariableStmt(VisualBasic6Parser.ModuleVariableStmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link VisualBasic6Parser#moduleVariableStmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitModuleVariableStmt(VisualBasic6Parser.ModuleVariableStmtContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link VisualBasic6Parser#variableListStmt}.
 	 * @param ctx the parse tree
 	 */

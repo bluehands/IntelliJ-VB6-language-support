@@ -5,8 +5,8 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.VB6ConstSubStmt
 import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6AmbiguousIdentifier
-import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6Visibility
-import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6VisibilityEnum
+import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Visibility
+import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.interfaces.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode

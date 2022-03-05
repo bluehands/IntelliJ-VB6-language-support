@@ -902,6 +902,12 @@ public interface VisualBasic6Visitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariableStmt(VisualBasic6Parser.VariableStmtContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link VisualBasic6Parser#moduleVariableStmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitModuleVariableStmt(VisualBasic6Parser.ModuleVariableStmtContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link VisualBasic6Parser#variableListStmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

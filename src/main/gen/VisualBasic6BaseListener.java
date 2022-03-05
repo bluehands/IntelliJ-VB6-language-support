@@ -1719,6 +1719,18 @@ public class VisualBasic6BaseListener implements VisualBasic6Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterModuleVariableStmt(VisualBasic6Parser.ModuleVariableStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitModuleVariableStmt(VisualBasic6Parser.ModuleVariableStmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariableListStmt(VisualBasic6Parser.VariableListStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}

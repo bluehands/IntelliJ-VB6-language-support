@@ -1010,6 +1010,13 @@ public class VisualBasic6BaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitModuleVariableStmt(VisualBasic6Parser.ModuleVariableStmtContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitVariableListStmt(VisualBasic6Parser.VariableListStmtContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

@@ -22,10 +22,6 @@ object PSIFactory {
 		val elementType = node.elementType
 		return if (elementType is RuleIElementType) {
 			when (elementType.ruleIndex) {
-				VisualBasic6Parser.RULE_literal -> VB6LiteralImpl.Factory
-				VisualBasic6Parser.RULE_visibility -> VB6VisibilityImpl.Factory
-				VisualBasic6Parser.RULE_valueStmt -> VB6ValueImpl.Factory
-				//VisualBasic6Parser.RULE_attributeStmt -> VB6AttributeImpl.Factory
 				// module ---------------------------------
 				VisualBasic6Parser.RULE_module -> VB6ModuleImpl.Factory
 				VisualBasic6Parser.RULE_moduleHeader -> VB6ModuleHeaderImpl.Factory
@@ -43,8 +39,8 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_enumerationStmt -> VB6EnumerationStmtImpl.Factory
 				VisualBasic6Parser.RULE_eventStmt -> VB6EventStmtImpl.Factory
 				VisualBasic6Parser.RULE_typeStmt -> VB6TypeStmtImpl.Factory
-
-				//VisualBasic6Parser.RULE_macroStmt -> VB6MacroStatementImpl.Factory
+				VisualBasic6Parser.RULE_moduleVariableStmt -> VB6ModuleVariableStmtImpl.Factory
+				// general
 				VisualBasic6Parser.RULE_typeHint -> VB6TypeHintImpl.Factory
 				VisualBasic6Parser.RULE_argList -> VB6ArgumentListImpl.Factory
 				VisualBasic6Parser.RULE_arg -> VB6ArgumentImpl.Factory
@@ -56,6 +52,9 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_baseType-> VB6BaseTypeImpl.Factory
 				VisualBasic6Parser.RULE_complexType-> VB6ComplexTypeImpl.Factory
 				VisualBasic6Parser.RULE_fieldLength-> VB6FieldLengthImpl.Factory
+				VisualBasic6Parser.RULE_literal -> VB6LiteralImpl.Factory
+				VisualBasic6Parser.RULE_visibility -> VB6VisibilityImpl.Factory
+				VisualBasic6Parser.RULE_valueStmt -> VB6ValueImpl.Factory
 				//block ---------------------------------
 				VisualBasic6Parser.RULE_block-> VB6BlockImpl.Factory
 				VisualBasic6Parser.RULE_blockStmt-> VB6BlockStmtImpl.Factory
