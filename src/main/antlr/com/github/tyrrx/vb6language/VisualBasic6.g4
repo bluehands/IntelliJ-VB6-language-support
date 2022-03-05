@@ -361,7 +361,7 @@ inputStmt : INPUT WS fileNumber (WS? ',' WS? valueStmt)+;
 
 killStmt : KILL WS valueStmt;
 
-letStmt : (LET WS)? implicitCallStmt_InStmt WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt; // todo
+letStmt : (LET WS)? implicitCallStmt_InStmt WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt; // reference
 
 lineInputStmt : LINE_INPUT WS fileNumber WS? ',' WS? valueStmt;
 
@@ -369,7 +369,7 @@ loadStmt : LOAD WS valueStmt;
 
 lockStmt : LOCK WS valueStmt (WS? ',' WS? valueStmt (WS TO WS valueStmt)?)?;
 
-lsetStmt : LSET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt; // todo
+lsetStmt : LSET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt; // reference
 
 macroConstStmt : MACRO_CONST WS? ambiguousIdentifier WS? EQ WS? valueStmt;
 

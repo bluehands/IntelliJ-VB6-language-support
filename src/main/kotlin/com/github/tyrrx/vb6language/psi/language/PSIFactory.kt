@@ -2,8 +2,11 @@ package com.github.tyrrx.vb6language.psi.language
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.tree.impl.*
+import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockImpl
+import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.*
 import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.conditional.*
+import com.github.tyrrx.vb6language.psi.tree.impl.module.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.PsiElement
@@ -19,19 +22,28 @@ object PSIFactory {
 		val elementType = node.elementType
 		return if (elementType is RuleIElementType) {
 			when (elementType.ruleIndex) {
-				VisualBasic6Parser.RULE_functionStmt -> VB6FunctionStatementImpl.Factory
-				VisualBasic6Parser.RULE_subStmt -> VB6SubroutineStatementImpl.Factory
-				VisualBasic6Parser.RULE_module -> VB6ModuleImpl.Factory
 				VisualBasic6Parser.RULE_literal -> VB6LiteralImpl.Factory
+				VisualBasic6Parser.RULE_visibility -> VB6VisibilityImpl.Factory
+				VisualBasic6Parser.RULE_valueStmt -> VB6ValueImpl.Factory
 				//VisualBasic6Parser.RULE_attributeStmt -> VB6AttributeImpl.Factory
+				// module ---------------------------------
+				VisualBasic6Parser.RULE_module -> VB6ModuleImpl.Factory
 				VisualBasic6Parser.RULE_moduleHeader -> VB6ModuleHeaderImpl.Factory
 				VisualBasic6Parser.RULE_moduleConfigElement -> VB6ModuleConfigElementImpl.Factory
 				VisualBasic6Parser.RULE_moduleConfig -> VB6ModuleConfigImpl.Factory
-				VisualBasic6Parser.RULE_visibility -> VB6VisibilityImpl.Factory
-				VisualBasic6Parser.RULE_valueStmt -> VB6ValueImpl.Factory
+				VisualBasic6Parser.RULE_moduleDeclarationsElement -> VB6ModuleDeclarationsElementImpl.Factory
+				VisualBasic6Parser.RULE_moduleDeclarations -> VB6ModuleDeclarationsImpl.Factory
+
+				VisualBasic6Parser.RULE_functionStmt -> VB6FunctionStatementImpl.Factory
+				VisualBasic6Parser.RULE_subStmt -> VB6SubroutineStatementImpl.Factory
 				VisualBasic6Parser.RULE_propertyGetStmt -> VB6PropertyGetStatementImpl.Factory
 				VisualBasic6Parser.RULE_propertySetStmt -> VB6PropertySetStatementImpl.Factory
 				VisualBasic6Parser.RULE_propertyLetStmt -> VB6PropertyLetStatementImpl.Factory
+				VisualBasic6Parser.RULE_declareStmt -> VB6DeclareStmtImpl.Factory
+				VisualBasic6Parser.RULE_enumerationStmt -> VB6EnumerationStmtImpl.Factory
+				VisualBasic6Parser.RULE_eventStmt -> VB6EventStmtImpl.Factory
+				VisualBasic6Parser.RULE_typeStmt -> VB6TypeStmtImpl.Factory
+
 				//VisualBasic6Parser.RULE_macroStmt -> VB6MacroStatementImpl.Factory
 				VisualBasic6Parser.RULE_typeHint -> VB6TypeHintImpl.Factory
 				VisualBasic6Parser.RULE_argList -> VB6ArgumentListImpl.Factory
@@ -44,7 +56,9 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_baseType-> VB6BaseTypeImpl.Factory
 				VisualBasic6Parser.RULE_complexType-> VB6ComplexTypeImpl.Factory
 				VisualBasic6Parser.RULE_fieldLength-> VB6FieldLengthImpl.Factory
+				//block ---------------------------------
 				VisualBasic6Parser.RULE_block-> VB6BlockImpl.Factory
+				VisualBasic6Parser.RULE_blockStmt-> VB6BlockStmtImpl.Factory
 				// block statements
 				VisualBasic6Parser.RULE_lineLabel -> VB6LineLabelImpl.Factory
 				VisualBasic6Parser.RULE_appactivateStmt -> VB6AppactivateStmtImpl.Factory

@@ -1,7 +1,8 @@
-package com.github.tyrrx.vb6language.psi.tree.impl
+package com.github.tyrrx.vb6language.psi.tree.impl.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6ModuleHeader
 import com.intellij.lang.ASTNode
 import com.intellij.psi.util.elementType
