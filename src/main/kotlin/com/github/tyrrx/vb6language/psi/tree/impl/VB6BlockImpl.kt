@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.impl
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6BlockStatement
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6BlockStatementMember
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
@@ -15,7 +15,7 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
         }
     }
 
-    override fun getBlockStatements(): List<VB6BlockStatement> {
+    override fun getBlockStatements(): List<VB6BlockStatementMember> {
         return findPsiElementsInDirectChildrenByType(this)
     }
 }

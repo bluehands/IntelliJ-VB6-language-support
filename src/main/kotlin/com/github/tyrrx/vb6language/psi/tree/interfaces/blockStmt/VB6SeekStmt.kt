@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt
 
 
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6BlockStatement
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6BlockStatementMember
 
-interface VB6SeekStmt : VB6BlockStatement {
+interface VB6SeekStmt : VB6BlockStatementMember {
 }
