@@ -1,0 +1,287 @@
+Public Function ACCESS As String
+End Function
+Public Function ADDRESSOF As String
+End Function
+Public Function ALIAS As String
+End Function
+Public Function AND As String
+End Function
+Public Function ATTRIBUTE As String
+End Function
+Public Function APPACTIVATE As String
+End Function
+Public Function APPEND As String
+End Function
+Public Function AS As String
+End Function
+Public Function BEEP As String
+End Function
+Public Function BEGIN As String
+End Function
+Public Function BINARY As String
+End Function
+Public Function BOOLEAN As String
+End Function
+Public Function BYVAL As String
+End Function
+Public Function BYREF As String
+End Function
+Public Function BYTE As String
+End Function
+Public Function CALL As String
+End Function
+Public Function CASE As String
+End Function
+Public Function CLASS As String
+End Function
+Public Function CLOSE As String
+End Function
+Public Function CHDIR As String
+End Function
+Public Function CHDRIVE As String
+End Function
+Public Function COLLECTION As String
+End Function
+Public Function CONST As String
+End Function
+Public Function DATABASE As String
+End Function
+Public Function DATE As String
+End Function
+Public Function DECLARE As String
+End Function
+Public Function DEFBOOL As String
+End Function
+Public Function DEFBYTE As String
+End Function
+Public Function DEFCUR As String
+End Function
+Public Function DEFDBL As String
+End Function
+Public Function DEFDATE As String
+End Function
+Public Function DEFDEC As String
+End Function
+Public Function DEFINT As String
+End Function
+Public Function DEFLNG As String
+End Function
+Public Function DEFOBJ As String
+End Function
+Public Function DEFSNG As String
+End Function
+Public Function DEFSTR As String
+End Function
+Public Function DEFVAR As String
+End Function
+Public Function DELETESETTING As String
+End Function
+Public Function DIM As String
+End Function
+Public Function DO As String
+End Function
+Public Function DOUBLE As String
+End Function
+Public Function EACH As String
+End Function
+Public Function ELSE As String
+End Function
+Public Function ELSEIF As String
+End Function
+Public Function END As String
+End Function
+Public Function ENUM As String
+End Function
+Public Function EQV As String
+End Function
+Public Function ERASE As String
+End Function
+Public Function ERROR As String
+End Function
+Public Function EVENT As String
+End Function
+Public Function FALSE As String
+End Function
+Public Function FILECOPY As String
+End Function
+Public Function FRIEND As String
+End Function
+Public Function FOR As String
+End Function
+Public Function FUNCTION As String
+End Function
+Public Function GET As String
+End Function
+Public Function GLOBAL As String
+End Function
+Public Function GOSUB As String
+End Function
+Public Function GOTO As String
+End Function
+Public Function IF As String
+End Function
+Public Function IMP As String
+End Function
+Public Function IMPLEMENTS As String
+End Function
+Public Function IN As String
+End Function
+Public Function INPUT As String
+End Function
+Public Function IS As String
+End Function
+Public Function INTEGER As String
+End Function
+Public Function KILL As String
+End Function
+Public Function LOAD As String
+End Function
+Public Function LOCK As String
+End Function
+Public Function LONG As String
+End Function
+Public Function LOOP As String
+End Function
+Public Function LEN As String
+End Function
+Public Function LET As String
+End Function
+Public Function LIB As String
+End Function
+Public Function LIKE As String
+End Function
+Public Function LSET As String
+End Function
+Public Function ME As String
+End Function
+Public Function MID As String
+End Function
+Public Function MKDIR As String
+End Function
+Public Function MOD As String
+End Function
+Public Function NAME As String
+End Function
+Public Function NEXT As String
+End Function
+Public Function NEW As String
+End Function
+Public Function NOT As String
+End Function
+Public Function NOTHING As String
+End Function
+Public Function NULL_ As String
+End Function
+Public Function ON As String
+End Function
+Public Function OPEN As String
+End Function
+Public Function OPTIONAL As String
+End Function
+Public Function OR As String
+End Function
+Public Function OUTPUT As String
+End Function
+Public Function PARAMARRAY As String
+End Function
+Public Function PRESERVE As String
+End Function
+Public Function PRINT As String
+End Function
+Public Function PRIVATE As String
+End Function
+Public Function PUBLIC As String
+End Function
+Public Function PUT As String
+End Function
+Public Function RANDOM As String
+End Function
+Public Function RANDOMIZE As String
+End Function
+Public Function RAISEEVENT As String
+End Function
+Public Function READ As String
+End Function
+Public Function REDIM As String
+End Function
+Public Function REM As String
+End Function
+Public Function RESET As String
+End Function
+Public Function RESUME As String
+End Function
+Public Function RETURN As String
+End Function
+Public Function RMDIR As String
+End Function
+Public Function RSET As String
+End Function
+Public Function SAVEPICTURE As String
+End Function
+Public Function SAVESETTING As String
+End Function
+Public Function SEEK As String
+End Function
+Public Function SELECT As String
+End Function
+Public Function SENDKEYS As String
+End Function
+Public Function SET As String
+End Function
+Public Function SETATTR As String
+End Function
+Public Function SHARED As String
+End Function
+Public Function SINGLE As String
+End Function
+Public Function SPC As String
+End Function
+Public Function STATIC As String
+End Function
+Public Function STEP As String
+End Function
+Public Function STOP As String
+End Function
+Public Function STRING As String
+End Function
+Public Function SUB As String
+End Function
+Public Function TAB As String
+End Function
+Public Function TEXT As String
+End Function
+Public Function THEN As String
+End Function
+Public Function TIME As String
+End Function
+Public Function TO As String
+End Function
+Public Function TRUE As String
+End Function
+Public Function TYPE As String
+End Function
+Public Function TYPEOF As String
+End Function
+Public Function UNLOAD As String
+End Function
+Public Function UNLOCK As String
+End Function
+Public Function UNTIL As String
+End Function
+Public Function VARIANT As String
+End Function
+Public Function VERSION As String
+End Function
+Public Function WEND As String
+End Function
+Public Function WHILE As String
+End Function
+Public Function WIDTH As String
+End Function
+Public Function WITH As String
+End Function
+Public Function WITHEVENTS As String
+End Function
+Public Function WRITE As String
+End Function
+Public Function XOR As String

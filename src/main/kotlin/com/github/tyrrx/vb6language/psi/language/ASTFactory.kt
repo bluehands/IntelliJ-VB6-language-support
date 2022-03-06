@@ -1,6 +1,5 @@
 package com.github.tyrrx.vb6language.psi.language
 
-import com.github.tyrrx.vb6language.psi.tree.leafes.IdentifierPsiLeaf
 import com.intellij.lang.DefaultASTFactoryImpl
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.impl.source.tree.LeafElement

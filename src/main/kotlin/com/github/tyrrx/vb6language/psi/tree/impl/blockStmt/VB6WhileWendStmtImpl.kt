@@ -3,6 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.impl.blockStmt
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
@@ -23,7 +24,7 @@ class VB6WhileWendStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun resolve(element: PsiNamedElement?): PsiElement? {
+    override fun resolve(element: PsiNamedElement?): VB6IdentifierOwner? {
         TODO("Not yet implemented")
     }
 }

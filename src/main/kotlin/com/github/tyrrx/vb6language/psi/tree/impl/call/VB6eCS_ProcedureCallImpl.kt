@@ -4,19 +4,15 @@ package com.github.tyrrx.vb6language.psi.tree.impl.call
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6BlockScope
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.call.VB6eCS_ProcedureCall
 import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
-import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6Module
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 import com.intellij.psi.PsiReference
-import org.antlr.intellij.adaptor.psi.ScopeNode
 
 class VB6eCS_ProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6eCS_ProcedureCall {
 
@@ -42,9 +38,8 @@ class TestReference(private val myElement: PsiNamedElement) : PsiReference {
     }
 
     override fun resolve(): PsiElement? {
-        val scopeNode = myElement.context as ScopeNode?
-        val resolve = scopeNode?.resolve(myElement)
-        return resolve
+        val scopeNode = myElement.context as VB6ScopeNode?
+        return scopeNode?.resolve(myElement)
     }
 
     override fun getCanonicalText(): String {

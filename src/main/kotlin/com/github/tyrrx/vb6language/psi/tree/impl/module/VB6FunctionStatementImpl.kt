@@ -12,6 +12,8 @@ import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6FunctionStatem
 import com.github.tyrrx.vb6language.psi.tree.interfaces.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInSubtree
+import com.github.tyrrx.vb6language.psi.tree.utils.tryResolveInBlockScopeOrParentContext
+import com.github.tyrrx.vb6language.psi.tree.utils.tryResolveSelf
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
@@ -52,15 +54,9 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun resolve(element: PsiNamedElement?): PsiElement? {
-        return getBlock()
-            ?.getStatements()
-            ?.flatMap { findPsiElementsInSubtree<VB6IdentifierOwner>(it) }
-            ?.find { it.name == element?.name } ?: context?.resolve(element)
-    }
-
-    override fun getIdentifyingElement(): PsiElement? {
-        return super.getIdentifyingElement()
+    override fun resolve(element: PsiNamedElement?): VB6IdentifierOwner? {
+        return tryResolveSelf(this, element)
+            ?: tryResolveInBlockScopeOrParentContext(this, element)
     }
 
     override fun setName(name: String): PsiElement {

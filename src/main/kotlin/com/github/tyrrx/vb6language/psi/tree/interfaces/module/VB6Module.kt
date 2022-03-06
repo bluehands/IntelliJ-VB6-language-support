@@ -1,10 +1,10 @@
 package com.github.tyrrx.vb6language.psi.tree.interfaces.module
 
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Attribute
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ScopeNode
 import com.intellij.psi.PsiNameIdentifierOwner
-import org.antlr.intellij.adaptor.psi.ScopeNode
 
-interface VB6Module : ScopeNode, PsiNameIdentifierOwner {
+interface VB6Module : VB6ScopeNode, PsiNameIdentifierOwner {
     fun isClass(): Boolean
     fun getModuleHeaders(): Collection<VB6ModuleHeader>
     // TODO module references

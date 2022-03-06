@@ -4617,14 +4617,14 @@ public class VisualBasic6Parser extends Parser {
 			ambiguousIdentifier();
 			setState(933);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,98,_ctx) ) {
-			case 1:
+			_la = _input.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7))) != 0) || _la==AMPERSAND) {
 				{
 				setState(932);
 				typeHint();
 				}
-				break;
 			}
+
 			setState(939);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,100,_ctx) ) {
@@ -7383,14 +7383,14 @@ public class VisualBasic6Parser extends Parser {
 						}
 						setState(1311);
 						_errHandler.sync(this);
-						switch ( getInterpreter().adaptivePredict(_input,160,_ctx) ) {
-						case 1:
+						_la = _input.LA(1);
+						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << ACCESS) | (1L << ADDRESSOF) | (1L << ALIAS) | (1L << AND) | (1L << ATTRIBUTE) | (1L << APPACTIVATE) | (1L << APPEND) | (1L << AS) | (1L << BEGIN) | (1L << BEEP) | (1L << BINARY) | (1L << BOOLEAN) | (1L << BYVAL) | (1L << BYREF) | (1L << BYTE) | (1L << CALL) | (1L << CASE) | (1L << CHDIR) | (1L << CHDRIVE) | (1L << CLASS) | (1L << CLOSE) | (1L << COLLECTION) | (1L << CONST) | (1L << DATABASE) | (1L << DATE) | (1L << DECLARE) | (1L << DEFBOOL) | (1L << DEFBYTE) | (1L << DEFDATE) | (1L << DEFDBL) | (1L << DEFDEC) | (1L << DEFCUR) | (1L << DEFINT) | (1L << DEFLNG) | (1L << DEFOBJ) | (1L << DEFSNG) | (1L << DEFSTR) | (1L << DEFVAR) | (1L << DELETESETTING) | (1L << DIM) | (1L << DO) | (1L << DOUBLE) | (1L << EACH) | (1L << END) | (1L << ENUM))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (EQV - 64)) | (1L << (ERASE - 64)) | (1L << (ERROR - 64)) | (1L << (EVENT - 64)) | (1L << (FALSE - 64)) | (1L << (FILECOPY - 64)) | (1L << (FRIEND - 64)) | (1L << (FOR - 64)) | (1L << (FUNCTION - 64)) | (1L << (GET - 64)) | (1L << (GLOBAL - 64)) | (1L << (GOSUB - 64)) | (1L << (GOTO - 64)) | (1L << (IF - 64)) | (1L << (IMP - 64)) | (1L << (IMPLEMENTS - 64)) | (1L << (IN - 64)) | (1L << (INPUT - 64)) | (1L << (IS - 64)) | (1L << (INTEGER - 64)) | (1L << (KILL - 64)) | (1L << (LOAD - 64)) | (1L << (LOCK - 64)) | (1L << (LONG - 64)) | (1L << (LOOP - 64)) | (1L << (LEN - 64)) | (1L << (LET - 64)) | (1L << (LIB - 64)) | (1L << (LIKE - 64)) | (1L << (LSET - 64)) | (1L << (ME - 64)) | (1L << (MID - 64)) | (1L << (MKDIR - 64)) | (1L << (MOD - 64)) | (1L << (NAME - 64)) | (1L << (NEXT - 64)) | (1L << (NEW - 64)) | (1L << (NOT - 64)) | (1L << (NOTHING - 64)) | (1L << (NULL_ - 64)) | (1L << (ON - 64)) | (1L << (OPEN - 64)) | (1L << (OPTIONAL - 64)) | (1L << (OR - 64)))) != 0) || ((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & ((1L << (OUTPUT - 128)) | (1L << (PARAMARRAY - 128)) | (1L << (PRESERVE - 128)) | (1L << (PRINT - 128)) | (1L << (PRIVATE - 128)) | (1L << (PUBLIC - 128)) | (1L << (PUT - 128)) | (1L << (RANDOM - 128)) | (1L << (RANDOMIZE - 128)) | (1L << (RAISEEVENT - 128)) | (1L << (READ - 128)) | (1L << (REDIM - 128)) | (1L << (REM - 128)) | (1L << (RESET - 128)) | (1L << (RESUME - 128)) | (1L << (RETURN - 128)) | (1L << (RMDIR - 128)) | (1L << (RSET - 128)) | (1L << (SAVEPICTURE - 128)) | (1L << (SAVESETTING - 128)) | (1L << (SEEK - 128)) | (1L << (SELECT - 128)) | (1L << (SENDKEYS - 128)) | (1L << (SET - 128)) | (1L << (SETATTR - 128)) | (1L << (SHARED - 128)) | (1L << (SINGLE - 128)) | (1L << (SPC - 128)) | (1L << (STATIC - 128)) | (1L << (STEP - 128)) | (1L << (STOP - 128)) | (1L << (STRING - 128)) | (1L << (SUB - 128)) | (1L << (TAB - 128)) | (1L << (TEXT - 128)) | (1L << (THEN - 128)) | (1L << (TIME - 128)) | (1L << (TO - 128)) | (1L << (TRUE - 128)) | (1L << (TYPE - 128)) | (1L << (TYPEOF - 128)) | (1L << (UNLOAD - 128)) | (1L << (UNLOCK - 128)) | (1L << (UNTIL - 128)) | (1L << (VARIANT - 128)) | (1L << (VERSION - 128)) | (1L << (WEND - 128)) | (1L << (WHILE - 128)) | (1L << (WIDTH - 128)) | (1L << (WITH - 128)) | (1L << (WITHEVENTS - 128)) | (1L << (WRITE - 128)) | (1L << (XOR - 128)))) != 0) || ((((_la - 193)) & ~0x3f) == 0 && ((1L << (_la - 193)) & ((1L << (LPAREN - 193)) | (1L << (MINUS - 193)) | (1L << (PLUS - 193)) | (1L << (STRINGLITERAL - 193)) | (1L << (OCTLITERAL - 193)) | (1L << (HEXLITERAL - 193)) | (1L << (SHORTLITERAL - 193)) | (1L << (INTEGERLITERAL - 193)) | (1L << (DOUBLELITERAL - 193)) | (1L << (DATELITERAL - 193)) | (1L << (IDENTIFIER - 193)))) != 0)) {
 							{
 							setState(1310);
 							outputList_Expression();
 							}
-							break;
 						}
+
 						}
 						} 
 					}
@@ -7453,14 +7453,14 @@ public class VisualBasic6Parser extends Parser {
 						}
 						setState(1329);
 						_errHandler.sync(this);
-						switch ( getInterpreter().adaptivePredict(_input,165,_ctx) ) {
-						case 1:
+						_la = _input.LA(1);
+						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << ACCESS) | (1L << ADDRESSOF) | (1L << ALIAS) | (1L << AND) | (1L << ATTRIBUTE) | (1L << APPACTIVATE) | (1L << APPEND) | (1L << AS) | (1L << BEGIN) | (1L << BEEP) | (1L << BINARY) | (1L << BOOLEAN) | (1L << BYVAL) | (1L << BYREF) | (1L << BYTE) | (1L << CALL) | (1L << CASE) | (1L << CHDIR) | (1L << CHDRIVE) | (1L << CLASS) | (1L << CLOSE) | (1L << COLLECTION) | (1L << CONST) | (1L << DATABASE) | (1L << DATE) | (1L << DECLARE) | (1L << DEFBOOL) | (1L << DEFBYTE) | (1L << DEFDATE) | (1L << DEFDBL) | (1L << DEFDEC) | (1L << DEFCUR) | (1L << DEFINT) | (1L << DEFLNG) | (1L << DEFOBJ) | (1L << DEFSNG) | (1L << DEFSTR) | (1L << DEFVAR) | (1L << DELETESETTING) | (1L << DIM) | (1L << DO) | (1L << DOUBLE) | (1L << EACH) | (1L << END) | (1L << ENUM))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (EQV - 64)) | (1L << (ERASE - 64)) | (1L << (ERROR - 64)) | (1L << (EVENT - 64)) | (1L << (FALSE - 64)) | (1L << (FILECOPY - 64)) | (1L << (FRIEND - 64)) | (1L << (FOR - 64)) | (1L << (FUNCTION - 64)) | (1L << (GET - 64)) | (1L << (GLOBAL - 64)) | (1L << (GOSUB - 64)) | (1L << (GOTO - 64)) | (1L << (IF - 64)) | (1L << (IMP - 64)) | (1L << (IMPLEMENTS - 64)) | (1L << (IN - 64)) | (1L << (INPUT - 64)) | (1L << (IS - 64)) | (1L << (INTEGER - 64)) | (1L << (KILL - 64)) | (1L << (LOAD - 64)) | (1L << (LOCK - 64)) | (1L << (LONG - 64)) | (1L << (LOOP - 64)) | (1L << (LEN - 64)) | (1L << (LET - 64)) | (1L << (LIB - 64)) | (1L << (LIKE - 64)) | (1L << (LSET - 64)) | (1L << (ME - 64)) | (1L << (MID - 64)) | (1L << (MKDIR - 64)) | (1L << (MOD - 64)) | (1L << (NAME - 64)) | (1L << (NEXT - 64)) | (1L << (NEW - 64)) | (1L << (NOT - 64)) | (1L << (NOTHING - 64)) | (1L << (NULL_ - 64)) | (1L << (ON - 64)) | (1L << (OPEN - 64)) | (1L << (OPTIONAL - 64)) | (1L << (OR - 64)))) != 0) || ((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & ((1L << (OUTPUT - 128)) | (1L << (PARAMARRAY - 128)) | (1L << (PRESERVE - 128)) | (1L << (PRINT - 128)) | (1L << (PRIVATE - 128)) | (1L << (PUBLIC - 128)) | (1L << (PUT - 128)) | (1L << (RANDOM - 128)) | (1L << (RANDOMIZE - 128)) | (1L << (RAISEEVENT - 128)) | (1L << (READ - 128)) | (1L << (REDIM - 128)) | (1L << (REM - 128)) | (1L << (RESET - 128)) | (1L << (RESUME - 128)) | (1L << (RETURN - 128)) | (1L << (RMDIR - 128)) | (1L << (RSET - 128)) | (1L << (SAVEPICTURE - 128)) | (1L << (SAVESETTING - 128)) | (1L << (SEEK - 128)) | (1L << (SELECT - 128)) | (1L << (SENDKEYS - 128)) | (1L << (SET - 128)) | (1L << (SETATTR - 128)) | (1L << (SHARED - 128)) | (1L << (SINGLE - 128)) | (1L << (SPC - 128)) | (1L << (STATIC - 128)) | (1L << (STEP - 128)) | (1L << (STOP - 128)) | (1L << (STRING - 128)) | (1L << (SUB - 128)) | (1L << (TAB - 128)) | (1L << (TEXT - 128)) | (1L << (THEN - 128)) | (1L << (TIME - 128)) | (1L << (TO - 128)) | (1L << (TRUE - 128)) | (1L << (TYPE - 128)) | (1L << (TYPEOF - 128)) | (1L << (UNLOAD - 128)) | (1L << (UNLOCK - 128)) | (1L << (UNTIL - 128)) | (1L << (VARIANT - 128)) | (1L << (VERSION - 128)) | (1L << (WEND - 128)) | (1L << (WHILE - 128)) | (1L << (WIDTH - 128)) | (1L << (WITH - 128)) | (1L << (WITHEVENTS - 128)) | (1L << (WRITE - 128)) | (1L << (XOR - 128)))) != 0) || ((((_la - 193)) & ~0x3f) == 0 && ((1L << (_la - 193)) & ((1L << (LPAREN - 193)) | (1L << (MINUS - 193)) | (1L << (PLUS - 193)) | (1L << (STRINGLITERAL - 193)) | (1L << (OCTLITERAL - 193)) | (1L << (HEXLITERAL - 193)) | (1L << (SHORTLITERAL - 193)) | (1L << (INTEGERLITERAL - 193)) | (1L << (DOUBLELITERAL - 193)) | (1L << (DATELITERAL - 193)) | (1L << (IDENTIFIER - 193)))) != 0)) {
 							{
 							setState(1328);
 							outputList_Expression();
 							}
-							break;
 						}
+
 						}
 						}
 						break;
@@ -7783,14 +7783,14 @@ public class VisualBasic6Parser extends Parser {
 			ambiguousIdentifier();
 			setState(1382);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,178,_ctx) ) {
-			case 1:
+			_la = _input.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7))) != 0) || _la==AMPERSAND) {
 				{
 				setState(1381);
 				typeHint();
 				}
-				break;
 			}
+
 			setState(1388);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,180,_ctx) ) {
@@ -13359,14 +13359,14 @@ public class VisualBasic6Parser extends Parser {
 			ambiguousIdentifier();
 			setState(2179);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,340,_ctx) ) {
-			case 1:
+			_la = _input.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7))) != 0) || _la==AMPERSAND) {
 				{
 				setState(2178);
 				typeHint();
 				}
-				break;
 			}
+
 			setState(2194);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,344,_ctx) ) {
@@ -13533,14 +13533,14 @@ public class VisualBasic6Parser extends Parser {
 			ambiguousIdentifier();
 			setState(2216);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,348,_ctx) ) {
-			case 1:
+			_la = _input.LA(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__4) | (1L << T__5) | (1L << T__6) | (1L << T__7))) != 0) || _la==AMPERSAND) {
 				{
 				setState(2215);
 				typeHint();
 				}
-				break;
 			}
+
 			setState(2231);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,352,_ctx) ) {
@@ -13787,14 +13787,14 @@ public class VisualBasic6Parser extends Parser {
 			}
 			setState(2262);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,359,_ctx) ) {
-			case 1:
+			_la = _input.LA(1);
+			if (_la==T__4) {
 				{
 				setState(2261);
 				dictionaryCallStmt();
 				}
-				break;
 			}
+
 			setState(2273);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,361,_ctx);
@@ -15960,8 +15960,8 @@ public class VisualBasic6Parser extends Parser {
 	public final CertainIdentifierContext certainIdentifier() throws RecognitionException {
 		CertainIdentifierContext _localctx = new CertainIdentifierContext(_ctx, getState());
 		enterRule(_localctx, 274, RULE_certainIdentifier);
+		int _la;
 		try {
-			int _alt;
 			setState(2583);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
@@ -15972,174 +15972,172 @@ public class VisualBasic6Parser extends Parser {
 				match(IDENTIFIER);
 				setState(2573);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,430,_ctx);
-				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-					if ( _alt==1 ) {
+				_la = _input.LA(1);
+				while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ACCESS) | (1L << ADDRESSOF) | (1L << ALIAS) | (1L << AND) | (1L << ATTRIBUTE) | (1L << APPACTIVATE) | (1L << APPEND) | (1L << AS) | (1L << BEGIN) | (1L << BEEP) | (1L << BINARY) | (1L << BOOLEAN) | (1L << BYVAL) | (1L << BYREF) | (1L << BYTE) | (1L << CALL) | (1L << CASE) | (1L << CHDIR) | (1L << CHDRIVE) | (1L << CLASS) | (1L << CLOSE) | (1L << COLLECTION) | (1L << CONST) | (1L << DATABASE) | (1L << DATE) | (1L << DECLARE) | (1L << DEFBOOL) | (1L << DEFBYTE) | (1L << DEFDATE) | (1L << DEFDBL) | (1L << DEFDEC) | (1L << DEFCUR) | (1L << DEFINT) | (1L << DEFLNG) | (1L << DEFOBJ) | (1L << DEFSNG) | (1L << DEFSTR) | (1L << DEFVAR) | (1L << DELETESETTING) | (1L << DIM) | (1L << DO) | (1L << DOUBLE) | (1L << EACH) | (1L << END) | (1L << ENUM))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (EQV - 64)) | (1L << (ERASE - 64)) | (1L << (ERROR - 64)) | (1L << (EVENT - 64)) | (1L << (FALSE - 64)) | (1L << (FILECOPY - 64)) | (1L << (FRIEND - 64)) | (1L << (FOR - 64)) | (1L << (FUNCTION - 64)) | (1L << (GET - 64)) | (1L << (GLOBAL - 64)) | (1L << (GOSUB - 64)) | (1L << (GOTO - 64)) | (1L << (IF - 64)) | (1L << (IMP - 64)) | (1L << (IMPLEMENTS - 64)) | (1L << (IN - 64)) | (1L << (INPUT - 64)) | (1L << (IS - 64)) | (1L << (INTEGER - 64)) | (1L << (KILL - 64)) | (1L << (LOAD - 64)) | (1L << (LOCK - 64)) | (1L << (LONG - 64)) | (1L << (LOOP - 64)) | (1L << (LEN - 64)) | (1L << (LET - 64)) | (1L << (LIB - 64)) | (1L << (LIKE - 64)) | (1L << (LSET - 64)) | (1L << (ME - 64)) | (1L << (MID - 64)) | (1L << (MKDIR - 64)) | (1L << (MOD - 64)) | (1L << (NAME - 64)) | (1L << (NEXT - 64)) | (1L << (NEW - 64)) | (1L << (NOT - 64)) | (1L << (NOTHING - 64)) | (1L << (NULL_ - 64)) | (1L << (ON - 64)) | (1L << (OPEN - 64)) | (1L << (OPTIONAL - 64)) | (1L << (OR - 64)))) != 0) || ((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & ((1L << (OUTPUT - 128)) | (1L << (PARAMARRAY - 128)) | (1L << (PRESERVE - 128)) | (1L << (PRINT - 128)) | (1L << (PRIVATE - 128)) | (1L << (PUBLIC - 128)) | (1L << (PUT - 128)) | (1L << (RANDOM - 128)) | (1L << (RANDOMIZE - 128)) | (1L << (RAISEEVENT - 128)) | (1L << (READ - 128)) | (1L << (REDIM - 128)) | (1L << (REM - 128)) | (1L << (RESET - 128)) | (1L << (RESUME - 128)) | (1L << (RETURN - 128)) | (1L << (RMDIR - 128)) | (1L << (RSET - 128)) | (1L << (SAVEPICTURE - 128)) | (1L << (SAVESETTING - 128)) | (1L << (SEEK - 128)) | (1L << (SELECT - 128)) | (1L << (SENDKEYS - 128)) | (1L << (SET - 128)) | (1L << (SETATTR - 128)) | (1L << (SHARED - 128)) | (1L << (SINGLE - 128)) | (1L << (SPC - 128)) | (1L << (STATIC - 128)) | (1L << (STEP - 128)) | (1L << (STOP - 128)) | (1L << (STRING - 128)) | (1L << (SUB - 128)) | (1L << (TAB - 128)) | (1L << (TEXT - 128)) | (1L << (THEN - 128)) | (1L << (TIME - 128)) | (1L << (TO - 128)) | (1L << (TRUE - 128)) | (1L << (TYPE - 128)) | (1L << (TYPEOF - 128)) | (1L << (UNLOAD - 128)) | (1L << (UNLOCK - 128)) | (1L << (UNTIL - 128)) | (1L << (VARIANT - 128)) | (1L << (VERSION - 128)) | (1L << (WEND - 128)) | (1L << (WHILE - 128)) | (1L << (WIDTH - 128)) | (1L << (WITH - 128)) | (1L << (WITHEVENTS - 128)) | (1L << (WRITE - 128)) | (1L << (XOR - 128)))) != 0) || _la==IDENTIFIER) {
+					{
+					setState(2571);
+					_errHandler.sync(this);
+					switch (_input.LA(1)) {
+					case ACCESS:
+					case ADDRESSOF:
+					case ALIAS:
+					case AND:
+					case ATTRIBUTE:
+					case APPACTIVATE:
+					case APPEND:
+					case AS:
+					case BEGIN:
+					case BEEP:
+					case BINARY:
+					case BOOLEAN:
+					case BYVAL:
+					case BYREF:
+					case BYTE:
+					case CALL:
+					case CASE:
+					case CHDIR:
+					case CHDRIVE:
+					case CLASS:
+					case CLOSE:
+					case COLLECTION:
+					case CONST:
+					case DATABASE:
+					case DATE:
+					case DECLARE:
+					case DEFBOOL:
+					case DEFBYTE:
+					case DEFDATE:
+					case DEFDBL:
+					case DEFDEC:
+					case DEFCUR:
+					case DEFINT:
+					case DEFLNG:
+					case DEFOBJ:
+					case DEFSNG:
+					case DEFSTR:
+					case DEFVAR:
+					case DELETESETTING:
+					case DIM:
+					case DO:
+					case DOUBLE:
+					case EACH:
+					case END:
+					case ENUM:
+					case EQV:
+					case ERASE:
+					case ERROR:
+					case EVENT:
+					case FALSE:
+					case FILECOPY:
+					case FRIEND:
+					case FOR:
+					case FUNCTION:
+					case GET:
+					case GLOBAL:
+					case GOSUB:
+					case GOTO:
+					case IF:
+					case IMP:
+					case IMPLEMENTS:
+					case IN:
+					case INPUT:
+					case IS:
+					case INTEGER:
+					case KILL:
+					case LOAD:
+					case LOCK:
+					case LONG:
+					case LOOP:
+					case LEN:
+					case LET:
+					case LIB:
+					case LIKE:
+					case LSET:
+					case ME:
+					case MID:
+					case MKDIR:
+					case MOD:
+					case NAME:
+					case NEXT:
+					case NEW:
+					case NOT:
+					case NOTHING:
+					case NULL_:
+					case ON:
+					case OPEN:
+					case OPTIONAL:
+					case OR:
+					case OUTPUT:
+					case PARAMARRAY:
+					case PRESERVE:
+					case PRINT:
+					case PRIVATE:
+					case PUBLIC:
+					case PUT:
+					case RANDOM:
+					case RANDOMIZE:
+					case RAISEEVENT:
+					case READ:
+					case REDIM:
+					case REM:
+					case RESET:
+					case RESUME:
+					case RETURN:
+					case RMDIR:
+					case RSET:
+					case SAVEPICTURE:
+					case SAVESETTING:
+					case SEEK:
+					case SELECT:
+					case SENDKEYS:
+					case SET:
+					case SETATTR:
+					case SHARED:
+					case SINGLE:
+					case SPC:
+					case STATIC:
+					case STEP:
+					case STOP:
+					case STRING:
+					case SUB:
+					case TAB:
+					case TEXT:
+					case THEN:
+					case TIME:
+					case TO:
+					case TRUE:
+					case TYPE:
+					case TYPEOF:
+					case UNLOAD:
+					case UNLOCK:
+					case UNTIL:
+					case VARIANT:
+					case VERSION:
+					case WEND:
+					case WHILE:
+					case WIDTH:
+					case WITH:
+					case WITHEVENTS:
+					case WRITE:
+					case XOR:
 						{
-						setState(2571);
-						_errHandler.sync(this);
-						switch (_input.LA(1)) {
-						case ACCESS:
-						case ADDRESSOF:
-						case ALIAS:
-						case AND:
-						case ATTRIBUTE:
-						case APPACTIVATE:
-						case APPEND:
-						case AS:
-						case BEGIN:
-						case BEEP:
-						case BINARY:
-						case BOOLEAN:
-						case BYVAL:
-						case BYREF:
-						case BYTE:
-						case CALL:
-						case CASE:
-						case CHDIR:
-						case CHDRIVE:
-						case CLASS:
-						case CLOSE:
-						case COLLECTION:
-						case CONST:
-						case DATABASE:
-						case DATE:
-						case DECLARE:
-						case DEFBOOL:
-						case DEFBYTE:
-						case DEFDATE:
-						case DEFDBL:
-						case DEFDEC:
-						case DEFCUR:
-						case DEFINT:
-						case DEFLNG:
-						case DEFOBJ:
-						case DEFSNG:
-						case DEFSTR:
-						case DEFVAR:
-						case DELETESETTING:
-						case DIM:
-						case DO:
-						case DOUBLE:
-						case EACH:
-						case END:
-						case ENUM:
-						case EQV:
-						case ERASE:
-						case ERROR:
-						case EVENT:
-						case FALSE:
-						case FILECOPY:
-						case FRIEND:
-						case FOR:
-						case FUNCTION:
-						case GET:
-						case GLOBAL:
-						case GOSUB:
-						case GOTO:
-						case IF:
-						case IMP:
-						case IMPLEMENTS:
-						case IN:
-						case INPUT:
-						case IS:
-						case INTEGER:
-						case KILL:
-						case LOAD:
-						case LOCK:
-						case LONG:
-						case LOOP:
-						case LEN:
-						case LET:
-						case LIB:
-						case LIKE:
-						case LSET:
-						case ME:
-						case MID:
-						case MKDIR:
-						case MOD:
-						case NAME:
-						case NEXT:
-						case NEW:
-						case NOT:
-						case NOTHING:
-						case NULL_:
-						case ON:
-						case OPEN:
-						case OPTIONAL:
-						case OR:
-						case OUTPUT:
-						case PARAMARRAY:
-						case PRESERVE:
-						case PRINT:
-						case PRIVATE:
-						case PUBLIC:
-						case PUT:
-						case RANDOM:
-						case RANDOMIZE:
-						case RAISEEVENT:
-						case READ:
-						case REDIM:
-						case REM:
-						case RESET:
-						case RESUME:
-						case RETURN:
-						case RMDIR:
-						case RSET:
-						case SAVEPICTURE:
-						case SAVESETTING:
-						case SEEK:
-						case SELECT:
-						case SENDKEYS:
-						case SET:
-						case SETATTR:
-						case SHARED:
-						case SINGLE:
-						case SPC:
-						case STATIC:
-						case STEP:
-						case STOP:
-						case STRING:
-						case SUB:
-						case TAB:
-						case TEXT:
-						case THEN:
-						case TIME:
-						case TO:
-						case TRUE:
-						case TYPE:
-						case TYPEOF:
-						case UNLOAD:
-						case UNLOCK:
-						case UNTIL:
-						case VARIANT:
-						case VERSION:
-						case WEND:
-						case WHILE:
-						case WIDTH:
-						case WITH:
-						case WITHEVENTS:
-						case WRITE:
-						case XOR:
-							{
-							setState(2569);
-							ambiguousKeyword();
-							}
-							break;
-						case IDENTIFIER:
-							{
-							setState(2570);
-							match(IDENTIFIER);
-							}
-							break;
-						default:
-							throw new NoViableAltException(this);
+						setState(2569);
+						ambiguousKeyword();
 						}
-						} 
+						break;
+					case IDENTIFIER:
+						{
+						setState(2570);
+						match(IDENTIFIER);
+						}
+						break;
+					default:
+						throw new NoViableAltException(this);
+					}
 					}
 					setState(2575);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,430,_ctx);
+					_la = _input.LA(1);
 				}
 				}
 				break;
@@ -16291,179 +16289,173 @@ public class VisualBasic6Parser extends Parser {
 				ambiguousKeyword();
 				setState(2579); 
 				_errHandler.sync(this);
-				_alt = 1;
+				_la = _input.LA(1);
 				do {
-					switch (_alt) {
-					case 1:
+					{
+					setState(2579);
+					_errHandler.sync(this);
+					switch (_input.LA(1)) {
+					case ACCESS:
+					case ADDRESSOF:
+					case ALIAS:
+					case AND:
+					case ATTRIBUTE:
+					case APPACTIVATE:
+					case APPEND:
+					case AS:
+					case BEGIN:
+					case BEEP:
+					case BINARY:
+					case BOOLEAN:
+					case BYVAL:
+					case BYREF:
+					case BYTE:
+					case CALL:
+					case CASE:
+					case CHDIR:
+					case CHDRIVE:
+					case CLASS:
+					case CLOSE:
+					case COLLECTION:
+					case CONST:
+					case DATABASE:
+					case DATE:
+					case DECLARE:
+					case DEFBOOL:
+					case DEFBYTE:
+					case DEFDATE:
+					case DEFDBL:
+					case DEFDEC:
+					case DEFCUR:
+					case DEFINT:
+					case DEFLNG:
+					case DEFOBJ:
+					case DEFSNG:
+					case DEFSTR:
+					case DEFVAR:
+					case DELETESETTING:
+					case DIM:
+					case DO:
+					case DOUBLE:
+					case EACH:
+					case END:
+					case ENUM:
+					case EQV:
+					case ERASE:
+					case ERROR:
+					case EVENT:
+					case FALSE:
+					case FILECOPY:
+					case FRIEND:
+					case FOR:
+					case FUNCTION:
+					case GET:
+					case GLOBAL:
+					case GOSUB:
+					case GOTO:
+					case IF:
+					case IMP:
+					case IMPLEMENTS:
+					case IN:
+					case INPUT:
+					case IS:
+					case INTEGER:
+					case KILL:
+					case LOAD:
+					case LOCK:
+					case LONG:
+					case LOOP:
+					case LEN:
+					case LET:
+					case LIB:
+					case LIKE:
+					case LSET:
+					case ME:
+					case MID:
+					case MKDIR:
+					case MOD:
+					case NAME:
+					case NEXT:
+					case NEW:
+					case NOT:
+					case NOTHING:
+					case NULL_:
+					case ON:
+					case OPEN:
+					case OPTIONAL:
+					case OR:
+					case OUTPUT:
+					case PARAMARRAY:
+					case PRESERVE:
+					case PRINT:
+					case PRIVATE:
+					case PUBLIC:
+					case PUT:
+					case RANDOM:
+					case RANDOMIZE:
+					case RAISEEVENT:
+					case READ:
+					case REDIM:
+					case REM:
+					case RESET:
+					case RESUME:
+					case RETURN:
+					case RMDIR:
+					case RSET:
+					case SAVEPICTURE:
+					case SAVESETTING:
+					case SEEK:
+					case SELECT:
+					case SENDKEYS:
+					case SET:
+					case SETATTR:
+					case SHARED:
+					case SINGLE:
+					case SPC:
+					case STATIC:
+					case STEP:
+					case STOP:
+					case STRING:
+					case SUB:
+					case TAB:
+					case TEXT:
+					case THEN:
+					case TIME:
+					case TO:
+					case TRUE:
+					case TYPE:
+					case TYPEOF:
+					case UNLOAD:
+					case UNLOCK:
+					case UNTIL:
+					case VARIANT:
+					case VERSION:
+					case WEND:
+					case WHILE:
+					case WIDTH:
+					case WITH:
+					case WITHEVENTS:
+					case WRITE:
+					case XOR:
 						{
-						setState(2579);
-						_errHandler.sync(this);
-						switch (_input.LA(1)) {
-						case ACCESS:
-						case ADDRESSOF:
-						case ALIAS:
-						case AND:
-						case ATTRIBUTE:
-						case APPACTIVATE:
-						case APPEND:
-						case AS:
-						case BEGIN:
-						case BEEP:
-						case BINARY:
-						case BOOLEAN:
-						case BYVAL:
-						case BYREF:
-						case BYTE:
-						case CALL:
-						case CASE:
-						case CHDIR:
-						case CHDRIVE:
-						case CLASS:
-						case CLOSE:
-						case COLLECTION:
-						case CONST:
-						case DATABASE:
-						case DATE:
-						case DECLARE:
-						case DEFBOOL:
-						case DEFBYTE:
-						case DEFDATE:
-						case DEFDBL:
-						case DEFDEC:
-						case DEFCUR:
-						case DEFINT:
-						case DEFLNG:
-						case DEFOBJ:
-						case DEFSNG:
-						case DEFSTR:
-						case DEFVAR:
-						case DELETESETTING:
-						case DIM:
-						case DO:
-						case DOUBLE:
-						case EACH:
-						case END:
-						case ENUM:
-						case EQV:
-						case ERASE:
-						case ERROR:
-						case EVENT:
-						case FALSE:
-						case FILECOPY:
-						case FRIEND:
-						case FOR:
-						case FUNCTION:
-						case GET:
-						case GLOBAL:
-						case GOSUB:
-						case GOTO:
-						case IF:
-						case IMP:
-						case IMPLEMENTS:
-						case IN:
-						case INPUT:
-						case IS:
-						case INTEGER:
-						case KILL:
-						case LOAD:
-						case LOCK:
-						case LONG:
-						case LOOP:
-						case LEN:
-						case LET:
-						case LIB:
-						case LIKE:
-						case LSET:
-						case ME:
-						case MID:
-						case MKDIR:
-						case MOD:
-						case NAME:
-						case NEXT:
-						case NEW:
-						case NOT:
-						case NOTHING:
-						case NULL_:
-						case ON:
-						case OPEN:
-						case OPTIONAL:
-						case OR:
-						case OUTPUT:
-						case PARAMARRAY:
-						case PRESERVE:
-						case PRINT:
-						case PRIVATE:
-						case PUBLIC:
-						case PUT:
-						case RANDOM:
-						case RANDOMIZE:
-						case RAISEEVENT:
-						case READ:
-						case REDIM:
-						case REM:
-						case RESET:
-						case RESUME:
-						case RETURN:
-						case RMDIR:
-						case RSET:
-						case SAVEPICTURE:
-						case SAVESETTING:
-						case SEEK:
-						case SELECT:
-						case SENDKEYS:
-						case SET:
-						case SETATTR:
-						case SHARED:
-						case SINGLE:
-						case SPC:
-						case STATIC:
-						case STEP:
-						case STOP:
-						case STRING:
-						case SUB:
-						case TAB:
-						case TEXT:
-						case THEN:
-						case TIME:
-						case TO:
-						case TRUE:
-						case TYPE:
-						case TYPEOF:
-						case UNLOAD:
-						case UNLOCK:
-						case UNTIL:
-						case VARIANT:
-						case VERSION:
-						case WEND:
-						case WHILE:
-						case WIDTH:
-						case WITH:
-						case WITHEVENTS:
-						case WRITE:
-						case XOR:
-							{
-							setState(2577);
-							ambiguousKeyword();
-							}
-							break;
-						case IDENTIFIER:
-							{
-							setState(2578);
-							match(IDENTIFIER);
-							}
-							break;
-						default:
-							throw new NoViableAltException(this);
+						setState(2577);
+						ambiguousKeyword();
 						}
+						break;
+					case IDENTIFIER:
+						{
+						setState(2578);
+						match(IDENTIFIER);
 						}
 						break;
 					default:
 						throw new NoViableAltException(this);
 					}
+					}
 					setState(2581); 
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,432,_ctx);
-				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+					_la = _input.LA(1);
+				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ACCESS) | (1L << ADDRESSOF) | (1L << ALIAS) | (1L << AND) | (1L << ATTRIBUTE) | (1L << APPACTIVATE) | (1L << APPEND) | (1L << AS) | (1L << BEGIN) | (1L << BEEP) | (1L << BINARY) | (1L << BOOLEAN) | (1L << BYVAL) | (1L << BYREF) | (1L << BYTE) | (1L << CALL) | (1L << CASE) | (1L << CHDIR) | (1L << CHDRIVE) | (1L << CLASS) | (1L << CLOSE) | (1L << COLLECTION) | (1L << CONST) | (1L << DATABASE) | (1L << DATE) | (1L << DECLARE) | (1L << DEFBOOL) | (1L << DEFBYTE) | (1L << DEFDATE) | (1L << DEFDBL) | (1L << DEFDEC) | (1L << DEFCUR) | (1L << DEFINT) | (1L << DEFLNG) | (1L << DEFOBJ) | (1L << DEFSNG) | (1L << DEFSTR) | (1L << DEFVAR) | (1L << DELETESETTING) | (1L << DIM) | (1L << DO) | (1L << DOUBLE) | (1L << EACH) | (1L << END) | (1L << ENUM))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (EQV - 64)) | (1L << (ERASE - 64)) | (1L << (ERROR - 64)) | (1L << (EVENT - 64)) | (1L << (FALSE - 64)) | (1L << (FILECOPY - 64)) | (1L << (FRIEND - 64)) | (1L << (FOR - 64)) | (1L << (FUNCTION - 64)) | (1L << (GET - 64)) | (1L << (GLOBAL - 64)) | (1L << (GOSUB - 64)) | (1L << (GOTO - 64)) | (1L << (IF - 64)) | (1L << (IMP - 64)) | (1L << (IMPLEMENTS - 64)) | (1L << (IN - 64)) | (1L << (INPUT - 64)) | (1L << (IS - 64)) | (1L << (INTEGER - 64)) | (1L << (KILL - 64)) | (1L << (LOAD - 64)) | (1L << (LOCK - 64)) | (1L << (LONG - 64)) | (1L << (LOOP - 64)) | (1L << (LEN - 64)) | (1L << (LET - 64)) | (1L << (LIB - 64)) | (1L << (LIKE - 64)) | (1L << (LSET - 64)) | (1L << (ME - 64)) | (1L << (MID - 64)) | (1L << (MKDIR - 64)) | (1L << (MOD - 64)) | (1L << (NAME - 64)) | (1L << (NEXT - 64)) | (1L << (NEW - 64)) | (1L << (NOT - 64)) | (1L << (NOTHING - 64)) | (1L << (NULL_ - 64)) | (1L << (ON - 64)) | (1L << (OPEN - 64)) | (1L << (OPTIONAL - 64)) | (1L << (OR - 64)))) != 0) || ((((_la - 128)) & ~0x3f) == 0 && ((1L << (_la - 128)) & ((1L << (OUTPUT - 128)) | (1L << (PARAMARRAY - 128)) | (1L << (PRESERVE - 128)) | (1L << (PRINT - 128)) | (1L << (PRIVATE - 128)) | (1L << (PUBLIC - 128)) | (1L << (PUT - 128)) | (1L << (RANDOM - 128)) | (1L << (RANDOMIZE - 128)) | (1L << (RAISEEVENT - 128)) | (1L << (READ - 128)) | (1L << (REDIM - 128)) | (1L << (REM - 128)) | (1L << (RESET - 128)) | (1L << (RESUME - 128)) | (1L << (RETURN - 128)) | (1L << (RMDIR - 128)) | (1L << (RSET - 128)) | (1L << (SAVEPICTURE - 128)) | (1L << (SAVESETTING - 128)) | (1L << (SEEK - 128)) | (1L << (SELECT - 128)) | (1L << (SENDKEYS - 128)) | (1L << (SET - 128)) | (1L << (SETATTR - 128)) | (1L << (SHARED - 128)) | (1L << (SINGLE - 128)) | (1L << (SPC - 128)) | (1L << (STATIC - 128)) | (1L << (STEP - 128)) | (1L << (STOP - 128)) | (1L << (STRING - 128)) | (1L << (SUB - 128)) | (1L << (TAB - 128)) | (1L << (TEXT - 128)) | (1L << (THEN - 128)) | (1L << (TIME - 128)) | (1L << (TO - 128)) | (1L << (TRUE - 128)) | (1L << (TYPE - 128)) | (1L << (TYPEOF - 128)) | (1L << (UNLOAD - 128)) | (1L << (UNLOCK - 128)) | (1L << (UNTIL - 128)) | (1L << (VARIANT - 128)) | (1L << (VERSION - 128)) | (1L << (WEND - 128)) | (1L << (WHILE - 128)) | (1L << (WIDTH - 128)) | (1L << (WITH - 128)) | (1L << (WITHEVENTS - 128)) | (1L << (WRITE - 128)) | (1L << (XOR - 128)))) != 0) || _la==IDENTIFIER );
 				}
 				break;
 			default:
@@ -17643,11 +17635,12 @@ public class VisualBasic6Parser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(2664);
+			setState(2662); 
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,450,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-				if ( _alt==1 ) {
+			_alt = 1;
+			do {
+				switch (_alt) {
+				case 1:
 					{
 					setState(2662);
 					_errHandler.sync(this);
@@ -17685,12 +17678,15 @@ public class VisualBasic6Parser extends Parser {
 						}
 						break;
 					}
-					} 
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
-				setState(2666);
+				setState(2664); 
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,450,_ctx);
-			}
+			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
 			}
 		}
 		catch (RecognitionException re) {
@@ -17759,7 +17755,7 @@ public class VisualBasic6Parser extends Parser {
 
 	private static final int _serializedATNSegments = 2;
 	private static final String _serializedATNSegment0 =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\u00df\u0a6e\4\2\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\u00df\u0a6d\4\2\t"+
 		"\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -17958,79 +17954,79 @@ public class VisualBasic6Parser extends Parser {
 		"\3\u0096\3\u0096\3\u0097\3\u0097\3\u0098\5\u0098\u0a57\n\u0098\3\u0098"+
 		"\3\u0098\3\u0098\5\u0098\u0a5c\n\u0098\3\u0098\5\u0098\u0a5f\n\u0098\3"+
 		"\u0099\3\u0099\5\u0099\u0a63\n\u0099\3\u0099\3\u0099\5\u0099\u0a67\n\u0099"+
-		"\7\u0099\u0a69\n\u0099\f\u0099\16\u0099\u0a6c\13\u0099\3\u0099\3\u033c"+
-		"\3\u00d2\u009a\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64"+
-		"\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088"+
-		"\u008a\u008c\u008e\u0090\u0092\u0094\u0096\u0098\u009a\u009c\u009e\u00a0"+
-		"\u00a2\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0\u00b2\u00b4\u00b6\u00b8"+
-		"\u00ba\u00bc\u00be\u00c0\u00c2\u00c4\u00c6\u00c8\u00ca\u00cc\u00ce\u00d0"+
-		"\u00d2\u00d4\u00d6\u00d8\u00da\u00dc\u00de\u00e0\u00e2\u00e4\u00e6\u00e8"+
-		"\u00ea\u00ec\u00ee\u00f0\u00f2\u00f4\u00f6\u00f8\u00fa\u00fc\u00fe\u0100"+
-		"\u0102\u0104\u0106\u0108\u010a\u010c\u010e\u0110\u0112\u0114\u0116\u0118"+
-		"\u011a\u011c\u011e\u0120\u0122\u0124\u0126\u0128\u012a\u012c\u012e\u0130"+
-		"\2\26\5\2\25\25\"\"\u00a9\u00a9\3\2%\60\4\2\u00b2\u00b2\u00b6\u00b6\3"+
-		"\2FJ\5\2\u00bf\u00bf\u00c6\u00c6\u00ca\u00ca\3\2yz\7\2\21\21\25\25XX\u0082"+
-		"\u0082\u008d\u008d\4\2\u0090\u0091\u00ba\u00ba\4\2eg\u00a0\u00a0\3\2\3"+
-		"\4\4\2\u00a2\u00a2\u00a8\u00a8\4\2\62\62\u00a3\u00a3\3\2\6\7\4\2\27\30"+
-		"\u0083\u0083\3\2\27\30\7\2YYcc\u00bf\u00c2\u00c4\u00c4\u00c8\u00c8\6\2"+
-		"KKvw\u00ad\u00ad\u00cf\u00d5\5\2\5\5\7\n\u00bc\u00bc\6\2MMQQ\u0086\u0086"+
-		"\u008b\u008b\13\2\13\65@EKchhnx{|\u0081\u0086\u008b\u0090\u0092\u00bb"+
-		"\2\u0c14\2\u0132\3\2\2\2\4\u0136\3\2\2\2\6\u016e\3\2\2\2\b\u0174\3\2\2"+
-		"\2\n\u0182\3\2\2\2\f\u0197\3\2\2\2\16\u019b\3\2\2\2\20\u01b6\3\2\2\2\22"+
-		"\u01c2\3\2\2\2\24\u01c6\3\2\2\2\26\u01c8\3\2\2\2\30\u01e1\3\2\2\2\32\u01e3"+
-		"\3\2\2\2\34\u01fb\3\2\2\2\36\u024a\3\2\2\2 \u024c\3\2\2\2\"\u0259\3\2"+
-		"\2\2$\u025b\3\2\2\2&\u025f\3\2\2\2(\u0263\3\2\2\2*\u0278\3\2\2\2,\u028a"+
-		"\3\2\2\2.\u029b\3\2\2\2\60\u02a8\3\2\2\2\62\u02d0\3\2\2\2\64\u02e0\3\2"+
-		"\2\2\66\u0310\3\2\2\28\u0312\3\2\2\2:\u0317\3\2\2\2<\u0325\3\2\2\2>\u0332"+
-		"\3\2\2\2@\u033f\3\2\2\2B\u0346\3\2\2\2D\u0350\3\2\2\2F\u0352\3\2\2\2H"+
-		"\u035e\3\2\2\2J\u0373\3\2\2\2L\u039b\3\2\2\2N\u03bb\3\2\2\2P\u03d1\3\2"+
-		"\2\2R\u03d5\3\2\2\2T\u03db\3\2\2\2V\u03dd\3\2\2\2X\u03ea\3\2\2\2Z\u03ec"+
-		"\3\2\2\2\\\u03ee\3\2\2\2^\u03fa\3\2\2\2`\u0403\3\2\2\2b\u0405\3\2\2\2"+
-		"d\u040e\3\2\2\2f\u0413\3\2\2\2h\u0417\3\2\2\2j\u0426\3\2\2\2l\u042c\3"+
-		"\2\2\2n\u0438\3\2\2\2p\u0444\3\2\2\2r\u0448\3\2\2\2t\u045b\3\2\2\2v\u0467"+
-		"\3\2\2\2x\u0475\3\2\2\2z\u0481\3\2\2\2|\u0491\3\2\2\2~\u04a1\3\2\2\2\u0080"+
-		"\u04ab\3\2\2\2\u0082\u04b9\3\2\2\2\u0084\u04bd\3\2\2\2\u0086\u04c5\3\2"+
-		"\2\2\u0088\u04cf\3\2\2\2\u008a\u04e3\3\2\2\2\u008c\u04f7\3\2\2\2\u008e"+
-		"\u0539\3\2\2\2\u0090\u054c\3\2\2\2\u0092\u054e\3\2\2\2\u0094\u055e\3\2"+
-		"\2\2\u0096\u057d\3\2\2\2\u0098\u0595\3\2\2\2\u009a\u05aa\3\2\2\2\u009c"+
-		"\u05c0\3\2\2\2\u009e\u05d3\3\2\2\2\u00a0\u05d8\3\2\2\2\u00a2\u05ec\3\2"+
-		"\2\2\u00a4\u05fd\3\2\2\2\u00a6\u05ff\3\2\2\2\u00a8\u0607\3\2\2\2\u00aa"+
-		"\u0609\3\2\2\2\u00ac\u060d\3\2\2\2\u00ae\u0619\3\2\2\2\u00b0\u0625\3\2"+
-		"\2\2\u00b2\u0641\3\2\2\2\u00b4\u064d\3\2\2\2\u00b6\u066c\3\2\2\2\u00b8"+
-		"\u066e\3\2\2\2\u00ba\u0684\3\2\2\2\u00bc\u0686\3\2\2\2\u00be\u0693\3\2"+
-		"\2\2\u00c0\u069f\3\2\2\2\u00c2\u06ab\3\2\2\2\u00c4\u06b0\3\2\2\2\u00c6"+
-		"\u06c7\3\2\2\2\u00c8\u06d4\3\2\2\2\u00ca\u06e2\3\2\2\2\u00cc\u06f9\3\2"+
-		"\2\2\u00ce\u0702\3\2\2\2\u00d0\u0706\3\2\2\2\u00d2\u0755\3\2\2\2\u00d4"+
-		"\u0810\3\2\2\2\u00d6\u0816\3\2\2\2\u00d8\u081f\3\2\2\2\u00da\u082d\3\2"+
-		"\2\2\u00dc\u0848\3\2\2\2\u00de\u0851\3\2\2\2\u00e0\u085d\3\2\2\2\u00e2"+
-		"\u086b\3\2\2\2\u00e4\u0879\3\2\2\2\u00e6\u087f\3\2\2\2\u00e8\u0881\3\2"+
-		"\2\2\u00ea\u08a2\3\2\2\2\u00ec\u08c9\3\2\2\2\u00ee\u08cc\3\2\2\2\u00f0"+
-		"\u08e6\3\2\2\2\u00f2\u08fb\3\2\2\2\u00f4\u08fd\3\2\2\2\u00f6\u0912\3\2"+
-		"\2\2\u00f8\u0936\3\2\2\2\u00fa\u094c\3\2\2\2\u00fc\u0951\3\2\2\2\u00fe"+
-		"\u095f\3\2\2\2\u0100\u0973\3\2\2\2\u0102\u097e\3\2\2\2\u0104\u0983\3\2"+
-		"\2\2\u0106\u099e\3\2\2\2\u0108\u09c2\3\2\2\2\u010a\u09c8\3\2\2\2\u010c"+
-		"\u09db\3\2\2\2\u010e\u09e1\3\2\2\2\u0110\u09e5\3\2\2\2\u0112\u0a08\3\2"+
-		"\2\2\u0114\u0a19\3\2\2\2\u0116\u0a1b\3\2\2\2\u0118\u0a1d\3\2\2\2\u011a"+
-		"\u0a25\3\2\2\2\u011c\u0a2d\3\2\2\2\u011e\u0a38\3\2\2\2\u0120\u0a3b\3\2"+
-		"\2\2\u0122\u0a3f\3\2\2\2\u0124\u0a4b\3\2\2\2\u0126\u0a4d\3\2\2\2\u0128"+
-		"\u0a4f\3\2\2\2\u012a\u0a51\3\2\2\2\u012c\u0a53\3\2\2\2\u012e\u0a56\3\2"+
-		"\2\2\u0130\u0a6a\3\2\2\2\u0132\u0133\5\4\3\2\u0133\u0134\7\2\2\3\u0134"+
-		"\3\3\2\2\2\u0135\u0137\7\u00dd\2\2\u0136\u0135\3\2\2\2\u0136\u0137\3\2"+
-		"\2\2\u0137\u013b\3\2\2\2\u0138\u013a\5\u012e\u0098\2\u0139\u0138\3\2\2"+
-		"\2\u013a\u013d\3\2\2\2\u013b\u0139\3\2\2\2\u013b\u013c\3\2\2\2\u013c\u0145"+
-		"\3\2\2\2\u013d\u013b\3\2\2\2\u013e\u0142\5\6\4\2\u013f\u0141\5\u012e\u0098"+
-		"\2\u0140\u013f\3\2\2\2\u0141\u0144\3\2\2\2\u0142\u0140\3\2\2\2\u0142\u0143"+
-		"\3\2\2\2\u0143\u0146\3\2\2\2\u0144\u0142\3\2\2\2\u0145\u013e\3\2\2\2\u0145"+
-		"\u0146\3\2\2\2\u0146\u0148\3\2\2\2\u0147\u0149\5\b\5\2\u0148\u0147\3\2"+
-		"\2\2\u0148\u0149\3\2\2\2\u0149\u014d\3\2\2\2\u014a\u014c\5\u012e\u0098"+
-		"\2\u014b\u014a\3\2\2\2\u014c\u014f\3\2\2\2\u014d\u014b\3\2\2\2\u014d\u014e"+
-		"\3\2\2\2\u014e\u0151\3\2\2\2\u014f\u014d\3\2\2\2\u0150\u0152\5\f\7\2\u0151"+
-		"\u0150\3\2\2\2\u0151\u0152\3\2\2\2\u0152\u0156\3\2\2\2\u0153\u0155\5\u012e"+
-		"\u0098\2\u0154\u0153\3\2\2\2\u0155\u0158\3\2\2\2\u0156\u0154\3\2\2\2\u0156"+
-		"\u0157\3\2\2\2\u0157\u015a\3\2\2\2\u0158\u0156\3\2\2\2\u0159\u015b\5\16"+
-		"\b\2\u015a\u0159\3\2\2\2\u015a\u015b\3\2\2\2\u015b\u015f\3\2\2\2\u015c"+
-		"\u015e\5\u012e\u0098\2\u015d\u015c\3\2\2\2\u015e\u0161\3\2\2\2\u015f\u015d"+
-		"\3\2\2\2\u015f\u0160\3\2\2\2\u0160\u0163\3\2\2\2\u0161\u015f\3\2\2\2\u0162"+
+		"\6\u0099\u0a69\n\u0099\r\u0099\16\u0099\u0a6a\3\u0099\3\u033c\3\u00d2"+
+		"\u009a\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<"+
+		">@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084\u0086\u0088\u008a"+
+		"\u008c\u008e\u0090\u0092\u0094\u0096\u0098\u009a\u009c\u009e\u00a0\u00a2"+
+		"\u00a4\u00a6\u00a8\u00aa\u00ac\u00ae\u00b0\u00b2\u00b4\u00b6\u00b8\u00ba"+
+		"\u00bc\u00be\u00c0\u00c2\u00c4\u00c6\u00c8\u00ca\u00cc\u00ce\u00d0\u00d2"+
+		"\u00d4\u00d6\u00d8\u00da\u00dc\u00de\u00e0\u00e2\u00e4\u00e6\u00e8\u00ea"+
+		"\u00ec\u00ee\u00f0\u00f2\u00f4\u00f6\u00f8\u00fa\u00fc\u00fe\u0100\u0102"+
+		"\u0104\u0106\u0108\u010a\u010c\u010e\u0110\u0112\u0114\u0116\u0118\u011a"+
+		"\u011c\u011e\u0120\u0122\u0124\u0126\u0128\u012a\u012c\u012e\u0130\2\26"+
+		"\5\2\25\25\"\"\u00a9\u00a9\3\2%\60\4\2\u00b2\u00b2\u00b6\u00b6\3\2FJ\5"+
+		"\2\u00bf\u00bf\u00c6\u00c6\u00ca\u00ca\3\2yz\7\2\21\21\25\25XX\u0082\u0082"+
+		"\u008d\u008d\4\2\u0090\u0091\u00ba\u00ba\4\2eg\u00a0\u00a0\3\2\3\4\4\2"+
+		"\u00a2\u00a2\u00a8\u00a8\4\2\62\62\u00a3\u00a3\3\2\6\7\4\2\27\30\u0083"+
+		"\u0083\3\2\27\30\7\2YYcc\u00bf\u00c2\u00c4\u00c4\u00c8\u00c8\6\2KKvw\u00ad"+
+		"\u00ad\u00cf\u00d5\5\2\5\5\7\n\u00bc\u00bc\6\2MMQQ\u0086\u0086\u008b\u008b"+
+		"\13\2\13\65@EKchhnx{|\u0081\u0086\u008b\u0090\u0092\u00bb\2\u0c13\2\u0132"+
+		"\3\2\2\2\4\u0136\3\2\2\2\6\u016e\3\2\2\2\b\u0174\3\2\2\2\n\u0182\3\2\2"+
+		"\2\f\u0197\3\2\2\2\16\u019b\3\2\2\2\20\u01b6\3\2\2\2\22\u01c2\3\2\2\2"+
+		"\24\u01c6\3\2\2\2\26\u01c8\3\2\2\2\30\u01e1\3\2\2\2\32\u01e3\3\2\2\2\34"+
+		"\u01fb\3\2\2\2\36\u024a\3\2\2\2 \u024c\3\2\2\2\"\u0259\3\2\2\2$\u025b"+
+		"\3\2\2\2&\u025f\3\2\2\2(\u0263\3\2\2\2*\u0278\3\2\2\2,\u028a\3\2\2\2."+
+		"\u029b\3\2\2\2\60\u02a8\3\2\2\2\62\u02d0\3\2\2\2\64\u02e0\3\2\2\2\66\u0310"+
+		"\3\2\2\28\u0312\3\2\2\2:\u0317\3\2\2\2<\u0325\3\2\2\2>\u0332\3\2\2\2@"+
+		"\u033f\3\2\2\2B\u0346\3\2\2\2D\u0350\3\2\2\2F\u0352\3\2\2\2H\u035e\3\2"+
+		"\2\2J\u0373\3\2\2\2L\u039b\3\2\2\2N\u03bb\3\2\2\2P\u03d1\3\2\2\2R\u03d5"+
+		"\3\2\2\2T\u03db\3\2\2\2V\u03dd\3\2\2\2X\u03ea\3\2\2\2Z\u03ec\3\2\2\2\\"+
+		"\u03ee\3\2\2\2^\u03fa\3\2\2\2`\u0403\3\2\2\2b\u0405\3\2\2\2d\u040e\3\2"+
+		"\2\2f\u0413\3\2\2\2h\u0417\3\2\2\2j\u0426\3\2\2\2l\u042c\3\2\2\2n\u0438"+
+		"\3\2\2\2p\u0444\3\2\2\2r\u0448\3\2\2\2t\u045b\3\2\2\2v\u0467\3\2\2\2x"+
+		"\u0475\3\2\2\2z\u0481\3\2\2\2|\u0491\3\2\2\2~\u04a1\3\2\2\2\u0080\u04ab"+
+		"\3\2\2\2\u0082\u04b9\3\2\2\2\u0084\u04bd\3\2\2\2\u0086\u04c5\3\2\2\2\u0088"+
+		"\u04cf\3\2\2\2\u008a\u04e3\3\2\2\2\u008c\u04f7\3\2\2\2\u008e\u0539\3\2"+
+		"\2\2\u0090\u054c\3\2\2\2\u0092\u054e\3\2\2\2\u0094\u055e\3\2\2\2\u0096"+
+		"\u057d\3\2\2\2\u0098\u0595\3\2\2\2\u009a\u05aa\3\2\2\2\u009c\u05c0\3\2"+
+		"\2\2\u009e\u05d3\3\2\2\2\u00a0\u05d8\3\2\2\2\u00a2\u05ec\3\2\2\2\u00a4"+
+		"\u05fd\3\2\2\2\u00a6\u05ff\3\2\2\2\u00a8\u0607\3\2\2\2\u00aa\u0609\3\2"+
+		"\2\2\u00ac\u060d\3\2\2\2\u00ae\u0619\3\2\2\2\u00b0\u0625\3\2\2\2\u00b2"+
+		"\u0641\3\2\2\2\u00b4\u064d\3\2\2\2\u00b6\u066c\3\2\2\2\u00b8\u066e\3\2"+
+		"\2\2\u00ba\u0684\3\2\2\2\u00bc\u0686\3\2\2\2\u00be\u0693\3\2\2\2\u00c0"+
+		"\u069f\3\2\2\2\u00c2\u06ab\3\2\2\2\u00c4\u06b0\3\2\2\2\u00c6\u06c7\3\2"+
+		"\2\2\u00c8\u06d4\3\2\2\2\u00ca\u06e2\3\2\2\2\u00cc\u06f9\3\2\2\2\u00ce"+
+		"\u0702\3\2\2\2\u00d0\u0706\3\2\2\2\u00d2\u0755\3\2\2\2\u00d4\u0810\3\2"+
+		"\2\2\u00d6\u0816\3\2\2\2\u00d8\u081f\3\2\2\2\u00da\u082d\3\2\2\2\u00dc"+
+		"\u0848\3\2\2\2\u00de\u0851\3\2\2\2\u00e0\u085d\3\2\2\2\u00e2\u086b\3\2"+
+		"\2\2\u00e4\u0879\3\2\2\2\u00e6\u087f\3\2\2\2\u00e8\u0881\3\2\2\2\u00ea"+
+		"\u08a2\3\2\2\2\u00ec\u08c9\3\2\2\2\u00ee\u08cc\3\2\2\2\u00f0\u08e6\3\2"+
+		"\2\2\u00f2\u08fb\3\2\2\2\u00f4\u08fd\3\2\2\2\u00f6\u0912\3\2\2\2\u00f8"+
+		"\u0936\3\2\2\2\u00fa\u094c\3\2\2\2\u00fc\u0951\3\2\2\2\u00fe\u095f\3\2"+
+		"\2\2\u0100\u0973\3\2\2\2\u0102\u097e\3\2\2\2\u0104\u0983\3\2\2\2\u0106"+
+		"\u099e\3\2\2\2\u0108\u09c2\3\2\2\2\u010a\u09c8\3\2\2\2\u010c\u09db\3\2"+
+		"\2\2\u010e\u09e1\3\2\2\2\u0110\u09e5\3\2\2\2\u0112\u0a08\3\2\2\2\u0114"+
+		"\u0a19\3\2\2\2\u0116\u0a1b\3\2\2\2\u0118\u0a1d\3\2\2\2\u011a\u0a25\3\2"+
+		"\2\2\u011c\u0a2d\3\2\2\2\u011e\u0a38\3\2\2\2\u0120\u0a3b\3\2\2\2\u0122"+
+		"\u0a3f\3\2\2\2\u0124\u0a4b\3\2\2\2\u0126\u0a4d\3\2\2\2\u0128\u0a4f\3\2"+
+		"\2\2\u012a\u0a51\3\2\2\2\u012c\u0a53\3\2\2\2\u012e\u0a56\3\2\2\2\u0130"+
+		"\u0a68\3\2\2\2\u0132\u0133\5\4\3\2\u0133\u0134\7\2\2\3\u0134\3\3\2\2\2"+
+		"\u0135\u0137\7\u00dd\2\2\u0136\u0135\3\2\2\2\u0136\u0137\3\2\2\2\u0137"+
+		"\u013b\3\2\2\2\u0138\u013a\5\u012e\u0098\2\u0139\u0138\3\2\2\2\u013a\u013d"+
+		"\3\2\2\2\u013b\u0139\3\2\2\2\u013b\u013c\3\2\2\2\u013c\u0145\3\2\2\2\u013d"+
+		"\u013b\3\2\2\2\u013e\u0142\5\6\4\2\u013f\u0141\5\u012e\u0098\2\u0140\u013f"+
+		"\3\2\2\2\u0141\u0144\3\2\2\2\u0142\u0140\3\2\2\2\u0142\u0143\3\2\2\2\u0143"+
+		"\u0146\3\2\2\2\u0144\u0142\3\2\2\2\u0145\u013e\3\2\2\2\u0145\u0146\3\2"+
+		"\2\2\u0146\u0148\3\2\2\2\u0147\u0149\5\b\5\2\u0148\u0147\3\2\2\2\u0148"+
+		"\u0149\3\2\2\2\u0149\u014d\3\2\2\2\u014a\u014c\5\u012e\u0098\2\u014b\u014a"+
+		"\3\2\2\2\u014c\u014f\3\2\2\2\u014d\u014b\3\2\2\2\u014d\u014e\3\2\2\2\u014e"+
+		"\u0151\3\2\2\2\u014f\u014d\3\2\2\2\u0150\u0152\5\f\7\2\u0151\u0150\3\2"+
+		"\2\2\u0151\u0152\3\2\2\2\u0152\u0156\3\2\2\2\u0153\u0155\5\u012e\u0098"+
+		"\2\u0154\u0153\3\2\2\2\u0155\u0158\3\2\2\2\u0156\u0154\3\2\2\2\u0156\u0157"+
+		"\3\2\2\2\u0157\u015a\3\2\2\2\u0158\u0156\3\2\2\2\u0159\u015b\5\16\b\2"+
+		"\u015a\u0159\3\2\2\2\u015a\u015b\3\2\2\2\u015b\u015f\3\2\2\2\u015c\u015e"+
+		"\5\u012e\u0098\2\u015d\u015c\3\2\2\2\u015e\u0161\3\2\2\2\u015f\u015d\3"+
+		"\2\2\2\u015f\u0160\3\2\2\2\u0160\u0163\3\2\2\2\u0161\u015f\3\2\2\2\u0162"+
 		"\u0164\5\26\f\2\u0163\u0162\3\2\2\2\u0163\u0164\3\2\2\2\u0164\u0168\3"+
 		"\2\2\2\u0165\u0167\5\u012e\u0098\2\u0166\u0165\3\2\2\2\u0167\u016a\3\2"+
 		"\2\2\u0168\u0166\3\2\2\2\u0168\u0169\3\2\2\2\u0169\u016c\3\2\2\2\u016a"+
@@ -18750,12 +18746,12 @@ public class VisualBasic6Parser extends Parser {
 		"\3\2\2\2\u08ea\u08f4\3\2\2\2\u08eb\u08ed\7\u00dd\2\2\u08ec\u08eb\3\2\2"+
 		"\2\u08ec\u08ed\3\2\2\2\u08ed\u08ee\3\2\2\2\u08ee\u08ef\7\u00c3\2\2\u08ef"+
 		"\u08f0\5\u010a\u0086\2\u08f0\u08f1\7\u00cc\2\2\u08f1\u08f3\3\2\2\2\u08f2"+
-		"\u08ec\3\2\2\2\u08f3\u08f6\3\2\2\2\u08f4\u08f2\3";
+		"\u08ec\3\2\2\2\u08f3\u08f6\3\2\2\2\u08f4\u08f2\3\2\2";
 	private static final String _serializedATNSegment1 =
-		"\2\2\2\u08f4\u08f5\3\2\2\2\u08f5\u00f1\3\2\2\2\u08f6\u08f4\3\2\2\2\u08f7"+
-		"\u08fc\5\u00f8}\2\u08f8\u08fc\5\u00f4{\2\u08f9\u08fc\5\u00f6|\2\u08fa"+
-		"\u08fc\5\u00fc\177\2\u08fb\u08f7\3\2\2\2\u08fb\u08f8\3\2\2\2\u08fb\u08f9"+
-		"\3\2\2\2\u08fb\u08fa\3\2\2\2\u08fc\u00f3\3\2\2\2\u08fd\u08ff\5\u010e\u0088"+
+		"\2\u08f4\u08f5\3\2\2\2\u08f5\u00f1\3\2\2\2\u08f6\u08f4\3\2\2\2\u08f7\u08fc"+
+		"\5\u00f8}\2\u08f8\u08fc\5\u00f4{\2\u08f9\u08fc\5\u00f6|\2\u08fa\u08fc"+
+		"\5\u00fc\177\2\u08fb\u08f7\3\2\2\2\u08fb\u08f8\3\2\2\2\u08fb\u08f9\3\2"+
+		"\2\2\u08fb\u08fa\3\2\2\2\u08fc\u00f3\3\2\2\2\u08fd\u08ff\5\u010e\u0088"+
 		"\2\u08fe\u0900\5\u0124\u0093\2\u08ff\u08fe\3\2\2\2\u08ff\u0900\3\2\2\2"+
 		"\u0900\u0902\3\2\2\2\u0901\u0903\5\u0102\u0082\2\u0902\u0901\3\2\2\2\u0902"+
 		"\u0903\3\2\2\2\u0903\u090d\3\2\2\2\u0904\u0906\7\u00dd\2\2\u0905\u0904"+
@@ -18893,46 +18889,46 @@ public class VisualBasic6Parser extends Parser {
 		"\u0a69\5\u012e\u0098\2\u0a61\u0a63\7\u00dd\2\2\u0a62\u0a61\3\2\2\2\u0a62"+
 		"\u0a63\3\2\2\2\u0a63\u0a64\3\2\2\2\u0a64\u0a66\7\u00db\2\2\u0a65\u0a67"+
 		"\7\u00dd\2\2\u0a66\u0a65\3\2\2\2\u0a66\u0a67\3\2\2\2\u0a67\u0a69\3\2\2"+
-		"\2\u0a68\u0a60\3\2\2\2\u0a68\u0a62\3\2\2\2\u0a69\u0a6c\3\2\2\2\u0a6a\u0a68"+
-		"\3\2\2\2\u0a6a\u0a6b\3\2\2\2\u0a6b\u0131\3\2\2\2\u0a6c\u0a6a\3\2\2\2\u01c5"+
-		"\u0136\u013b\u0142\u0145\u0148\u014d\u0151\u0156\u015a\u015f\u0163\u0168"+
-		"\u016c\u0178\u017e\u0184\u0188\u018e\u0195\u0199\u019f\u01a5\u01ab\u01b6"+
-		"\u01c2\u01c6\u01cc\u01d2\u01d8\u01e1\u01e7\u01eb\u01ef\u01f3\u01f8\u0201"+
-		"\u024a\u0250\u0254\u0257\u0267\u026b\u0270\u0273\u0278\u027e\u0282\u0287"+
-		"\u028c\u0290\u0293\u0297\u029d\u02a1\u02a8\u02ae\u02b2\u02b5\u02ba\u02c4"+
-		"\u02c7\u02ca\u02ce\u02d4\u02d8\u02dd\u02e4\u02e8\u02ec\u02f0\u02f3\u02f8"+
-		"\u0303\u0310\u0317\u0320\u0327\u032b\u032e\u0337\u033c\u0346\u034c\u0356"+
-		"\u035a\u0364\u036c\u0371\u0377\u037b\u037e\u0382\u038d\u0391\u0396\u039b"+
-		"\u039f\u03a3\u03a7\u03aa\u03ad\u03b0\u03b3\u03b7\u03bf\u03c3\u03c6\u03c9"+
-		"\u03cd\u03db\u03e8\u03f2\u03f6\u0401\u040c\u0411\u041b\u041f\u0424\u042c"+
-		"\u0430\u0434\u043c\u0440\u044c\u0450\u0457\u0459\u045f\u0463\u0469\u046d"+
-		"\u0471\u0479\u047d\u0483\u048c\u048e\u0493\u049c\u049e\u04a6\u04a8\u04ad"+
-		"\u04b1\u04b5\u04cd\u04d7\u04db\u04e0\u04eb\u04ef\u04f4\u0502\u0506\u050f"+
-		"\u0513\u0516\u051a\u051e\u0521\u0525\u0529\u052c\u0530\u0533\u0537\u0539"+
-		"\u053e\u0542\u0546\u054a\u054c\u0552\u0556\u0559\u055e\u0562\u0568\u056b"+
-		"\u056e\u0572\u0576\u057d\u0581\u0587\u058a\u058e\u0595\u0599\u059f\u05a2"+
-		"\u05a6\u05ae\u05b2\u05b5\u05b8\u05bc\u05c4\u05c8\u05cc\u05ce\u05d1\u05d6"+
-		"\u05dc\u05e0\u05e4\u05e9\u05ee\u05f2\u05f6\u05fb\u0603\u0605\u0611\u0615"+
-		"\u061d\u0621\u0629\u062d\u0631\u0635\u0639\u063d\u0645\u0649\u0656\u065d"+
-		"\u0661\u066c\u0673\u0678\u067c\u0681\u0684\u068a\u068e\u0691\u0697\u069b"+
-		"\u06a3\u06a7\u06b0\u06b4\u06b8\u06bc\u06bf\u06c3\u06c9\u06cd\u06d4\u06dd"+
-		"\u06e4\u06e8\u06eb\u06ee\u06f1\u06f5\u0700\u070a\u070e\u0715\u0717\u071e"+
-		"\u0722\u0726\u072b\u0732\u0739\u073e\u0742\u0748\u074d\u0752\u0755\u0759"+
-		"\u075d\u0762\u0766\u076b\u076f\u0774\u0778\u077d\u0781\u0786\u078a\u078f"+
-		"\u0793\u0798\u079c\u07a1\u07a5\u07aa\u07ae\u07b3\u07b7\u07bc\u07c0\u07c5"+
-		"\u07c9\u07ce\u07d2\u07d7\u07db\u07e0\u07e4\u07e9\u07ed\u07f2\u07f6\u07fb"+
-		"\u07ff\u0804\u0808\u080b\u080d\u0816\u081b\u0821\u0825\u082a\u082f\u0833"+
-		"\u0837\u0839\u083d\u083f\u0842\u0846\u084d\u0855\u0859\u0863\u0867\u086f"+
-		"\u0873\u0876\u0879\u087f\u0885\u0888\u088c\u0890\u0894\u0897\u089f\u08a5"+
-		"\u08aa\u08ad\u08b1\u08b5\u08b9\u08bc\u08c4\u08c9\u08cc\u08d1\u08d5\u08d8"+
-		"\u08db\u08e3\u08e9\u08ec\u08f4\u08fb\u08ff\u0902\u0905\u090d\u0912\u0915"+
-		"\u0918\u091c\u0920\u0922\u0926\u0929\u0931\u0936\u093b\u093e\u0941\u0949"+
-		"\u094f\u0954\u0957\u095b\u095f\u0964\u0968\u096b\u096f\u0973\u0977\u097a"+
-		"\u0981\u0985\u0989\u098d\u0992\u0995\u0998\u099e\u09a2\u09a6\u09aa\u09ad"+
-		"\u09b1\u09b4\u09b7\u09ba\u09bd\u09c0\u09c4\u09ca\u09ce\u09d3\u09db\u09e1"+
-		"\u09e3\u09e7\u09eb\u09ef\u09f2\u09fe\u0a02\u0a05\u0a08\u0a0d\u0a0f\u0a15"+
-		"\u0a17\u0a19\u0a22\u0a27\u0a2b\u0a2f\u0a33\u0a36\u0a3f\u0a42\u0a46\u0a49"+
-		"\u0a56\u0a5b\u0a5e\u0a62\u0a66\u0a68\u0a6a";
+		"\2\u0a68\u0a60\3\2\2\2\u0a68\u0a62\3\2\2\2\u0a69\u0a6a\3\2\2\2\u0a6a\u0a68"+
+		"\3\2\2\2\u0a6a\u0a6b\3\2\2\2\u0a6b\u0131\3\2\2\2\u01c5\u0136\u013b\u0142"+
+		"\u0145\u0148\u014d\u0151\u0156\u015a\u015f\u0163\u0168\u016c\u0178\u017e"+
+		"\u0184\u0188\u018e\u0195\u0199\u019f\u01a5\u01ab\u01b6\u01c2\u01c6\u01cc"+
+		"\u01d2\u01d8\u01e1\u01e7\u01eb\u01ef\u01f3\u01f8\u0201\u024a\u0250\u0254"+
+		"\u0257\u0267\u026b\u0270\u0273\u0278\u027e\u0282\u0287\u028c\u0290\u0293"+
+		"\u0297\u029d\u02a1\u02a8\u02ae\u02b2\u02b5\u02ba\u02c4\u02c7\u02ca\u02ce"+
+		"\u02d4\u02d8\u02dd\u02e4\u02e8\u02ec\u02f0\u02f3\u02f8\u0303\u0310\u0317"+
+		"\u0320\u0327\u032b\u032e\u0337\u033c\u0346\u034c\u0356\u035a\u0364\u036c"+
+		"\u0371\u0377\u037b\u037e\u0382\u038d\u0391\u0396\u039b\u039f\u03a3\u03a7"+
+		"\u03aa\u03ad\u03b0\u03b3\u03b7\u03bf\u03c3\u03c6\u03c9\u03cd\u03db\u03e8"+
+		"\u03f2\u03f6\u0401\u040c\u0411\u041b\u041f\u0424\u042c\u0430\u0434\u043c"+
+		"\u0440\u044c\u0450\u0457\u0459\u045f\u0463\u0469\u046d\u0471\u0479\u047d"+
+		"\u0483\u048c\u048e\u0493\u049c\u049e\u04a6\u04a8\u04ad\u04b1\u04b5\u04cd"+
+		"\u04d7\u04db\u04e0\u04eb\u04ef\u04f4\u0502\u0506\u050f\u0513\u0516\u051a"+
+		"\u051e\u0521\u0525\u0529\u052c\u0530\u0533\u0537\u0539\u053e\u0542\u0546"+
+		"\u054a\u054c\u0552\u0556\u0559\u055e\u0562\u0568\u056b\u056e\u0572\u0576"+
+		"\u057d\u0581\u0587\u058a\u058e\u0595\u0599\u059f\u05a2\u05a6\u05ae\u05b2"+
+		"\u05b5\u05b8\u05bc\u05c4\u05c8\u05cc\u05ce\u05d1\u05d6\u05dc\u05e0\u05e4"+
+		"\u05e9\u05ee\u05f2\u05f6\u05fb\u0603\u0605\u0611\u0615\u061d\u0621\u0629"+
+		"\u062d\u0631\u0635\u0639\u063d\u0645\u0649\u0656\u065d\u0661\u066c\u0673"+
+		"\u0678\u067c\u0681\u0684\u068a\u068e\u0691\u0697\u069b\u06a3\u06a7\u06b0"+
+		"\u06b4\u06b8\u06bc\u06bf\u06c3\u06c9\u06cd\u06d4\u06dd\u06e4\u06e8\u06eb"+
+		"\u06ee\u06f1\u06f5\u0700\u070a\u070e\u0715\u0717\u071e\u0722\u0726\u072b"+
+		"\u0732\u0739\u073e\u0742\u0748\u074d\u0752\u0755\u0759\u075d\u0762\u0766"+
+		"\u076b\u076f\u0774\u0778\u077d\u0781\u0786\u078a\u078f\u0793\u0798\u079c"+
+		"\u07a1\u07a5\u07aa\u07ae\u07b3\u07b7\u07bc\u07c0\u07c5\u07c9\u07ce\u07d2"+
+		"\u07d7\u07db\u07e0\u07e4\u07e9\u07ed\u07f2\u07f6\u07fb\u07ff\u0804\u0808"+
+		"\u080b\u080d\u0816\u081b\u0821\u0825\u082a\u082f\u0833\u0837\u0839\u083d"+
+		"\u083f\u0842\u0846\u084d\u0855\u0859\u0863\u0867\u086f\u0873\u0876\u0879"+
+		"\u087f\u0885\u0888\u088c\u0890\u0894\u0897\u089f\u08a5\u08aa\u08ad\u08b1"+
+		"\u08b5\u08b9\u08bc\u08c4\u08c9\u08cc\u08d1\u08d5\u08d8\u08db\u08e3\u08e9"+
+		"\u08ec\u08f4\u08fb\u08ff\u0902\u0905\u090d\u0912\u0915\u0918\u091c\u0920"+
+		"\u0922\u0926\u0929\u0931\u0936\u093b\u093e\u0941\u0949\u094f\u0954\u0957"+
+		"\u095b\u095f\u0964\u0968\u096b\u096f\u0973\u0977\u097a\u0981\u0985\u0989"+
+		"\u098d\u0992\u0995\u0998\u099e\u09a2\u09a6\u09aa\u09ad\u09b1\u09b4\u09b7"+
+		"\u09ba\u09bd\u09c0\u09c4\u09ca\u09ce\u09d3\u09db\u09e1\u09e3\u09e7\u09eb"+
+		"\u09ef\u09f2\u09fe\u0a02\u0a05\u0a08\u0a0d\u0a0f\u0a15\u0a17\u0a19\u0a22"+
+		"\u0a27\u0a2b\u0a2f\u0a33\u0a36\u0a3f\u0a42\u0a46\u0a49\u0a56\u0a5b\u0a5e"+
+		"\u0a62\u0a66\u0a68\u0a6a";
 	public static final String _serializedATN = Utils.join(
 		new String[] {
 			_serializedATNSegment0,

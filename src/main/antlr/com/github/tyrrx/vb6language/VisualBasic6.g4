@@ -589,9 +589,7 @@ fileNumber : '#'? valueStmt;
 
 // complex call statements ----------------------------------
 
-explicitCallStmt :
-	eCS_ProcedureCall
-	| eCS_MemberProcedureCall
+explicitCallStmt : eCS_ProcedureCall | eCS_MemberProcedureCall
 ;
 
 // parantheses are required in case of args -> empty parantheses are removed
@@ -725,7 +723,7 @@ comment : COMMENT;
 
 endOfLine : WS? (NEWLINE | comment | remComment) WS?;
 
-endOfStatement : (endOfLine | WS? COLON WS?)*;
+endOfStatement : (endOfLine | WS? COLON WS?)+;
 
 
 // lexer rules --------------------------------------------------------------------------------
