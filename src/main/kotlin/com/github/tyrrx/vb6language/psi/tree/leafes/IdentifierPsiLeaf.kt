@@ -3,6 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.leafes
 import com.github.tyrrx.vb6language.psi.language.ILeafFactory
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
+import com.intellij.psi.PsiReference
 import com.intellij.psi.impl.source.tree.LeafElement
 import com.intellij.psi.tree.IElementType
 
@@ -22,6 +23,10 @@ class IdentifierPsiLeaf(type: IElementType?, text: CharSequence?) : VB6PsiLeaf(t
 //		)
 //		return this.replace(newIdentifier)
 		TODO("Not yet implemented")
+	}
+
+	override fun getReference(): PsiReference? {
+		return super.getReference()
 	}
 
 	object Factory : ILeafFactory {

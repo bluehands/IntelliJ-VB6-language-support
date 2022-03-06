@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6Type
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6Block
-import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6PropertyGetStatement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
@@ -44,7 +44,7 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6AmbiguousIdentifier? {
+    override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }
 

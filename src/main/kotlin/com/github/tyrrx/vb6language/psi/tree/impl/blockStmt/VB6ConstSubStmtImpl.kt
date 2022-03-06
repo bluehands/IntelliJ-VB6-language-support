@@ -4,7 +4,7 @@ package com.github.tyrrx.vb6language.psi.tree.impl.blockStmt
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.VB6ConstSubStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.interfaces.type.VB6AsTypeClause
@@ -26,7 +26,7 @@ class VB6ConstSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6AmbiguousIdentifier? {
+    override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }
 

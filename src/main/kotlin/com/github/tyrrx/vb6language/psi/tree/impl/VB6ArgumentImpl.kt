@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.tree.interfaces.ByValOrRef
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6ArgumentDefaultValue
-import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.interfaces.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.interfaces.type.VB6TypeHint
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
@@ -65,7 +65,7 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
         TODO("Not yet implemented")
     }
 
-    override fun getNameIdentifier(): VB6AmbiguousIdentifier? {
+    override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }
 }

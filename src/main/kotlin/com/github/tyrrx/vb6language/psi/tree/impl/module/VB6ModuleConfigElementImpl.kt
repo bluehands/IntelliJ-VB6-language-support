@@ -3,7 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.impl.module
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Literal
-import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6ModuleConfigElement
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
@@ -24,7 +24,7 @@ class VB6ModuleConfigElementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6AmbiguousIdentifier? {
+    override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }
 

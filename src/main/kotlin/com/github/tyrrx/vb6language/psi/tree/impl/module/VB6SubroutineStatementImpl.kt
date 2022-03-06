@@ -4,7 +4,7 @@ import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6Block
-import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6SubroutineStatement
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
@@ -33,7 +33,7 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6AmbiguousIdentifier? {
+    override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }
 

@@ -14,7 +14,7 @@ class ASTFactory : DefaultASTFactoryImpl() {
     private val logger = Logger.getInstance(ASTFactory::class.java)
 
     private val factoriesMap = mergeAll(
-        VB6TokenSets.identifiers mapsTo IdentifierPsiLeaf.Factory,
+        //VB6TokenSets.identifiers mapsTo IdentifierPsiLeaf.Factory,
         VB6TokenSets.whitespaces mapsTo object : ILeafFactory {
             override fun createLeaf(type: IElementType, text: CharSequence): LeafElement {
                 return PsiWhiteSpaceImpl(text)

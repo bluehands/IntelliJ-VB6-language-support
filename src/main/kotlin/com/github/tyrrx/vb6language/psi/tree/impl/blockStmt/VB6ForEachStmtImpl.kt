@@ -5,7 +5,7 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.loops.VB6ForEachStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -28,7 +28,7 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
         TODO("Not yet implemented")
     }
 
-    override fun getNameIdentifier(): VB6AmbiguousIdentifier? {
+    override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
         // todo match better as there are two
     }

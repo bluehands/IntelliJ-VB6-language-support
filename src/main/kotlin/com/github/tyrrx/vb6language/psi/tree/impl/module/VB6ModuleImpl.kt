@@ -36,7 +36,7 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     }
 
     override fun resolve(element: PsiNamedElement?): PsiElement? {
-        TODO("Not yet implemented")
+        return getFunctions().find { it.name == element?.name }
     }
 
     override fun setName(name: String): PsiElement {

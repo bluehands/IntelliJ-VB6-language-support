@@ -6,6 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.*
 import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.conditional.*
+import com.github.tyrrx.vb6language.psi.tree.impl.call.VB6eCS_ProcedureCallImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.module.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
@@ -45,7 +46,7 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_argList -> VB6ArgumentListImpl.Factory
 				VisualBasic6Parser.RULE_arg -> VB6ArgumentImpl.Factory
 
-				VisualBasic6Parser.RULE_ambiguousIdentifier -> VB6AmbiguousIdentifierImpl.Factory
+				VisualBasic6Parser.RULE_ambiguousIdentifier -> VB6IdentifierImpl.Factory
 				VisualBasic6Parser.RULE_ambiguousKeyword -> VB6AmbiguousKeywordImpl.Factory
 
 				VisualBasic6Parser.RULE_argDefaultValue -> VB6ArgumentDefaultValueImpl.Factory
@@ -65,7 +66,11 @@ object PSIFactory {
 
 				VisualBasic6Parser.RULE_subscripts -> VB6SubscriptsImpl.Factory
 				VisualBasic6Parser.RULE_subscriptElement -> VB6SubscriptElementImpl.Factory
-				//block ---------------------------------------------------------------------------
+
+				// call ---------------------------------------------------------------------------
+				VisualBasic6Parser.RULE_eCS_ProcedureCall -> VB6eCS_ProcedureCallImpl.Factory
+
+				// block ---------------------------------------------------------------------------
 				VisualBasic6Parser.RULE_block-> VB6BlockImpl.Factory
 				VisualBasic6Parser.RULE_blockStmt-> VB6BlockStmtImpl.Factory
 				// block statements ---------------------------------------------------------------------------

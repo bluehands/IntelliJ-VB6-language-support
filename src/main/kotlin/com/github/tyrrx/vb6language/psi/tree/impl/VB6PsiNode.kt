@@ -5,4 +5,5 @@ import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 
 
 open class VB6PsiNode(node: ASTNode) : ANTLRPsiNode(node) {
+
 }

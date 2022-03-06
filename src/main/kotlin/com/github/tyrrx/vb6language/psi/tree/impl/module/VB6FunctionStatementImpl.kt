@@ -4,12 +4,14 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6ArgumentListImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Argument
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6Type
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6Block
-import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6AmbiguousIdentifier
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6FunctionStatement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
@@ -27,7 +29,7 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6AmbiguousIdentifier? {
+    override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }
 
@@ -51,11 +53,14 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun resolve(element: PsiNamedElement?): PsiElement? {
-        TODO("Not yet implemented")
-//        return SymtabUtils.resolve(
-//            this, VB6Language.INSTANCE,
-//            element, "/ambiguousIdentifier/IDENTIFIER"
-//        )
+        return getBlock()
+            ?.getStatements()
+            ?.flatMap { findPsiElementsInSubtree<VB6IdentifierOwner>(it) }
+            ?.find { it.name == element?.name } ?: context?.resolve(element)
+    }
+
+    override fun getIdentifyingElement(): PsiElement? {
+        return super.getIdentifyingElement()
     }
 
     override fun setName(name: String): PsiElement {
