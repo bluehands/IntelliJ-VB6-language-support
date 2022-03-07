@@ -7,6 +7,7 @@ import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.tree.utils.tryResolveInBlockScopeOrParentContext
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
@@ -25,6 +26,6 @@ class VB6WhileWendStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun resolve(element: PsiNamedElement?): VB6IdentifierOwner? {
-        TODO("Not yet implemented")
+        return tryResolveInBlockScopeOrParentContext(this, element)
     }
 }

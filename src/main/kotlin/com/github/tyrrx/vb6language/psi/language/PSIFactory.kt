@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.*
 import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.conditional.*
-import com.github.tyrrx.vb6language.psi.tree.impl.call.VB6eCS_ProcedureCallImpl
+import com.github.tyrrx.vb6language.psi.tree.impl.call.*
 import com.github.tyrrx.vb6language.psi.tree.impl.module.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
@@ -69,6 +69,16 @@ object PSIFactory {
 
 				// call ---------------------------------------------------------------------------
 				VisualBasic6Parser.RULE_eCS_ProcedureCall -> VB6eCS_ProcedureCallImpl.Factory
+				VisualBasic6Parser.RULE_eCS_MemberProcedureCall -> VB6eCS_MemberProcedureCallImpl.Factory
+				VisualBasic6Parser.RULE_iCS_B_MemberProcedureCall -> VB6iCS_B_MemberProcedureCallImpl.Factory
+				VisualBasic6Parser.RULE_iCS_B_ProcedureCall -> VB6iCS_B_ProcedureCallImpl.Factory
+				VisualBasic6Parser.RULE_implicitCallStmt_InBlock -> VB6ImplicitCallStmt_InBlockImpl.Factory 	// also in block
+				VisualBasic6Parser.RULE_implicitCallStmt_InStmt -> VB6ImplicitCallStmt_InStmtImpl.Factory 		// also in block
+				VisualBasic6Parser.RULE_iCS_S_VariableOrProcedureCall -> VB6iCS_S_VariableOrProcedureCallImpl.Factory
+				VisualBasic6Parser.RULE_iCS_S_ProcedureOrArrayCall -> VB6iCS_S_ProcedureOrArrayCallImpl.Factory
+				VisualBasic6Parser.RULE_iCS_S_MembersCall -> VB6iCS_S_MembersCallImpl.Factory
+				VisualBasic6Parser.RULE_iCS_S_MemberCall -> VB6iCS_S_MemberCallImpl.Factory
+				VisualBasic6Parser.RULE_iCS_S_DictionaryCall -> VB6iCS_S_DictionaryCallImpl.Factory
 
 				// block ---------------------------------------------------------------------------
 				VisualBasic6Parser.RULE_block-> VB6BlockImpl.Factory
@@ -141,8 +151,6 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_widthStmt -> VB6WidthStmtImpl.Factory
 				VisualBasic6Parser.RULE_withStmt -> VB6WithStmtImpl.Factory
 				VisualBasic6Parser.RULE_writeStmt -> VB6WriteStmtImpl.Factory
-				VisualBasic6Parser.RULE_implicitCallStmt_InBlock -> VB6ImplicitCallStmt_InBlockImpl.Factory
-				VisualBasic6Parser.RULE_implicitCallStmt_InStmt -> VB6ImplicitCallStmt_InStmtImpl.Factory
 
 				VisualBasic6Parser.RULE_inlineIfThenElse -> VB6InlineIfThenElseImpl.Factory
 				VisualBasic6Parser.RULE_blockIfThenElse -> VB6BlockIfThenElseImpl.Factory

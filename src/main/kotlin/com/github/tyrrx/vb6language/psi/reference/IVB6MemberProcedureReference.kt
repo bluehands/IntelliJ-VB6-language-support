@@ -2,5 +2,5 @@ package com.github.tyrrx.vb6language.psi.reference
 
 import com.intellij.psi.PsiReference
 
-interface VB6ProcedureReference : PsiReference {
+interface IVB6MemberProcedureReference : PsiReference {
 }

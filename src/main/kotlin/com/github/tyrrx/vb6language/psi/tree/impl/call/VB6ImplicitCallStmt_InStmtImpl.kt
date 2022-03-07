@@ -1,9 +1,9 @@
-package com.github.tyrrx.vb6language.psi.tree.impl.blockStmt
+package com.github.tyrrx.vb6language.psi.tree.impl.call
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.VB6ImplicitCallStmt_InStmt
+import com.github.tyrrx.vb6language.psi.tree.interfaces.call.VB6ImplicitCallStmt_InStmt
 import com.intellij.lang.ASTNode
 
 class VB6ImplicitCallStmt_InStmtImpl(node: ASTNode) : VB6PsiNode(node),
