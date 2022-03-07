@@ -5,7 +5,6 @@ import com.github.tyrrx.vb6language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.psi.reference.impl.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.createElementFromText
 import com.intellij.lang.ASTNode
@@ -37,7 +36,7 @@ class VB6IdentifierImpl(node: ASTNode) : VB6PsiNode(node),
         return children.fold("") { acc, psiElement -> acc.plus(psiElement.text) }
     }
 
-    override fun getReference(): PsiReference {
-        return VB6Reference(this)
+    override fun getReference(): PsiReference? {
+        return null
     }
 }

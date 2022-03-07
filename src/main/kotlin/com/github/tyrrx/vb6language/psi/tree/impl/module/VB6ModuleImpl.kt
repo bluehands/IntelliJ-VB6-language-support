@@ -4,6 +4,7 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Attribute
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.*
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInSubtree
@@ -36,8 +37,9 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
         return findPsiElementInSubtree<VB6ModuleConfig>(this)?.getModuleConfigElements() ?: emptyList()
     }
 
-    override fun resolve(element: PsiNamedElement?): VB6IdentifierOwner? {
-        return getFunctions().find { it.name == element?.name }
+    override fun resolve(element: VB6ReferenceOwner?): VB6IdentifierOwner? {
+        return getFunctions().find { it.name == element?.getIdentifier()?.name }
+            ?: getSubroutines().find { it.name == element?.getIdentifier()?.name }
     }
 
     override fun setName(name: String): PsiElement {

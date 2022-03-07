@@ -3,7 +3,7 @@
 package com.github.tyrrx.vb6language.psi.tree.impl.call
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.impl.VB6Reference
+import com.github.tyrrx.vb6language.psi.reference.impl.VB6ProcedureReference
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.call.VB6eCS_ProcedureCall
 import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
@@ -19,9 +19,12 @@ class VB6eCS_ProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6eCS_Procedu
         }
     }
 
+    override fun getIdentifier(): VB6Identifier {
+        return findFirstChildByType(this)!!
+    }
+
     override fun getReference(): PsiReference {
-        val source = findFirstChildByType<VB6Identifier>(this)
-        return VB6Reference(source!!)
+        return VB6ProcedureReference(this)
     }
 }
 
