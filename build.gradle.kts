@@ -29,7 +29,6 @@ repositories {
 dependencies {
     implementation("org.antlr:antlr4-intellij-adaptor:0.1")
     antlr("org.antlr:antlr4:4.9.2")
-
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
@@ -59,10 +58,8 @@ qodana {
 }
 
 tasks {
-
     generateGrammarSource {
         arguments = arguments + listOf("-visitor", "-package", "com.github.tyrrx.vb6language.parser", "-Xexact-output-dir")
-
         doLast {
             val parserPackagePath = "${outputDirectory.canonicalPath}/com/github/tyrrx/vb6language/parser"
             file(parserPackagePath).mkdirs()

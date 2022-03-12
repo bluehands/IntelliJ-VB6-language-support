@@ -1,11 +1,14 @@
 package com.github.tyrrx.vb6language.psi.tree.interfaces.module
 
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Attribute
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PropertyStatement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ScopeNode
+import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
 
 interface VB6Module : VB6ScopeNode, PsiNameIdentifierOwner {
     fun isClass(): Boolean
+
     fun getModuleHeaders(): Collection<VB6ModuleHeader>
     // TODO module references
     // TODO control properties
@@ -13,7 +16,14 @@ interface VB6Module : VB6ScopeNode, PsiNameIdentifierOwner {
     fun getModuleAttributes(): Collection<VB6Attribute>
     // TODO get module options
 
-    fun getFunctions(): Collection<VB6FunctionStatement>
-    fun getSubroutines(): Collection<VB6SubroutineStatement>
+    fun getModuleBody(): VB6ModuleBody?
 
+    fun getFunctions(): List<VB6FunctionStatement>
+    fun getSubroutines(): List<VB6SubroutineStatement>
+
+    fun getPropertyGets(): List<VB6PropertyGetStatement>
+    fun getPropertySets(): List<VB6PropertySetStatement>
+    fun getPropertyLets(): List<VB6PropertyLetStatement>
+
+    fun getBodyStatements(): List<PsiElement>
 }

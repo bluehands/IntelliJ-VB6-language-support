@@ -1003,5 +1003,5 @@ fragment Z:[zZ];
  *  it just confuses the issue. Hence, the hidden channel.
  */
 ERRCHAR
-	:	.	-> channel(HIDDEN)
+	:	. -> channel(HIDDEN)
 	;

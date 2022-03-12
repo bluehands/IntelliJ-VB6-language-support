@@ -1,6 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.impl.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6ArgumentListImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Argument
@@ -56,13 +57,12 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun resolve(element: VB6ReferenceOwner?): VB6IdentifierOwner? {
-        return tryResolveSelf(this, element)
-            ?: tryResolveInBlockScopeOrParentContext(this, element)
+    override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
+        return resolveVisitor.resolveFunctionStmt(this)
     }
 
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        return nameIdentifier?.setName(name) ?: this
     }
 
     override fun getReference(): PsiReference? {

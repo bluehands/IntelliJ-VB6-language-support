@@ -41,6 +41,8 @@ object PSIFactory {
 				VisualBasic6Parser.RULE_eventStmt -> VB6EventStmtImpl.Factory
 				VisualBasic6Parser.RULE_typeStmt -> VB6TypeStmtImpl.Factory
 				VisualBasic6Parser.RULE_moduleVariableStmt -> VB6ModuleVariableStmtImpl.Factory
+				VisualBasic6Parser.RULE_moduleBody -> VB6ModuleBodyImpl.Factory
+				VisualBasic6Parser.RULE_moduleBodyElement -> VB6ModuleBodyElementImpl.Factory
 				// general ---------------------------------------------------------------------------
 				VisualBasic6Parser.RULE_typeHint -> VB6TypeHintImpl.Factory
 				VisualBasic6Parser.RULE_argList -> VB6ArgumentListImpl.Factory

@@ -14,10 +14,6 @@ fun tryResolveInBlock(blockScope: VB6BlockScope, element: VB6ReferenceOwner?): V
         ?.find { it.name == element?.getIdentifier()?.name }
 }
 
-fun tryResolveInParentContext(blockScope: VB6BlockScope, element: VB6ReferenceOwner?): VB6IdentifierOwner? {
-    return blockScope.context?.resolve(element)
-}
-
 fun tryResolveSelf(blockScope: VB6BlockScope, element: VB6ReferenceOwner?): VB6IdentifierOwner? {
     return when (blockScope) {
         is VB6IdentifierOwner -> if (blockScope.name == element?.getIdentifier()?.name) blockScope else null
@@ -27,6 +23,5 @@ fun tryResolveSelf(blockScope: VB6BlockScope, element: VB6ReferenceOwner?): VB6I
 
 fun tryResolveInBlockScopeOrParentContext(blockScope: VB6BlockScope, element: VB6ReferenceOwner?): VB6IdentifierOwner? {
     return tryResolveInBlock(blockScope, element)
-        ?: tryResolveInParentContext(blockScope, element)
 }
 

@@ -2,6 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.impl.blockStmt
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ReferenceOwner
@@ -28,8 +29,8 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun resolve(element: VB6ReferenceOwner?): VB6IdentifierOwner? {
-        return tryResolveInBlockScopeOrParentContext(this, element)
+    override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
+        return resolveVisitor.resolveForNextStmt(this)
     }
 
     override fun getNameIdentifier(): VB6Identifier? {

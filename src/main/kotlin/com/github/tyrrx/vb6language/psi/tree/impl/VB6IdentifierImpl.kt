@@ -7,6 +7,7 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.createElementFromText
+import com.github.tyrrx.vb6language.psi.tree.utils.findOwnerRecursive
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReference
@@ -21,7 +22,6 @@ class VB6IdentifierImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun setName(name: String): PsiElement {
-
         val element = createElementFromText(
 			project,
 			VB6Language.INSTANCE,
@@ -34,6 +34,10 @@ class VB6IdentifierImpl(node: ASTNode) : VB6PsiNode(node),
 
     override fun getName(): String {
         return children.fold("") { acc, psiElement -> acc.plus(psiElement.text) }
+    }
+
+    override fun getOwner(): PsiElement {
+        return findOwnerRecursive(parent)
     }
 
     override fun getReference(): PsiReference? {

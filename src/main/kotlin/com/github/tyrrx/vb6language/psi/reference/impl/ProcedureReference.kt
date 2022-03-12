@@ -1,18 +1,19 @@
 package com.github.tyrrx.vb6language.psi.reference.impl
 
-import com.github.tyrrx.vb6language.psi.reference.IVB6ProcedureReference
+import com.github.tyrrx.vb6language.psi.reference.ProcedureReference
+import com.github.tyrrx.vb6language.psi.reference.resolveInContext
+import com.github.tyrrx.vb6language.psi.reference.visitor.ProcedureReferenceResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PropertyStatement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ScopeNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6FunctionStatement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6SubroutineStatement
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiNamedElement
-import com.intellij.psi.PsiReference
 
-class VB6ProcedureReference(private val myElement: VB6ReferenceOwner) : IVB6ProcedureReference {
+class ProcedureReference(private val myElement: VB6ReferenceOwner) :
+    ProcedureReference {
     override fun getElement(): PsiElement {
         return myElement
     }
@@ -24,8 +25,7 @@ class VB6ProcedureReference(private val myElement: VB6ReferenceOwner) : IVB6Proc
     }
 
     override fun resolve(): PsiElement? {
-        val scopeNode = myElement.context as VB6ScopeNode?
-        return scopeNode?.resolve(myElement)
+        return myElement.resolveInContext(ProcedureReferenceResolveVisitor(myElement))
     }
 
     override fun getCanonicalText(): String {
@@ -41,13 +41,16 @@ class VB6ProcedureReference(private val myElement: VB6ReferenceOwner) : IVB6Proc
     }
 
     override fun isReferenceTo(element: PsiElement): Boolean {
-        return isFunction(element)
+        val otherElement = when(element) {
+            is VB6Identifier -> element.getOwner()
+            else -> element
+        }
+        return isReferenceToProcedure(otherElement)
     }
 
-    private fun isFunction(element: PsiElement) = when(element) {
-        is VB6SubroutineStatement -> true
-        is VB6FunctionStatement -> true
-        is VB6PropertyStatement -> true
+    private fun isReferenceToProcedure(element: PsiElement) = when(element) {
+        is VB6SubroutineStatement -> compareNames(element)
+        is VB6FunctionStatement -> compareNames(element)
         else -> false
     }
 
