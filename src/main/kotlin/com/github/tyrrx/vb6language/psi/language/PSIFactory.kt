@@ -5,11 +5,10 @@ import com.github.tyrrx.vb6language.psi.tree.impl.*
 import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.*
+import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.conditional.*
 import com.github.tyrrx.vb6language.psi.tree.impl.call.*
 import com.github.tyrrx.vb6language.psi.tree.impl.module.*
 import com.github.tyrrx.vb6language.psi.tree.impl.variable.VB6VariableStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.impl.conditional.*
-import com.github.tyrrx.vb6language.psi.tree.impl.loops.*
 import com.github.tyrrx.vb6language.psi.tree.impl.variable.VB6ModuleVariableStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.variable.VB6VariableListStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.variable.VB6VariableSubStmtImpl
