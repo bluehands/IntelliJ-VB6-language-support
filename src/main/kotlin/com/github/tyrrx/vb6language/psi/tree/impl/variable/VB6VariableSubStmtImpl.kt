@@ -1,16 +1,19 @@
-package com.github.tyrrx.vb6language.psi.tree.impl
+package com.github.tyrrx.vb6language.psi.tree.impl.variable
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.*
+import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.interfaces.type.VB6AsTypeClause
+import com.github.tyrrx.vb6language.psi.tree.interfaces.variable.VB6VariableSubStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.tree.utils.findInChildrenByIElementType
 import com.github.tyrrx.vb6language.psi.tree.utils.isIElementTypePresentInChildren
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6VariableSubStmt {
+class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
+    VB6VariableSubStmt {
 
     object Factory : IPsiNodeFactory<VB6VariableSubStmt> {
         override fun createPsiNode(node: ASTNode): VB6VariableSubStmt {
@@ -36,11 +39,23 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6VariableSubSt
             ?.getElements() ?: emptyList()
     }
 
+    override fun isStatic(): Boolean {
+        return VB6IElementTypes.STATIC.isIElementTypePresentInChildren(parent.parent)
+    }
+
+    override fun isArray(): Boolean {
+        return getSubscripts().any() // todo correct or just LPAREN?
+    }
+
+    override fun getNameIdentifier(): VB6Identifier? {
+        return findFirstChildByType(this)
+    }
+
     override fun getName(): String? {
         return nameIdentifier?.name
     }
 
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        return nameIdentifier?.setName(name) ?: this // todo correct?
     }
 }

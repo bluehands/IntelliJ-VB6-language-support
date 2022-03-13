@@ -5,14 +5,18 @@ import com.github.tyrrx.vb6language.psi.tree.impl.*
 import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.block.VB6BlockStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.*
-import com.github.tyrrx.vb6language.psi.tree.impl.blockStmt.conditional.*
 import com.github.tyrrx.vb6language.psi.tree.impl.call.*
 import com.github.tyrrx.vb6language.psi.tree.impl.module.*
+import com.github.tyrrx.vb6language.psi.tree.impl.variable.VB6VariableStmtImpl
+import com.github.tyrrx.vb6language.psi.tree.impl.conditional.*
+import com.github.tyrrx.vb6language.psi.tree.impl.loops.*
+import com.github.tyrrx.vb6language.psi.tree.impl.variable.VB6ModuleVariableStmtImpl
+import com.github.tyrrx.vb6language.psi.tree.impl.variable.VB6VariableListStmtImpl
+import com.github.tyrrx.vb6language.psi.tree.impl.variable.VB6VariableSubStmtImpl
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.PsiElement
 import org.antlr.intellij.adaptor.lexer.RuleIElementType
-import org.antlr.intellij.adaptor.psi.ANTLRPsiNode
 
 @Suppress("DuplicatedCode")
 object PSIFactory {
@@ -165,12 +169,12 @@ object PSIFactory {
 
 				else -> object : IPsiNodeFactory<PsiElement> {
 					override fun createPsiNode(node: ASTNode): PsiElement {
-						return ANTLRPsiNode(node)
+						return VB6PsiNode(node)
 					}
 				}
 			}.createPsiNode(node)
 		} else {
-			ANTLRPsiNode(node)
+			VB6PsiNode(node)
 		}
 	}
 

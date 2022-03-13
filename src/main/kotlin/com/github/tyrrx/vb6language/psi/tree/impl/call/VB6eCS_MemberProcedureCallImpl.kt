@@ -1,3 +1,5 @@
+@file:Suppress("ClassName")
+
 package com.github.tyrrx.vb6language.psi.tree.impl.call
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory

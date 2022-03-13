@@ -11,6 +11,7 @@ import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6FunctionStatem
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6SubroutineStatement
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
+import com.intellij.refactoring.suggested.startOffset
 
 class ProcedureReference(private val myElement: VB6ReferenceOwner) :
     ProcedureReference {
@@ -33,7 +34,7 @@ class ProcedureReference(private val myElement: VB6ReferenceOwner) :
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
-        return myElement.getIdentifier().setName(newElementName);
+        return myElement.getIdentifier().setName(newElementName)
     }
 
     override fun bindToElement(element: PsiElement): PsiElement {

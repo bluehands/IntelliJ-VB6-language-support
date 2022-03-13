@@ -1,6 +1,5 @@
 package com.github.tyrrx.vb6language.psi.reference.visitor
 
-import com.github.tyrrx.vb6language.psi.reference.compareReferenceAndScopeNameOrResolveInContext
 import com.github.tyrrx.vb6language.psi.reference.resolveInContext
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ReferenceOwner
@@ -13,8 +12,16 @@ import com.github.tyrrx.vb6language.psi.tree.interfaces.loops.VB6ForEachStmt
 import com.github.tyrrx.vb6language.psi.tree.interfaces.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.interfaces.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.*
+import com.intellij.openapi.diagnostic.Logger
 
-open class ProcedureReferenceResolveVisitor(override val referenceOwner: VB6ReferenceOwner) : ReferenceResolveVisitor {
+class ArrayOrProcedureResolveVisitor(override val referenceOwner: VB6ReferenceOwner) : ReferenceResolveVisitor {
+
+    private val logger = Logger.getInstance(ArrayOrProcedureResolveVisitor::class.java)
+
+    private fun arrayResolvePlaceholder(): VB6IdentifierOwner? {
+        logger.error("Array resolve not yet implemented")
+        return null
+    }
 
     override fun resolveModule(scope: VB6Module): VB6IdentifierOwner? {
         return listOf(
@@ -58,11 +65,11 @@ open class ProcedureReferenceResolveVisitor(override val referenceOwner: VB6Refe
     }
 
     override fun resolveFunctionStmt(scope: VB6FunctionStatement): VB6IdentifierOwner? {
-        return this.compareReferenceAndScopeNameOrResolveInContext(scope)
+        return resolveScopeName(scope)
     }
 
     override fun resolveSubroutineStmt(scope: VB6SubroutineStatement): VB6IdentifierOwner? {
-        return this.compareReferenceAndScopeNameOrResolveInContext(scope)
+        return resolveScopeName(scope)
     }
 
     override fun resolvePropertyGetStmt(scope: VB6PropertyGetStatement): VB6IdentifierOwner? {
@@ -75,5 +82,12 @@ open class ProcedureReferenceResolveVisitor(override val referenceOwner: VB6Refe
 
     override fun resolvePropertyLetStmt(scope: VB6PropertyLetStatement): VB6IdentifierOwner? {
         return scope.resolveInContext(this)
+    }
+
+    private fun resolveScopeName(scope: VB6IdentifierOwner): VB6IdentifierOwner? {
+        return when (scope.name) {
+            referenceOwner.getIdentifier().name -> scope
+            else -> scope.resolveInContext(this)
+        }
     }
 }

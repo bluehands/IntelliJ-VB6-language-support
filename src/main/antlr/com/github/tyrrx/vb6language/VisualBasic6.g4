@@ -595,12 +595,9 @@ explicitCallStmt : eCS_ProcedureCall | eCS_MemberProcedureCall
 // parantheses are required in case of args -> empty parantheses are removed
 eCS_ProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
 
-
-
 // parantheses are required in case of args -> empty parantheses are removed
 eCS_MemberProcedureCall : CALL WS implicitCallStmt_InStmt? '.' ambiguousIdentifier typeHint?
     (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // references
-
 
 implicitCallStmt_InBlock :
 	iCS_B_MemberProcedureCall
@@ -627,9 +624,13 @@ iCS_S_VariableOrProcedureCall : ambiguousIdentifier typeHint? dictionaryCallStmt
 
 iCS_S_ProcedureOrArrayCall : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
 
-iCS_S_MembersCall : (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall)? iCS_S_MemberCall+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
+iCS_S_MembersCall : iCS_S_MemberCall? (('.' | '!') iCS_S_MemberCall)+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
 
-iCS_S_MemberCall : ('.' | '!') (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall);
+iCS_S_MemberCall : iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall;
+
+//iCS_S_MembersCall : (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall)? iCS_S_MemberCall+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
+//
+//iCS_S_MemberCall : ('.' | '!') (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall);
 
 iCS_S_DictionaryCall : dictionaryCallStmt;
 

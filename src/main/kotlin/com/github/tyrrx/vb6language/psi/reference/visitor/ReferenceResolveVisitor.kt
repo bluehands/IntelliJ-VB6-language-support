@@ -1,16 +1,18 @@
 package com.github.tyrrx.vb6language.psi.reference.visitor
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.VB6WithStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.conditional.VB6IfBlockStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.conditional.VB6IfElseBlockStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.conditional.VB6IfElseIfBlockStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.loops.VB6DoLoopStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.loops.VB6ForEachStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.loops.VB6ForNextStmt
-import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.loops.VB6WhileWendStmt
+import com.github.tyrrx.vb6language.psi.tree.interfaces.conditional.VB6IfBlockStmt
+import com.github.tyrrx.vb6language.psi.tree.interfaces.conditional.VB6IfElseBlockStmt
+import com.github.tyrrx.vb6language.psi.tree.interfaces.conditional.VB6IfElseIfBlockStmt
+import com.github.tyrrx.vb6language.psi.tree.interfaces.loops.VB6DoLoopStmt
+import com.github.tyrrx.vb6language.psi.tree.interfaces.loops.VB6ForEachStmt
+import com.github.tyrrx.vb6language.psi.tree.interfaces.loops.VB6ForNextStmt
+import com.github.tyrrx.vb6language.psi.tree.interfaces.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.*
 
 interface ReferenceResolveVisitor {
+    val referenceOwner: VB6ReferenceOwner
 
     fun resolveModule(scope: VB6Module): VB6IdentifierOwner?
     fun resolveWithStmt(scope: VB6WithStmt): VB6IdentifierOwner?
