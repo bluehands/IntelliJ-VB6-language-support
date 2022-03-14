@@ -30,6 +30,7 @@ class ArrayOrProcedureResolveVisitor(override val referenceOwner: VB6ReferenceOw
         )
             .flatten()
             .find { fn -> fn.name == referenceOwner.getIdentifier().name }
+            ?: scope.getModuleVariables().find { it.isArray() && it.name == referenceOwner.getIdentifier().name }
     }
 
     override fun resolveWithStmt(scope: VB6WithStmt): VB6IdentifierOwner? {

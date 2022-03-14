@@ -257,7 +257,10 @@ constSubStmt : ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? value
 
 dateStmt : DATE WS? EQ WS? valueStmt;
 
-declareStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? ((FUNCTION typeHint?) | SUB) WS ambiguousIdentifier typeHint? WS LIB WS STRINGLITERAL (WS ALIAS WS STRINGLITERAL)? (WS? argList)? (WS asTypeClause)?;
+declareStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? (declareFunctionDef | SUB) WS ambiguousIdentifier typeHint? WS declareLibDef declareAliasDef (WS? argList)? (WS asTypeClause)?;
+declareFunctionDef: FUNCTION typeHint?;
+declareLibDef : LIB WS STRINGLITERAL;
+declareAliasDef: (WS ALIAS WS STRINGLITERAL)?;
 
 deftypeStmt :
 	(

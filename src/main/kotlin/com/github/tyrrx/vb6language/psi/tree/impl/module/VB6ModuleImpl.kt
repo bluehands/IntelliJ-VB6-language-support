@@ -7,8 +7,11 @@ import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Attribute
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.*
+import com.github.tyrrx.vb6language.psi.tree.interfaces.variable.VB6ModuleVariableDefinition
+import com.github.tyrrx.vb6language.psi.tree.interfaces.variable.VB6ModuleVariableStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
+import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -38,8 +41,13 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
         return getModuleBodyStatementsByType()
     }
 
+    override fun getModuleVariables(): List<VB6ModuleVariableDefinition> {
+        return findPsiElementsInDirectChildrenByType<VB6ModuleVariableStmt>(this)
+            .flatMap { it.getModuleVariables() }
+    }
+
     override fun getBodyStatements(): List<PsiElement> {
-        return getModuleBody()?.getStatements()?: emptyList()
+        return getModuleBody()?.getStatements() ?: emptyList()
     }
 
     override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
