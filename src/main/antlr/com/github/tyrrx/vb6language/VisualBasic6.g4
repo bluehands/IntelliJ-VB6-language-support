@@ -111,7 +111,7 @@ module :
 moduleHeader : VERSION WS DOUBLELITERAL WS CLASS;
 
 moduleConfig :
-	BEGIN endOfLine*
+	BEGIN complexType? endOfLine*
 	moduleConfigElement+
 	END
 ;

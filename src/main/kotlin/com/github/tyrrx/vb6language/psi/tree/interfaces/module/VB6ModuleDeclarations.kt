@@ -3,4 +3,5 @@ package com.github.tyrrx.vb6language.psi.tree.interfaces.module
 import com.intellij.psi.PsiElement
 
 interface VB6ModuleDeclarations : PsiElement {
+    fun getElements(): List<VB6ModuleDeclarationsElement>
 }

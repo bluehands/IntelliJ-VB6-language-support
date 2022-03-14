@@ -2,6 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.impl.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6ModuleBodyElement
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -14,7 +15,7 @@ class VB6ModuleBodyElementImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleBodyE
         }
     }
 
-    override fun getStatement(): PsiElement {
-        return firstChild
+    override fun getStatement(): VB6PsiElement {
+        return firstChild as VB6PsiElement
     }
 }
