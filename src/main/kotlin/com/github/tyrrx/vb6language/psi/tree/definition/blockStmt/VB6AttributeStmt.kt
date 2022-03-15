@@ -3,9 +3,9 @@ package com.github.tyrrx.vb6language.psi.tree.definition.blockStmt
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6Literal
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Literal
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6Statement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6ImplicitCallStmt_InStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
@@ -14,7 +14,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildr
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6AttributeStmt : VB6Statement, VB6IdentifierOwner {
+interface VB6AttributeStmt : VB6StatementBase, VB6IdentifierOwner {
     fun getLiterals(): Collection<VB6Literal>
 }
 

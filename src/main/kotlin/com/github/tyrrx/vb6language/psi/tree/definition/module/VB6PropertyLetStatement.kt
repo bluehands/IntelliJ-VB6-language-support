@@ -3,8 +3,8 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6Argument
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6ArgumentList
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PropertyStatementBase
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block

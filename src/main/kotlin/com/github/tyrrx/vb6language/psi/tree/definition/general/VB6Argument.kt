@@ -1,10 +1,10 @@
-package com.github.tyrrx.vb6language.psi.tree.definition
+package com.github.tyrrx.vb6language.psi.tree.definition.general
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeClauseOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeHintDefinition
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeHintOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeHint
@@ -19,11 +19,11 @@ import com.intellij.psi.util.elementType
 interface VB6Argument :
     PsiNameIdentifierOwner,
     VB6TypeClauseOwner,
-    VB6TypeHintDefinition {
+    VB6TypeHintOwner {
     fun isOptional(): Boolean //= false
-    fun getPassType(): com.github.tyrrx.vb6language.psi.tree.definition.ByValOrRef //= ByValOrRef.BYVALUE (https://docs.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference)
+    fun getPassType(): ByValOrRef //= ByValOrRef.BYVALUE (https://docs.microsoft.com/en-us/dotnet/visual-basic/programming-guide/language-features/procedures/passing-arguments-by-value-and-by-reference)
     fun isParameterArray(): Boolean //= false
-    fun getArgumentDefaultValue(): com.github.tyrrx.vb6language.psi.tree.definition.VB6ArgumentDefaultValue?
+    fun getArgumentDefaultValue(): VB6ArgumentDefaultValue?
 }
 
 class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {

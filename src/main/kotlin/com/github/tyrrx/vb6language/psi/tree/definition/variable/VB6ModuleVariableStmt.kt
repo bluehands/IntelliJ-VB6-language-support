@@ -2,11 +2,11 @@ package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6Statement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
-interface VB6ModuleVariableStmt : VB6Statement {
+interface VB6ModuleVariableStmt : VB6StatementBase {
     fun getModuleVariables(): List<VB6ModuleVariableDefinition>
 }
 

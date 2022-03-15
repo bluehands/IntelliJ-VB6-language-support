@@ -4,7 +4,7 @@ import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetVisibilityFromChildren
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6IsStaticInChildrenMixin
 
 interface VB6PropertyStatementBase :
-    VB6BlockScope,
+    VB6BlockScopeOwner,
     VB6IdentifierOwner,
     VB6ArgumentOwner,
     VB6GetVisibilityFromChildrenMixin,

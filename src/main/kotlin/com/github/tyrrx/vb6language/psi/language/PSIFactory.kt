@@ -1,13 +1,13 @@
 package com.github.tyrrx.vb6language.psi.language
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.definition.*
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6BlockImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6BlockStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.*
 import com.github.tyrrx.vb6language.psi.tree.definition.call.*
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.*
+import com.github.tyrrx.vb6language.psi.tree.definition.general.*
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6AmbiguousKeywordImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6IdentifierImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6DoLoopStmtImpl

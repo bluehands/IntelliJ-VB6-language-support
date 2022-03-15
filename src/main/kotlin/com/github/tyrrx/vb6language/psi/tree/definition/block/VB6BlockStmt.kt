@@ -2,12 +2,12 @@ package com.github.tyrrx.vb6language.psi.tree.definition.block
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6Statement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6BlockStmt : PsiElement {
-    fun getStatement(): VB6Statement
+    fun getStatement(): VB6StatementBase
 }
 
 class VB6BlockStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6BlockStmt {
@@ -18,7 +18,7 @@ class VB6BlockStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6BlockStmt {
         }
     }
 
-    override fun getStatement(): VB6Statement {
-        return firstChild as VB6Statement
+    override fun getStatement(): VB6StatementBase {
+        return firstChild as VB6StatementBase
     }
 }

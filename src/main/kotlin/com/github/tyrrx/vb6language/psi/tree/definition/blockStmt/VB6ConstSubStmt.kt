@@ -2,11 +2,11 @@ package com.github.tyrrx.vb6language.psi.tree.definition.blockStmt
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6Visibility
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6VisibilityEnum
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeClauseOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6VisibilityDefinition
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetTypeHintFromChildrenMixin
@@ -17,7 +17,7 @@ import com.intellij.psi.util.PsiTreeUtil
 
 interface VB6ConstSubStmt:
     VB6IdentifierOwner,
-    VB6VisibilityDefinition,
+    VB6VisibilityOwner,
     VB6TypeClauseOwner,
     VB6GetTypeHintFromChildrenMixin {
 }

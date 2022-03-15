@@ -3,11 +3,11 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6Argument
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6ArgumentList
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ArgumentOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScope
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReturnTypeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
@@ -21,7 +21,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6FunctionStatement :
-    VB6BlockScope,
+    VB6BlockScopeOwner,
     VB6IdentifierOwner,
     VB6ArgumentOwner,
     VB6ReturnTypeOwner,
