@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.interfaces.call
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6Statement
 import com.intellij.lang.ASTNode
 

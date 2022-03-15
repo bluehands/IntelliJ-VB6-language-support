@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.interfaces.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisitor
-import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner

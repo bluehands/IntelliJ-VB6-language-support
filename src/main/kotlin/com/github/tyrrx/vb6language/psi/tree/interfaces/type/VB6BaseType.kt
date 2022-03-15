@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.interfaces.type
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiNode
 import com.intellij.lang.ASTNode
 
 interface VB6BaseType: VB6TypeBase {

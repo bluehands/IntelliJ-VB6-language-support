@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.interfaces
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6TypeHintDefinition
 import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier

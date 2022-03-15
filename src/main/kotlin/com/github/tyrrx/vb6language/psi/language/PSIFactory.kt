@@ -1,8 +1,8 @@
 package com.github.tyrrx.vb6language.psi.language
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.impl.*
 import com.github.tyrrx.vb6language.psi.tree.interfaces.*
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6BlockImpl
 import com.github.tyrrx.vb6language.psi.tree.interfaces.block.VB6BlockStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt.*

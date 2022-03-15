@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.tree.impl
+package com.github.tyrrx.vb6language.psi.tree.interfaces.base
 
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ScopeNode

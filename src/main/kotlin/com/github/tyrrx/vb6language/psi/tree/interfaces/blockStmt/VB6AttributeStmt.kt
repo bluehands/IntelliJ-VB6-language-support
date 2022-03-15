@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.interfaces.blockStmt
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Literal
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6Statement

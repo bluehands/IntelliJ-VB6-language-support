@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.interfaces.variable
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6SubscriptElement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Subscripts
 import com.github.tyrrx.vb6language.psi.tree.interfaces.VB6Visibility

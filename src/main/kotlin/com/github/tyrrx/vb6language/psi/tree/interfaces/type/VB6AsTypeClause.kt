@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.interfaces.type
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.psi.tree.impl.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.isIElementTypePresentInChildren
 import com.intellij.lang.ASTNode
