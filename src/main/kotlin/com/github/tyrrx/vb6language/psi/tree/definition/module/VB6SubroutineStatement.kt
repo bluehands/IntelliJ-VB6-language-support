@@ -23,9 +23,9 @@ interface VB6SubroutineStatement :
 
 class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
     VB6SubroutineStatement {
-    override fun getBlock(): VB6Block? {
-        return findFirstChildByType(this)
-    }
+
+    override val block: VB6Block?
+        get() = findFirstChildByType(this)
 
     override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
         return resolveVisitor.resolveSubroutineStmt(this)

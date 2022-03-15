@@ -63,9 +63,8 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
             ?.getComplexOrBaseType()
     }
 
-    override fun getBlock(): VB6Block? {
-        return findFirstChildByType(this)
-    }
+    override val block: VB6Block?
+        get() = findFirstChildByType(this)
 
     override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
         return resolveVisitor.resolveFunctionStmt(this)

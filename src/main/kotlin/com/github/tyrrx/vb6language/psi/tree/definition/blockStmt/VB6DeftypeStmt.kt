@@ -7,6 +7,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.intellij.lang.ASTNode
 
 interface VB6DeftypeStmt : VB6StatementBase {
+    // Todo defintiion
 }
 
 class VB6DeftypeStmtImpl(node: ASTNode) : VB6PsiNode(node),

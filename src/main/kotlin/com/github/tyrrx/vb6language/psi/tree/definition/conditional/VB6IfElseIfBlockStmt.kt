@@ -21,9 +21,8 @@ class VB6IfElseIfBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
-    override fun getBlock(): VB6Block? {
-        return findFirstChildByType(this)
-    }
+    override val block: VB6Block?
+        get() = findFirstChildByType(this)
 
     override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
         return resolveVisitor.resolveIfElseIfStmt(this)

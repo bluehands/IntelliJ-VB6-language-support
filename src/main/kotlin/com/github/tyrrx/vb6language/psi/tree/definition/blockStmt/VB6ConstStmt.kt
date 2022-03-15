@@ -7,9 +7,10 @@ import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetVisibilityFromChildren
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 
-interface VB6ConstStmt : VB6StatementBase,
+interface VB6ConstStmt :
+    VB6StatementBase,
     VB6GetVisibilityFromChildrenMixin {
-    fun getDeclarations(): List<VB6ConstSubStmt>
+   val declarations: List<VB6ConstSubStmt>
 }
 
 class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -21,7 +22,6 @@ class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
-    override fun getDeclarations(): List<VB6ConstSubStmt> {
-        return findPsiElementsInDirectChildrenByType(this)
-    }
+    override val declarations: List<VB6ConstSubStmt>
+        get() = findPsiElementsInDirectChildrenByType(this)
 }
