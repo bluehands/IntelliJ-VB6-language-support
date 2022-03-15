@@ -10,10 +10,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.conditional.*
 import com.github.tyrrx.vb6language.psi.tree.definition.general.*
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6AmbiguousKeywordImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6IdentifierImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6DoLoopStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForEachStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmtImpl
+import com.github.tyrrx.vb6language.psi.tree.definition.loops.*
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.*
 import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableStmtImpl
@@ -172,6 +169,7 @@ object PSIFactory {
         VisualBasic6Parser.RULE_widthStmt mapsTo VB6WidthStmtImpl.Factory,
         VisualBasic6Parser.RULE_withStmt mapsTo VB6WithStmtImpl.Factory,
         VisualBasic6Parser.RULE_writeStmt mapsTo VB6WriteStmtImpl.Factory,
+        VisualBasic6Parser.RULE_forSelfReference mapsTo VB6ForSelfReferenceImpl.Factory,
 
         VisualBasic6Parser.RULE_inlineIfThenElse mapsTo VB6InlineIfThenElseImpl.Factory,
         VisualBasic6Parser.RULE_blockIfThenElse mapsTo VB6BlockIfThenElseImpl.Factory,

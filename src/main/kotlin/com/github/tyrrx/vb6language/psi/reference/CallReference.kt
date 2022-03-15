@@ -1,8 +1,6 @@
-package com.github.tyrrx.vb6language.psi.reference.impl
+package com.github.tyrrx.vb6language.psi.reference
 
-import com.github.tyrrx.vb6language.psi.reference.ProcedureReference
-import com.github.tyrrx.vb6language.psi.reference.resolveInContext
-import com.github.tyrrx.vb6language.psi.reference.visitor.CallableReferenceResolveVisitor
+import com.github.tyrrx.vb6language.psi.reference.visitor.CallReferenceResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6FunctionStatement
@@ -10,9 +8,14 @@ import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6SubroutineStat
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
+import com.intellij.psi.PsiReference
 
-class CallableReference(private val myElement: VB6ReferenceOwner) :
-    ProcedureReference {
+interface ICallReference : PsiReference {
+}
+
+class CallReference(
+    private val myElement: VB6ReferenceOwner
+) : ICallReference {
     override fun getElement(): PsiElement {
         return myElement
     }
@@ -22,7 +25,7 @@ class CallableReference(private val myElement: VB6ReferenceOwner) :
     }
 
     override fun resolve(): PsiElement? {
-        return myElement.resolveInContext(CallableReferenceResolveVisitor(myElement))
+        return myElement.resolveInContext(CallReferenceResolveVisitor(myElement))
     }
 
     override fun getCanonicalText(): String {

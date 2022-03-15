@@ -7,7 +7,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
 interface VB6ModuleVariableStmt : VB6StatementBase {
-    fun getModuleVariables(): List<VB6ModuleVariableDefinition>
+    val definitions: List<VB6ModuleVariableDefinition>
 }
 
 class VB6ModuleVariableStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleVariableStmt {
@@ -18,8 +18,7 @@ class VB6ModuleVariableStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleVari
         }
     }
 
-    override fun getModuleVariables(): List<VB6ModuleVariableDefinition> {
-        return findFirstChildByType<VB6VariableListStmt>(this)
+    override val definitions: List<VB6ModuleVariableDefinition>
+        get() = findFirstChildByType<VB6VariableListStmt>(this)
             ?.getVariableDefinitions() ?: emptyList()
-    }
 }

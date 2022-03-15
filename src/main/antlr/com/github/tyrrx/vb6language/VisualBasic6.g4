@@ -614,7 +614,7 @@ iCS_B_MemberProcedureCall : implicitCallStmt_InStmt? '.' ambiguousIdentifier typ
 // parantheses are forbidden in case of args
 // variables cannot be called in blocks
 // certainIdentifier instead of ambiguousIdentifier for preventing ambiguity with statement keywords
-iCS_B_ProcedureCall : certainIdentifier (WS argsCall)? (WS? LPAREN subscripts RPAREN)*; // reference
+iCS_B_ProcedureCall : ambiguousIdentifier (WS argsCall)? (WS? LPAREN subscripts RPAREN)*; // reference
 
 
 // iCS_S_MembersCall first, so that member calls are not resolved as separate iCS_S_VariableOrProcedureCalls
@@ -704,7 +704,7 @@ ambiguousKeyword :
     | ALIAS
     | APPACTIVATE
     | APPEND
-    | BEEP
+    | BEEP // ambiguity with beepStmt
     | BEGIN
     | BINARY
     | CLASS
@@ -724,7 +724,7 @@ ambiguousKeyword :
     | NULL_
     | OUTPUT
     | RANDOM
-    | RANDOMIZE
+    | RANDOMIZE // ambiguity with randomizeStmt
     | READ
     | RESET
     | RMDIR

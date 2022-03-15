@@ -2,6 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.general
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeHintOwner
@@ -17,7 +18,7 @@ import com.intellij.psi.PsiNameIdentifierOwner
 import com.intellij.psi.util.elementType
 
 interface VB6Argument :
-    PsiNameIdentifierOwner,
+    VB6IdentifierOwner,
     VB6TypeClauseOwner,
     VB6TypeHintOwner {
     fun isOptional(): Boolean //= false

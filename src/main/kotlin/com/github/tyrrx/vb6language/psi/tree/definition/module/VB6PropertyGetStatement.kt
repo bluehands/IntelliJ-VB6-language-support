@@ -43,10 +43,9 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.setName(name) ?: this // todo check setName
     }
 
-    override fun getArguments(): List<VB6Argument> {
-        return findFirstChildByType<VB6ArgumentList>(this)
+    override val arguments: List<VB6Argument>
+        get() = findFirstChildByType<VB6ArgumentList>(this)
             ?.getArguments() ?: emptyList()
-    }
 
     override fun getName(): String? {
         return nameIdentifier?.name

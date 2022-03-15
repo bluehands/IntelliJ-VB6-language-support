@@ -48,11 +48,6 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun getArguments(): List<VB6Argument> {
-        return findFirstChildByType<VB6ArgumentList>(this)
-            ?.getArguments() ?: emptyList()
-    }
-
     override fun getReturnAsTypeClause(): VB6AsTypeClause? {
         return findFirstChildByType(this)
     }
@@ -73,4 +68,8 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override fun setName(name: String): PsiElement {
         return nameIdentifier?.setName(name) ?: this
     }
+
+    override val arguments: List<VB6Argument>
+        get() = findFirstChildByType<VB6ArgumentList>(this)
+            ?.getArguments() ?: emptyList()
 }

@@ -10,6 +10,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeSt
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6ConstStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6ImplementsStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableDefinition
+import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
 import com.intellij.lang.ASTNode
@@ -17,7 +18,6 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
 
 interface VB6Module : VB6ScopeNode, PsiNameIdentifierOwner {
-
     // base
     fun getModuleHeader(): VB6ModuleHeader?
     fun getModuleConfig(): VB6ModuleConfig?
@@ -25,6 +25,9 @@ interface VB6Module : VB6ScopeNode, PsiNameIdentifierOwner {
     fun getModuleDeclarations(): VB6ModuleDeclarations?
     fun getModuleBody(): VB6ModuleBody?
 
+    val definitions: List<VB6IdentifierOwner>
+    val bodyDefinitions: List<VB6IdentifierOwner>
+    val declarationsDefinitions: List<VB6IdentifierOwner>
 
     fun isClass(): Boolean
     fun getModuleConfigElements(): Collection<VB6ModuleConfigElement>
@@ -36,8 +39,8 @@ interface VB6Module : VB6ScopeNode, PsiNameIdentifierOwner {
     fun getPropertyGets(): List<VB6PropertyGetStatement>
     fun getPropertySets(): List<VB6PropertySetStatement>
     fun getPropertyLets(): List<VB6PropertyLetStatement>
-
 }
+
 
 fun VB6Module.fromBodyGetElements(): List<VB6PsiElement> {
     return getModuleBody()?.getStatements() ?: emptyList()
@@ -57,45 +60,47 @@ inline fun <reified TStatement> VB6Module.fromModuleDeclarationsGetByType(): Lis
 }
 
 
-fun VB6Module.fromDeclarationsGetDeclares(): List<VB6DeclareStmt> {
-    return fromModuleDeclarationsGetByType()
-}
+//
+//fun VB6Module.fromDeclarationsGetDeclares(): List<VB6DeclareStmt> {
+//    return fromModuleDeclarationsGetByType()
+//}
+//
+//fun VB6Module.fromDeclarationsGetEnumerations(): List<VB6EnumerationStmt> {
+//    return fromModuleDeclarationsGetByType()
+//}
+//
+//fun VB6Module.fromDeclarationsGetEvents(): List<VB6EventStmt> {
+//    return fromModuleDeclarationsGetByType()
+//}
+//
+//fun VB6Module.fromDeclarationsGetConst(): List<VB6ConstStmt> {
+//    return fromModuleDeclarationsGetByType()
+//}
+//
+//fun VB6Module.fromDeclarationsGetImplements(): List<VB6ImplementsStmt> {
+//    return fromModuleDeclarationsGetByType()
+//}
+//
+//fun VB6Module.fromDeclarationsGetVariables(): List<VB6ModuleVariableDefinition> {
+//    return fromModuleDeclarationsGetByType()
+//}
+//
+//fun VB6Module.fromDeclarationsGetArrayVariables(): List<VB6ModuleVariableDefinition> {
+//    return fromDeclarationsGetVariables().filter { it.isArray() }
+//}
+//
+//fun VB6Module.fromDeclarationsGetOptions() {
+//    TODO("Not yet implemented")
+//}
+//
+//fun VB6Module.fromDeclarationsGetTypes(): List<VB6TypeStmt> {
+//    return fromModuleDeclarationsGetByType()
+//}
+//
+//fun VB6Module.fromDeclarationsGetMacros() {
+//    TODO("Not yet implemented")
+//}
 
-fun VB6Module.fromDeclarationsGetEnumerations(): List<VB6EnumerationStmt> {
-    return fromModuleDeclarationsGetByType()
-}
-
-fun VB6Module.fromDeclarationsGetEvents(): List<VB6EventStmt> {
-    return fromModuleDeclarationsGetByType()
-}
-
-fun VB6Module.fromDeclarationsGetConst(): List<VB6ConstStmt> {
-    return fromModuleDeclarationsGetByType()
-}
-
-fun VB6Module.fromDeclarationsGetImplements(): List<VB6ImplementsStmt> {
-    return fromModuleDeclarationsGetByType()
-}
-
-fun VB6Module.fromDeclarationsGetVariables(): List<VB6ModuleVariableDefinition> {
-    return fromModuleDeclarationsGetByType()
-}
-
-fun VB6Module.fromDeclarationsGetArrayVariables(): List<VB6ModuleVariableDefinition> {
-    return fromDeclarationsGetVariables().filter { it.isArray() }
-}
-
-fun VB6Module.fromDeclarationsGetOptions() {
-    TODO("Not yet implemented")
-}
-
-fun VB6Module.fromDeclarationsGetTypes(): List<VB6TypeStmt> {
-    return fromModuleDeclarationsGetByType()
-}
-
-fun VB6Module.fromDeclarationsGetMacros() {
-    TODO("Not yet implemented")
-}
 
 class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     override fun getModuleHeader(): VB6ModuleHeader? {
@@ -117,6 +122,27 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     override fun getModuleBody(): VB6ModuleBody? {
         return findFirstChildByType(this)
     }
+
+    override val definitions: List<VB6IdentifierOwner>
+        get() = bodyDefinitions.plus(declarationsDefinitions)
+
+    override val bodyDefinitions: List<VB6IdentifierOwner>
+        get() = fromBodyGetElements().flatMap {
+            when(it) {
+                is VB6IdentifierOwner -> listOf(it)
+                else -> emptyList()
+            }
+        }
+
+    override val declarationsDefinitions: List<VB6IdentifierOwner>
+        get() = fromDeclarationsGetElements().flatMap {
+            when(it) {
+                is VB6IdentifierOwner -> listOf(it)
+                is VB6ConstStmt -> it.declarations
+                is VB6ModuleVariableStmt -> it.definitions
+                else -> emptyList()
+            }
+        }
 
     //-----------------------------------------
 

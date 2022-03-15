@@ -36,10 +36,9 @@ class VB6PropertyLetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         TODO("Not yet implemented")
     }
 
-    override fun getArguments(): List<VB6Argument> {
-        return findFirstChildByType<VB6ArgumentList>(this)
+    override val arguments: List<VB6Argument>
+        get() = findFirstChildByType<VB6ArgumentList>(this)
             ?.getArguments() ?: emptyList()
-    }
 
     override fun getName(): String? {
         return nameIdentifier?.name;

@@ -13,7 +13,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6PropertySetStatement: VB6PropertyStatementBase {
+interface VB6PropertySetStatement : VB6PropertyStatementBase {
 }
 
 class VB6PropertySetStatementImpl(node: ASTNode) : VB6PsiNode(node),
@@ -36,10 +36,9 @@ class VB6PropertySetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         TODO("Not yet implemented")
     }
 
-    override fun getArguments(): List<VB6Argument> {
-        return findFirstChildByType<VB6ArgumentList>(this)
+    override val arguments: List<VB6Argument>
+        get() = findFirstChildByType<VB6ArgumentList>(this)
             ?.getArguments() ?: emptyList()
-    }
 
     override fun getName(): String? {
         return nameIdentifier?.name;

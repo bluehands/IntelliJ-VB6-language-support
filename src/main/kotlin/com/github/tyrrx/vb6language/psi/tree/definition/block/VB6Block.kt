@@ -12,6 +12,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
+import com.intellij.psi.util.PsiTreeUtil
 
 interface VB6Block : PsiElement {
     val statements: List<VB6StatementBase>
@@ -40,5 +41,4 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
                 else -> emptyList()
             }
         }
-
 }

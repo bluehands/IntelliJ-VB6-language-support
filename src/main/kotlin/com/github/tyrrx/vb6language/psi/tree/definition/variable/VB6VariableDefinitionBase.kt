@@ -5,7 +5,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6SubscriptsOwner
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetTypeHintFromChildrenMixin
 
-interface VB6VariableDefinition:
+interface VB6VariableDefinitionBase:
     VB6IdentifierOwner,
     VB6TypeClauseOwner,
     VB6SubscriptsOwner,
