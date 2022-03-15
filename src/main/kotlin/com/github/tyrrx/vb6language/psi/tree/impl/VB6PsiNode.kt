@@ -1,5 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.impl
 
+import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ScopeNode
 import com.intellij.extapi.psi.ASTWrapperPsiElement
 import com.intellij.lang.ASTNode
@@ -8,7 +9,7 @@ import com.intellij.psi.PsiErrorElement
 import org.antlr.intellij.adaptor.psi.Trees
 
 
-open class VB6PsiNode(node: ASTNode) : ASTWrapperPsiElement(node) {
+open class VB6PsiNode(node: ASTNode) : ASTWrapperPsiElement(node), VB6PsiElement {
 
     /** For some reason, default impl of this only returns rule refs
      * (composite nodes in jetbrains speak) but we want ALL children.

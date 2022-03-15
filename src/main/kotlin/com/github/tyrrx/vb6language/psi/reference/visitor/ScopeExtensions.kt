@@ -23,10 +23,6 @@ fun VB6Module.arrayOrProcedureScope(): List<VB6IdentifierOwner> {
             getSubroutines()
 }
 
-fun VB6BlockScope.arrayOrProcedureScope(): List<VB6IdentifierOwner> {
-    return this.getBlock()?.getStatements()?.filterIsInstance<VB6VariableStmt>()
-}
-
 infix fun List<VB6IdentifierOwner>.with(that: List<VB6IdentifierOwner>): List<VB6IdentifierOwner> {
     return this.plus(that)
 }

@@ -9,3 +9,4 @@ interface VB6IdentifierOwner: PsiNameIdentifierOwner, VB6PsiElement {
         return nameIdentifier?.name
     }
 }
+
