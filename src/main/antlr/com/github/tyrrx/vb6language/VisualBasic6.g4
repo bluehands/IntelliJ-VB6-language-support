@@ -310,14 +310,16 @@ filecopyStmt : FILECOPY WS valueStmt WS? ',' WS? valueStmt;
 forEachStmt :
 	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS valueStmt endOfStatement // definition
 	block?
-	NEXT (WS ambiguousIdentifier)? // reference
+	NEXT (WS forSelfReference)? // reference
 ;
 
 forNextStmt :
 	FOR WS ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt WS TO WS valueStmt (WS STEP WS valueStmt)? endOfStatement
 	block?
-	NEXT (WS ambiguousIdentifier)?
+	NEXT (WS forSelfReference)?
 ;
+
+forSelfReference: ambiguousIdentifier;
 
 functionStmt :
 	(visibility WS)? (STATIC WS)? FUNCTION WS? ambiguousIdentifier typeHint? (WS? argList)? (WS? asTypeClause)? endOfStatement
@@ -698,27 +700,44 @@ visibility : PRIVATE | PUBLIC | FRIEND | GLOBAL;
 
 // ambiguous keywords
 ambiguousKeyword :
-	ACCESS | ADDRESSOF | ALIAS | AND | ATTRIBUTE | APPACTIVATE | APPEND | AS |
-	BEEP | BEGIN | BINARY | BOOLEAN | BYVAL | BYREF | BYTE |
-	CALL | CASE | CLASS | CLOSE | CHDIR | CHDRIVE | COLLECTION | CONST |
-	DATABASE | DATE | DECLARE | DEFBOOL | DEFBYTE | DEFCUR | DEFDBL | DEFDATE | DEFDEC | DEFINT | DEFLNG | DEFOBJ | DEFSNG | DEFSTR | DEFVAR | DELETESETTING | DIM | DO | DOUBLE |
-	EACH | /*ELSE | ELSEIF |*/ END | ENUM | EQV | ERASE | ERROR | EVENT | // remove else and else if to prevent matching
-	FALSE | FILECOPY | FRIEND | FOR | FUNCTION |
-	GET | GLOBAL | GOSUB | GOTO |
-	IF | IMP | IMPLEMENTS | IN | INPUT | IS | INTEGER |
-	KILL |
-	LOAD | LOCK | LONG | LOOP | LEN | LET | LIB | LIKE | LSET |
-	ME | MID | MKDIR | MOD |
-	NAME | NEXT | NEW | NOT | NOTHING | NULL_ |
-	ON | OPEN | OPTIONAL | OR | OUTPUT |
-	PARAMARRAY | PRESERVE | PRINT | PRIVATE | PUBLIC | PUT |
-	RANDOM | RANDOMIZE | RAISEEVENT | READ | REDIM | REM | RESET | RESUME | RETURN | RMDIR | RSET |
-	SAVEPICTURE | SAVESETTING | SEEK | SELECT | SENDKEYS | SET | SETATTR | SHARED | SINGLE | SPC | STATIC | STEP | STOP | STRING | SUB |
-	TAB | TEXT | THEN | TIME | TO | TRUE | TYPE | TYPEOF |
-	UNLOAD | UNLOCK | UNTIL |
-	VARIANT | VERSION |
-	WEND | WHILE | WIDTH | WITH | WITHEVENTS | WRITE |
-	XOR
+	ACCESS
+    | ALIAS
+    | APPACTIVATE
+    | APPEND
+    | BEEP
+    | BEGIN
+    | BINARY
+    | CLASS
+    | CHDIR
+    | CHDRIVE
+    | COLLECTION
+    | DATABASE
+    | DELETESETTING
+    | ERROR
+    | FILECOPY
+    | KILL
+    | LOAD
+    | LIB
+    | MID
+    | MKDIR
+    | NAME
+    | NULL_
+    | OUTPUT
+    | RANDOM
+    | RANDOMIZE
+    | READ
+    | RESET
+    | RMDIR
+    | SAVEPICTURE
+    | SAVESETTING
+    | SENDKEYS
+    | SETATTR
+    | STEP
+    | TEXT
+    | TIME
+    | UNLOAD
+    | VERSION
+    | WIDTH
 ;
 
 remComment : REMCOMMENT;
