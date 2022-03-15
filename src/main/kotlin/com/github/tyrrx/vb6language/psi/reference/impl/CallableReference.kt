@@ -3,10 +3,10 @@ package com.github.tyrrx.vb6language.psi.reference.impl
 import com.github.tyrrx.vb6language.psi.reference.ProcedureReference
 import com.github.tyrrx.vb6language.psi.reference.resolveInContext
 import com.github.tyrrx.vb6language.psi.reference.visitor.CallableReferenceResolveVisitor
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.interfaces.identifier.VB6Identifier
-import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6FunctionStatement
-import com.github.tyrrx.vb6language.psi.tree.interfaces.module.VB6SubroutineStatement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6FunctionStatement
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6SubroutineStatement
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement

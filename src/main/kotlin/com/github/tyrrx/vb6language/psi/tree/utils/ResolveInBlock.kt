@@ -1,10 +1,8 @@
 package com.github.tyrrx.vb6language.psi.tree.utils
 
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6BlockScope
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.interfaces.base.VB6ReferenceOwner
-import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiNamedElement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScope
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 
 fun tryResolveInBlock(blockScope: VB6BlockScope, element: VB6ReferenceOwner?): VB6IdentifierOwner? {
     return blockScope
