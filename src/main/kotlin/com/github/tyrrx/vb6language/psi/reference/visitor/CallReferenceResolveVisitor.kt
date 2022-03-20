@@ -13,6 +13,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForEachStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 
 open class CallReferenceResolveVisitor(override val referenceOwner: VB6ReferenceOwner) : ReferenceResolveVisitor {
 

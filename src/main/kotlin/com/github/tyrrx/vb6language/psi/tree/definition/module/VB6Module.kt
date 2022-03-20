@@ -1,15 +1,13 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisitor
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6ConstStmt
-import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6ImplementsStmt
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableDefinition
 import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
@@ -170,7 +168,7 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
         return fromModuleBodyGetByType()
     }
 
-    override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
+    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return resolveVisitor.resolveModule(this)
     }
 

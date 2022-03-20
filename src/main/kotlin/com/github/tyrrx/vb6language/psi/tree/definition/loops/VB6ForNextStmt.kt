@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisitor
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
@@ -32,7 +32,7 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val block: VB6Block?
         get() = findFirstChildByType(this)
 
-    override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
+    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return resolveVisitor.resolveForNextStmt(this)
     }
 

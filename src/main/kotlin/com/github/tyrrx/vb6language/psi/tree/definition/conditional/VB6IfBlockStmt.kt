@@ -1,9 +1,8 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.conditional
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisitor
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6WeakBlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
@@ -25,9 +24,8 @@ class VB6IfBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val block: VB6Block?
         get() = findFirstChildByType(this)
 
-    override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
+    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return resolveVisitor.resolveIfBlockStmt(this)
     }
-
 
 }

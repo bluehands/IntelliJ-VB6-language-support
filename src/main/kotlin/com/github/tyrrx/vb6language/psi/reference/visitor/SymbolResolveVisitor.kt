@@ -2,7 +2,6 @@ package com.github.tyrrx.vb6language.psi.reference.visitor
 
 import com.github.tyrrx.vb6language.psi.reference.resolveInContext
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt
@@ -14,8 +13,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForEachStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
-import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.refactoring.suggested.endOffset
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 
 class SymbolResolveVisitor(override val referenceOwner: VB6ReferenceOwner) :
     ReferenceResolveVisitor {
