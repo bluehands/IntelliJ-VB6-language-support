@@ -1,8 +1,6 @@
 package com.github.tyrrx.vb6language.psi.reference
 
-import com.github.tyrrx.vb6language.psi.reference.visitor.CallReferenceResolveVisitor
-import com.github.tyrrx.vb6language.psi.reference.visitor.VariableOrProcedureReferenceResolveVisitor
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
+import com.github.tyrrx.vb6language.psi.reference.visitor.SymbolResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PropertyStatementBase
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
@@ -30,7 +28,7 @@ class SymbolReference(
     }
 
     override fun resolve(): PsiElement? {
-        return myElement.resolveInContext(VariableOrProcedureReferenceResolveVisitor(myElement))
+        return myElement.resolveInContext(SymbolResolveVisitor(myElement))
     }
 
     override fun getCanonicalText(): String {

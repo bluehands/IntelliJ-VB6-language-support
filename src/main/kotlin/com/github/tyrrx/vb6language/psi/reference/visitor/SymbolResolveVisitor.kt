@@ -1,6 +1,7 @@
 package com.github.tyrrx.vb6language.psi.reference.visitor
 
 import com.github.tyrrx.vb6language.psi.reference.resolveInContext
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
@@ -13,6 +14,8 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForEachStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
+import com.intellij.psi.util.PsiTreeUtil
+import com.intellij.refactoring.suggested.endOffset
 
 class SymbolResolveVisitor(override val referenceOwner: VB6ReferenceOwner) :
     ReferenceResolveVisitor {
@@ -20,61 +23,56 @@ class SymbolResolveVisitor(override val referenceOwner: VB6ReferenceOwner) :
     private fun compareNames(it: VB6IdentifierOwner) =
         it.name == referenceOwner.getIdentifier().name
 
-    private fun resolveBlock(scope: VB6BlockScopeOwner) =
-        scope.block?.definitions
-            ?.find { compareNames(it) }
+    private fun resolveBlock(scope: VB6BlockOwner): VB6IdentifierOwner? {
+        referenceOwner.textRangeInParent
 
-    private fun resolveSelf(scope: VB6IdentifierOwner) =
-        if (compareNames(scope)) {
-            scope
-        } else {
-            null
-        }
+        return scope.block
+            ?.definitions
+            ?.takeWhile { it.textOffset < referenceOwner.textOffset }
+            ?.find { compareNames(it) }
+    }
+
+//    private fun resolveSelf(scope: VB6IdentifierOwner) =
+//        if (compareNames(scope)) {
+//            scope
+//        } else {
+//            null
+//        }
 
     override fun resolveModule(scope: VB6Module): VB6IdentifierOwner? {
         return scope.definitions.find { compareNames(it) }
     }
 
     override fun resolveWithStmt(scope: VB6WithStmt): VB6IdentifierOwner? {
-        return resolveBlock(scope) // todo fix this with \n .xyz
-            ?: scope.resolveInContext(this)
+        return scope.resolveInContext(this)
     }
 
     override fun resolveIfBlockStmt(scope: VB6IfBlockStmt): VB6IdentifierOwner? {
-        return resolveBlock(scope)
-            ?: scope.resolveInContext(this)
+        return scope.resolveInContext(this)
     }
 
     override fun resolveIfElseBlockStmt(scope: VB6IfElseBlockStmt): VB6IdentifierOwner? {
-        return resolveBlock(scope)
-            ?: scope.resolveInContext(this)
+        return scope.resolveInContext(this)
     }
 
     override fun resolveIfElseIfStmt(scope: VB6IfElseIfBlockStmt): VB6IdentifierOwner? {
-        return resolveBlock(scope)
-            ?: scope.resolveInContext(this)
+        return scope.resolveInContext(this)
     }
 
     override fun resolveDoLoopStmt(scope: VB6DoLoopStmt): VB6IdentifierOwner? {
-        return resolveBlock(scope)
-            ?: scope.resolveInContext(this)
+        return scope.resolveInContext(this)
     }
 
     override fun resolveForEachStmt(scope: VB6ForEachStmt): VB6IdentifierOwner? {
-        return resolveBlock(scope)
-            ?: resolveSelf(scope)
-            ?: scope.resolveInContext(this)
+        return scope.resolveInContext(this)
     }
 
     override fun resolveForNextStmt(scope: VB6ForNextStmt): VB6IdentifierOwner? {
-        return resolveBlock(scope)
-            ?: resolveSelf(scope)
-            ?: scope.resolveInContext(this)
+        return scope.resolveInContext(this)
     }
 
     override fun resolveWhileWendStmt(scope: VB6WhileWendStmt): VB6IdentifierOwner? {
-        return resolveBlock(scope)
-            ?: scope.resolveInContext(this)
+        return scope.resolveInContext(this)
     }
 
     override fun resolveFunctionStmt(scope: VB6FunctionStatement): VB6IdentifierOwner? {

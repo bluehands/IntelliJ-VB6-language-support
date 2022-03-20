@@ -5,11 +5,12 @@ import com.github.tyrrx.vb6language.psi.reference.visitor.ReferenceResolveVisito
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6WeakBlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
-interface VB6IfBlockStmt : VB6BlockScopeOwner {
+interface VB6IfBlockStmt : VB6WeakBlockScopeOwner {
 }
 
 class VB6IfBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -27,5 +28,6 @@ class VB6IfBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override fun resolve(resolveVisitor: ReferenceResolveVisitor): VB6IdentifierOwner? {
         return resolveVisitor.resolveIfBlockStmt(this)
     }
+
 
 }

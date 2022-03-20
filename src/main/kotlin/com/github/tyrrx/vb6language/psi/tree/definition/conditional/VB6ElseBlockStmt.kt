@@ -1,11 +1,12 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.conditional
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6ElseBlockStmt : PsiElement {
+interface VB6ElseBlockStmt : VB6PsiElement {
 }
 
 class VB6ElseBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),

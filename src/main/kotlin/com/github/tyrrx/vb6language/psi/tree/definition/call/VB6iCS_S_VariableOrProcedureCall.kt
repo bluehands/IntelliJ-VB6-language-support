@@ -2,13 +2,11 @@ package com.github.tyrrx.vb6language.psi.tree.definition.call
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.VariableOrProcedureReference
-import com.github.tyrrx.vb6language.psi.reference.visitor.VariableOrProcedureReferenceResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReference
 
 interface VB6iCS_S_VariableOrProcedureCall : VB6ReferenceOwner {
