@@ -40,6 +40,10 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
+
     override fun getName(): String? {
         return nameIdentifier?.name
     }

@@ -39,6 +39,10 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.setName(name) ?: this
     }
 
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
+
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)
             ?.getArguments() ?: emptyList()

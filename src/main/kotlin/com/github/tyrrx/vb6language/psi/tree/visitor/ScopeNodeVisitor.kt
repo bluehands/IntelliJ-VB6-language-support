@@ -1,6 +1,4 @@
 package com.github.tyrrx.vb6language.psi.tree.visitor
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfBlockStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfElseBlockStmt

@@ -43,6 +43,10 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.setName(name) ?: this // todo check setName
     }
 
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
+
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)
             ?.getArguments() ?: emptyList()

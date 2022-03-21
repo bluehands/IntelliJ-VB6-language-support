@@ -36,6 +36,10 @@ class VB6PropertyLetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         TODO("Not yet implemented")
     }
 
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
+
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)
             ?.getArguments() ?: emptyList()

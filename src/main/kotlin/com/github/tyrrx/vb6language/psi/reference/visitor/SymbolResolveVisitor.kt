@@ -22,8 +22,6 @@ class SymbolResolveVisitor(override val referenceOwner: VB6ReferenceOwner) :
         it.name == referenceOwner.getIdentifier().name
 
     private fun resolveBlock(scope: VB6BlockOwner): VB6IdentifierOwner? {
-        referenceOwner.textRangeInParent
-
         return scope.block
             ?.definitions
             ?.takeWhile { it.textOffset < referenceOwner.textOffset }
