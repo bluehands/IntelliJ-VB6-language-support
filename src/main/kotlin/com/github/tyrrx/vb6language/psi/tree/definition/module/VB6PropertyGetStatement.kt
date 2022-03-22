@@ -5,13 +5,12 @@ import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PropertyStatementBase
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReturnTypeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeBase
+import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6Type
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetTypeHintFromChildrenMixin
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
@@ -63,7 +62,7 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun getReturnType(): VB6TypeBase? {
+    override fun getReturnType(): VB6Type? {
         return getReturnAsTypeClause()
             ?.getTypeRule()
             ?.getComplexOrBaseType()

@@ -20,7 +20,7 @@ open class CallReferenceResolveVisitor(override val referenceOwner: VB6Reference
     override fun resolveModule(scope: VB6Module): VB6IdentifierOwner? {
         return scope.getFunctions()
             .plus(scope.getSubroutines())
-            .find { callable -> callable.name == referenceOwner.getIdentifier().name }
+            .find { callable -> callable.name == referenceOwner.identifier.name }
     }
 
     override fun resolveWithStmt(scope: VB6WithStmt): VB6IdentifierOwner? {

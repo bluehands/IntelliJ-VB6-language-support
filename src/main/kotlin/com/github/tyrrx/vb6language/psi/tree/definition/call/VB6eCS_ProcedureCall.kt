@@ -21,9 +21,7 @@ class VB6eCS_ProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6eCS_Procedu
         }
     }
 
-    override fun getIdentifier(): VB6Identifier {
-        return findFirstChildByType(this)!!
-    }
+    override val identifier: VB6Identifier = findFirstChildByType(this)!!
 
     override fun getReference(): PsiReference {
         return CallReference(this)

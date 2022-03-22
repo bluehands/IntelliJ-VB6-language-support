@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.VariableOrProcedureReference
+import com.github.tyrrx.vb6language.psi.reference.SymbolReference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
@@ -20,14 +20,12 @@ class VB6ForSelfReferenceImpl(node: ASTNode) : VB6PsiNode(node), VB6ForSelfRefer
         }
     }
 
-    override fun getIdentifier(): VB6Identifier {
-        return firstChild as VB6Identifier
-    }
+    override val identifier: VB6Identifier get() = firstChild as VB6Identifier
 
     override fun getReference(): PsiReference? {
-        return VariableOrProcedureReference(
+        return SymbolReference(
             this,
-            getIdentifier().textRangeInParent
+            identifier.textRangeInParent
         )
     }
 }

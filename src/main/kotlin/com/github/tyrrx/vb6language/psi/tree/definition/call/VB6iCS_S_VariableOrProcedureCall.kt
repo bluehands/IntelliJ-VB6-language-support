@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.call
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.VariableOrProcedureReference
+import com.github.tyrrx.vb6language.psi.reference.SymbolReference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
@@ -20,11 +20,11 @@ class VB6iCS_S_VariableOrProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB
         }
     }
 
-    override fun getIdentifier(): VB6Identifier {
-        return findFirstChildByType(this)!!
-    }
+    override val identifier: VB6Identifier
+        get() = findFirstChildByType(this)!!
+
 
     override fun getReference(): PsiReference? {
-        return VariableOrProcedureReference(this, getIdentifier().textRangeInParent)
+        return SymbolReference(this, identifier.textRangeInParent)
     }
 }

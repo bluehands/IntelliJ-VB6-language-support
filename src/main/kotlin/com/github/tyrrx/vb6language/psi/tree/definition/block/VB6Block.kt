@@ -32,12 +32,12 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
     override val definitions: List<VB6IdentifierOwner>
         get() = statements.flatMap {
             when (it) {
-                // todo is VB6LetStmt -> it.isDefinitions -> it
                 is VB6VariableStmt -> it.variables
                 is VB6LineLabel -> listOf(it)
                 is VB6ConstStmt -> it.declarations
                 is VB6WeakBlockScopeOwner -> it.block?.definitions ?: emptyList()
                 is VB6EnclosingWeakBlocks -> it.enclosingBlocks.flatMap { block -> block.definitions }
+                is VB6LetStmt -> if(it.isDefinition) listOf(it) else emptyList()
                 // Todo VB6DeftypeStmt
                 else -> emptyList()
             }

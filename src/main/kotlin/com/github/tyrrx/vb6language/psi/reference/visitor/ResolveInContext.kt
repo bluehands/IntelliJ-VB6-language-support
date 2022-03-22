@@ -11,7 +11,7 @@ fun <TReturn> VB6PsiElement.resolveInContext(resolveVisitor: ScopeNodeVisitor<TR
 
 fun ReferenceResolveVisitor.compareReferenceAndScopeNameOrResolveInContext(scope: VB6IdentifierOwner): VB6IdentifierOwner? {
     return when (scope.name) {
-        referenceOwner.getIdentifier().name -> scope
+        referenceOwner.identifier.name -> scope
         else -> scope.resolveInContext(this)
     }
 }

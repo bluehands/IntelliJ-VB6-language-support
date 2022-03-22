@@ -12,7 +12,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReturnTypeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeBase
+import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6Type
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetTypeHintFromChildrenMixin
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6IsStaticInChildrenMixin
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetVisibilityFromChildrenMixin
@@ -56,7 +56,7 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun getReturnType(): VB6TypeBase? {
+    override fun getReturnType(): VB6Type? {
         return getReturnAsTypeClause()
             ?.getTypeRule()
             ?.getComplexOrBaseType()
