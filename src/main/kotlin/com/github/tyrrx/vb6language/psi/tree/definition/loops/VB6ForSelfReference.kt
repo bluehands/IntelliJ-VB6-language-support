@@ -2,8 +2,10 @@ package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.SymbolReference
+import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.intellij.lang.ASTNode
@@ -20,12 +22,10 @@ class VB6ForSelfReferenceImpl(node: ASTNode) : VB6PsiNode(node), VB6ForSelfRefer
         }
     }
 
-    override val referencingIdentifier: VB6Identifier get() = firstChild as VB6Identifier
+    override val referenceFactory: VB6ReferenceFactory?
+        get() = TODO("Not yet implemented")
 
-    override fun getReference(): PsiReference? {
-        return SymbolReference(
-            this,
-            referencingIdentifier.textRangeInParent
-        )
+    override fun getReference(): VB6Reference? {
+        return referenceFactory?.createReference()
     }
 }

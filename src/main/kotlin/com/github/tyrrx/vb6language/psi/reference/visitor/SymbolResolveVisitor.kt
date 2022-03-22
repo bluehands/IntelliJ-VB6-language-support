@@ -1,6 +1,5 @@
 package com.github.tyrrx.vb6language.psi.reference.visitor
 
-import com.github.tyrrx.vb6language.psi.reference.resolveInContext
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
@@ -9,6 +8,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfBlockStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfElseBlockStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfElseIfBlockStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6DoLoopStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForEachStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
@@ -16,11 +16,13 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstParentOfType
 
-class SymbolResolveVisitor(override val referenceOwner: VB6ReferenceOwner) :
-    ReferenceResolveVisitor {
+class SymbolResolveVisitor(
+    override val referenceOwner: VB6ReferenceOwner,
+    override val referencingIdentifier: VB6Identifier,
+) : ReferenceResolveVisitor {
 
     private fun compareNames(it: VB6IdentifierOwner) =
-        it.name == referenceOwner.referencingIdentifier.name
+        it.name == referencingIdentifier.name
 
     private fun resolveBlock(scope: VB6BlockOwner): VB6IdentifierOwner? {
         val textOffsetOfEnclosingBlockStatement = findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
