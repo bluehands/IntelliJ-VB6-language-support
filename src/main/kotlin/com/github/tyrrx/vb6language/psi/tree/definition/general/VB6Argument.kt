@@ -82,4 +82,8 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
     override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }
+
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
 }

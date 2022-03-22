@@ -11,3 +11,18 @@ fun findOwnerRecursive(element: PsiElement): PsiElement {
         else -> findOwnerRecursive(element.parent)
     }
 }
+
+fun findIdentifierOwnerRecursive(element: PsiElement): VB6IdentifierOwner {
+    return when(element) {
+        is VB6IdentifierOwner -> element
+        else -> findIdentifierOwnerRecursive(element.parent)
+    }
+}
+
+fun findReferenceOwnerRecursive(element: PsiElement): VB6ReferenceOwner {
+    return when(element) {
+        is VB6ReferenceOwner -> element
+        else -> findReferenceOwnerRecursive(element.parent)
+    }
+}
+

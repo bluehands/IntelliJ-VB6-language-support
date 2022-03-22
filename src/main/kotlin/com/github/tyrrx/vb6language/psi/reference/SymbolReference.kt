@@ -9,12 +9,6 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 import com.intellij.psi.PsiReference
 
-interface VB6Reference : PsiReference {
-    val myElement: VB6ReferenceOwner
-    val referencingIdentifier: VB6Identifier
-    val textRange: TextRange
-}
-
 class SymbolReference(
     override val myElement: VB6ReferenceOwner,
     override val referencingIdentifier: VB6Identifier,
@@ -51,7 +45,7 @@ class SymbolReference(
 
     override fun isReferenceTo(element: PsiElement): Boolean {
         val otherElement = when (element) {
-            is VB6Identifier -> element.getOwner()
+            is VB6Identifier -> element.identifierOwner
             else -> element
         }
 
