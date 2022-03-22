@@ -37,4 +37,7 @@ class VB6ModuleConfigElementImpl(node: ASTNode) : VB6PsiNode(node),
             return VB6ModuleConfigElementImpl(node)
         }
     }
+
+    override val isDefinition: Boolean
+        get() = true
 }

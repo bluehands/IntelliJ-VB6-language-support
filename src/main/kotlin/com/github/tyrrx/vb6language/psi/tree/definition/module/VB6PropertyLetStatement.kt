@@ -51,4 +51,7 @@ class VB6PropertyLetStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }
+
+    override val isDefinition: Boolean
+        get() = true
 }

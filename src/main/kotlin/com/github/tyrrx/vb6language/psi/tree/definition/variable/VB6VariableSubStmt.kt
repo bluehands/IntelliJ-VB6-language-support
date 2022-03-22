@@ -63,4 +63,7 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override fun setName(name: String): PsiElement {
         return nameIdentifier?.setName(name) ?: this // todo correct?
     }
+
+    override val isDefinition: Boolean
+        get() = true
 }

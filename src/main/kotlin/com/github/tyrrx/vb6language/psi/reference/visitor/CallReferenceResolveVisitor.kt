@@ -13,14 +13,13 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForEachStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 
 open class CallReferenceResolveVisitor(override val referenceOwner: VB6ReferenceOwner) : ReferenceResolveVisitor {
 
     override fun resolveModule(scope: VB6Module): VB6IdentifierOwner? {
         return scope.getFunctions()
             .plus(scope.getSubroutines())
-            .find { callable -> callable.name == referenceOwner.identifier.name }
+            .find { callable -> callable.name == referenceOwner.referencingIdentifier.name }
     }
 
     override fun resolveWithStmt(scope: VB6WithStmt): VB6IdentifierOwner? {

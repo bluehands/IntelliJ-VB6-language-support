@@ -51,4 +51,7 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override fun getAsTypeClause(): VB6AsTypeClause? {
         return findFirstChildByType(this)
     }
+
+    override val isDefinition: Boolean
+        get() = true
 }

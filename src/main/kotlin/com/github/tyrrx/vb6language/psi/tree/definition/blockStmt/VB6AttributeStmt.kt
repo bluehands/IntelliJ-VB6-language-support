@@ -43,4 +43,7 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override fun getName(): String? {
         return nameIdentifier?.name
     }
+
+    override val isDefinition: Boolean
+        get() = true
 }

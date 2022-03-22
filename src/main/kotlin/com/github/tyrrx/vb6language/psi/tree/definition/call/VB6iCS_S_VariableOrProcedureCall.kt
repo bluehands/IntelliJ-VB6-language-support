@@ -20,11 +20,11 @@ class VB6iCS_S_VariableOrProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB
         }
     }
 
-    override val identifier: VB6Identifier
+    override val referencingIdentifier: VB6Identifier
         get() = findFirstChildByType(this)!!
 
 
     override fun getReference(): PsiReference? {
-        return SymbolReference(this, identifier.textRangeInParent)
+        return SymbolReference(this, referencingIdentifier.textRangeInParent)
     }
 }

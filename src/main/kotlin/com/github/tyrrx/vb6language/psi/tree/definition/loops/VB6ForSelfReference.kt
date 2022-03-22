@@ -20,12 +20,12 @@ class VB6ForSelfReferenceImpl(node: ASTNode) : VB6PsiNode(node), VB6ForSelfRefer
         }
     }
 
-    override val identifier: VB6Identifier get() = firstChild as VB6Identifier
+    override val referencingIdentifier: VB6Identifier get() = firstChild as VB6Identifier
 
     override fun getReference(): PsiReference? {
         return SymbolReference(
             this,
-            identifier.textRangeInParent
+            referencingIdentifier.textRangeInParent
         )
     }
 }

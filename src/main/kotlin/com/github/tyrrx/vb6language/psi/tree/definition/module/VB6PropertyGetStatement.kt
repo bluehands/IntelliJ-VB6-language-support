@@ -67,4 +67,7 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
             ?.getTypeRule()
             ?.getComplexOrBaseType()
     }
+
+    override val isDefinition: Boolean
+        get() = true
 }

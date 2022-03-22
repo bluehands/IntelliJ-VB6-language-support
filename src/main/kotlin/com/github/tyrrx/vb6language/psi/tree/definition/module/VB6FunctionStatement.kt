@@ -76,4 +76,7 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)
             ?.getArguments() ?: emptyList()
+
+    override val isDefinition: Boolean
+        get() = true
 }

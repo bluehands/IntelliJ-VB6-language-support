@@ -31,4 +31,7 @@ class VB6DeclareStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareStmt {
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }
+
+    override val isDefinition: Boolean
+        get() = true
 }

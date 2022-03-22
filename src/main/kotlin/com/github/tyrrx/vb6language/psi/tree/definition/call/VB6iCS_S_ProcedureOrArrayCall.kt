@@ -8,7 +8,6 @@ import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6BaseType
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReference
 
 interface VB6iCS_S_ProcedureOrArrayCall : VB6ReferenceOwner {
@@ -22,15 +21,15 @@ class VB6iCS_S_ProcedureOrArrayCallImpl(node: ASTNode) : VB6PsiNode(node), VB6iC
         }
     }
 
-    override val identifier: VB6Identifier
+    override val referencingIdentifier: VB6Identifier
         get() {
             return findFirstChildByType(this)!!
         }
 
     override fun getReference(): PsiReference? {
-        return when (identifier) {
+        return when (referencingIdentifier) {
             is VB6BaseType -> null
-            else -> SymbolReference(this, identifier.textRangeInParent)
+            else -> SymbolReference(this, referencingIdentifier.textRangeInParent)
         }
     }
 }

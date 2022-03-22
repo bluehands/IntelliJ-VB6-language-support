@@ -8,5 +8,6 @@ interface VB6IdentifierOwner: PsiNameIdentifierOwner, VB6PsiElement {
     override fun getName(): String? {
         return nameIdentifier?.name
     }
+    val isDefinition: Boolean
 }
 

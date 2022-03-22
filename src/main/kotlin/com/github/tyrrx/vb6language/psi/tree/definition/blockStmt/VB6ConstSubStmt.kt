@@ -35,6 +35,9 @@ class VB6ConstSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
+    override val isDefinition: Boolean
+        get() = true
+
     override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType(this)
     }

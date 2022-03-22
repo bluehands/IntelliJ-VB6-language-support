@@ -27,11 +27,11 @@ class SymbolReference(
     }
 
     override fun getCanonicalText(): String {
-        return myElement.identifier.name ?: ""
+        return myElement.referencingIdentifier.name ?: ""
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
-        return myElement.identifier.setName(newElementName)
+        return myElement.referencingIdentifier.setName(newElementName)
     }
 
     override fun bindToElement(element: PsiElement): PsiElement {
@@ -53,11 +53,10 @@ class SymbolReference(
             is PsiNamedElement -> compareElements(otherElement)
             else -> false
         }
-
     }
 
     private fun compareElements(element: PsiNamedElement) =
-        element.name == myElement.identifier.name && element === resolve()
+        element.name == myElement.referencingIdentifier.name && element === resolve()
 
     override fun isSoft(): Boolean {
         return false

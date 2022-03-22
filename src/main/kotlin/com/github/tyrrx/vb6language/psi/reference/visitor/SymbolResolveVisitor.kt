@@ -15,30 +15,33 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstParentOfType
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 
 class SymbolResolveVisitor(override val referenceOwner: VB6ReferenceOwner) :
     ReferenceResolveVisitor {
 
     private fun compareNames(it: VB6IdentifierOwner) =
-        it.name == referenceOwner.identifier.name
+        it.name == referenceOwner.referencingIdentifier.name
 
     private fun resolveBlock(scope: VB6BlockOwner): VB6IdentifierOwner? {
+        val textOffsetOfEnclosingBlockStatement = findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
+        val textOffsetOfReferenceOwner = referenceOwner.textOffset
+
         return scope.block
-            ?.definitions
-            ?.takeWhile {
-                it.textOffset < (findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
-                    ?: referenceOwner.textOffset)
+            ?.identifierOwners
+            ?.takeWhile { // remove elements that are after the reference owner to avoid endless recursion in filter it.isDefinition as this calls resolve too
+                it.isBeforeEnclosingStatementOrReferenceOwner(
+                    textOffsetOfEnclosingBlockStatement,
+                    textOffsetOfReferenceOwner
+                )
             }
+            ?.filter { it.isDefinition }
             ?.find { compareNames(it) }
     }
 
-//    private fun resolveSelf(scope: VB6IdentifierOwner) =
-//        if (compareNames(scope)) {
-//            scope
-//        } else {
-//            null
-//        }
+    private fun VB6IdentifierOwner.isBeforeEnclosingStatementOrReferenceOwner(
+        textOffsetOfEnclosingBlockStatement: Int?,
+        textOffsetOfReferenceOwner: Int
+    ) = this.textOffset < (textOffsetOfEnclosingBlockStatement ?: textOffsetOfReferenceOwner)
 
     override fun resolveModule(scope: VB6Module): VB6IdentifierOwner? {
         return scope.definitions.find { compareNames(it) }

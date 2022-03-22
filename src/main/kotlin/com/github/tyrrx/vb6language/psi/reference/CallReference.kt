@@ -21,7 +21,7 @@ class CallReference(
     }
 
     override fun getRangeInElement(): TextRange {
-        return myElement.identifier.textRangeInParent
+        return myElement.referencingIdentifier.textRangeInParent
     }
 
     override fun resolve(): PsiElement? {
@@ -29,11 +29,11 @@ class CallReference(
     }
 
     override fun getCanonicalText(): String {
-        return myElement.identifier.name ?: ""
+        return myElement.referencingIdentifier.name ?: ""
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
-        return myElement.identifier.setName(newElementName)
+        return myElement.referencingIdentifier.setName(newElementName)
     }
 
     override fun bindToElement(element: PsiElement): PsiElement {
@@ -58,7 +58,7 @@ class CallReference(
     }
 
     private fun compareNames(element: PsiNamedElement) =
-        element.name == myElement.identifier.name
+        element.name == myElement.referencingIdentifier.name
 
     override fun isSoft(): Boolean {
         return false

@@ -72,6 +72,9 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
         return nameIdentifier?.name
     }
 
+    override val isDefinition: Boolean
+        get() = true
+
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }

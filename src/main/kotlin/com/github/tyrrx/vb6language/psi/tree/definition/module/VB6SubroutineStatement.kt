@@ -64,4 +64,7 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override fun getReference(): PsiReference? {
         return null
     }
+
+    override val isDefinition: Boolean
+        get() = true
 }
