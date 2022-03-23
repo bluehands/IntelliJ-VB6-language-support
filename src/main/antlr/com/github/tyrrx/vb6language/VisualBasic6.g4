@@ -122,7 +122,7 @@ moduleConfigElement :
 
 moduleAttributes : (attributeStmt endOfLine+)+;
 
-moduleDeclarations : moduleDeclarationsElement (endOfLine+ moduleDeclarationsElement)* endOfLine*;
+moduleDeclarations : moduleDeclarationsElement (endOfLine+ moduleDeclarationsElement)*;
 
 moduleOption :
 	OPTION_BASE WS SHORTLITERAL 					# optionBaseStmt
@@ -149,7 +149,7 @@ macroStmt :
 	| macroIfThenElseStmt;
 
 moduleBody :
-	moduleBodyElement (endOfLine+ moduleBodyElement)* endOfLine*;
+	moduleBodyElement (endOfLine+ moduleBodyElement)*;
 
 moduleBodyElement :
 	functionStmt
@@ -401,11 +401,15 @@ mkdirStmt : MKDIR WS valueStmt;
 
 nameStmt : NAME WS valueStmt WS AS WS valueStmt;
 
-onErrorStmt : (ON_ERROR | ON_LOCAL_ERROR) WS (GOTO WS valueStmt | RESUME WS NEXT);
+onErrorStmt : (ON_ERROR | ON_LOCAL_ERROR) WS (GOTO WS goToDestination | RESUME WS NEXT);
 
-onGoToStmt : ON WS valueStmt WS GOTO WS valueStmt (WS? ',' WS? valueStmt)*;
+onGoToStmt : ON WS valueStmt WS GOTO WS goToDestinationList;
 
-onGoSubStmt : ON WS valueStmt WS GOSUB WS valueStmt (WS? ',' WS? valueStmt)*;
+onGoSubStmt : ON WS valueStmt WS GOSUB WS goToDestinationList;
+
+goToDestinationList: goToDestination (WS? ',' WS? goToDestination)*;    //todo register
+goToDestination: INTEGERLITERAL | ambiguousIdentifier;                    //todo register
+
 
 openStmt :
 	OPEN WS valueStmt WS FOR WS (APPEND | BINARY | INPUT | OUTPUT | RANDOM)
