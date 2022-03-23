@@ -6,15 +6,15 @@ import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
-import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6ImplicitCallStmt_InStmt
-import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6iCS_S_VariableOrProcedureCall
+import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
+import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineVariableOrProcedureCall
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6LetStmt : VB6StatementBase, VB6IdentifierOwner {
-    val callStatement: VB6ImplicitCallStmt_InStmt?
+    val callStatement: VB6InlineCall?
 }
 
 class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -26,7 +26,7 @@ class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
-    override val callStatement: VB6ImplicitCallStmt_InStmt?
+    override val callStatement: VB6InlineCall?
         get() = findFirstChildByType(this)
 
     override val isDefinition: Boolean
@@ -38,7 +38,7 @@ class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     private val callStatementReference: VB6Reference?
         get() = when (val def = callStatement?.firstChild) {
-            is VB6iCS_S_VariableOrProcedureCall -> def.reference
+            is VB6InlineVariableOrProcedureCall -> def.reference
             //Todo other cases
             else -> null
         }

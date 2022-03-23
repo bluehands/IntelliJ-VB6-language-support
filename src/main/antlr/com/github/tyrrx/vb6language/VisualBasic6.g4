@@ -163,7 +163,7 @@ moduleBodyElement :
 
 // block ----------------------------------
 
-attributeStmt : ATTRIBUTE WS implicitCallStmt_InStmt WS? EQ WS? literal (WS? ',' WS? literal)*;
+attributeStmt : ATTRIBUTE WS inlineCall WS? EQ WS? literal (WS? ',' WS? literal)*;
 
 block : blockStmt (endOfStatement blockStmt)* endOfStatement;
 
@@ -234,8 +234,8 @@ blockStmt :
 	| widthStmt
 	| withStmt
 	| writeStmt
-	| implicitCallStmt_InBlock
-    | implicitCallStmt_InStmt
+	| blockCall
+    | inlineCall
 ;
 
 
@@ -366,7 +366,7 @@ inputStmt : INPUT WS fileNumber (WS? ',' WS? valueStmt)+;
 
 killStmt : KILL WS valueStmt;
 
-letStmt : (LET WS)? implicitCallStmt_InStmt WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt; // reference
+letStmt : (LET WS)? inlineCall WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt; // reference
 
 lineInputStmt : LINE_INPUT WS fileNumber WS? ',' WS? valueStmt;
 
@@ -374,7 +374,7 @@ loadStmt : LOAD WS valueStmt;
 
 lockStmt : LOCK WS valueStmt (WS? ',' WS? valueStmt (WS TO WS valueStmt)?)?;
 
-lsetStmt : LSET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt; // reference
+lsetStmt : LSET WS inlineCall WS? EQ WS? valueStmt; // reference
 
 macroConstStmt : MACRO_CONST WS? ambiguousIdentifier WS? EQ WS? valueStmt;
 
@@ -457,7 +457,7 @@ randomizeStmt : RANDOMIZE (WS valueStmt)?;
 
 redimStmt : REDIM WS (PRESERVE WS)? redimSubStmt (WS?',' WS? redimSubStmt)*;
 
-redimSubStmt : implicitCallStmt_InStmt WS? LPAREN WS? subscripts WS? RPAREN (WS asTypeClause)?; // reference
+redimSubStmt : inlineCall WS? LPAREN WS? subscripts WS? RPAREN (WS asTypeClause)?; // reference
 
 resetStmt : RESET;
 
@@ -467,7 +467,7 @@ returnStmt : RETURN;
 
 rmdirStmt : RMDIR WS valueStmt;
 
-rsetStmt : RSET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt; // todo
+rsetStmt : RSET WS inlineCall WS? EQ WS? valueStmt; // todo
 
 savepictureStmt : SAVEPICTURE WS valueStmt WS? ',' WS? valueStmt;
 
@@ -502,7 +502,7 @@ sendkeysStmt : SENDKEYS WS valueStmt (WS? ',' WS? valueStmt)?;
 
 setattrStmt : SETATTR WS valueStmt WS? ',' WS? valueStmt;
 
-setStmt : SET WS implicitCallStmt_InStmt WS? EQ WS? valueStmt; // reference
+setStmt : SET WS inlineCall WS? EQ WS? valueStmt; // reference
 
 stopStmt : STOP;
 
@@ -531,13 +531,13 @@ unlockStmt : UNLOCK WS fileNumber (WS? ',' WS? valueStmt (WS TO WS valueStmt)?)?
 // operator precedence is represented by rule order
 valueStmt :
 	literal 												# vsLiteral
-	| implicitCallStmt_InStmt 								# vsICS
+	| inlineCall 								# vsICS
 	| LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN 	# vsStruct
 	| NEW WS? valueStmt 									# vsNew
 	| typeOfStmt 											# vsTypeOf
 	| midStmt 												# vsMid
 	| ADDRESSOF WS? valueStmt 								# vsAddressOf
-	| implicitCallStmt_InStmt WS? ASSIGN WS? valueStmt 		# vsAssign
+	| inlineCall WS? ASSIGN WS? valueStmt 		# vsAssign
 
 	| valueStmt WS? IS WS? valueStmt 						# vsIs
 	| valueStmt WS? LIKE WS? valueStmt 						# vsLike
@@ -585,7 +585,7 @@ whileWendStmt :
 widthStmt : WIDTH WS fileNumber WS? ',' WS? valueStmt;
 
 withStmt :
-	WITH WS (implicitCallStmt_InStmt | (NEW WS type_)) endOfStatement
+	WITH WS (inlineCall | (NEW WS type_)) endOfStatement
 	block?
 	END_WITH
 ;
@@ -598,50 +598,53 @@ fileNumber : '#'? valueStmt;
 
 // complex call statements ----------------------------------
 
-explicitCallStmt : eCS_ProcedureCall | eCS_MemberProcedureCall
+explicitCallStmt : explicitProcedureCall | explicitMemberProcedureCall
 ;
 
 // parantheses are required in case of args -> empty parantheses are removed
-eCS_ProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
+explicitProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
 
 // parantheses are required in case of args -> empty parantheses are removed
-eCS_MemberProcedureCall : CALL WS implicitCallStmt_InStmt? '.' ambiguousIdentifier typeHint?
-    (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // references
+explicitMemberProcedureCall : CALL WS inlineCall? '.' ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // references
 
-implicitCallStmt_InBlock :
-	iCS_B_MemberProcedureCall
-	| iCS_B_ProcedureCall
+blockCall :
+	blockMembersCall
+	| atomicBlockCall
 ;
 
-iCS_B_MemberProcedureCall : implicitCallStmt_InStmt? '.' ambiguousIdentifier typeHint? (WS argsCall)? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // references
+blockMembersCall : inlineCall? '.' ambiguousIdentifier typeHint? (WS argsCall)? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // references
 
 // parantheses are forbidden in case of args
 // variables cannot be called in blocks
 // certainIdentifier instead of ambiguousIdentifier for preventing ambiguity with statement keywords
-iCS_B_ProcedureCall : ambiguousIdentifier (WS argsCall)? (WS? LPAREN subscripts RPAREN)*; // reference
+atomicBlockCall : ambiguousIdentifier (WS argsCall)? (WS? LPAREN subscripts RPAREN)*; // reference
 
 
 // iCS_S_MembersCall first, so that member calls are not resolved as separate iCS_S_VariableOrProcedureCalls
-implicitCallStmt_InStmt :
-	iCS_S_MembersCall
-	| iCS_S_VariableOrProcedureCall
-	| iCS_S_ProcedureOrArrayCall
-	| iCS_S_DictionaryCall
-;
+inlineCall
+    : inlineMembersCall
+	| atomicInlineCall
+    ;
 
-iCS_S_VariableOrProcedureCall : ambiguousIdentifier typeHint? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
+atomicInlineCall
+    : inlineVariableOrProcedureCall
+    | inlineProcedureOrArrayCall
+    | inlineDictionaryCall
+    ;
 
-iCS_S_ProcedureOrArrayCall : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
+inlineVariableOrProcedureCall : ambiguousIdentifier typeHint? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
 
-iCS_S_MembersCall : iCS_S_MemberCall? (('.' | '!') iCS_S_MemberCall)+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
+inlineProcedureOrArrayCall : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
 
-iCS_S_MemberCall : iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall;
+inlineMembersCall : inlineMemberCall? (('.' | '!') inlineMemberCall)+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
+
+inlineMemberCall : inlineVariableOrProcedureCall | inlineProcedureOrArrayCall;
 
 //iCS_S_MembersCall : (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall)? iCS_S_MemberCall+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
 //
 //iCS_S_MemberCall : ('.' | '!') (iCS_S_VariableOrProcedureCall | iCS_S_ProcedureOrArrayCall);
 
-iCS_S_DictionaryCall : dictionaryCallStmt;
+inlineDictionaryCall : dictionaryCallStmt;
 
 
 // atomic call statements ----------------------------------

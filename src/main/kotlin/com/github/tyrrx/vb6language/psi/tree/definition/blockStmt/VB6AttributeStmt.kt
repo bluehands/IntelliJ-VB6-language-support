@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Literal
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
-import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6ImplicitCallStmt_InStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
@@ -32,7 +32,7 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun getNameIdentifier(): VB6Identifier? {
-        return findFirstChildByType<VB6ImplicitCallStmt_InStmt>(this)
+        return findFirstChildByType<VB6InlineCall>(this)
             ?.let { findPsiElementInSubtree(it) }
     }
 

@@ -8,20 +8,18 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
-import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6BaseType
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstParentOfType
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiReference
 
-interface VB6iCS_S_ProcedureOrArrayCall : VB6ReferenceFactory, VB6PsiElement {
+interface VB6InlineProcedureOrArrayCall : VB6ReferenceFactory, VB6PsiElement {
 }
 
-class VB6iCS_S_ProcedureOrArrayCallImpl(node: ASTNode) : VB6PsiNode(node), VB6iCS_S_ProcedureOrArrayCall {
+class VB6InlineProcedureOrArrayCallImpl(node: ASTNode) : VB6PsiNode(node), VB6InlineProcedureOrArrayCall {
 
-    object Factory : IPsiNodeFactory<VB6iCS_S_ProcedureOrArrayCall> {
-        override fun createPsiNode(node: ASTNode): VB6iCS_S_ProcedureOrArrayCall {
-            return VB6iCS_S_ProcedureOrArrayCallImpl(node)
+    object Factory : IPsiNodeFactory<VB6InlineProcedureOrArrayCall> {
+        override fun createPsiNode(node: ASTNode): VB6InlineProcedureOrArrayCall {
+            return VB6InlineProcedureOrArrayCallImpl(node)
         }
     }
 

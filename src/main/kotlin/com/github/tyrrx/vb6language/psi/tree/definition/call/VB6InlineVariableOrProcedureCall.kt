@@ -11,16 +11,15 @@ import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstParentOfType
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiReference
 
-interface VB6iCS_S_VariableOrProcedureCall : VB6PsiElement, VB6ReferenceFactory, VB6ReferenceOwner {
+interface VB6InlineVariableOrProcedureCall : VB6PsiElement, VB6ReferenceFactory, VB6ReferenceOwner {
 }
 
-class VB6iCS_S_VariableOrProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6iCS_S_VariableOrProcedureCall {
+class VB6InlineVariableOrProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6InlineVariableOrProcedureCall {
 
-    object Factory : IPsiNodeFactory<VB6iCS_S_VariableOrProcedureCall> {
-        override fun createPsiNode(node: ASTNode): VB6iCS_S_VariableOrProcedureCall {
-            return VB6iCS_S_VariableOrProcedureCallImpl(node)
+    object Factory : IPsiNodeFactory<VB6InlineVariableOrProcedureCall> {
+        override fun createPsiNode(node: ASTNode): VB6InlineVariableOrProcedureCall {
+            return VB6InlineVariableOrProcedureCallImpl(node)
         }
     }
 
