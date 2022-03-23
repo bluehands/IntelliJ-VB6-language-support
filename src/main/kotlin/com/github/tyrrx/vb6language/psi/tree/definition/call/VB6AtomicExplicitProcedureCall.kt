@@ -10,15 +10,15 @@ import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
-interface VB6ExplicitProcedureCall : VB6ReferenceOwner, VB6ReferenceFactory {
+interface VB6AtomicExplicitProcedureCall : VB6ReferenceOwner, VB6ReferenceFactory, VB6AtomicCall {
 
 }
 
-class VB6ExplicitProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6ExplicitProcedureCall {
+class VB6AtomicExplicitProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6AtomicExplicitProcedureCall {
 
-    object Factory : IPsiNodeFactory<VB6ExplicitProcedureCall> {
-        override fun createPsiNode(node: ASTNode): VB6ExplicitProcedureCall {
-            return VB6ExplicitProcedureCallImpl(node)
+    object Factory : IPsiNodeFactory<VB6AtomicExplicitProcedureCall> {
+        override fun createPsiNode(node: ASTNode): VB6AtomicExplicitProcedureCall {
+            return VB6AtomicExplicitProcedureCallImpl(node)
         }
     }
 
@@ -26,11 +26,12 @@ class VB6ExplicitProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6Explici
         get() = this
 
     override fun createReference(): VB6Reference? {
-        val referencingIdentifier =
-            findFirstChildByType<VB6Identifier>(this)
-        return referencingIdentifier
+        return referenceIdentifier
             ?.let { SymbolReference(this, it, it.textRangeInParent) }
     }
+
+    override val referenceIdentifier: VB6Identifier?
+        get() = findFirstChildByType(this)
 
     override fun getReference(): VB6Reference? {
         return createReference()

@@ -6,6 +6,7 @@ import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
+import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicInlineCall
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineVariableOrProcedureCall
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
@@ -38,7 +39,7 @@ class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     private val callStatementReference: VB6Reference?
         get() = when (val def = callStatement?.firstChild) {
-            is VB6InlineVariableOrProcedureCall -> def.reference
+            is VB6AtomicInlineCall -> def.reference
             //Todo other cases
             else -> null
         }

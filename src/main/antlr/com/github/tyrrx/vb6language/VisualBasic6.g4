@@ -598,19 +598,19 @@ fileNumber : '#'? valueStmt;
 
 // complex call statements ----------------------------------
 
-explicitCallStmt : explicitProcedureCall | explicitMemberProcedureCall
+explicitCallStmt : atomicExplicitProcedureCall | explicitMemberProcedureCall
 ;
 
 // parantheses are required in case of args -> empty parantheses are removed
-explicitProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
+atomicExplicitProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
 
 // parantheses are required in case of args -> empty parantheses are removed
 explicitMemberProcedureCall : CALL WS inlineCall? '.' ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // references
 
-blockCall :
-	blockMembersCall
+blockCall
+    : blockMembersCall
 	| atomicBlockCall
-;
+    ;
 
 blockMembersCall : inlineCall? '.' ambiguousIdentifier typeHint? (WS argsCall)? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // references
 

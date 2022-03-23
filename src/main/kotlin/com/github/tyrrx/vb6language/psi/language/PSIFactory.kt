@@ -86,7 +86,7 @@ object PSIFactory {
         VisualBasic6Parser.RULE_subscriptElement mapsTo VB6SubscriptElementImpl.Factory,
 
         // call ---------------------------------------------------------------------------,
-        VisualBasic6Parser.RULE_explicitProcedureCall mapsTo VB6ExplicitProcedureCallImpl.Factory,
+        VisualBasic6Parser.RULE_atomicExplicitProcedureCall mapsTo VB6AtomicExplicitProcedureCallImpl.Factory,
         VisualBasic6Parser.RULE_explicitMemberProcedureCall mapsTo VB6ExplicitMemberProcedureCallImpl.Factory,
         VisualBasic6Parser.RULE_blockMembersCall mapsTo VB6BlockMembersCallImpl.Factory,
         VisualBasic6Parser.RULE_atomicBlockCall mapsTo VB6AtomicBlockCallImpl.Factory,

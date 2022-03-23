@@ -12,7 +12,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstParentOfType
 import com.intellij.lang.ASTNode
 
-interface VB6InlineVariableOrProcedureCall : VB6PsiElement, VB6ReferenceFactory, VB6ReferenceOwner {
+interface VB6InlineVariableOrProcedureCall : VB6AtomicCall {
 }
 
 class VB6InlineVariableOrProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6InlineVariableOrProcedureCall {
@@ -23,20 +23,8 @@ class VB6InlineVariableOrProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB
         }
     }
 
-    override val referenceFactory: VB6ReferenceFactory?
-        get() = this
+    override val referenceIdentifier: VB6Identifier?
+        get() = findFirstChildByType(this)
 
-    override fun getReference(): VB6Reference? {
-        return referenceFactory?.createReference()
-    }
 
-    override fun createReference(): VB6Reference? {
-        val identifier = findFirstChildByType<VB6Identifier>(this)
-        val referenceOwner = findFirstParentOfType<VB6ReferenceOwner>(this)
-        return identifier?.let { id ->
-            referenceOwner?.let { owner ->
-                SymbolReference(owner, id, id.textRangeInParent)
-            }
-        }
-    }
 }
