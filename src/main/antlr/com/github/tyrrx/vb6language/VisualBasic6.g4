@@ -241,21 +241,21 @@ blockStmt :
 
 // statements ----------------------------------
 
-appactivateStmt : APPACTIVATE WS valueStmt (WS? ',' WS? valueStmt)?;
+appactivateStmt : APPACTIVATE WS expression (WS? ',' WS? expression)?;
 
 beepStmt : BEEP;
 
-chdirStmt : CHDIR WS valueStmt;
+chdirStmt : CHDIR WS expression;
 
-chdriveStmt : CHDRIVE WS valueStmt;
+chdriveStmt : CHDRIVE WS expression;
 
 closeStmt : CLOSE (WS fileNumber (WS? ',' WS? fileNumber)*)?;
 
 constStmt : (visibility WS)? CONST WS constSubStmt (WS? ',' WS? constSubStmt)*;
 
-constSubStmt : ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt;
+constSubStmt : ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? expression;
 
-dateStmt : DATE WS? EQ WS? valueStmt;
+dateStmt : DATE WS? EQ WS? expression;
 
 declareStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? (declareFunctionDef | SUB) WS ambiguousIdentifier typeHint? WS declareLibDef declareAliasDef (WS? argList)? (WS asTypeClause)?;
 declareFunctionDef: FUNCTION typeHint?;
@@ -271,20 +271,20 @@ deftypeStmt :
 	letterrange (WS? ',' WS? letterrange)*
 ;
 
-deleteSettingStmt : DELETESETTING WS valueStmt WS? ',' WS? valueStmt (WS? ',' WS? valueStmt)?;
+deleteSettingStmt : DELETESETTING WS expression WS? ',' WS? expression (WS? ',' WS? expression)?;
 
 doLoopStmt :
 	DO endOfStatement
 	block?
 	LOOP
 	|
-	DO WS (WHILE | UNTIL) WS valueStmt endOfStatement
+	DO WS (WHILE | UNTIL) WS expression endOfStatement
 	block?
 	LOOP
 	|
 	DO endOfStatement
 	block
-	LOOP WS (WHILE | UNTIL) WS valueStmt
+	LOOP WS (WHILE | UNTIL) WS expression
 ;
 
 endStmt : END;
@@ -295,26 +295,26 @@ enumerationStmt:
 	END_ENUM
 ;
 
-enumerationStmt_Constant : ambiguousIdentifier (WS? EQ WS? valueStmt)? endOfStatement;
+enumerationStmt_Constant : ambiguousIdentifier (WS? EQ WS? expression)? endOfStatement;
 
-eraseStmt : ERASE WS valueStmt (',' WS? valueStmt)*?;
+eraseStmt : ERASE WS expression (',' WS? expression)*?;
 
-errorStmt : ERROR WS valueStmt;
+errorStmt : ERROR WS expression;
 
 eventStmt : (visibility WS)? EVENT WS ambiguousIdentifier WS? argList;
 
 exitStmt : EXIT_DO | EXIT_FOR | EXIT_FUNCTION | EXIT_PROPERTY | EXIT_SUB;
 
-filecopyStmt : FILECOPY WS valueStmt WS? ',' WS? valueStmt;
+filecopyStmt : FILECOPY WS expression WS? ',' WS? expression;
 
 forEachStmt :
-	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS valueStmt endOfStatement // definition
+	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS expression endOfStatement // definition
 	block?
 	NEXT (WS forSelfReference)? // reference
 ;
 
 forNextStmt :
-	FOR WS ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? valueStmt WS TO WS valueStmt (WS STEP WS valueStmt)? endOfStatement
+	FOR WS ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? expression WS TO WS expression (WS STEP WS expression)? endOfStatement
 	block?
 	NEXT (WS forSelfReference)?
 ;
@@ -327,11 +327,11 @@ functionStmt :
 	END_FUNCTION
 ;
 
-getStmt : GET WS fileNumber WS? ',' WS? valueStmt? WS? ',' WS? valueStmt;
+getStmt : GET WS fileNumber WS? ',' WS? expression? WS? ',' WS? expression;
 
-goSubStmt : GOSUB WS valueStmt;
+goSubStmt : GOSUB WS expression;
 
-goToStmt : GOTO WS valueStmt;
+goToStmt : GOTO WS expression;
 
 ifThenElseStmt : inlineIfThenElse | blockIfThenElse;
 
@@ -348,7 +348,7 @@ ifBlockStmt :
 	block?
 ;
 
-ifConditionStmt : valueStmt;
+ifConditionStmt : expression;
 
 ifElseIfBlockStmt :
 	ELSEIF WS ifConditionStmt WS THEN endOfStatement
@@ -362,21 +362,21 @@ ifElseBlockStmt :
 
 implementsStmt : IMPLEMENTS WS ambiguousIdentifier; // reference
 
-inputStmt : INPUT WS fileNumber (WS? ',' WS? valueStmt)+;
+inputStmt : INPUT WS fileNumber (WS? ',' WS? expression)+;
 
-killStmt : KILL WS valueStmt;
+killStmt : KILL WS expression;
 
-letStmt : (LET WS)? inlineCall WS? (EQ | PLUS_EQ | MINUS_EQ) WS? valueStmt; // reference
+letStmt : (LET WS)? inlineCall WS? (EQ | PLUS_EQ | MINUS_EQ) WS? expression; // reference
 
-lineInputStmt : LINE_INPUT WS fileNumber WS? ',' WS? valueStmt;
+lineInputStmt : LINE_INPUT WS fileNumber WS? ',' WS? expression;
 
-loadStmt : LOAD WS valueStmt;
+loadStmt : LOAD WS expression;
 
-lockStmt : LOCK WS valueStmt (WS? ',' WS? valueStmt (WS TO WS valueStmt)?)?;
+lockStmt : LOCK WS expression (WS? ',' WS? expression (WS TO WS expression)?)?;
 
-lsetStmt : LSET WS inlineCall WS? EQ WS? valueStmt; // reference
+lsetStmt : LSET WS inlineCall WS? EQ WS? expression; // reference
 
-macroConstStmt : MACRO_CONST WS? ambiguousIdentifier WS? EQ WS? valueStmt;
+macroConstStmt : MACRO_CONST WS? ambiguousIdentifier WS? EQ WS? expression;
 
 macroIfThenElseStmt : macroIfBlockStmt macroElseIfBlockStmt* macroElseBlockStmt? MACRO_END_IF;
 
@@ -395,28 +395,28 @@ macroElseBlockStmt :
 	(moduleDeclarations | moduleBody | block)*
 ;
 
-midStmt : MID WS? LPAREN WS? argsCall WS? RPAREN;
+midStmt : MID WS? LPAREN WS? parameters WS? RPAREN;
 
-mkdirStmt : MKDIR WS valueStmt;
+mkdirStmt : MKDIR WS expression;
 
-nameStmt : NAME WS valueStmt WS AS WS valueStmt;
+nameStmt : NAME WS expression WS AS WS expression;
 
 onErrorStmt : (ON_ERROR | ON_LOCAL_ERROR) WS (GOTO WS goToDestination | RESUME WS NEXT);
 
-onGoToStmt : ON WS valueStmt WS GOTO WS goToDestinationList;
+onGoToStmt : ON WS expression WS GOTO WS goToDestinationList;
 
-onGoSubStmt : ON WS valueStmt WS GOSUB WS goToDestinationList;
+onGoSubStmt : ON WS expression WS GOSUB WS goToDestinationList;
 
 goToDestinationList: goToDestination (WS? ',' WS? goToDestination)*;    //todo register
 goToDestination: INTEGERLITERAL | ambiguousIdentifier;                    //todo register
 
 
 openStmt :
-	OPEN WS valueStmt WS FOR WS (APPEND | BINARY | INPUT | OUTPUT | RANDOM)
+	OPEN WS expression WS FOR WS (APPEND | BINARY | INPUT | OUTPUT | RANDOM)
 	(WS ACCESS WS (READ | WRITE | READ_WRITE))?
 	(WS (SHARED | LOCK_READ | LOCK_WRITE | LOCK_READ_WRITE))?
 	WS AS WS fileNumber
-	(WS LEN WS? EQ WS? valueStmt)?
+	(WS LEN WS? EQ WS? expression)?
 ;
 
 outputList :
@@ -425,8 +425,8 @@ outputList :
 ;
 
 outputList_Expression :
-	valueStmt
-	| (SPC | TAB) (WS? LPAREN WS? argsCall WS? RPAREN)?
+	expression
+	| (SPC | TAB) (WS? LPAREN WS? parameters WS? RPAREN)?
 ;
 
 printStmt : PRINT WS fileNumber WS? ',' (WS? outputList)?;
@@ -449,11 +449,11 @@ propertyLetStmt :
 	END_PROPERTY
 ;
 
-putStmt : PUT WS fileNumber WS? ',' WS? valueStmt? WS? ',' WS? valueStmt;
+putStmt : PUT WS fileNumber WS? ',' WS? expression? WS? ',' WS? expression;
 
-raiseEventStmt : RAISEEVENT WS ambiguousIdentifier (WS? LPAREN WS? (argsCall WS?)? RPAREN)?; // reference
+raiseEventStmt : RAISEEVENT WS ambiguousIdentifier (WS? LPAREN WS? (parameters WS?)? RPAREN)?; // reference
 
-randomizeStmt : RANDOMIZE (WS valueStmt)?;
+randomizeStmt : RANDOMIZE (WS expression)?;
 
 redimStmt : REDIM WS (PRESERVE WS)? redimSubStmt (WS?',' WS? redimSubStmt)*;
 
@@ -465,26 +465,26 @@ resumeStmt : RESUME (WS (NEXT | ambiguousIdentifier))?; // reference
 
 returnStmt : RETURN;
 
-rmdirStmt : RMDIR WS valueStmt;
+rmdirStmt : RMDIR WS expression;
 
-rsetStmt : RSET WS inlineCall WS? EQ WS? valueStmt; // todo
+rsetStmt : RSET WS inlineCall WS? EQ WS? expression; // todo
 
-savepictureStmt : SAVEPICTURE WS valueStmt WS? ',' WS? valueStmt;
+savepictureStmt : SAVEPICTURE WS expression WS? ',' WS? expression;
 
-saveSettingStmt : SAVESETTING WS valueStmt WS? ',' WS? valueStmt WS? ',' WS? valueStmt WS? ',' WS? valueStmt;
+saveSettingStmt : SAVESETTING WS expression WS? ',' WS? expression WS? ',' WS? expression WS? ',' WS? expression;
 
-seekStmt : SEEK WS fileNumber WS? ',' WS? valueStmt;
+seekStmt : SEEK WS fileNumber WS? ',' WS? expression;
 
 selectCaseStmt :
-	SELECT WS CASE WS valueStmt endOfStatement
+	SELECT WS CASE WS expression endOfStatement
 	sC_Case*
 	END_SELECT
 ;
 
 sC_Selection : // Todo split rules to make them visible & implement
-    IS WS? comparisonOperator WS? valueStmt                       # caseCondIs
-    | valueStmt WS TO WS valueStmt                                # caseCondTo
-    | valueStmt                                                   # caseCondValue
+    IS WS? comparisonOperator WS? expression                       # caseCondIs
+    | expression WS TO WS expression                                # caseCondTo
+    | expression                                                   # caseCondValue
 ;
 
 sC_Case : // todo implement
@@ -498,11 +498,11 @@ sC_Cond : // Todo split rules to make them visible & implement
     | sC_Selection (WS? ',' WS? sC_Selection)*                      # caseCondSelection
 ;
 
-sendkeysStmt : SENDKEYS WS valueStmt (WS? ',' WS? valueStmt)?;
+sendkeysStmt : SENDKEYS WS expression (WS? ',' WS? expression)?;
 
-setattrStmt : SETATTR WS valueStmt WS? ',' WS? valueStmt;
+setattrStmt : SETATTR WS expression WS? ',' WS? expression;
 
-setStmt : SET WS inlineCall WS? EQ WS? valueStmt; // reference
+setStmt : SET WS inlineCall WS? EQ WS? expression; // reference
 
 stopStmt : STOP;
 
@@ -512,7 +512,7 @@ subStmt :
 	END_SUB
 ;
 
-timeStmt : TIME WS? EQ WS? valueStmt;
+timeStmt : TIME WS? EQ WS? expression;
 
 typeStmt :
 	(visibility WS)? TYPE WS ambiguousIdentifier endOfStatement
@@ -522,48 +522,48 @@ typeStmt :
 
 typeStmt_Element : ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? (WS asTypeClause)? endOfStatement;
 
-typeOfStmt : TYPEOF WS valueStmt (WS IS WS type_)?;
+typeOfStmt : TYPEOF WS expression (WS IS WS type_)?;
 
-unloadStmt : UNLOAD WS valueStmt;
+unloadStmt : UNLOAD WS expression;
 
-unlockStmt : UNLOCK WS fileNumber (WS? ',' WS? valueStmt (WS TO WS valueStmt)?)?;
+unlockStmt : UNLOCK WS fileNumber (WS? ',' WS? expression (WS TO WS expression)?)?;
 
 // operator precedence is represented by rule order
-valueStmt :
-	literal 												# vsLiteral
-	| inlineCall 								# vsICS
-	| LPAREN WS? valueStmt (WS? ',' WS? valueStmt)* RPAREN 	# vsStruct
-	| NEW WS? valueStmt 									# vsNew
-	| typeOfStmt 											# vsTypeOf
-	| midStmt 												# vsMid
-	| ADDRESSOF WS? valueStmt 								# vsAddressOf
-	| inlineCall WS? ASSIGN WS? valueStmt 		# vsAssign
+expression
+    : literal 												    # vsLiteral
+	| inlineCall 								                # vsICS
+	| LPAREN WS? expression (WS? ',' WS? expression)* RPAREN 	# vsStruct
+	| NEW WS? expression 									    # vsNew
+	| typeOfStmt 											    # vsTypeOf
+	| midStmt 												    # vsMid
+	| ADDRESSOF WS? expression 								    # vsAddressOf
+	| inlineCall WS? ASSIGN WS? expression 		                # vsAssign
 
-	| valueStmt WS? IS WS? valueStmt 						# vsIs
-	| valueStmt WS? LIKE WS? valueStmt 						# vsLike
-	| valueStmt WS? GEQ WS? valueStmt 						# vsGeq
-	| valueStmt WS? LEQ WS? valueStmt 						# vsLeq
-	| valueStmt WS? GT WS? valueStmt 						# vsGt
-	| valueStmt WS? LT WS? valueStmt 						# vsLt
-	| valueStmt WS? NEQ WS? valueStmt 						# vsNeq
-	| valueStmt WS? EQ WS? valueStmt 						# vsEq
+	| expression WS? IS WS? expression 						    # vsIs
+	| expression WS? LIKE WS? expression 						# vsLike
+	| expression WS? GEQ WS? expression 						# vsGeq
+	| expression WS? LEQ WS? expression 						# vsLeq
+	| expression WS? GT WS? expression 						    # vsGt
+	| expression WS? LT WS? expression 						    # vsLt
+	| expression WS? NEQ WS? expression 						# vsNeq
+	| expression WS? EQ WS? expression 						    # vsEq
 
-	| valueStmt WS? POW WS? valueStmt 						# vsPow
-	| MINUS WS? valueStmt 									# vsNegation
-	| PLUS WS? valueStmt 									# vsPlus
-	| valueStmt WS? DIV WS? valueStmt 						# vsDiv
-	| valueStmt WS? MULT WS? valueStmt 						# vsMult
-	| valueStmt WS? MOD WS? valueStmt 						# vsMod
-	| valueStmt WS? PLUS WS? valueStmt 						# vsAdd
-	| valueStmt WS? MINUS WS? valueStmt 					# vsMinus
-	| valueStmt WS? AMPERSAND WS? valueStmt 				# vsAmp
+	| expression WS? POW WS? expression 						# vsPow
+	| MINUS WS? expression 									    # vsNegation
+	| PLUS WS? expression 									    # vsPlus
+	| expression WS? DIV WS? expression 						# vsDiv
+	| expression WS? MULT WS? expression 						# vsMult
+	| expression WS? MOD WS? expression 						# vsMod
+	| expression WS? PLUS WS? expression 						# vsAdd
+	| expression WS? MINUS WS? expression 					    # vsMinus
+	| expression WS? AMPERSAND WS? expression 				    # vsAmp
 
-	| valueStmt WS? IMP WS? valueStmt 						# vsImp
-	| valueStmt WS? EQV WS? valueStmt 						# vsEqv
-	| valueStmt WS? XOR WS? valueStmt 						# vsXor
-	| valueStmt WS? OR WS? valueStmt 						# vsOr
-	| valueStmt WS? AND WS? valueStmt 						# vsAnd
-	| NOT WS? valueStmt 									# vsNot
+	| expression WS? IMP WS? expression 						# vsImp
+	| expression WS? EQV WS? expression 						# vsEqv
+	| expression WS? XOR WS? expression 						# vsXor
+	| expression WS? OR WS? expression 						    # vsOr
+	| expression WS? AND WS? expression 						# vsAnd
+	| NOT WS? expression 									    # vsNot
 ;
 
 variableStmt : (DIM | STATIC) WS variableListStmt; // definition
@@ -577,12 +577,12 @@ variableSubStmt : ambiguousIdentifier (WS? LPAREN WS? (subscripts WS?)? RPAREN W
 
 
 whileWendStmt :
-	WHILE WS valueStmt endOfStatement
+	WHILE WS expression endOfStatement
 	block?
 	WEND
 ;
 
-widthStmt : WIDTH WS fileNumber WS? ',' WS? valueStmt;
+widthStmt : WIDTH WS fileNumber WS? ',' WS? expression;
 
 withStmt :
 	WITH WS (inlineCall | (NEW WS type_)) endOfStatement
@@ -593,7 +593,7 @@ withStmt :
 writeStmt : WRITE WS fileNumber WS? ',' (WS? outputList)?;
 
 
-fileNumber : '#'? valueStmt;
+fileNumber : '#'? expression;
 
 
 // complex call statements ----------------------------------
@@ -604,22 +604,22 @@ explicitCallStmt
     ;
 
 // parantheses are required in case of args -> empty parantheses are removed
-atomicExplicitProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
+atomicExplicitProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? parameters WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
 
 // parantheses are required in case of args -> empty parantheses are removed
-explicitMemberProcedureCall : CALL WS inlineCall? '.' ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // references
+explicitMemberProcedureCall : CALL WS inlineCall? '.' ambiguousIdentifier typeHint? (WS? LPAREN WS? parameters WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // references
 
 blockCall
     : blockMembersCall
 	| atomicBlockCall
     ;
 
-blockMembersCall : inlineCall? '.' ambiguousIdentifier typeHint? (WS argsCall)? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // references
+blockMembersCall : inlineCall? '.' ambiguousIdentifier typeHint? (WS parameters)? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // references
 
 // parantheses are forbidden in case of args
 // variables cannot be called in blocks
 // certainIdentifier instead of ambiguousIdentifier for preventing ambiguity with statement keywords
-atomicBlockCall : ambiguousIdentifier (WS argsCall)? (WS? LPAREN subscripts RPAREN)*; // reference
+atomicBlockCall : ambiguousIdentifier (WS parameters)? (WS? LPAREN subscripts RPAREN)*; // reference
 
 
 // iCS_S_MembersCall first, so that member calls are not resolved as separate iCS_S_VariableOrProcedureCalls
@@ -636,7 +636,7 @@ atomicInlineCall
 
 inlineVariableOrProcedureCall : ambiguousIdentifier typeHint? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
 
-inlineProcedureOrArrayCall : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
+inlineProcedureOrArrayCall : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (parameters WS?)? RPAREN dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
 
 inlineMembersCall : atomicInlineCall? (('.' | '!') inlineMemberCall)+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
 
@@ -651,9 +651,9 @@ inlineDictionaryCall : dictionaryCallStmt;
 
 // atomic call statements ----------------------------------
 
-argsCall : (argCall? WS? (',' | ';') WS?)* argCall (WS? (',' | ';') WS? argCall?)*;
+parameters : (parameter? WS? (',' | ';') WS?)* parameter (WS? (',' | ';') WS? parameter?)*; //todo register
 
-argCall : LPAREN? ((BYVAL | BYREF | PARAMARRAY) WS)? RPAREN? valueStmt;
+parameter : LPAREN? ((BYVAL | BYREF | PARAMARRAY) WS)? RPAREN? expression; //todo register
 
 dictionaryCallStmt : '!' ambiguousIdentifier typeHint?; // reference
 
@@ -666,11 +666,11 @@ arg : (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)?
     ambiguousIdentifier typeHint? (WS? LPAREN WS? RPAREN)?
     (WS? asTypeClause)? (WS? argDefaultValue)?;
 
-argDefaultValue : EQ WS? valueStmt;
+argDefaultValue : EQ WS? expression;
 
 subscripts : subscriptElement (WS? ',' WS? subscriptElement)*;
 
-subscriptElement : (valueStmt WS TO WS)? valueStmt;
+subscriptElement : (expression WS TO WS)? expression;
 
 
 // atomic rules ----------------------------------
@@ -682,7 +682,7 @@ ambiguousIdentifier :
 asTypeClause : AS WS? (NEW WS)? type_ (WS? fieldLength)?;
 
 baseType : BOOLEAN | BYTE | COLLECTION | DATE | DOUBLE | INTEGER | LONG | SINGLE
-    | STRING (WS? MULT WS? valueStmt)? | VARIANT;
+    | STRING (WS? MULT WS? expression)? | VARIANT;
 
 certainIdentifier :
 	IDENTIFIER (ambiguousKeyword | IDENTIFIER)*

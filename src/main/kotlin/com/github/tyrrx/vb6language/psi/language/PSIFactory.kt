@@ -29,12 +29,10 @@ object PSIFactory {
 
     fun createElement(node: ASTNode): PsiElement {
         val elementType = node.elementType as RuleIElementType
-        val factory = ruleFactoryMap[elementType.ruleIndex] ?: object : IPsiNodeFactory<PsiElement> {
-            override fun createPsiNode(node: ASTNode): PsiElement {
-                return VB6PsiNode(node)
-            }
-        }
-        return factory.createPsiNode(node)
+
+        return ruleFactoryMap[elementType.ruleIndex]
+            ?.createPsiNode(node)
+            ?: VB6PsiNode(node)
     }
 
     private val ruleFactoryMap = safeMap(
@@ -77,7 +75,7 @@ object PSIFactory {
 
         VisualBasic6Parser.RULE_literal mapsTo VB6LiteralImpl.Factory,
         VisualBasic6Parser.RULE_visibility mapsTo VB6VisibilityImpl.Factory,
-        VisualBasic6Parser.RULE_valueStmt mapsTo VB6ValueImpl.Factory,
+        VisualBasic6Parser.RULE_expression mapsTo VB6ExpressionImpl.Factory,
 
         VisualBasic6Parser.RULE_variableListStmt mapsTo VB6VariableListStmtImpl.Factory,
         VisualBasic6Parser.RULE_variableSubStmt mapsTo VB6VariableSubStmtImpl.Factory,
