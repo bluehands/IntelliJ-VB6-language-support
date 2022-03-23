@@ -598,8 +598,10 @@ fileNumber : '#'? valueStmt;
 
 // complex call statements ----------------------------------
 
-explicitCallStmt : atomicExplicitProcedureCall | explicitMemberProcedureCall
-;
+explicitCallStmt
+    : atomicExplicitProcedureCall
+    | explicitMemberProcedureCall
+    ;
 
 // parantheses are required in case of args -> empty parantheses are removed
 atomicExplicitProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? argsCall WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
@@ -624,19 +626,19 @@ atomicBlockCall : ambiguousIdentifier (WS argsCall)? (WS? LPAREN subscripts RPAR
 inlineCall
     : inlineMembersCall
 	| atomicInlineCall
+	| inlineDictionaryCall
     ;
 
 atomicInlineCall
     : inlineVariableOrProcedureCall
     | inlineProcedureOrArrayCall
-    | inlineDictionaryCall
     ;
 
 inlineVariableOrProcedureCall : ambiguousIdentifier typeHint? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
 
 inlineProcedureOrArrayCall : (ambiguousIdentifier | baseType) typeHint? WS? LPAREN WS? (argsCall WS?)? RPAREN dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // reference
 
-inlineMembersCall : inlineMemberCall? (('.' | '!') inlineMemberCall)+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
+inlineMembersCall : atomicInlineCall? (('.' | '!') inlineMemberCall)+ dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*;
 
 inlineMemberCall : inlineVariableOrProcedureCall | inlineProcedureOrArrayCall;
 

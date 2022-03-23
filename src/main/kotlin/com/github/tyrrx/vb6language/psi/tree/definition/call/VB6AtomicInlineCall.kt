@@ -28,7 +28,6 @@ class VB6AtomicInlineCallImpl(node: ASTNode) : VB6PsiNode(node), VB6AtomicInline
 
     override fun createReference(): VB6Reference? {
         val identifier = when (val callDef = firstChild) {
-            is VB6InlineDictionaryCall -> TODO("Not yet implemented")
             is VB6InlineProcedureOrArrayCall -> callDef.referenceIdentifier
             is VB6InlineVariableOrProcedureCall -> callDef.referenceIdentifier
             else -> null
