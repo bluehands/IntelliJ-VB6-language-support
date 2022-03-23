@@ -23,10 +23,6 @@ class VB6BaseTypeImpl(node: ASTNode) : VB6PsiNode(node), VB6BaseType {
         }
     }
 
-    override fun getOwner(): PsiElement {
-        return findOwnerRecursive(parent)
-    }
-
     override fun setName(name: String): PsiElement {
         return this // todo not allowed
     }

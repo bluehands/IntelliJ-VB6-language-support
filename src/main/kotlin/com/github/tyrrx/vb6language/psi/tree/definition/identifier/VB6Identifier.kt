@@ -15,8 +15,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNamedElement
 
-interface VB6Identifier: PsiNamedElement {
-    fun getOwner(): PsiElement
+interface VB6Identifier: PsiNamedElement, IVB6Identifier {
     val referenceOwner: VB6ReferenceOwner?
     val identifierOwner: VB6IdentifierOwner?
 }
@@ -43,10 +42,6 @@ class VB6IdentifierImpl(node: ASTNode) : VB6PsiNode(node),
 
     override fun getName(): String {
         return children.fold("") { acc, psiElement -> acc.plus(psiElement.text) }
-    }
-
-    override fun getOwner(): PsiElement {
-        return findOwnerRecursive(parent)
     }
 
     override val referenceOwner: VB6ReferenceOwner?
