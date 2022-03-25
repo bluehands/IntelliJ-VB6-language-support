@@ -7,13 +7,13 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6ModuleConfig: PsiElement {
-    fun getModuleConfigElements(): Collection<VB6ModuleConfigElement>
+    val configElements: Collection<VB6ModuleConfigElement>
 }
 
 class VB6ModuleConfigImpl(node: ASTNode) : VB6PsiNode(node),
     VB6ModuleConfig {
 
-    override fun getModuleConfigElements(): Collection<VB6ModuleConfigElement> {
+    override val configElements: Collection<VB6ModuleConfigElement> get () {
         return findPsiElementsInSubtree(this)
     }
 

@@ -15,7 +15,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6AttributeStmt : VB6StatementBase, VB6IdentifierOwner {
-    fun getLiterals(): Collection<VB6Literal>
+    val literals: Collection<VB6Literal>
 }
 
 class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -27,9 +27,7 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
-    override fun getLiterals(): Collection<VB6Literal> {
-        return findPsiElementsInDirectChildrenByType(this)
-    }
+    override val literals: Collection<VB6Literal> = findPsiElementsInDirectChildrenByType(this)
 
     override fun getNameIdentifier(): VB6Identifier? {
         return findFirstChildByType<VB6InlineCall>(this)

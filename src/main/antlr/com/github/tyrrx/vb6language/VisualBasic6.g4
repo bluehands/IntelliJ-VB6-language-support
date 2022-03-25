@@ -110,6 +110,11 @@ module :
 
 moduleHeader : VERSION WS DOUBLELITERAL WS CLASS;
 
+moduleImports: moduleImportElement (endOfLine+ moduleImportElement)*; //todo register
+
+moduleImportElement: 'Object' WS? EQ WS? STRINGLITERAL WS? ';' WS? STRINGLITERAL; //todo register
+
+
 moduleConfig :
 	BEGIN complexType? endOfLine*
 	moduleConfigElement+

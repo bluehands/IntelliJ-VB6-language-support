@@ -9,7 +9,10 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.tyrrx.vb6language.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.tyrrx.vb6language.services.MyProjectService"/>
-        <fileType name="Visual Basic 6.0" language="VisualBasic6" extensions="cls" fieldName="INSTANCE" implementationClass="com.github.tyrrx.vb6language.VB6ClassFileType"/>
+        //
+        <fileType name="VB6 Class" language="VisualBasic6" extensions="cls" implementationClass="com.github.tyrrx.vb6language.VB6ClassFileType"/>
+        <fileType name="VB6 Form" language="VisualBasic6" extensions="frm" implementationClass="com.github.tyrrx.vb6language.VB6FormFileType"/>
+        <fileType name="VB6 Module" language="VisualBasic6" extensions="bas" implementationClass="com.github.tyrrx.vb6language.VB6ModuleFileType"/>
         <lang.ast.factory language="VisualBasic6" implementationClass="com.github.tyrrx.vb6language.psi.language.ASTFactory"/>
         <lang.syntaxHighlighterFactory
                 language="VisualBasic6"
