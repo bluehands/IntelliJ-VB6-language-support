@@ -9,7 +9,9 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.tyrrx.vb6language.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.tyrrx.vb6language.services.MyProjectService"/>
-        //
+
+        <projectService serviceImplementation="com.github.tyrrx.vb6language.project.VB6WorkspaceService"/>
+
         <fileType name="VB6 Class" language="VisualBasic6" extensions="cls" implementationClass="com.github.tyrrx.vb6language.VB6ClassFileType"/>
         <fileType name="VB6 Form" language="VisualBasic6" extensions="frm" implementationClass="com.github.tyrrx.vb6language.VB6FormFileType"/>
         <fileType name="VB6 Module" language="VisualBasic6" extensions="bas" implementationClass="com.github.tyrrx.vb6language.VB6ModuleFileType"/>
@@ -19,10 +21,27 @@
                 implementationClass="com.github.tyrrx.vb6language.highlighter.VisualBasic6SyntaxHighlighterFactory"/>
         <lang.parserDefinition language="VisualBasic6"
                                implementationClass="com.github.tyrrx.vb6language.psi.language.VB6ParserDefinition"/>
+
     </extensions>
 
     <applicationListeners>
         <listener class="com.github.tyrrx.vb6language.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <actions>
+        <action id="VB6.VB6AttachProjectAction" class="com.github.tyrrx.vb6language.actions.VB6AttachProjectAction"
+                text="Attach Visual Basic 6.0 Project"
+                description="Load a Visual Basic 6.0 project file and attach it to the workspace."
+                icon="AllIcons.General.Add">
+        </action>
+        <group id="VB6.WorkspaceToolsGroup" text="Visual Basic 6.0" popup="true">
+<!--            <reference id="Elm.RefreshElmProjects"/>-->
+<!--            <separator/>-->
+<!--            <reference id="Elm.AttachElmProject"/>-->
+            <reference id="VB6.VB6AttachProjectAction"/>
+            <add-to-group group-id="ToolsMenu"/>
+        </group>
+
+    </actions>
 </idea-plugin>

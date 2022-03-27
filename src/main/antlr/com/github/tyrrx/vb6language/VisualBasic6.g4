@@ -110,9 +110,9 @@ module :
 
 moduleHeader : VERSION WS DOUBLELITERAL WS CLASS;
 
-moduleImports: moduleImportElement (endOfLine+ moduleImportElement)*; //todo register
+//moduleImports: moduleImportElement (endOfLine+ moduleImportElement)*; //todo register
 
-moduleImportElement: 'Object' WS? EQ WS? STRINGLITERAL WS? ';' WS? STRINGLITERAL; //todo register
+//moduleImportElement: 'Object' WS? EQ WS? STRINGLITERAL WS? ';' WS? STRINGLITERAL; //todo register
 
 
 moduleConfig :
@@ -147,6 +147,7 @@ moduleDeclarationsElement :
 	| moduleOption
 	| typeStmt
 	| macroStmt
+	| attributeStmt
 ;
 
 macroStmt :
@@ -413,7 +414,7 @@ onGoToStmt : ON WS expression WS GOTO WS goToDestinationList;
 onGoSubStmt : ON WS expression WS GOSUB WS goToDestinationList;
 
 goToDestinationList: goToDestination (WS? ',' WS? goToDestination)*;    //todo register
-goToDestination: INTEGERLITERAL | ambiguousIdentifier;                    //todo register
+goToDestination: literal | ambiguousIdentifier;                    //todo register
 
 
 openStmt :
