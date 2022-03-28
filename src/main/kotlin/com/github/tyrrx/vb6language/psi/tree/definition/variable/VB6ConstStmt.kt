@@ -1,33 +1,34 @@
-package com.github.tyrrx.vb6language.psi.tree.definition.blockStmt
+package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeClauseOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetTypeHintFromChildrenMixin
+import com.github.tyrrx.vb6language.psi.tree.mixins.VB6TypeHintMixin
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.PsiTreeUtil
 
-interface VB6ConstSubStmt:
+interface VB6ConstBase :
+    VB6PsiElement,
     VB6IdentifierOwner,
-    VB6VisibilityOwner,
     VB6TypeClauseOwner,
-    VB6GetTypeHintFromChildrenMixin {
-}
+    VB6TypeHintMixin
 
-class VB6ConstSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
-    VB6ConstSubStmt {
+interface VB6BlockConst : VB6ConstBase
+interface VB6ModuleConst : VB6ConstBase, VB6VisibilityOwner
 
-    object Factory : IPsiNodeFactory<VB6ConstSubStmt> {
-        override fun createPsiNode(node: ASTNode): VB6ConstSubStmt {
-            return VB6ConstSubStmtImpl(node)
+interface VB6ConstStmt : VB6ModuleConst, VB6BlockConst
+
+class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
+    VB6ConstStmt {
+
+    object Factory : IPsiNodeFactory<VB6ConstStmt> {
+        override fun createPsiNode(node: ASTNode): VB6ConstStmt {
+            return VB6ConstStmtImpl(node)
         }
     }
 
@@ -46,10 +47,13 @@ class VB6ConstSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
         TODO("Not yet implemented")
     }
 
-    override fun getVisibility(): VB6VisibilityEnum {
-        return PsiTreeUtil.getPrevSiblingOfType(this, VB6Visibility::class.java)
-            ?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
-    }
+    override val visibility: VB6VisibilityEnum
+        get() {
+            return when (val moduleConstList = parent) {
+                is VB6ModuleConstList -> moduleConstList.visibility?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+                else -> VB6VisibilityEnum.PUBLIC
+            }
+        }
 
     override fun getAsTypeClause(): VB6AsTypeClause? {
         return findFirstChildByType(this)

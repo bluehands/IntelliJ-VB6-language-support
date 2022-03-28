@@ -28,7 +28,7 @@ class VB6WorkspaceService(val project: Project) {
      * Seems like a source module (bas, cls) can be part of multiple projects.
      */
     fun findVB6Projects(file: VB6File): Iterable<VB6Project> {
-        return projects.values.filter { it.containsSourceFile(file) }
+        return projects.values.filter { it.containsVB6File(file) }
     }
 
     fun findVB6Projects(module: VB6Module): Iterable<VB6Project> {

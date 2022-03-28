@@ -1,48 +1,21 @@
 package com.github.tyrrx.vb6language.project
 
 import com.intellij.openapi.vfs.VirtualFile
-import java.util.Stack
+import java.util.*
 import java.util.stream.Collectors
 
-fun parseVbpFile(file: VirtualFile): List<VBPContext> {
+fun parseVbpFile(file: VirtualFile): List<VBPFileContext> {
     return VBPParser(file).parse()
-}
-
-
-abstract class VBPContext {
-    class Tag(val tagName: String) : VBPContext()
-    class Default : VBPContext()
-
-    val values = ArrayList<VBPValue>()
-
-    fun addToContext(parseValue: VBPValue) {
-        values.add(parseValue)
-    }
-}
-
-sealed interface VBPValue {
-    val key: String
-
-    data class Object(override val key: String) : VBPValue
-    data class Class(override val key: String, val name: String, val path: String) : VBPValue
-    data class Module(override val key: String, val name: String, val path: String) : VBPValue
-    data class Form(override val key: String, val path: String) : VBPValue
-    data class Title(override val key: String, val title: String) : VBPValue
-    data class ExeName32(override val key: String, val name: String) : VBPValue
-    data class Command32(override val key: String, val name: String) : VBPValue
-    data class Name(override val key: String, val name: String) : VBPValue
-    data class Description(override val key: String, val text: String) : VBPValue
-    data class Unknown(override val key: String, val value: String) : VBPValue
 }
 
 private class VBPParser(virtualFile: VirtualFile) {
 
     private val lines = virtualFile.inputStream.bufferedReader().lines().collect(Collectors.toList())
-    private val context = Stack<VBPContext>()
+    private val context = Stack<VBPFileContext>()
 
-    fun parse(): List<VBPContext> {
+    fun parse(): List<VBPFileContext> {
         context.clear()
-        context.push(VBPContext.Default())
+        context.push(VBPFileContext.Default())
         lines.forEach {
             when {
                 it.startsWith("[") -> context.push(parseTagLine(it))
@@ -53,11 +26,11 @@ private class VBPParser(virtualFile: VirtualFile) {
         return context.toList()
     }
 
-    private fun parseTagLine(line: String): VBPContext {
-        return VBPContext.Tag(line.trim { c -> c == '[' || c == ']' })
+    private fun parseTagLine(line: String): VBPFileContext {
+        return VBPFileContext.Tag(line.trim { c -> c == '[' || c == ']' })
     }
 
-    private fun parseKeyValueLine(line: String, context: VBPContext) {
+    private fun parseKeyValueLine(line: String, context: VBPFileContext) {
         val keyValueList = line.split("=", limit = 2)
         context.addToContext(parseValue(keyValueList[0].trim(), keyValueList[1]))
     }

@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.block
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
-import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6ConstStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ConstList
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6LetStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6LineLabel
 import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableStmt
@@ -32,7 +32,7 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
             when (it) {
                 is VB6VariableStmt -> it.variables
                 is VB6LineLabel -> listOf(it)
-                is VB6ConstStmt -> it.declarations
+                is VB6ConstList -> it.declarations
                 is VB6WeakBlockScopeOwner -> it.block?.identifierOwners ?: emptyList()
                 is VB6EnclosingWeakBlocks -> it.enclosingBlocks.flatMap { block -> block.identifierOwners }
                 is VB6LetStmt -> listOf(it)

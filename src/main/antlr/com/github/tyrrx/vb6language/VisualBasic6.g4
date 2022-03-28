@@ -141,7 +141,7 @@ moduleDeclarationsElement :
 	| declareStmt
 	| enumerationStmt
 	| eventStmt
-	| constStmt
+	| moduleConstListStmt
 	| implementsStmt
 	| moduleVariableStmt
 	| moduleOption
@@ -181,7 +181,7 @@ blockStmt :
 	| chdirStmt
 	| chdriveStmt
 	| closeStmt
-	| constStmt
+	| constListStmt
 	| dateStmt
 	| deleteSettingStmt
 	| deftypeStmt
@@ -257,16 +257,17 @@ chdriveStmt : CHDRIVE WS expression;
 
 closeStmt : CLOSE (WS fileNumber (WS? ',' WS? fileNumber)*)?;
 
-constStmt : (visibility WS)? CONST WS constSubStmt (WS? ',' WS? constSubStmt)*;
+moduleConstListStmt: (visibility WS)? CONST WS constStmt (WS? ',' WS? constStmt)*;
+constListStmt : CONST WS constStmt (WS? ',' WS? constStmt)*;
 
-constSubStmt : ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? expression;
+constStmt : ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? expression;
 
 dateStmt : DATE WS? EQ WS? expression;
 
 declareStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? (declareFunctionDef | SUB) WS ambiguousIdentifier typeHint? WS declareLibDef declareAliasDef (WS? argList)? (WS asTypeClause)?;
-declareFunctionDef: FUNCTION typeHint?;
-declareLibDef : LIB WS STRINGLITERAL;
-declareAliasDef: (WS ALIAS WS STRINGLITERAL)?;
+declareFunctionDef: FUNCTION typeHint?; // todo register
+declareLibDef : LIB WS STRINGLITERAL; // todo register
+declareAliasDef: (WS ALIAS WS STRINGLITERAL)?; // todo register
 
 deftypeStmt :
 	(

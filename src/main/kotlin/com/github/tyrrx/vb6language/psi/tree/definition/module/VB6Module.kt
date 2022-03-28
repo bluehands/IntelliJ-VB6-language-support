@@ -1,13 +1,12 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeStmt
-import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6ConstStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ConstList
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
+import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleConstList
 import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
@@ -25,6 +24,7 @@ interface VB6Module : VB6ScopeNode, PsiNameIdentifierOwner {
     val definitions: List<VB6IdentifierOwner>
     val bodyDefinitions: List<VB6IdentifierOwner>
     val declarationsDefinitions: List<VB6IdentifierOwner>
+    val projectVisibleDefinitions: List<VB6IdentifierOwner>
 
     fun isClass(): Boolean
 }
@@ -48,12 +48,12 @@ inline fun <reified TStatement> VB6Module.fromModuleDeclarationsGetByType(): Lis
 
 class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     override val moduleHeader: VB6ModuleHeader? = findFirstChildByType(this)
-    override val moduleConfig: VB6ModuleConfig? get() = findFirstChildByType(this)
-    override val moduleAttributes: VB6ModuleAttributes? get() = findFirstChildByType(this)
-    override val moduleDeclarations: VB6ModuleDeclarations? get() = findFirstChildByType(this)
-    override val moduleBody: VB6ModuleBody? get() = findFirstChildByType(this)
+    override val moduleConfig: VB6ModuleConfig? = findFirstChildByType(this)
+    override val moduleAttributes: VB6ModuleAttributes? = findFirstChildByType(this)
+    override val moduleDeclarations: VB6ModuleDeclarations? = findFirstChildByType(this)
+    override val moduleBody: VB6ModuleBody? = findFirstChildByType(this)
 
-    override val definitions: List<VB6IdentifierOwner> get() = bodyDefinitions.plus(declarationsDefinitions)
+    override val definitions: List<VB6IdentifierOwner> = bodyDefinitions + declarationsDefinitions
 
     override val bodyDefinitions: List<VB6IdentifierOwner>
         get() = fromBodyGetElements().flatMap {
@@ -68,9 +68,20 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
             .flatMap {
                 when (it) {
                     is VB6IdentifierOwner -> listOf(it)
-                    is VB6ConstStmt -> it.declarations
+                    is VB6ModuleConstList -> it.declarations
                     is VB6ModuleVariableStmt -> it.definitions
                     else -> emptyList()
+                }
+            }
+
+    override val projectVisibleDefinitions: List<VB6IdentifierOwner>
+        get() = definitions
+            .filterIsInstance<VB6VisibilityOwner>()
+            .filter {
+                when (it.visibility) {
+                    VB6VisibilityEnum.PUBLIC -> true
+                    VB6VisibilityEnum.FRIEND -> true
+                    else -> false
                 }
             }
 

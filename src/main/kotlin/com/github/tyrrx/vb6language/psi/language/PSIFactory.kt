@@ -13,10 +13,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.*
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.*
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableListStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableSubStmtImpl
+import com.github.tyrrx.vb6language.psi.tree.definition.variable.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.PsiElement
@@ -79,6 +76,9 @@ object PSIFactory {
 
         VisualBasic6Parser.RULE_variableListStmt mapsTo VB6VariableListStmtImpl.Factory,
         VisualBasic6Parser.RULE_variableSubStmt mapsTo VB6VariableSubStmtImpl.Factory,
+        VisualBasic6Parser.RULE_constListStmt mapsTo VB6ConstListImpl.Factory,
+        VisualBasic6Parser.RULE_moduleConstListStmt mapsTo VB6ModuleConstListImpl.Factory,
+        VisualBasic6Parser.RULE_constStmt mapsTo VB6ConstStmtImpl.Factory,
 
         VisualBasic6Parser.RULE_subscripts mapsTo VB6SubscriptsImpl.Factory,
         VisualBasic6Parser.RULE_subscriptElement mapsTo VB6SubscriptElementImpl.Factory,
@@ -108,8 +108,6 @@ object PSIFactory {
         VisualBasic6Parser.RULE_chdirStmt mapsTo VB6ChdirStmtImpl.Factory,
         VisualBasic6Parser.RULE_chdriveStmt mapsTo VB6ChdriveStmtImpl.Factory,
         VisualBasic6Parser.RULE_closeStmt mapsTo VB6CloseStmtImpl.Factory,
-        VisualBasic6Parser.RULE_constStmt mapsTo VB6ConstStmtImpl.Factory,
-        VisualBasic6Parser.RULE_constSubStmt mapsTo VB6ConstSubStmtImpl.Factory, // sub,
         VisualBasic6Parser.RULE_dateStmt mapsTo VB6DateStmtImpl.Factory,
         VisualBasic6Parser.RULE_deleteSettingStmt mapsTo VB6DeleteSettingStmtImpl.Factory,
         VisualBasic6Parser.RULE_deftypeStmt mapsTo VB6DeftypeStmtImpl.Factory,

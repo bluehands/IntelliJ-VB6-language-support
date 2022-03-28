@@ -14,7 +14,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.isIElementTypePresentInChildr
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6VariableSubStmt: VB6BlockVariableDefinition, VB6ModuleVariableDefinition {
+interface VB6VariableSubStmt: VB6BlockVariable, VB6ModuleVariable {
 }
 
 class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),

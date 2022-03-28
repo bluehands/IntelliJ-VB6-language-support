@@ -10,7 +10,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetVisibilityFromChildrenMixin
+import com.github.tyrrx.vb6language.psi.tree.mixins.VB6VisibilityOwnerMixin
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6IsStaticInChildrenMixin
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
@@ -21,7 +21,7 @@ interface VB6SubroutineStatement :
     VB6BlockScopeOwner,
     VB6IdentifierOwner,
     VB6ArgumentOwner,
-    VB6GetVisibilityFromChildrenMixin,
+    VB6VisibilityOwnerMixin,
     VB6IsStaticInChildrenMixin {
 }
 

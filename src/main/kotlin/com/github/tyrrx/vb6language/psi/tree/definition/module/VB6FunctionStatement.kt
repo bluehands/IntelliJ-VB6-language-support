@@ -13,9 +13,9 @@ import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6Type
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetTypeHintFromChildrenMixin
+import com.github.tyrrx.vb6language.psi.tree.mixins.VB6TypeHintMixin
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6IsStaticInChildrenMixin
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6GetVisibilityFromChildrenMixin
+import com.github.tyrrx.vb6language.psi.tree.mixins.VB6VisibilityOwnerMixin
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -25,9 +25,9 @@ interface VB6FunctionStatement :
     VB6IdentifierOwner,
     VB6ArgumentOwner,
     VB6ReturnTypeOwner,
-    VB6GetVisibilityFromChildrenMixin,
+    VB6VisibilityOwnerMixin,
     VB6IsStaticInChildrenMixin,
-    VB6GetTypeHintFromChildrenMixin {
+    VB6TypeHintMixin {
 
 }
 
