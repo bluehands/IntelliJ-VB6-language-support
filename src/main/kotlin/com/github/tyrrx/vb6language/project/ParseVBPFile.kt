@@ -25,19 +25,18 @@ abstract class VBPContext {
     }
 }
 
-abstract class VBPValue {
-    abstract val key: String
-    //class Reference(override val key: String) : VBPValue()
-    class Object(override val key: String) : VBPValue()
-    class Class(override val key: String, val name: String, val path: String) : VBPValue()
-    class Module(override val key: String, val name: String, val path: String) : VBPValue()
-    class Form(override val key: String, val path: String) : VBPValue()
-    class Title(override val key: String, val title: String) : VBPValue()
-    class ExeName32(override val key: String, val name: String) : VBPValue()
-    class Command32(override val key: String, val name: String) : VBPValue()
-    class Name(override val key: String, val name: String) : VBPValue()
-    class Description(override val key: String, val text: String) : VBPValue()
-    class Unknown(override val key: String, val value: String) : VBPValue()
+sealed interface VBPValue {
+    val key: String
+    data class Object(override val key: String) : VBPValue
+    data class Class(override val key: String, val name: String, val path: String) : VBPValue
+    data class Module(override val key: String, val name: String, val path: String) : VBPValue
+    data class Form(override val key: String, val path: String) : VBPValue
+    data class Title(override val key: String, val title: String) : VBPValue
+    data class ExeName32(override val key: String, val name: String) : VBPValue
+    data class Command32(override val key: String, val name: String) : VBPValue
+    data class Name(override val key: String, val name: String) : VBPValue
+    data class Description(override val key: String, val text: String) : VBPValue
+    data class Unknown(override val key: String, val value: String) : VBPValue
 }
 
 private class VBPParser {

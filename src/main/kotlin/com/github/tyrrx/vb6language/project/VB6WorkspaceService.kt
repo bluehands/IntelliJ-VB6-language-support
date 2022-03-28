@@ -11,6 +11,7 @@ class VB6WorkspaceService(val project: Project) {
 
     private val logger = Logger.getInstance(VB6WorkspaceService::class.java)
     private val projects: MutableMap<VirtualFile, VB6Project> = HashMap()
+    private val activeProjects: Set<VB6Project> = HashSet()
 
     init {
         println("VB6WorkspaceService")
@@ -23,6 +24,9 @@ class VB6WorkspaceService(val project: Project) {
     }
 
 
+    /**
+     * Seems like a source module (bas, cls) can be part of multiple projects.
+     */
     fun findVB6ProjectForVB6FilePath(file: Path): VB6Project? {
         return projects.values.find { it.contains(file) }
     }
