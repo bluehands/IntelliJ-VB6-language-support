@@ -11,11 +11,11 @@ class LineLabelReference(
     override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
-        TODO("Not yet implemented")
+        return myElement
     }
 
     override fun getRangeInElement(): TextRange {
-        TODO("Not yet implemented")
+        return textRange
     }
 
     override fun resolve(): PsiElement? {
@@ -23,11 +23,11 @@ class LineLabelReference(
     }
 
     override fun getCanonicalText(): String {
-        TODO("Not yet implemented")
+        return referencingIdentifier.name ?: ""
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
-        TODO("Not yet implemented")
+        return referencingIdentifier.setName(newElementName)
     }
 
     override fun bindToElement(element: PsiElement): PsiElement {
@@ -39,6 +39,6 @@ class LineLabelReference(
     }
 
     override fun isSoft(): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 }

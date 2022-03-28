@@ -1,10 +1,8 @@
 package com.github.tyrrx.vb6language.psi.language
 
-import com.github.tyrrx.vb6language.VB6Language
-import com.github.tyrrx.vb6language.VB6ParserAdaptor
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6FileImpl
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.PsiParser
@@ -57,6 +55,6 @@ class VB6ParserDefinition : ParserDefinition {
     }
 
     override fun createFile(viewProvider: FileViewProvider): PsiFile {
-        return VB6File(viewProvider)
+        return VB6FileImpl(viewProvider)
     }
 }

@@ -5,12 +5,7 @@ import java.util.Stack
 import java.util.stream.Collectors
 
 fun parseVbpFile(file: VirtualFile): List<VBPContext> {
-    return VBPParser().parse(
-        file
-            .inputStream
-            .bufferedReader()
-            .lines().collect(Collectors.toList())
-    )
+    return VBPParser(file).parse()
 }
 
 
@@ -27,6 +22,7 @@ abstract class VBPContext {
 
 sealed interface VBPValue {
     val key: String
+
     data class Object(override val key: String) : VBPValue
     data class Class(override val key: String, val name: String, val path: String) : VBPValue
     data class Module(override val key: String, val name: String, val path: String) : VBPValue
@@ -39,11 +35,12 @@ sealed interface VBPValue {
     data class Unknown(override val key: String, val value: String) : VBPValue
 }
 
-private class VBPParser {
+private class VBPParser(virtualFile: VirtualFile) {
 
+    private val lines = virtualFile.inputStream.bufferedReader().lines().collect(Collectors.toList())
     private val context = Stack<VBPContext>()
 
-    fun parse(lines: List<String>): List<VBPContext> {
+    fun parse(): List<VBPContext> {
         context.clear()
         context.push(VBPContext.Default())
         lines.forEach {

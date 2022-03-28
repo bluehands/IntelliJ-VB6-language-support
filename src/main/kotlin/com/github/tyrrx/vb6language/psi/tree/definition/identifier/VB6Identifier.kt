@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.identifier
 
-import com.github.tyrrx.vb6language.VB6Language
+import com.github.tyrrx.vb6language.psi.language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
@@ -9,7 +9,6 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.utils.createElementFromText
 import com.github.tyrrx.vb6language.psi.tree.utils.findIdentifierOwnerRecursive
-import com.github.tyrrx.vb6language.psi.tree.utils.findOwnerRecursive
 import com.github.tyrrx.vb6language.psi.tree.utils.findReferenceOwnerRecursive
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement

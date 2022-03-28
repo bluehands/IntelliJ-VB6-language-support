@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.highlighter
 
-import com.github.tyrrx.vb6language.VB6Language
+import com.github.tyrrx.vb6language.psi.language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.github.tyrrx.vb6language.psi.language.VB6TokenSets
 import com.intellij.lexer.Lexer

@@ -10,7 +10,6 @@ import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeSt
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6ConstStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
@@ -35,7 +34,7 @@ fun VB6Module.fromBodyGetElements(): List<VB6PsiElement> {
 }
 
 fun VB6Module.fromDeclarationsGetElements(): List<VB6PsiElement> {
-    return moduleDeclarations?.getElements()?.map { it.getInnerElement() } ?: emptyList()
+    return moduleDeclarations?.elements?.mapNotNull { it.declaration } ?: emptyList()
 }
 
 inline fun <reified TStatement> VB6Module.fromModuleBodyGetByType(): List<TStatement> {

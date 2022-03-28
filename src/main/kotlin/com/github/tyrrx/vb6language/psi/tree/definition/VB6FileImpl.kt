@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.definition
 
-import com.github.tyrrx.vb6language.VB6Language
+import com.github.tyrrx.vb6language.psi.language.VB6Language
 import com.github.tyrrx.vb6language.project.VB6Project
 import com.github.tyrrx.vb6language.project.VB6WorkspaceService
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ScopeNode
@@ -13,26 +13,28 @@ import com.intellij.psi.FileViewProvider
 import com.intellij.psi.PsiFile
 import java.nio.file.Path
 
-interface IVB6File : VB6ScopeNode, PsiFile {
+interface VB6File : VB6ScopeNode, PsiFile {
     val module: VB6Module
-    val vb6Project: VB6Project?
+    val projects: Iterable<VB6Project>
+    val isProjectMember: Boolean
     val path: Path
 }
 
-class VB6File(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VB6Language.INSTANCE), IVB6File {
+class VB6FileImpl(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VB6Language.INSTANCE), VB6File {
     override fun getFileType(): FileType {
         return viewProvider.virtualFile.fileType
     }
 
     override val module: VB6Module
-        get() = firstChild.firstChild as VB6Module
+        get() = firstChild?.firstChild?.let { it as VB6Module }!!
 
-    override val vb6Project: VB6Project?
+    override val projects: Iterable<VB6Project>
         get() {
             val workspaceService = project.service<VB6WorkspaceService>()
-            val vb6Project = workspaceService.findVB6ProjectForVB6FilePath(path)
-            return vb6Project
+            return workspaceService.findVB6Projects(this)
         }
+    override val isProjectMember: Boolean
+        get() = projects.any()
 
     override val path: Path
         get() = viewProvider.virtualFile.toNioPath()

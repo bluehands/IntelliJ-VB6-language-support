@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.intellij.lang.ASTNode
 
 interface VB6ModuleDeclarationsElement : VB6PsiElement {
-    fun getInnerElement(): VB6PsiElement
+    val declaration: VB6PsiElement?
 }
 
 class VB6ModuleDeclarationsElementImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleDeclarationsElement {
@@ -17,7 +17,9 @@ class VB6ModuleDeclarationsElementImpl(node: ASTNode) : VB6PsiNode(node), VB6Mod
         }
     }
 
-    override fun getInnerElement(): VB6PsiElement {
-        return firstChild as VB6PsiElement
-    }
+    override val declaration: VB6PsiElement?
+        get() = when (val child = firstChild) {
+            is VB6PsiElement -> child
+            else -> null
+        }
 }

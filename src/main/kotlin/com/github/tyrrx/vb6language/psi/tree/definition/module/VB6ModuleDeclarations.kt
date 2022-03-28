@@ -7,7 +7,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6ModuleDeclarations : PsiElement {
-    fun getElements(): List<VB6ModuleDeclarationsElement>
+    val elements: List<VB6ModuleDeclarationsElement>
 }
 
 class VB6ModuleDeclarationsImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleDeclarations {
@@ -18,7 +18,7 @@ class VB6ModuleDeclarationsImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleDecl
         }
     }
 
-    override fun getElements(): List<VB6ModuleDeclarationsElement> {
+    override val elements: List<VB6ModuleDeclarationsElement> get() {
         return findPsiElementsInDirectChildrenByType(this)
     }
 }

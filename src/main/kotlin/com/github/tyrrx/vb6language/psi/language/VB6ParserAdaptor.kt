@@ -1,7 +1,6 @@
-package com.github.tyrrx.vb6language
+package com.github.tyrrx.vb6language.psi.language
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
