@@ -523,11 +523,11 @@ timeStmt : TIME WS? EQ WS? expression;
 
 typeStmt :
 	(visibility WS)? TYPE WS ambiguousIdentifier endOfStatement
-	typeStmt_Element*
+	typeStmtMember*
 	END_TYPE
 ;
 
-typeStmt_Element : ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? (WS asTypeClause)? endOfStatement;
+typeStmtMember : ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? (WS asTypeClause)? endOfStatement;
 
 typeOfStmt : TYPEOF WS expression (WS IS WS type_)?;
 

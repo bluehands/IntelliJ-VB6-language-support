@@ -2,13 +2,14 @@ package com.github.tyrrx.vb6language.psi.tree.definition.type
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.isIElementTypePresentInChildren
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6AsTypeClause:PsiElement {
+interface VB6AsTypeClause : VB6PsiElement {
     fun isAutoInitialized(): Boolean // default false
     fun getFieldLength(): VB6FieldLength?
     fun getTypeRule(): VB6TypeRule
