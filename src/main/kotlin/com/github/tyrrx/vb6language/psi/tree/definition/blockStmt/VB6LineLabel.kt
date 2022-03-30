@@ -37,4 +37,10 @@ class VB6LineLabelImpl(node: ASTNode) : VB6PsiNode(node),
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }
+
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = listOf(this)
+
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = TODO("Not yet implemented")
 }

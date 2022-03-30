@@ -10,7 +10,7 @@ import com.intellij.lang.ASTNode
 
 interface VB6DoLoopStmt :
     VB6StatementBase,
-    VB6WeakBlockScopeOwner {
+    VB6TransparentBlockScopeOwner {
 }
 
 class VB6DoLoopStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -28,5 +28,11 @@ class VB6DoLoopStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return resolveVisitor.resolveDoLoopStmt(this)
     }
+
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = block?.visibleNamedElementOwners ?: emptyList()
+
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = block?.visibleNamedElements ?: emptyList()
 
 }

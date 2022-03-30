@@ -10,7 +10,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6EnumerationStmt :
-    VB6NamedElementsOwner,
+    VB6EnclosingVisibleNamedElements,
     VB6PsiElement,
     VB6NamedElementOwner,
     VB6VisibilityOwner {
@@ -28,10 +28,10 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
     override val enumMembers: List<VB6EnumerationConstant>
         get() = findPsiElementsInDirectChildrenByType(this)
 
-    override val namedElementOwners: List<VB6NamedElementOwner>
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this) + enumMembers
 
-    override val namedElements: List<VB6NamedElement>
+    override val visibleNamedElements: List<VB6NamedElement>
         get() = emptyList() // todo also this?
 
     override fun getNameIdentifier(): VB6NamedElement? {

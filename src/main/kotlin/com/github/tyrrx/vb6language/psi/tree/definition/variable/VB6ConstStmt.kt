@@ -44,6 +44,11 @@ class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
         TODO("Not yet implemented")
     }
 
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = listOf(this)
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = TODO("Not yet implemented")
+
     override val visibility: VB6VisibilityEnum
         get() {
             return when (val moduleConstList = parent) {

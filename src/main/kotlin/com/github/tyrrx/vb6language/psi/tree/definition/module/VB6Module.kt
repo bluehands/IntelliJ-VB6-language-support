@@ -6,8 +6,6 @@ import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleConstList
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleVariableStmt
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -36,7 +34,7 @@ val VB6Module.moduleElements: List<VB6PsiElement>
     get() = bodyElements + declarationElements
 
 val VB6Module.namedElementOwners: List<VB6NamedElementOwner>
-    get() = moduleElements.filterIsInstance<VB6NamedElementsOwner>().flatMap { it.namedElementOwners }
+    get() = moduleElements.filterIsInstance<VB6EnclosingVisibleNamedElements>().flatMap { it.visibleNamedElementOwners }
 
 //inline fun <reified TStatement> VB6Module.fromModuleBodyGetByType(): List<TStatement> {
 //    return fromBodyGetElements().filterIsInstance<TStatement>()

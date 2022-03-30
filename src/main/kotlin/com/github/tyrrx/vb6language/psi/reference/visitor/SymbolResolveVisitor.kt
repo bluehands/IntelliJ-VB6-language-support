@@ -29,7 +29,7 @@ class SymbolResolveVisitor(
         val textOffsetOfReferenceOwner = referenceOwner.textOffset
 
         return scope.block
-            ?.namedElementOwners
+            ?.visibleNamedElementOwners
             ?.takeWhile { // remove elements that are after the reference owner to avoid endless recursion in filter it.isDefinition as this calls resolve too
                 it.isBeforeEnclosingStatementOrReferenceOwner(
                     textOffsetOfEnclosingBlockStatement,
@@ -47,7 +47,7 @@ class SymbolResolveVisitor(
 
     override fun resolveModule(scope: VB6Module): VB6NamedElementOwner? {
         return scope
-            .definitions
+            .namedElementOwners
             .find { compareNames(it) }
     }
 
@@ -72,10 +72,12 @@ class SymbolResolveVisitor(
     }
 
     override fun resolveForEachStmt(scope: VB6ForEachStmt): VB6NamedElementOwner? {
+        // todo resolve to self
         return scope.resolveInContext(this)
     }
 
     override fun resolveForNextStmt(scope: VB6ForNextStmt): VB6NamedElementOwner? {
+        // todo resolve to self
         return scope.resolveInContext(this)
     }
 

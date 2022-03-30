@@ -8,7 +8,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
-interface VB6WithStmt : VB6WeakBlockScopeOwner, VB6StatementBase {
+interface VB6WithStmt : VB6TransparentBlockScopeOwner, VB6StatementBase {
 }
 
 class VB6WithStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -26,4 +26,10 @@ class VB6WithStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return resolveVisitor.resolveWithStmt(this)
     }
+
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = block?.visibleNamedElementOwners ?: emptyList()
+
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = block?.visibleNamedElements ?: emptyList()
 }

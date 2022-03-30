@@ -13,7 +13,7 @@ import com.intellij.psi.PsiElement
 
 interface VB6ForNextStmt :
     VB6StatementBase,
-    VB6WeakBlockScopeOwner,
+    VB6TransparentBlockScopeOwner,
     VB6NamedElementOwner,
     VB6TypeClauseOwner,
     VB6TypeHintMixin {
@@ -53,4 +53,10 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val isDefinition: Boolean
         get() = true
+
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = block?.visibleNamedElementOwners ?: emptyList()
+
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = block?.visibleNamedElements ?: emptyList()
 }

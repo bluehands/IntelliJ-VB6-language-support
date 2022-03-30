@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
 interface VB6ModuleVariableStmt :
-    VB6NamedElementsOwner,
+    VB6EnclosingVisibleNamedElements,
     VB6StatementBase {
     val variableDefinitions: List<VB6ModuleVariable>
 }
@@ -23,9 +23,9 @@ class VB6ModuleVariableStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleVari
         get() = findFirstChildByType<VB6VariableListStmt>(this)
             ?.getVariableDefinitions() ?: emptyList()
 
-    override val namedElementOwners: List<VB6NamedElementOwner>
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = variableDefinitions
 
-    override val namedElements: List<VB6NamedElement>
+    override val visibleNamedElements: List<VB6NamedElement>
         get() = emptyList() // todo also this?
 }

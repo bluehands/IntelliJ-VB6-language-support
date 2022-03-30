@@ -7,7 +7,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 
-interface VB6ModuleConstList : VB6PsiElement, VB6NamedElementsOwner {
+interface VB6ModuleConstList : VB6PsiElement, VB6EnclosingVisibleNamedElements {
     val constDefinitions: List<VB6ModuleConst>
     val visibility: VB6Visibility?
 }
@@ -27,10 +27,10 @@ class VB6ModuleConstListImpl(node: ASTNode) : VB6PsiNode(node),
     override val visibility: VB6Visibility?
         get() = findFirstChildByType(this)
 
-    override val namedElementOwners: List<VB6NamedElementOwner>
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = constDefinitions
 
-    override val namedElements: List<VB6NamedElement>
+    override val visibleNamedElements: List<VB6NamedElement>
         get() = emptyList() // todo also this?
 
 }

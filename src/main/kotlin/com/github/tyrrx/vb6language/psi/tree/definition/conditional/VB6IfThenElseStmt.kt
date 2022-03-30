@@ -2,13 +2,11 @@ package com.github.tyrrx.vb6language.psi.tree.definition.conditional
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6EnclosingWeakBlocks
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.intellij.lang.ASTNode
 
-interface VB6IfThenElseStmt : VB6StatementBase, VB6EnclosingWeakBlocks {
+interface VB6IfThenElseStmt : VB6StatementBase, VB6EnclosingTransparentBlocks {
 }
 
 class VB6IfThenElseStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -25,4 +23,11 @@ class VB6IfThenElseStmtImpl(node: ASTNode) : VB6PsiNode(node),
             is VB6BlockIfThenElse -> enclosingElement.enclosingBlocks
             else -> emptyList()
         }
+
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = enclosingBlocks.flatMap { it.visibleNamedElementOwners }
+
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = enclosingBlocks.flatMap { it.visibleNamedElements }
+
 }

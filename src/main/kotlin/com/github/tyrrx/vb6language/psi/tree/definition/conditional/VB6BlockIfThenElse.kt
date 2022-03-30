@@ -1,15 +1,12 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.conditional
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6EnclosingWeakBlocks
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6WeakBlockScopeOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 
-interface VB6BlockIfThenElse : VB6PsiElement, VB6EnclosingWeakBlocks {
+interface VB6BlockIfThenElse : VB6PsiElement, VB6EnclosingTransparentBlocks {
 }
 
 class VB6BlockIfThenElseImpl(node: ASTNode) : VB6PsiNode(node),
@@ -22,6 +19,12 @@ class VB6BlockIfThenElseImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val enclosingBlocks: List<VB6Block>
-        get() = findPsiElementsInDirectChildrenByType<VB6WeakBlockScopeOwner>(this)
+        get() = findPsiElementsInDirectChildrenByType<VB6TransparentBlockScopeOwner>(this)
             .mapNotNull { it.block }
+
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = enclosingBlocks.flatMap { it.visibleNamedElementOwners }
+
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = enclosingBlocks.flatMap { it.visibleNamedElements }
 }

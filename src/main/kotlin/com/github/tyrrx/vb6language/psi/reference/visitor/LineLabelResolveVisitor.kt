@@ -26,7 +26,7 @@ class LineLabelResolveVisitor(
     private fun resolveBlock(scope: VB6BlockOwner): VB6NamedElementOwner? {
         return scope
             .block
-            ?.namedElementOwners
+            ?.visibleNamedElementOwners
             ?.filterIsInstance<VB6LineLabel>()
             ?.find(::compareNames)
     }

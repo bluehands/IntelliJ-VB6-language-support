@@ -3,6 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.variable
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6SubscriptElement
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Subscripts
@@ -63,6 +64,12 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override fun setName(name: String): PsiElement {
         return nameIdentifier?.setName(name) ?: this // todo correct?
     }
+
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = listOf(this)
+
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = TODO("Not yet implemented")
 
     override val isDefinition: Boolean
         get() = true

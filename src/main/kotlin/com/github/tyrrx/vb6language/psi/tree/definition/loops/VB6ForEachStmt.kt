@@ -12,7 +12,7 @@ import com.intellij.psi.PsiElement
 
 interface VB6ForEachStmt :
     VB6StatementBase,
-    VB6WeakBlockScopeOwner,
+    VB6TransparentBlockScopeOwner,
     VB6NamedElementOwner,
     VB6TypeHintMixin {
 }
@@ -49,4 +49,10 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }
+
+    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = block?.visibleNamedElementOwners ?: emptyList()
+
+    override val visibleNamedElements: List<VB6NamedElement>
+        get() = block?.visibleNamedElements ?: emptyList()
 }
