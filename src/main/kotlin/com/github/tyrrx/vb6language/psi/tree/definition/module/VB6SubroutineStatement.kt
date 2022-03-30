@@ -14,6 +14,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReference
 
 interface VB6SubroutineStatement :
+    VB6NamedElementsOwner,
     VB6BlockScopeOwner,
     VB6NamedElementOwner,
     VB6ArgumentOwner,
@@ -26,6 +27,12 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val block: VB6Block?
         get() = findFirstChildByType(this)
+
+    override val namedElementOwners: List<VB6NamedElementOwner>
+        get() = listOf(this)
+
+    override val namedElements: List<VB6NamedElement>
+        get() = emptyList() // todo also this?
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return resolveVisitor.resolveSubroutineStmt(this)

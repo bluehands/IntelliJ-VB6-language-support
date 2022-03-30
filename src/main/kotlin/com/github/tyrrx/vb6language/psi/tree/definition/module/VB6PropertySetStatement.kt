@@ -2,6 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
@@ -22,6 +23,12 @@ class VB6PropertySetStatementImpl(node: ASTNode) : VB6PsiNode(node),
             return VB6PropertySetStatementImpl(node)
         }
     }
+
+    override val namedElementOwners: List<VB6NamedElementOwner>
+        get() = listOf(this)
+
+    override val namedElements: List<VB6NamedElement>
+        get() = emptyList() // todo also this?
 
     override val block: VB6Block?
         get() = findFirstChildByType(this)

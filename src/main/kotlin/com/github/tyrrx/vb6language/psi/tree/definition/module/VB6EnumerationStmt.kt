@@ -9,8 +9,12 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildr
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6EnumerationStmt : VB6PsiElement, VB6NamedElementOwner, VB6VisibilityOwner {
-    val members: List<VB6EnumerationConstant>
+interface VB6EnumerationStmt :
+    VB6NamedElementsOwner,
+    VB6PsiElement,
+    VB6NamedElementOwner,
+    VB6VisibilityOwner {
+    val enumMembers: List<VB6EnumerationConstant>
 }
 
 class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationStmt {
@@ -21,8 +25,14 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
         }
     }
 
-    override val members: List<VB6EnumerationConstant>
+    override val enumMembers: List<VB6EnumerationConstant>
         get() = findPsiElementsInDirectChildrenByType(this)
+
+    override val namedElementOwners: List<VB6NamedElementOwner>
+        get() = listOf(this) + enumMembers
+
+    override val namedElements: List<VB6NamedElement>
+        get() = emptyList() // todo also this?
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)

@@ -21,66 +21,41 @@ interface VB6Module : VB6ScopeNode, PsiNameIdentifierOwner {
     val moduleDeclarations: VB6ModuleDeclarations?
     val moduleBody: VB6ModuleBody?
 
-    val definitions: List<VB6NamedElementOwner>
-    val bodyDefinitions: List<VB6NamedElementOwner>
-    val declarationsDefinitions: List<VB6NamedElementOwner>
     val projectVisibleDefinitions: List<VB6NamedElementOwner>
 
     fun isClass(): Boolean
 }
 
-fun VB6Module.fromBodyGetElements(): List<VB6PsiElement> {
-    return moduleBody?.getStatements() ?: emptyList()
-}
+val VB6Module.bodyElements: List<VB6PsiElement>
+    get() = moduleBody?.getStatements() ?: emptyList()
 
-fun VB6Module.fromDeclarationsGetElements(): List<VB6PsiElement> {
-    return moduleDeclarations?.elements?.mapNotNull { it.declaration } ?: emptyList()
-}
+val VB6Module.declarationElements: List<VB6PsiElement>
+    get() = moduleDeclarations?.elements?.mapNotNull { it.declaration } ?: emptyList()
 
-inline fun <reified TStatement> VB6Module.fromModuleBodyGetByType(): List<TStatement> {
-    return fromBodyGetElements().filterIsInstance<TStatement>()
-}
+val VB6Module.moduleElements: List<VB6PsiElement>
+    get() = bodyElements + declarationElements
 
-inline fun <reified TStatement> VB6Module.fromModuleDeclarationsGetByType(): List<TStatement> {
-    return fromDeclarationsGetElements().filterIsInstance<TStatement>()
-}
+val VB6Module.namedElementOwners: List<VB6NamedElementOwner>
+    get() = moduleElements.filterIsInstance<VB6NamedElementsOwner>().flatMap { it.namedElementOwners }
+
+//inline fun <reified TStatement> VB6Module.fromModuleBodyGetByType(): List<TStatement> {
+//    return fromBodyGetElements().filterIsInstance<TStatement>()
+//}
+//
+//inline fun <reified TStatement> VB6Module.fromModuleDeclarationsGetByType(): List<TStatement> {
+//    return fromDeclarationsGetElements().filterIsInstance<TStatement>()
+//}
 
 
 class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
-    override val moduleHeader: VB6ModuleHeader? = findFirstChildByType(this)
-    override val moduleConfig: VB6ModuleConfig? = findFirstChildByType(this)
-    override val moduleAttributes: VB6ModuleAttributes? = findFirstChildByType(this)
-    override val moduleDeclarations: VB6ModuleDeclarations? = findFirstChildByType(this)
-    override val moduleBody: VB6ModuleBody? = findFirstChildByType(this)
-
-    override val definitions: List<VB6NamedElementOwner> get() = bodyDefinitions + declarationsDefinitions
-
-    override val bodyDefinitions: List<VB6NamedElementOwner>
-        get() = fromBodyGetElements().flatMap {
-            when (it) {
-                is VB6PropertyStatementBase -> listOf(it)
-                is VB6FunctionStatement -> listOf(it)
-                is VB6SubroutineStatement -> listOf(it)
-                else -> emptyList()
-            }
-        }
-
-    override val declarationsDefinitions: List<VB6NamedElementOwner>
-        get() = fromDeclarationsGetElements()
-            .flatMap {
-                when (it) {
-                    is VB6DeclareStmt -> listOf(it)
-                    is VB6EnumerationStmt -> listOf(it)
-                    is VB6EventStmt -> listOf(it)
-                    is VB6ModuleConstList -> it.declarations
-                    is VB6ModuleVariableStmt -> it.definitions
-                    is VB6TypeStmt -> listOf(it)
-                    else -> emptyList()
-                }
-            }
+    override val moduleHeader: VB6ModuleHeader? get() = findFirstChildByType(this)
+    override val moduleConfig: VB6ModuleConfig? get() = findFirstChildByType(this)
+    override val moduleAttributes: VB6ModuleAttributes? get() = findFirstChildByType(this)
+    override val moduleDeclarations: VB6ModuleDeclarations? get() = findFirstChildByType(this)
+    override val moduleBody: VB6ModuleBody? get() = findFirstChildByType(this)
 
     override val projectVisibleDefinitions: List<VB6NamedElementOwner>
-        get() = definitions
+        get() = namedElementOwners
             .filterIsInstance<VB6VisibilityOwner>()
             .filter {
                 when (it.visibility) {
@@ -103,7 +78,7 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     }
 
     override fun getName(): String? {
-        return when(val literal = nameIdentifier?.literals?.firstOrNull()?.literalElement) {
+        return when (val literal = nameIdentifier?.literals?.firstOrNull()?.literalElement) {
             is VB6StringLiteral -> literal.value
             else -> null
         }

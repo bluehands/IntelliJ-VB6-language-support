@@ -1,13 +1,14 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
-interface VB6ModuleVariableStmt : VB6StatementBase {
-    val definitions: List<VB6ModuleVariable>
+interface VB6ModuleVariableStmt :
+    VB6NamedElementsOwner,
+    VB6StatementBase {
+    val variableDefinitions: List<VB6ModuleVariable>
 }
 
 class VB6ModuleVariableStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleVariableStmt {
@@ -18,7 +19,13 @@ class VB6ModuleVariableStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleVari
         }
     }
 
-    override val definitions: List<VB6ModuleVariable>
+    override val variableDefinitions: List<VB6ModuleVariable>
         get() = findFirstChildByType<VB6VariableListStmt>(this)
             ?.getVariableDefinitions() ?: emptyList()
+
+    override val namedElementOwners: List<VB6NamedElementOwner>
+        get() = variableDefinitions
+
+    override val namedElements: List<VB6NamedElement>
+        get() = emptyList() // todo also this?
 }

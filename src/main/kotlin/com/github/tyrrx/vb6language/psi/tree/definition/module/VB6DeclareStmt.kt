@@ -10,6 +10,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6DeclareStmt :
+    VB6NamedElementsOwner,
     VB6StatementBase,
     VB6NamedElementOwner,
     VB6TypeClauseOwner,
@@ -47,6 +48,12 @@ class VB6DeclareStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareStmt {
 
     override val isDefinition: Boolean
         get() = true
+
+    override val namedElementOwners: List<VB6NamedElementOwner>
+        get() = listOf(this)
+
+    override val namedElements: List<VB6NamedElement>
+        get() = emptyList() // Todo also this?
 
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()

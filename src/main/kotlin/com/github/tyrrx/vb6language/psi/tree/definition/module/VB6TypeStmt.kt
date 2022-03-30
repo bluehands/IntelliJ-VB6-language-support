@@ -9,7 +9,11 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildr
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6TypeStmt : VB6PsiElement, VB6VisibilityOwner, VB6NamedElementOwner {
+interface VB6TypeStmt :
+    VB6NamedElementsOwner,
+    VB6PsiElement,
+    VB6VisibilityOwner,
+    VB6NamedElementOwner {
     val members: List<VB6TypeStmtMember>
 }
 
@@ -23,6 +27,12 @@ class VB6TypeStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmt {
 
     override val members: List<VB6TypeStmtMember>
         get() = findPsiElementsInDirectChildrenByType(this)
+
+    override val namedElementOwners: List<VB6NamedElementOwner>
+        get() = TODO("Not yet implemented")
+    
+    override val namedElements: List<VB6NamedElement>
+        get() = TODO("Not yet implemented")
 
     override val visibility: VB6VisibilityEnum
         get() = findFirstChildByType<VB6Visibility>(this)
