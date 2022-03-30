@@ -1,17 +1,17 @@
 package com.github.tyrrx.vb6language.psi.tree.mixins
 
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 
 interface VB6IdentifierFromChildrenMixin:
-    VB6IdentifierOwner {
+    VB6NamedElementOwner {
 
     override fun getName(): String? {
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6Identifier? {
+    override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
     }
 }

@@ -10,6 +10,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.conditional.*
 import com.github.tyrrx.vb6language.psi.tree.definition.general.*
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6AmbiguousKeywordImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6IdentifierImpl
+import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6LiteralImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.*
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.*
@@ -48,8 +49,10 @@ object PSIFactory {
         VisualBasic6Parser.RULE_propertyLetStmt mapsTo VB6PropertyLetStatementImpl.Factory,
         VisualBasic6Parser.RULE_declareStmt mapsTo VB6DeclareStmtImpl.Factory,
         VisualBasic6Parser.RULE_enumerationStmt mapsTo VB6EnumerationStmtImpl.Factory,
+        VisualBasic6Parser.RULE_enumerationConstant mapsTo VB6EnumerationConstantImpl.Factory,
         VisualBasic6Parser.RULE_eventStmt mapsTo VB6EventStmtImpl.Factory,
         VisualBasic6Parser.RULE_typeStmt mapsTo VB6TypeStmtImpl.Factory,
+        VisualBasic6Parser.RULE_typeStmtMember mapsTo VB6TypeStmtMemberImpl.Factory,
         VisualBasic6Parser.RULE_moduleVariableStmt mapsTo VB6ModuleVariableStmtImpl.Factory,
         VisualBasic6Parser.RULE_moduleBody mapsTo VB6ModuleBodyImpl.Factory,
         VisualBasic6Parser.RULE_moduleBodyElement mapsTo VB6ModuleBodyElementImpl.Factory,
@@ -76,8 +79,8 @@ object PSIFactory {
 
         VisualBasic6Parser.RULE_variableListStmt mapsTo VB6VariableListStmtImpl.Factory,
         VisualBasic6Parser.RULE_variableSubStmt mapsTo VB6VariableSubStmtImpl.Factory,
-        VisualBasic6Parser.RULE_constListStmt mapsTo VB6ConstListImpl.Factory,
         VisualBasic6Parser.RULE_moduleConstListStmt mapsTo VB6ModuleConstListImpl.Factory,
+        VisualBasic6Parser.RULE_constListStmt mapsTo VB6ConstListImpl.Factory,
         VisualBasic6Parser.RULE_constStmt mapsTo VB6ConstStmtImpl.Factory,
 
         VisualBasic6Parser.RULE_subscripts mapsTo VB6SubscriptsImpl.Factory,

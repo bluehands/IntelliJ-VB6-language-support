@@ -12,7 +12,7 @@ import com.intellij.psi.PsiElement
 
 interface VB6Block : PsiElement {
     val statements: List<VB6StatementBase>
-    val identifierOwners: List<VB6IdentifierOwner>
+    val namedElementOwners: List<VB6NamedElementOwner>
 }
 
 class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
@@ -27,14 +27,14 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
         get() = findPsiElementsInDirectChildrenByType<VB6BlockStmt>(this)
             .map { it.statement }
 
-    override val identifierOwners: List<VB6IdentifierOwner>
+    override val namedElementOwners: List<VB6NamedElementOwner>
         get() = statements.flatMap {
             when (it) {
                 is VB6VariableStmt -> it.variables
                 is VB6LineLabel -> listOf(it)
                 is VB6ConstList -> it.declarations
-                is VB6WeakBlockScopeOwner -> it.block?.identifierOwners ?: emptyList()
-                is VB6EnclosingWeakBlocks -> it.enclosingBlocks.flatMap { block -> block.identifierOwners }
+                is VB6WeakBlockScopeOwner -> it.block?.namedElementOwners ?: emptyList()
+                is VB6EnclosingWeakBlocks -> it.enclosingBlocks.flatMap { block -> block.namedElementOwners }
                 is VB6LetStmt -> listOf(it)
                 // Todo VB6DeftypeStmt
                 else -> emptyList()

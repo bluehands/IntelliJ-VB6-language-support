@@ -2,16 +2,24 @@ package com.github.tyrrx.vb6language.psi.reference
 
 import com.github.tyrrx.vb6language.psi.reference.visitor.SymbolResolveVisitor
 import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiNamedElement
-import com.intellij.psi.PsiReference
 
+/**
+ * Can reference:
+ *      declare
+ *      enumeration todo?
+ *      const
+ *      variable
+ *      function
+ *      sub
+ *      property (get, let, set)
+ */
 class SymbolReference(
     override val myElement: VB6ReferenceOwner,
-    override val referencingIdentifier: VB6Identifier,
+    override val referencingNamedElement: VB6NamedElement,
     override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
@@ -26,17 +34,17 @@ class SymbolReference(
         return myElement.resolveInContext(
             SymbolResolveVisitor(
                 myElement,
-                referencingIdentifier
+                referencingNamedElement
             )
         )
     }
 
     override fun getCanonicalText(): String {
-        return referencingIdentifier.name ?: ""
+        return referencingNamedElement.name ?: ""
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
-        return referencingIdentifier.setName(newElementName)
+        return referencingNamedElement.setName(newElementName)
     }
 
     override fun bindToElement(element: PsiElement): PsiElement {
@@ -45,7 +53,7 @@ class SymbolReference(
 
     override fun isReferenceTo(element: PsiElement): Boolean {
         val otherElement = when (element) {
-            is VB6Identifier -> element.identifierOwner
+            is VB6NamedElement -> element.namedElementOwner
             else -> element
         }
 
@@ -57,8 +65,8 @@ class SymbolReference(
         return otherElement === resolve
     }
 
-    private fun compareElements(element: PsiNamedElement) =
-        element.name == referencingIdentifier.name && element === resolve()
+    private fun compareElements(element: com.intellij.psi.PsiNamedElement) =
+        element.name == referencingNamedElement.name && element === resolve()
 
     override fun isSoft(): Boolean {
         return false

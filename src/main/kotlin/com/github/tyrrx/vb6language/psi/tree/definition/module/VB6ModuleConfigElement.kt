@@ -1,16 +1,16 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Literal
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
+import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6ModuleConfigElement: VB6IdentifierOwner {
+interface VB6ModuleConfigElement: VB6NamedElementOwner {
     fun getLiteral(): VB6Literal?
 }
 
@@ -28,7 +28,7 @@ class VB6ModuleConfigElementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6Identifier? {
+    override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
     }
 

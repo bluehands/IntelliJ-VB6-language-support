@@ -5,7 +5,6 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6TypeHintMixin
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
@@ -14,7 +13,7 @@ import com.intellij.psi.PsiElement
 interface VB6ForEachStmt :
     VB6StatementBase,
     VB6WeakBlockScopeOwner,
-    VB6IdentifierOwner,
+    VB6NamedElementOwner,
     VB6TypeHintMixin {
 }
 
@@ -35,7 +34,7 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
 
-    override fun getNameIdentifier(): VB6Identifier? {
+    override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
         // todo match better as there are two
     }

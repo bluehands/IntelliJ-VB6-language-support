@@ -1,13 +1,13 @@
 package com.github.tyrrx.vb6language.psi.reference
 
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
 class LineLabelReference(
     override val myElement: VB6ReferenceOwner,
-    override val referencingIdentifier: VB6Identifier,
+    override val referencingNamedElement: VB6NamedElement,
     override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
@@ -23,11 +23,11 @@ class LineLabelReference(
     }
 
     override fun getCanonicalText(): String {
-        return referencingIdentifier.name ?: ""
+        return referencingNamedElement.name ?: ""
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
-        return referencingIdentifier.setName(newElementName)
+        return referencingNamedElement.setName(newElementName)
     }
 
     override fun bindToElement(element: PsiElement): PsiElement {

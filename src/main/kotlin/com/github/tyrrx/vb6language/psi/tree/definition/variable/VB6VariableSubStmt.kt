@@ -2,12 +2,12 @@ package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6SubscriptElement
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Subscripts
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.isIElementTypePresentInChildren
@@ -52,7 +52,7 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return getSubscripts().any() // todo correct or just LPAREN?
     }
 
-    override fun getNameIdentifier(): VB6Identifier? {
+    override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
     }
 

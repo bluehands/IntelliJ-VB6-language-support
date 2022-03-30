@@ -1,15 +1,12 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.SymbolReference
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiReference
 
 interface VB6ForSelfReference : VB6PsiElement, VB6ReferenceOwner {
 }

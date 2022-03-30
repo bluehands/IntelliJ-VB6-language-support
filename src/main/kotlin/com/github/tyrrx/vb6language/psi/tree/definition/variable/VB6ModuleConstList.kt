@@ -17,14 +17,14 @@ interface VB6ModuleConstList : VB6PsiElement {
 class VB6ModuleConstListImpl(node: ASTNode) : VB6PsiNode(node),
     VB6ModuleConstList {
 
-    object Factory : IPsiNodeFactory<VB6ConstList> {
-        override fun createPsiNode(node: ASTNode): VB6ConstList {
-            return VB6ConstListImpl(node)
+    object Factory : IPsiNodeFactory<VB6ModuleConstList> {
+        override fun createPsiNode(node: ASTNode): VB6ModuleConstList {
+            return VB6ModuleConstListImpl(node)
         }
     }
 
     override val declarations: List<VB6ModuleConst>
-        get() = findPsiElementsInDirectChildrenByType(this)
+        get() = findPsiElementsInDirectChildrenByType<VB6ConstStmt>(this)
 
     override val visibility: VB6Visibility?
         get() = findFirstChildByType(this)

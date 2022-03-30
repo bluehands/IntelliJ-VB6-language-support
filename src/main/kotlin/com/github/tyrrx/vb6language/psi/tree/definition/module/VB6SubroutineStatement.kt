@@ -1,15 +1,11 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ArgumentOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6VisibilityOwnerMixin
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6IsStaticInChildrenMixin
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
@@ -19,7 +15,7 @@ import com.intellij.psi.PsiReference
 
 interface VB6SubroutineStatement :
     VB6BlockScopeOwner,
-    VB6IdentifierOwner,
+    VB6NamedElementOwner,
     VB6ArgumentOwner,
     VB6VisibilityOwnerMixin,
     VB6IsStaticInChildrenMixin {
@@ -45,13 +41,13 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)
-            ?.getArguments() ?: emptyList()
+            ?.arguments() ?: emptyList()
 
     override fun getName(): String? {
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6Identifier? {
+    override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
     }
 

@@ -1,11 +1,16 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
+import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
+import com.intellij.psi.PsiElement
 
-interface VB6EnumerationStmt : VB6StatementBase {
+interface VB6EnumerationStmt : VB6PsiElement, VB6NamedElementOwner, VB6VisibilityOwner {
+    val members: List<VB6EnumerationConstant>
 }
 
 class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationStmt {
@@ -15,4 +20,26 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
             return VB6EnumerationStmtImpl(node)
         }
     }
+
+    override val members: List<VB6EnumerationConstant>
+        get() = findPsiElementsInDirectChildrenByType(this)
+
+    override fun getNameIdentifier(): VB6NamedElement? {
+        return findFirstChildByType(this)
+    }
+
+    override fun getName(): String? {
+        return nameIdentifier?.name
+    }
+
+    override val isDefinition: Boolean
+        get() = true
+
+    override fun setName(name: String): PsiElement {
+        nameIdentifier?.setName(name)
+        return this
+    }
+
+    override val visibility: VB6VisibilityEnum
+        get() = findFirstChildByType<VB6Visibility>(this)?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
 }

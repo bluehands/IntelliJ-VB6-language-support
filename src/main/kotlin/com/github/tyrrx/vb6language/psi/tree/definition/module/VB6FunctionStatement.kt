@@ -1,16 +1,11 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ArgumentOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockScopeOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReturnTypeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6Type
 import com.github.tyrrx.vb6language.psi.tree.mixins.VB6TypeHintMixin
@@ -22,7 +17,7 @@ import com.intellij.psi.PsiElement
 
 interface VB6FunctionStatement :
     VB6BlockScopeOwner,
-    VB6IdentifierOwner,
+    VB6NamedElementOwner,
     VB6ArgumentOwner,
     VB6ReturnTypeOwner,
     VB6VisibilityOwnerMixin,
@@ -48,7 +43,7 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
-    override fun getNameIdentifier(): VB6Identifier? {
+    override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
     }
 
@@ -75,7 +70,7 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)
-            ?.getArguments() ?: emptyList()
+            ?.arguments() ?: emptyList()
 
     override val isDefinition: Boolean
         get() = true

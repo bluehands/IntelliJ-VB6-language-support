@@ -1,5 +1,6 @@
 package com.github.tyrrx.vb6language.psi.language
 
+import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
 import com.intellij.lang.DefaultASTFactoryImpl
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.psi.impl.source.tree.LeafElement
@@ -13,7 +14,7 @@ class ASTFactory : DefaultASTFactoryImpl() {
     private val logger = Logger.getInstance(ASTFactory::class.java)
 
     private val factoriesMap = mergeAll(
-        //VB6TokenSets.identifiers mapsTo IdentifierPsiLeaf.Factory,
+        VB6TokenSets.stringLiterals mapsTo VB6StringLiteral.Factory,
         VB6TokenSets.whitespaces mapsTo object : ILeafFactory {
             override fun createLeaf(type: IElementType, text: CharSequence): LeafElement {
                 return PsiWhiteSpaceImpl(text)

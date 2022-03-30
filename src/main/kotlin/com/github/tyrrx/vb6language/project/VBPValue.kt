@@ -15,7 +15,14 @@ sealed interface VBPValue {
     data class Unknown(override val key: String, val value: String) : VBPValue
 }
 
+
+private inline fun <reified Type> VBPFileContext?.filterValuesByType() =
+    this?.values?.filterIsInstance<Type>()
+
+private inline fun <reified Type> Iterable<VBPFileContext>.filterDefaultContextValuesByType() =
+    this.defaultContext.filterValuesByType<Type>()
+
 val Iterable<VBPFileContext>.defaultContext get() = this.firstOrNull { it is VBPFileContext.Default }
-val Iterable<VBPFileContext>.standardModules get() = this.defaultContext?.values?.filterIsInstance<VBPValue.Module>()
-val Iterable<VBPFileContext>.classes get() = this.defaultContext?.values?.filterIsInstance<VBPValue.Class>()
-val Iterable<VBPFileContext>.name get() = this.defaultContext?.values?.filterIsInstance<VBPValue.Name>()?.firstOrNull()
+val Iterable<VBPFileContext>.standardModules get() = this.filterDefaultContextValuesByType<VBPValue.Module>()
+val Iterable<VBPFileContext>.classes get() = this.filterDefaultContextValuesByType<VBPValue.Class>()
+val Iterable<VBPFileContext>.name get() = this.filterDefaultContextValuesByType<VBPValue.Name>()?.firstOrNull()

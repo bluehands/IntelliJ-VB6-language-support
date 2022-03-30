@@ -9,7 +9,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
 interface VB6VariableBase :
-    VB6IdentifierOwner,
+    VB6NamedElementOwner,
     VB6TypeClauseOwner,
     VB6SubscriptsOwner,
     VB6TypeHintMixin {

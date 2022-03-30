@@ -1,17 +1,16 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.type
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findIdentifierOwnerRecursive
-import com.github.tyrrx.vb6language.psi.tree.utils.findOwnerRecursive
 import com.github.tyrrx.vb6language.psi.tree.utils.findReferenceOwnerRecursive
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6BaseType: VB6Type, VB6Identifier {
+interface VB6BaseType: VB6Type, VB6NamedElement {
 
 }
 
@@ -30,6 +29,6 @@ class VB6BaseTypeImpl(node: ASTNode) : VB6PsiNode(node), VB6BaseType {
     override val referenceOwner: VB6ReferenceOwner?
         get() = findReferenceOwnerRecursive(parent)
 
-    override val identifierOwner: VB6IdentifierOwner?
+    override val namedElementOwner: VB6NamedElementOwner?
         get() = findIdentifierOwnerRecursive(parent)
 }

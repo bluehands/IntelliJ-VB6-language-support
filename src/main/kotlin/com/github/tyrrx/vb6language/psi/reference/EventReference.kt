@@ -5,17 +5,17 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
-class TypeReference(
+class EventReference(
     override val myElement: VB6ReferenceOwner,
     override val referencingNamedElement: VB6NamedElement,
     override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
-        TODO("Not yet implemented")
+        return myElement
     }
 
     override fun getRangeInElement(): TextRange {
-        TODO("Not yet implemented")
+        return textRange
     }
 
     override fun resolve(): PsiElement? {
@@ -23,7 +23,7 @@ class TypeReference(
     }
 
     override fun getCanonicalText(): String {
-        TODO("Not yet implemented")
+        return referencingNamedElement.name ?: ""
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
@@ -39,6 +39,6 @@ class TypeReference(
     }
 
     override fun isSoft(): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 }

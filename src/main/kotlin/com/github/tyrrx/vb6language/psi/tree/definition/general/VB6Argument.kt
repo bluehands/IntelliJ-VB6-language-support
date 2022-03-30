@@ -2,11 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.general
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeClauseOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeHintOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeHint
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
@@ -14,11 +10,10 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findInChildrenByAnyOfGivenEle
 import com.github.tyrrx.vb6language.psi.tree.utils.isIElementTypePresentInChildren
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiNameIdentifierOwner
 import com.intellij.psi.util.elementType
 
 interface VB6Argument :
-    VB6IdentifierOwner,
+    VB6NamedElementOwner,
     VB6TypeClauseOwner,
     VB6TypeHintOwner {
     fun isOptional(): Boolean //= false
@@ -79,7 +74,7 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
         TODO("Not yet implemented")
     }
 
-    override fun getNameIdentifier(): VB6Identifier? {
+    override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
     }
 

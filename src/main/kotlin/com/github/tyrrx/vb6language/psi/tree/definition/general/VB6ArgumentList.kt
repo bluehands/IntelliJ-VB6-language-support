@@ -7,7 +7,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6ArgumentList: PsiElement {
-    fun getArguments(): List<VB6Argument>
+    fun arguments(): List<VB6Argument>
 }
 
 class VB6ArgumentListImpl(node: ASTNode) : VB6PsiNode(node),
@@ -19,7 +19,7 @@ class VB6ArgumentListImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
-    override fun getArguments(): List<VB6Argument> {
+    override fun arguments(): List<VB6Argument> {
         return findPsiElementsInDirectChildrenByType(this)
     }
 }

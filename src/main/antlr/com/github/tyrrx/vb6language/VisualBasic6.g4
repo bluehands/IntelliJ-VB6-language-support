@@ -298,11 +298,11 @@ endStmt : END;
 
 enumerationStmt:
 	(visibility WS)? ENUM WS ambiguousIdentifier endOfStatement
-	enumerationStmt_Constant*
+	enumerationConstant*
 	END_ENUM
 ;
 
-enumerationStmt_Constant : ambiguousIdentifier (WS? EQ WS? expression)? endOfStatement;
+enumerationConstant : ambiguousIdentifier (WS? EQ WS? expression)? endOfStatement;
 
 eraseStmt : ERASE WS expression (',' WS? expression)*?;
 

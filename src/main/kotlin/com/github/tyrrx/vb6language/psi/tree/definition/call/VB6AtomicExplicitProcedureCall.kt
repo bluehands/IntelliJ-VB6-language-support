@@ -3,10 +3,10 @@ package com.github.tyrrx.vb6language.psi.tree.definition.call
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.SymbolReference
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
@@ -30,7 +30,7 @@ class VB6AtomicExplicitProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6A
             ?.let { SymbolReference(this, it, it.textRangeInParent) }
     }
 
-    override val referenceIdentifier: VB6Identifier?
+    override val referenceIdentifier: VB6NamedElement?
         get() = findFirstChildByType(this)
 
     override fun getReference(): VB6Reference? {

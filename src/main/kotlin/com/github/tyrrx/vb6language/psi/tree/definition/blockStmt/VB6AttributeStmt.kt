@@ -2,19 +2,19 @@ package com.github.tyrrx.vb6language.psi.tree.definition.blockStmt
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Literal
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6IdentifierOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6AttributeStmt : VB6StatementBase, VB6IdentifierOwner {
+interface VB6AttributeStmt : VB6StatementBase, VB6NamedElementOwner {
     val literals: Collection<VB6Literal>
 }
 
@@ -29,7 +29,7 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val literals: Collection<VB6Literal> = findPsiElementsInDirectChildrenByType(this)
 
-    override fun getNameIdentifier(): VB6Identifier? {
+    override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType<VB6InlineCall>(this)
             ?.let { findPsiElementInSubtree(it) }
     }
@@ -42,6 +42,23 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.name
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as VB6AttributeStmtImpl
+
+        if (literals != other.literals) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return literals.hashCode()
+    }
+
     override val isDefinition: Boolean
         get() = true
+
+
 }
