@@ -296,12 +296,13 @@ doLoopStmt :
 
 endStmt : END;
 
+// https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-basic-6/aa243358(v=vs.60)
 enumerationStmt:
 	(visibility WS)? ENUM WS ambiguousIdentifier endOfStatement
-	enumerationConstant*
+	enumerationConstant+ // Compile error: Enum without members not allowed
 	END_ENUM
 ;
-
+// expression must evaluate to a long
 enumerationConstant : ambiguousIdentifier (WS? EQ WS? expression)? endOfStatement;
 
 eraseStmt : ERASE WS expression (',' WS? expression)*?;
@@ -415,6 +416,7 @@ onGoToStmt : ON WS expression WS GOTO WS goToDestinationList;
 onGoSubStmt : ON WS expression WS GOSUB WS goToDestinationList;
 
 goToDestinationList: goToDestination (WS? ',' WS? goToDestination)*;    //todo register
+// literal must be a long
 goToDestination: literal | ambiguousIdentifier;                    //todo register
 
 
@@ -521,13 +523,13 @@ subStmt :
 
 timeStmt : TIME WS? EQ WS? expression;
 
+// https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-basic-6/aa266315(v=vs.60)
 typeStmt :
 	(visibility WS)? TYPE WS ambiguousIdentifier endOfStatement
-	typeStmtMember*
+	typeStmtMember+ // Compile Error: User defined type without members not allowed.
 	END_TYPE
-;
-
-typeStmtMember : ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? (WS asTypeClause)? endOfStatement;
+    ;
+typeStmtMember : ambiguousIdentifier (WS? LPAREN (WS? subscripts)? WS? RPAREN)? WS asTypeClause endOfStatement;
 
 typeOfStmt : TYPEOF WS expression (WS IS WS type_)?;
 
@@ -675,8 +677,9 @@ arg : (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)?
 
 argDefaultValue : EQ WS? expression;
 
-subscripts : subscriptElement (WS? ',' WS? subscriptElement)*;
 
+subscripts : subscriptElement (WS? ',' WS? subscriptElement)*;
+// expression must evaluate (infere) to a int or long value
 subscriptElement : (expression WS TO WS)? expression;
 
 
