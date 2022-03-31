@@ -2,6 +2,8 @@ package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.reference.SymbolReference
+import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
@@ -33,7 +35,6 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return resolveVisitor.resolveForEachStmt(this)
     }
 
-
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
         // todo match better as there are two
@@ -44,10 +45,11 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val isDefinition: Boolean
-        get() = true
+        get() = false // todo implement resolve an reference
 
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        nameIdentifier?.setName(name)
+        return this
     }
 
     override val visibleNamedElementOwners: List<VB6NamedElementOwner>
@@ -55,4 +57,8 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val visibleNamedElements: List<VB6NamedElement>
         get() = block?.visibleNamedElements ?: emptyList()
+
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
 }
