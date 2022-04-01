@@ -17,11 +17,12 @@ fun Iterable<Path>.containsFile(path: Path): Boolean {
 }
 
 fun Iterable<Path>.resolveAllModulesInProject(project: Project): List<VB6Module> {
-    val virtualFileManager = project.service<VirtualFileManager>()
+    val virtualFileManager = service<VirtualFileManager>()
     val psiManager = project.service<PsiManager>()
     return this
         .mapNotNull { virtualFileManager.findFileByNioPath(it) }
         .mapNotNull { psiManager.findFile(it) }
         .filterIsInstance<VB6File>()
-        .map { it.module }
+        .mapNotNull { it.module }
+
 }

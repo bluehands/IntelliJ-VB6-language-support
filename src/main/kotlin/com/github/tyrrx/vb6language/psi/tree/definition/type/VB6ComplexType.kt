@@ -2,9 +2,12 @@ package com.github.tyrrx.vb6language.psi.tree.definition.type
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
+import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 
 interface VB6ComplexType: VB6Type {
+    val identifiers: List<VB6Identifier>
 }
 
 class VB6ComplexTypeImpl(node: ASTNode) : VB6PsiNode(node),
@@ -15,4 +18,7 @@ class VB6ComplexTypeImpl(node: ASTNode) : VB6PsiNode(node),
             return VB6ComplexTypeImpl(node)
         }
     }
+
+    override val identifiers: List<VB6Identifier>
+        get() = findPsiElementsInDirectChildrenByType(this)
 }

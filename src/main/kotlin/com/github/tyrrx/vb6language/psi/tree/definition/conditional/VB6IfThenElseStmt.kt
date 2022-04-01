@@ -24,10 +24,10 @@ class VB6IfThenElseStmtImpl(node: ASTNode) : VB6PsiNode(node),
             else -> emptyList()
         }
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
-        get() = enclosingBlocks.flatMap { it.visibleNamedElementOwners }
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = enclosingBlocks.flatMap { it.outsideVisibleNamedElementOwners }
 
-    override val visibleNamedElements: List<VB6NamedElement>
-        get() = enclosingBlocks.flatMap { it.visibleNamedElements }
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
+        get() = enclosingBlocks.flatMap { it.outsideVisibleNamedElements }
 
 }

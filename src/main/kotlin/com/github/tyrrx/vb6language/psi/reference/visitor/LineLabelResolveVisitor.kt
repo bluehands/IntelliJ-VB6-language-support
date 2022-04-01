@@ -1,5 +1,6 @@
 package com.github.tyrrx.vb6language.psi.reference.visitor
 
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
@@ -26,9 +27,13 @@ class LineLabelResolveVisitor(
     private fun resolveBlock(scope: VB6BlockOwner): VB6NamedElementOwner? {
         return scope
             .block
-            ?.visibleNamedElementOwners
+            ?.outsideVisibleNamedElementOwners
             ?.filterIsInstance<VB6LineLabel>()
             ?.find(::compareNames)
+    }
+
+    override fun resolveFile(scope: VB6File): VB6NamedElementOwner? {
+        throw IllegalStateException("Cannot resolve a line label in a file scope. Only enclosing block of functions, properties or subs are valid.")
     }
 
     override fun resolveModule(scope: VB6Module): VB6NamedElementOwner? {

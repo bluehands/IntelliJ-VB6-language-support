@@ -18,12 +18,12 @@ import com.intellij.psi.PsiElement
  *      property (get, let, set)
  */
 class SymbolReference(
-    override val myElement: VB6ReferenceOwner,
+    override val myReferenceOwner: VB6ReferenceOwner,
     override val referencingNamedElement: VB6NamedElement,
     override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
-        return myElement
+        return myReferenceOwner
     }
 
     override fun getRangeInElement(): TextRange {
@@ -31,9 +31,9 @@ class SymbolReference(
     }
 
     override fun resolve(): PsiElement? {
-        return myElement.resolveInContext(
+        return myReferenceOwner.resolveInContext(
             SymbolResolveVisitor(
-                myElement,
+                myReferenceOwner,
                 referencingNamedElement
             )
         )
@@ -57,7 +57,7 @@ class SymbolReference(
             else -> element
         }
 
-        if (otherElement === myElement) {
+        if (otherElement === myReferenceOwner) {
             return true
         }
 

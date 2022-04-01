@@ -23,9 +23,9 @@ class VB6VariableStmtImpl(node: ASTNode) : VB6PsiNode(node),
         get() = findFirstChildByType<VB6VariableListStmt>(this)
             ?.getVariableDefinitions() ?: emptyList()
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = variables
 
-    override val visibleNamedElements: List<VB6NamedElement>
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = emptyList()
 }

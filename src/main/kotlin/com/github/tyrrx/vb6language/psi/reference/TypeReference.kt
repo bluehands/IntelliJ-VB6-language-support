@@ -1,33 +1,41 @@
 package com.github.tyrrx.vb6language.psi.reference
 
+import com.github.tyrrx.vb6language.psi.reference.visitor.TypeResolveVisitor
+import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
 class TypeReference(
-    override val myElement: VB6ReferenceOwner,
+    override val myReferenceOwner: VB6ReferenceOwner,
     override val referencingNamedElement: VB6NamedElement,
     override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
-        TODO("Not yet implemented")
+        return myReferenceOwner
     }
 
     override fun getRangeInElement(): TextRange {
-        TODO("Not yet implemented")
+        return textRange
     }
 
     override fun resolve(): PsiElement? {
-        TODO("Not yet implemented")
+        val resolveInContext = myReferenceOwner.resolveInContext(
+            TypeResolveVisitor(
+                myReferenceOwner,
+                referencingNamedElement
+            )
+        )
+        return resolveInContext
     }
 
     override fun getCanonicalText(): String {
-        TODO("Not yet implemented")
+        return referencingNamedElement.name ?: ""
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
-        TODO("Not yet implemented")
+        return referencingNamedElement.setName(newElementName)
     }
 
     override fun bindToElement(element: PsiElement): PsiElement {
@@ -35,10 +43,16 @@ class TypeReference(
     }
 
     override fun isReferenceTo(element: PsiElement): Boolean {
-        TODO("Not yet implemented")
+        val otherElement = when (element) {
+            is VB6NamedElement -> element.namedElementOwner
+            else -> element
+        }
+
+        val resolve = resolve()
+        return otherElement === resolve
     }
 
     override fun isSoft(): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 }

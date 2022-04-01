@@ -20,9 +20,9 @@ class VB6ModuleConfigElementImpl(node: ASTNode) : VB6PsiNode(node),
         TODO("Not yet implemented")
     }
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
-    override val visibleNamedElements: List<VB6NamedElement>
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = TODO("Not yet implemented")
 
     override fun getLiteral(): VB6Literal? {

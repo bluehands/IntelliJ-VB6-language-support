@@ -1,7 +1,11 @@
 package com.github.tyrrx.vb6language.project
 
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmt
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 
@@ -14,8 +18,17 @@ interface VB6Project {
     val modules: Iterable<VB6Module>
     fun containsModule(module: VB6Module): Boolean
     fun containsVB6File(file: VB6File): Boolean
-
 }
+
+val VB6Project.projectVisibleTypes: List<VB6NamedElementOwner?>
+    get() = modules
+        .filter { it.isClass() } + modules
+        .flatMap {
+            it.outsideVisibleNamedElementOwners
+                .filter { element ->
+                    element is VB6EnumerationStmt || element is VB6TypeStmt
+                }
+        }
 
 class VB6ProjectImpl(
     override val myVirtualFile: VirtualFile,

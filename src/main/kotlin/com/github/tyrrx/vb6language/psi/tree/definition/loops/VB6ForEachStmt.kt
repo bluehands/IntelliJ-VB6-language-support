@@ -2,8 +2,6 @@ package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.SymbolReference
-import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
@@ -52,11 +50,11 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return this
     }
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
-        get() = block?.visibleNamedElementOwners ?: emptyList()
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = block?.outsideVisibleNamedElementOwners ?: emptyList()
 
-    override val visibleNamedElements: List<VB6NamedElement>
-        get() = block?.visibleNamedElements ?: emptyList()
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
+        get() = block?.outsideVisibleNamedElements ?: emptyList()
 
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()

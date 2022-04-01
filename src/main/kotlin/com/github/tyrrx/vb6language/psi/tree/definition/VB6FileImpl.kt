@@ -14,7 +14,7 @@ import com.intellij.psi.PsiFile
 import java.nio.file.Path
 
 interface VB6File : VB6ScopeNode, PsiFile {
-    val module: VB6Module
+    val module: VB6Module?
     val projects: Iterable<VB6Project>
     val isProjectMember: Boolean
     val path: Path
@@ -25,8 +25,8 @@ class VB6FileImpl(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VB
         return viewProvider.virtualFile.fileType
     }
 
-    override val module: VB6Module
-        get() = firstChild?.firstChild?.let { it as VB6Module }!!
+    override val module: VB6Module?
+        get() = firstChild?.firstChild?.let { it as VB6Module }
 
     override val projects: Iterable<VB6Project>
         get() {
@@ -40,7 +40,7 @@ class VB6FileImpl(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VB
         get() = viewProvider.virtualFile.toNioPath()
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        TODO("Not yet implemented")
+        return resolveVisitor.resolveFile(this)
     }
 
     override fun getContext(): VB6ScopeNode? {

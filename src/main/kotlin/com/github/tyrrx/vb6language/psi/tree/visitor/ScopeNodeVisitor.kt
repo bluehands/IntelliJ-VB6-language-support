@@ -1,4 +1,5 @@
 package com.github.tyrrx.vb6language.psi.tree.visitor
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfBlockStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfElseBlockStmt
@@ -11,6 +12,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 
 interface ScopeNodeVisitor<TReturn> {
 
+    fun resolveFile(scope: VB6File): TReturn
     fun resolveModule(scope: VB6Module): TReturn
     fun resolveWithStmt(scope: VB6WithStmt): TReturn
     fun resolveIfBlockStmt(scope: VB6IfBlockStmt): TReturn

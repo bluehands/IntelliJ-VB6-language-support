@@ -21,11 +21,11 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
         get() = findPsiElementsInDirectChildrenByType<VB6BlockStmt>(this)
             .map { it.statement }
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = statements
             .filterIsInstance<VB6EnclosingVisibleNamedElements>()
-            .flatMap { it.visibleNamedElementOwners }
+            .flatMap { it.outsideVisibleNamedElementOwners }
 
-    override val visibleNamedElements: List<VB6NamedElement>
-        get() = statements.filterIsInstance<VB6EnclosingVisibleNamedElements>().flatMap { it.visibleNamedElements }
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
+        get() = statements.filterIsInstance<VB6EnclosingVisibleNamedElements>().flatMap { it.outsideVisibleNamedElements }
 }

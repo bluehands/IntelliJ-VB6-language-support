@@ -6,12 +6,12 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
 class EventReference(
-    override val myElement: VB6ReferenceOwner,
+    override val myReferenceOwner: VB6ReferenceOwner,
     override val referencingNamedElement: VB6NamedElement,
     override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
-        return myElement
+        return myReferenceOwner
     }
 
     override fun getRangeInElement(): TextRange {

@@ -22,9 +22,9 @@ class VB6BlockIfThenElseImpl(node: ASTNode) : VB6PsiNode(node),
         get() = findPsiElementsInDirectChildrenByType<VB6TransparentBlockScopeOwner>(this)
             .mapNotNull { it.block }
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
-        get() = enclosingBlocks.flatMap { it.visibleNamedElementOwners }
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
+        get() = enclosingBlocks.flatMap { it.outsideVisibleNamedElementOwners }
 
-    override val visibleNamedElements: List<VB6NamedElement>
-        get() = enclosingBlocks.flatMap { it.visibleNamedElements }
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
+        get() = enclosingBlocks.flatMap { it.outsideVisibleNamedElements }
 }

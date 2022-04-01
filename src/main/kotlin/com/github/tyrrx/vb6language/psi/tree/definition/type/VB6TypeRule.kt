@@ -5,8 +5,8 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.intellij.lang.ASTNode
 
-interface VB6TypeRule: VB6PsiElement {
-    fun getComplexOrBaseType(): VB6Type
+interface VB6TypeRule : VB6PsiElement {
+    val type: VB6Type?
 }
 
 class VB6TypeRuleImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeRule {
@@ -17,7 +17,9 @@ class VB6TypeRuleImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeRule {
         }
     }
 
-    override fun getComplexOrBaseType(): VB6Type {
-        return firstChild as VB6Type
-    }
+    override val type: VB6Type?
+        get() = when (val child = firstChild) {
+            is VB6Type -> child
+            else -> null
+        }
 }

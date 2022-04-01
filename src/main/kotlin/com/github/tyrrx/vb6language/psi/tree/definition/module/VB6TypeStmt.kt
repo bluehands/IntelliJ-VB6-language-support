@@ -28,10 +28,10 @@ class VB6TypeStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmt {
     override val members: List<VB6TypeStmtMember>
         get() = findPsiElementsInDirectChildrenByType(this)
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
-    
-    override val visibleNamedElements: List<VB6NamedElement>
+
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = TODO("Not yet implemented")
 
     override val visibility: VB6VisibilityEnum
@@ -52,5 +52,9 @@ class VB6TypeStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmt {
     override fun setName(name: String): PsiElement {
         nameIdentifier?.setName(name)
         return this
+    }
+
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
     }
 }

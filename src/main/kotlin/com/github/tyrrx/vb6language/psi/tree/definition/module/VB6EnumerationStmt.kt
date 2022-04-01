@@ -28,10 +28,10 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
     override val enumMembers: List<VB6EnumerationConstant>
         get() = findPsiElementsInDirectChildrenByType(this)
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this) + enumMembers
 
-    override val visibleNamedElements: List<VB6NamedElement>
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = emptyList() // todo also this?
 
     override fun getNameIdentifier(): VB6NamedElement? {
@@ -52,4 +52,8 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
 
     override val visibility: VB6VisibilityEnum
         get() = findFirstChildByType<VB6Visibility>(this)?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
 }

@@ -65,10 +65,10 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.setName(name) ?: this // todo correct?
     }
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override val visibleNamedElements: List<VB6NamedElement>
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = TODO("Not yet implemented")
 
     override val isDefinition: Boolean

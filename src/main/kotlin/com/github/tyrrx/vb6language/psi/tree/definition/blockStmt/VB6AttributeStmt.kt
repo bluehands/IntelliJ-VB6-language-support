@@ -2,11 +2,8 @@ package com.github.tyrrx.vb6language.psi.tree.definition.blockStmt
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
@@ -14,7 +11,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildr
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6AttributeStmt : VB6StatementBase, VB6NamedElementOwner {
+interface VB6AttributeStmt : VB6StatementBase, VB6NamedElementOwner, VB6NamedElement {
     val literals: Collection<VB6Literal>
 }
 
@@ -38,11 +35,17 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return nameIdentifier?.setName(name) ?: this
     }
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override val visibleNamedElements: List<VB6NamedElement>
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = TODO("Not yet implemented")
+
+    override val referenceOwner: VB6ReferenceOwner?
+        get() = null
+
+    override val namedElementOwner: VB6NamedElementOwner?
+        get() = this
 
     override fun getName(): String? {
         return nameIdentifier?.name

@@ -34,10 +34,10 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override val block: VB6Block?
         get() = findFirstChildByType(this)
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override val visibleNamedElements: List<VB6NamedElement>
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = emptyList() // todo also this?
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
@@ -70,8 +70,8 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override fun getReturnType(): VB6Type? {
         return getReturnAsTypeClause()
-            ?.getTypeRule()
-            ?.getComplexOrBaseType()
+            ?.typeRule
+            ?.type
     }
 
     override val isDefinition: Boolean

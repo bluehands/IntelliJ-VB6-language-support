@@ -27,10 +27,10 @@ class VB6ModuleConstListImpl(node: ASTNode) : VB6PsiNode(node),
     override val visibility: VB6Visibility?
         get() = findFirstChildByType(this)
 
-    override val visibleNamedElementOwners: List<VB6NamedElementOwner>
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = constDefinitions
 
-    override val visibleNamedElements: List<VB6NamedElement>
+    override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = emptyList() // todo also this?
 
 }
