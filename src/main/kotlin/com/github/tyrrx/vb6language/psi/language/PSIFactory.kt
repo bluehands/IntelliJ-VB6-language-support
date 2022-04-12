@@ -99,6 +99,8 @@ object PSIFactory {
         VisualBasic6Parser.RULE_inlineMemberCall mapsTo VB6InlineMemberCallImpl.Factory,
         VisualBasic6Parser.RULE_inlineDictionaryCall mapsTo VB6InlineDictionaryCallImpl.Factory,
         VisualBasic6Parser.RULE_atomicInlineCall mapsTo VB6AtomicInlineCallImpl.Factory,
+        VisualBasic6Parser.RULE_lastExplicitMemberProcedureCall mapsTo VB6LastExplicitMemberProcedureCallImpl.Factory,
+        VisualBasic6Parser.RULE_lastBlockMemberCall mapsTo VB6LastBlockMemberCallImpl.Factory,
 
         // block ---------------------------------------------------------------------------,
         VisualBasic6Parser.RULE_block mapsTo VB6BlockImpl.Factory,

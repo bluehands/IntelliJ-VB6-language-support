@@ -1,6 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
@@ -64,7 +65,7 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
-    override fun getReference(): PsiReference? {
+    override fun getReference(): VB6Reference? {
         return null
     }
 

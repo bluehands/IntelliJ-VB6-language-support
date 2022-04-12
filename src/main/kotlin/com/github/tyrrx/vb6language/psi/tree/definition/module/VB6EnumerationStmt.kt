@@ -6,10 +6,12 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6EnumerationStmt :
+    VB6ScopeNode,
     VB6EnclosingVisibleNamedElements,
     VB6PsiElement,
     VB6NamedElementOwner,
@@ -27,6 +29,10 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
 
     override val enumMembers: List<VB6EnumerationConstant>
         get() = findPsiElementsInDirectChildrenByType(this)
+
+    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return resolveVisitor.resolveEnumerationStmt(this)
+    }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this) + enumMembers

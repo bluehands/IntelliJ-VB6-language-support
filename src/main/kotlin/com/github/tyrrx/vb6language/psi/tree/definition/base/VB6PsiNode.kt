@@ -1,9 +1,11 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.base
 
+import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.intellij.extapi.psi.ASTWrapperPsiElement
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiErrorElement
+import com.intellij.psi.PsiReference
 import org.antlr.intellij.adaptor.psi.Trees
 
 
@@ -24,5 +26,9 @@ open class VB6PsiNode(node: ASTNode) : ASTWrapperPsiElement(node), VB6PsiElement
         return if (parent is PsiErrorElement) {
             null
         } else parent.context as VB6ScopeNode?
+    }
+
+    override fun getReference(): VB6Reference? {
+        return null
     }
 }

@@ -1,4 +1,5 @@
 package com.github.tyrrx.vb6language.psi.tree.visitor
+
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfBlockStmt
@@ -27,4 +28,6 @@ interface ScopeNodeVisitor<TReturn> {
     fun resolvePropertyGetStmt(scope: VB6PropertyGetStatement): TReturn
     fun resolvePropertySetStmt(scope: VB6PropertySetStatement): TReturn
     fun resolvePropertyLetStmt(scope: VB6PropertyLetStatement): TReturn
+    fun resolveTypeStmt(scope: VB6TypeStmtImpl): TReturn
+    fun resolveEnumerationStmt(scope: VB6EnumerationStmtImpl): TReturn
 }

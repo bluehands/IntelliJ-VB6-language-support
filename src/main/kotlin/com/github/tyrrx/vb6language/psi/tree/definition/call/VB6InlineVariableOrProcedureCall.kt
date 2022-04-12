@@ -20,5 +20,4 @@ class VB6InlineVariableOrProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB
     override val referenceIdentifier: VB6NamedElement?
         get() = findFirstChildByType(this)
 
-
 }

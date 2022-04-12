@@ -1,10 +1,21 @@
 package com.github.tyrrx.vb6language.psi.language
 
+import com.github.tyrrx.vb6language.MyBundle
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
+import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.intellij.psi.tree.TokenSet
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 
 object VB6TokenSets {
+
+    init {
+        PSIElementTypeFactory.defineLanguageIElementTypes(
+            VB6Language.INSTANCE,
+            VisualBasic6Parser.tokenNames,
+            VisualBasic6Parser.ruleNames
+        )
+    }
+
     val comments: TokenSet = PSIElementTypeFactory.createTokenSet(
         VB6Language.INSTANCE,
         VisualBasic6Lexer.COMMENT,

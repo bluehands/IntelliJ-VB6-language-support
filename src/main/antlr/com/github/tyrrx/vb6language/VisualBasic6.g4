@@ -616,14 +616,16 @@ explicitCallStmt
 atomicExplicitProcedureCall : CALL WS ambiguousIdentifier typeHint? (WS? LPAREN WS? parameters WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // reference
 
 // parantheses are required in case of args -> empty parantheses are removed
-explicitMemberProcedureCall : CALL WS inlineCall? '.' ambiguousIdentifier typeHint? (WS? LPAREN WS? parameters WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // references
+explicitMemberProcedureCall : CALL WS inlineCall? '.' lastExplicitMemberProcedureCall typeHint? (WS? LPAREN WS? parameters WS? RPAREN)? (WS? LPAREN subscripts RPAREN)*; // references
+lastExplicitMemberProcedureCall: ambiguousIdentifier;
 
 blockCall
     : blockMembersCall
 	| atomicBlockCall
     ;
 
-blockMembersCall : inlineCall? '.' ambiguousIdentifier typeHint? (WS parameters)? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // references
+blockMembersCall : inlineCall? '.' lastBlockMemberCall typeHint? (WS parameters)? dictionaryCallStmt? (WS? LPAREN subscripts RPAREN)*; // references
+lastBlockMemberCall: ambiguousIdentifier;
 
 // parantheses are forbidden in case of args
 // variables cannot be called in blocks

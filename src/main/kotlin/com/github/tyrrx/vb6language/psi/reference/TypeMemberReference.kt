@@ -1,26 +1,18 @@
 package com.github.tyrrx.vb6language.psi.reference
 
-import com.github.tyrrx.vb6language.psi.reference.visitor.SymbolResolveVisitor
-import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
+import com.github.tyrrx.vb6language.psi.reference.visitor.TypeMemberResolveVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ScopeNode
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmtMember
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
-/**
- * Can reference:
- *      declare
- *      enumeration (member and type.member)
- *      const
- *      variable
- *      function
- *      sub
- *      property (get, let, set)
- */
-class SymbolReference(
+class TypeMemberReference(
     override val myReferenceOwner: VB6ReferenceOwner,
     override val referencingNamedElement: VB6NamedElement,
-    override val textRange: TextRange
+    override val textRange: TextRange,
+    private val previousReference: VB6Reference?
 ) : VB6Reference {
     override fun getElement(): PsiElement {
         return myReferenceOwner
@@ -31,12 +23,21 @@ class SymbolReference(
     }
 
     override fun resolve(): PsiElement? {
-        return myReferenceOwner.resolveInContext(
-            SymbolResolveVisitor(
-                myReferenceOwner,
-                referencingNamedElement
-            )
-        )
+
+        val result = previousReference?.let {
+            val previousElement = it.resolve()
+            return when (previousElement) {
+                is VB6ScopeNode -> previousElement.resolve(
+                    TypeMemberResolveVisitor(
+                        myReferenceOwner,
+                        referencingNamedElement
+                    )
+                )
+                is VB6TypeStmtMember -> previousElement.asTypeClause?.reference?.resolve()
+                else -> null
+            }
+        }
+        return result
     }
 
     override fun getCanonicalText(): String {
@@ -57,19 +58,11 @@ class SymbolReference(
             else -> element
         }
 
-        if (otherElement === myReferenceOwner) {
-            return true
-        }
-
         val resolve = resolve()
         return otherElement === resolve
     }
 
     override fun isSoft(): Boolean {
         return false
-    }
-
-    override fun getVariants(): Array<Any> {
-        return emptyArray()
     }
 }

@@ -7,7 +7,7 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.5.30"
+    id("org.jetbrains.kotlin.jvm") version "1.6.20"
     //Gradle IntelliJ Plugin
 
     id("org.jetbrains.intellij") version "1.1.6"
@@ -63,6 +63,14 @@ tasks.runIde {
 }
 
 tasks {
+
+    compileJava {
+        dependsOn(generateGrammarSource)
+    }
+    compileKotlin {
+        dependsOn(generateGrammarSource)
+    }
+
     generateGrammarSource {
         arguments = arguments + listOf("-visitor", "-package", "com.github.tyrrx.vb6language.parser", "-Xexact-output-dir")
         doLast {
