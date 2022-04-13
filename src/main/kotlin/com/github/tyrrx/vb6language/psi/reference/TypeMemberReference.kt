@@ -20,29 +20,31 @@ class TypeMemberReference(
     }
 
     override fun resolve(): PsiElement? {
-
         val result = previousReference?.let {
             val previousElement = it.resolve()
-            resolveInScope(previousElement)
+            resolveInElement(previousElement)
         }
         return result
     }
 
-    private fun resolveInScope(element: PsiElement?): PsiElement? {
+    private fun resolveInElement(element: PsiElement?): PsiElement? {
         return when (element) {
-            is VB6TypeInferable -> resolveInInferenceResult(element)
             is VB6TypeDeclaration -> element.processTypeDeclarations(
                 TypeMemberDeclarationsVisitor(
                     referencingNamedElement
                 )
             )
+            is VB6TypeInferable -> resolveInInferenceResult(element)
             else -> null
         }
     }
 
-    private fun resolveInInferenceResult(previousElement: VB6TypeInferable) =
-        when (val result = previousElement.inferType) {
-            is VB6TypeInferenceResult.ComplexTypeInferenceResult -> resolveInScope(result.typeReference?.resolve())
+    private fun resolveInInferenceResult(typeInferable: VB6TypeInferable) =
+        when (val result = typeInferable.inferType) {
+            is VB6TypeInferenceResult.ComplexTypeInferenceResult -> {
+                val resolvedType = result.typeReference?.resolve()
+                resolveInElement(resolvedType)
+            }
             else -> null
         }
 
