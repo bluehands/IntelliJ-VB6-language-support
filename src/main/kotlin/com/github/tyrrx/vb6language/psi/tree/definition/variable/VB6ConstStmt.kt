@@ -57,7 +57,5 @@ class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
             }
         }
 
-    override fun getAsTypeClause(): VB6AsTypeClause? {
-        return findFirstChildByType(this)
-    }
+    override val typeClause: VB6AsTypeClause? = findFirstChildByType(this)
 }

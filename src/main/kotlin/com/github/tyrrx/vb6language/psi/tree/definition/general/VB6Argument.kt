@@ -4,6 +4,8 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
+import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6BaseType
+import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6ComplexType
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeHint
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findInChildrenByAnyOfGivenElementTypes
@@ -55,9 +57,9 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
         return findFirstChildByType(this)
     }
 
-    override fun getAsTypeClause(): VB6AsTypeClause? {
-        return findFirstChildByType(this)
-    }
+    override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
+
+
 
     override fun getArgumentDefaultValue(): VB6ArgumentDefaultValue? {
         return findFirstChildByType(this)

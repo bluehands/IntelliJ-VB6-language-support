@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildr
 import com.intellij.lang.ASTNode
 
 interface VB6Block : VB6PsiElement, VB6EnclosingVisibleNamedElements {
-    val statements: List<VB6StatementBase>
+    val statements: List<VB6PsiElement>
 }
 
 class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
@@ -17,7 +17,7 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
         }
     }
 
-    override val statements: List<VB6StatementBase>
+    override val statements: List<VB6PsiElement>
         get() = findPsiElementsInDirectChildrenByType<VB6BlockStmt>(this)
             .map { it.statement }
 

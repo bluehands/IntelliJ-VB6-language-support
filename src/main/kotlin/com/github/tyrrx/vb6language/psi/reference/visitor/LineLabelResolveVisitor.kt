@@ -91,12 +91,4 @@ class LineLabelResolveVisitor(
     override fun resolvePropertyLetStmt(scope: VB6PropertyLetStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
     }
-
-    override fun resolveTypeStmt(scope: VB6TypeStmtImpl): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
-    }
-
-    override fun resolveEnumerationStmt(scope: VB6EnumerationStmtImpl): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
-    }
 }

@@ -21,6 +21,7 @@ interface VB6FunctionStatement :
     VB6NamedElementOwner,
     VB6ArgumentOwner,
     VB6ReturnTypeOwner,
+    VB6TypeClauseOwner,
     VB6VisibilityOwnerMixin,
     VB6IsStaticInChildrenMixin,
     VB6TypeHintMixin {
@@ -57,6 +58,9 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
             ?.typeRule
             ?.type
     }
+
+    override val typeClause: VB6AsTypeClause?
+        get() = findFirstChildByType(this)
 
     override val block: VB6Block?
         get() = findFirstChildByType(this)

@@ -1,17 +1,13 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6TypeStmtMember : VB6PsiElement, VB6NamedElementOwner {
-    val asTypeClause: VB6AsTypeClause?
+interface VB6TypeStmtMember : VB6PsiElement, VB6NamedElementOwner, VB6TypeClauseOwner{
 }
 
 class VB6TypeStmtMemberImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmtMember {
@@ -22,7 +18,7 @@ class VB6TypeStmtMemberImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmtMember
         }
     }
 
-    override val asTypeClause: VB6AsTypeClause?
+    override val typeClause: VB6AsTypeClause?
         get() = findFirstChildByType(this)
 
     override fun getNameIdentifier(): VB6NamedElement? {

@@ -7,11 +7,12 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnu
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
+import com.github.tyrrx.vb6language.psi.tree.visitor.TypeDeclarationVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6TypeStmt :
-    VB6ScopeNode,
+    VB6TypeDeclaration,
     VB6EnclosingVisibleNamedElements,
     VB6PsiElement,
     VB6VisibilityOwner,
@@ -30,8 +31,8 @@ class VB6TypeStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmt {
     override val members: List<VB6TypeStmtMember>
         get() = findPsiElementsInDirectChildrenByType(this)
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolveTypeStmt(this)
+    override fun <TReturn> processTypeDeclarations(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
+        return visitor.processTypeStmtDeclarations(this)
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>

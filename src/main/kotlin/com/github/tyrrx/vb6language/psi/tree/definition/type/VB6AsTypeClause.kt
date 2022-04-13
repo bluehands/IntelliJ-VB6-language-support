@@ -54,7 +54,8 @@ class VB6AsTypeClauseImpl(node: ASTNode) : VB6PsiNode(node), VB6AsTypeClause {
         return typeRule?.let { vB6TypeRule ->
             identifier?.let {
                 val offset = vB6TypeRule.startOffsetInParent
-                val textRange = it.textRangeInParent.shiftRight(offset) // add the text len of "as " to this aka the startOffset of the typeRule
+                val textRange =
+                    it.textRangeInParent.shiftRight(offset) // add the text len of "as " to this aka the startOffset of the typeRule
                 TypeReference(this, it, textRange)
             }
         }

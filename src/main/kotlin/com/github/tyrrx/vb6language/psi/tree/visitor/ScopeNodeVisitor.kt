@@ -28,6 +28,4 @@ interface ScopeNodeVisitor<TReturn> {
     fun resolvePropertyGetStmt(scope: VB6PropertyGetStatement): TReturn
     fun resolvePropertySetStmt(scope: VB6PropertySetStatement): TReturn
     fun resolvePropertyLetStmt(scope: VB6PropertyLetStatement): TReturn
-    fun resolveTypeStmt(scope: VB6TypeStmtImpl): TReturn
-    fun resolveEnumerationStmt(scope: VB6EnumerationStmtImpl): TReturn
 }

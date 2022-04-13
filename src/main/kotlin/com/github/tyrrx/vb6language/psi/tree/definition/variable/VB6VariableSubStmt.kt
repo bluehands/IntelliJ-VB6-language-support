@@ -36,9 +36,7 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
             ?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
     }
 
-    override fun getAsTypeClause(): VB6AsTypeClause? {
-        return findFirstChildByType(this)
-    }
+    override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
 
     override fun getSubscripts(): List<VB6SubscriptElement> {
         return findFirstChildByType<VB6Subscripts>(this)

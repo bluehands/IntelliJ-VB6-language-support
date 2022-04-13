@@ -39,9 +39,7 @@ class VB6DeclareStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareStmt {
         return this
     }
 
-    override fun getAsTypeClause(): VB6AsTypeClause? {
-        return findFirstChildByType(this)
-    }
+    override val typeClause: VB6AsTypeClause? = findFirstChildByType(this)
 
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)?.arguments() ?: emptyList()

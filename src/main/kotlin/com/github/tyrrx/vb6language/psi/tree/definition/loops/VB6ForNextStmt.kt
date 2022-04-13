@@ -47,9 +47,7 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
         TODO("Not yet implemented")
     }
 
-    override fun getAsTypeClause(): VB6AsTypeClause? {
-        return findFirstChildByType(this)
-    }
+    override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
 
     override val isDefinition: Boolean
         get() = true

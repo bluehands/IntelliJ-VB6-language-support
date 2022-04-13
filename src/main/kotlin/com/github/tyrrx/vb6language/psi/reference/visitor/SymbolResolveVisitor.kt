@@ -143,12 +143,4 @@ class SymbolResolveVisitor(
             ?: scope.arguments.find { compareNames(it) }
             ?: scope.resolveInContext(this)
     }
-
-    override fun resolveTypeStmt(scope: VB6TypeStmtImpl): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
-    }
-
-    override fun resolveEnumerationStmt(scope: VB6EnumerationStmtImpl): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
-    }
 }

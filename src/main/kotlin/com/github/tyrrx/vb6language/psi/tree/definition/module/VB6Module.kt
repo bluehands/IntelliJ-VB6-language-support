@@ -7,10 +7,11 @@ import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeSt
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.tree.visitor.TypeDeclarationVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6Module : VB6ScopeNode, VB6NamedElementOwner {
+interface VB6Module : VB6ScopeNode, VB6NamedElementOwner, VB6TypeDeclaration {
     // base
     val moduleHeader: VB6ModuleHeader?
     val moduleConfig: VB6ModuleConfig?
@@ -78,6 +79,10 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
 
     override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = emptyList()
+
+    override fun <TReturn> processTypeDeclarations(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
+        return visitor.processModuleDeclarations(this)
+    }
 
     override fun getName(): String? {
         return when (val literal = nameIdentifier?.literals?.firstOrNull()?.literalElement) {

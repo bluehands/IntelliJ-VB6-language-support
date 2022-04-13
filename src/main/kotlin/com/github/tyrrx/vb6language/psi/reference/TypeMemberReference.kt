@@ -1,10 +1,7 @@
 package com.github.tyrrx.vb6language.psi.reference
 
-import com.github.tyrrx.vb6language.psi.reference.visitor.TypeMemberResolveVisitor
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ScopeNode
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmtMember
+import com.github.tyrrx.vb6language.psi.reference.visitor.TypeMemberDeclarationsVisitor
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
@@ -26,19 +23,28 @@ class TypeMemberReference(
 
         val result = previousReference?.let {
             val previousElement = it.resolve()
-            return when (previousElement) {
-                is VB6ScopeNode -> previousElement.resolve(
-                    TypeMemberResolveVisitor(
-                        myReferenceOwner,
-                        referencingNamedElement
-                    )
-                )
-                is VB6TypeStmtMember -> previousElement.asTypeClause?.reference?.resolve()
-                else -> null
-            }
+            resolveInScope(previousElement)
         }
         return result
     }
+
+    private fun resolveInScope(element: PsiElement?): PsiElement? {
+        return when (element) {
+            is VB6TypeInferable -> resolveInInferenceResult(element)
+            is VB6TypeDeclaration -> element.processTypeDeclarations(
+                TypeMemberDeclarationsVisitor(
+                    referencingNamedElement
+                )
+            )
+            else -> null
+        }
+    }
+
+    private fun resolveInInferenceResult(previousElement: VB6TypeInferable) =
+        when (val result = previousElement.inferType) {
+            is VB6TypeInferenceResult.ComplexTypeInferenceResult -> resolveInScope(result.typeReference?.resolve())
+            else -> null
+        }
 
     override fun getCanonicalText(): String {
         return referencingNamedElement.name ?: ""
