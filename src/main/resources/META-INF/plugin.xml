@@ -12,15 +12,15 @@
 
         <projectService serviceImplementation="com.github.tyrrx.vb6language.project.VB6WorkspaceService"/>
 
-        <fileType name="VB6 Class" language="VisualBasic6" extensions="cls" implementationClass="com.github.tyrrx.vb6language.psi.language.VB6ClassFileType"/>
-        <fileType name="VB6 Form" language="VisualBasic6" extensions="frm" implementationClass="com.github.tyrrx.vb6language.psi.language.VB6FormFileType"/>
-        <fileType name="VB6 Module" language="VisualBasic6" extensions="bas" implementationClass="com.github.tyrrx.vb6language.psi.language.VB6ModuleFileType"/>
-        <lang.ast.factory language="VisualBasic6" implementationClass="com.github.tyrrx.vb6language.psi.language.ASTFactory"/>
+        <fileType name="VB6 Class" language="VisualBasic6" extensions="cls" implementationClass="com.github.tyrrx.vb6language.language.VB6ClassFileType"/>
+        <fileType name="VB6 Form" language="VisualBasic6" extensions="frm" implementationClass="com.github.tyrrx.vb6language.language.VB6FormFileType"/>
+        <fileType name="VB6 Module" language="VisualBasic6" extensions="bas" implementationClass="com.github.tyrrx.vb6language.language.VB6ModuleFileType"/>
+        <lang.ast.factory language="VisualBasic6" implementationClass="com.github.tyrrx.vb6language.language.ASTFactory"/>
         <lang.syntaxHighlighterFactory
                 language="VisualBasic6"
                 implementationClass="com.github.tyrrx.vb6language.highlighter.VisualBasic6SyntaxHighlighterFactory"/>
         <lang.parserDefinition language="VisualBasic6"
-                               implementationClass="com.github.tyrrx.vb6language.psi.language.VB6ParserDefinition"/>
+                               implementationClass="com.github.tyrrx.vb6language.language.VB6ParserDefinition"/>
 
     </extensions>
 

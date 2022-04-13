@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 
-import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType

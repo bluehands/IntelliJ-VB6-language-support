@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
-import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause

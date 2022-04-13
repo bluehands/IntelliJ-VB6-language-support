@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.language
+package com.github.tyrrx.vb6language.language
 
 import com.intellij.openapi.fileTypes.LanguageFileType
 import com.intellij.openapi.util.IconLoader

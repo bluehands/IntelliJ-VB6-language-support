@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.language
+package com.github.tyrrx.vb6language.language
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode

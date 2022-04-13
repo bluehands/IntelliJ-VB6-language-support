@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.language
+package com.github.tyrrx.vb6language.language
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.intellij.psi.TokenType

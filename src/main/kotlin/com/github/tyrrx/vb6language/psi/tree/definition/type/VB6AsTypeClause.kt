@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.type
 
-import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.reference.TypeReference
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement

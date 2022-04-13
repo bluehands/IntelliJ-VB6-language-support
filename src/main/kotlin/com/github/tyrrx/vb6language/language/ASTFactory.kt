@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.language
+package com.github.tyrrx.vb6language.language
 
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
 import com.intellij.lang.DefaultASTFactoryImpl
