@@ -18,7 +18,7 @@
         <lang.ast.factory language="VisualBasic6" implementationClass="com.github.tyrrx.vb6language.language.ASTFactory"/>
         <lang.syntaxHighlighterFactory
                 language="VisualBasic6"
-                implementationClass="com.github.tyrrx.vb6language.highlighter.VisualBasic6SyntaxHighlighterFactory"/>
+                implementationClass="com.github.tyrrx.vb6language.highlighting.VisualBasic6SyntaxHighlighterFactory"/>
         <lang.parserDefinition language="VisualBasic6"
                                implementationClass="com.github.tyrrx.vb6language.language.VB6ParserDefinition"/>
 

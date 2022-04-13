@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.highlighter
+package com.github.tyrrx.vb6language.highlighting
 
 import com.intellij.openapi.fileTypes.SyntaxHighlighter
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory
