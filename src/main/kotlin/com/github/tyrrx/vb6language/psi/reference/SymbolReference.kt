@@ -3,9 +3,15 @@ package com.github.tyrrx.vb6language.psi.reference
 import com.github.tyrrx.vb6language.psi.reference.visitor.SymbolResolveVisitor
 import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmt
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
+import com.intellij.util.containers.toArray
 
 /**
  * Can reference:
@@ -69,7 +75,16 @@ class SymbolReference(
         return false
     }
 
-    override fun getVariants(): Array<Any> {
-        return emptyArray()
+    override fun getVariants(): Array<VB6NamedElementOwner> {
+        return when (val resolveResult = resolve()) {
+            is VB6TypeDeclaration ->
+                when (resolveResult) {
+                    is VB6Module -> resolveResult.outsideVisibleNamedElementOwners.toTypedArray()
+                    is VB6EnumerationStmt -> resolveResult.enumMembers.toTypedArray()
+                    is VB6TypeStmt -> resolveResult.members.toTypedArray()
+                    else -> emptyArray()
+                }
+            else -> emptyArray()
+        }
     }
 }
