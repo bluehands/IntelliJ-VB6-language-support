@@ -3,12 +3,12 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
-import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 

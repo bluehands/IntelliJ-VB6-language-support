@@ -1,7 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.call
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.reference.SymbolReference
 import com.github.tyrrx.vb6language.psi.reference.TypeMemberReference
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
@@ -9,10 +8,6 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiReference
-import com.intellij.psi.util.PsiTreeUtil
-import java.util.LinkedList
 
 interface VB6InlineMemberCall : VB6PsiElement, VB6ReferenceOwner, VB6ReferenceFactory {
 }

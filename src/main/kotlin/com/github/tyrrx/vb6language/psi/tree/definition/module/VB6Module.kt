@@ -2,11 +2,11 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.visitor.TypeDeclarationVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement

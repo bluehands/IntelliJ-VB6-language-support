@@ -4,8 +4,6 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6BaseType
-import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6ComplexType
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeHint
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findInChildrenByAnyOfGivenElementTypes

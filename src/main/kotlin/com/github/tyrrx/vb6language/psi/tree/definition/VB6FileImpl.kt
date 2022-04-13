@@ -1,8 +1,8 @@
 package com.github.tyrrx.vb6language.psi.tree.definition
 
-import com.github.tyrrx.vb6language.psi.language.VB6Language
 import com.github.tyrrx.vb6language.project.VB6Project
 import com.github.tyrrx.vb6language.project.VB6WorkspaceService
+import com.github.tyrrx.vb6language.psi.language.VB6Language
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
@@ -12,7 +12,6 @@ import com.intellij.openapi.components.service
 import com.intellij.openapi.fileTypes.FileType
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.PsiFile
-import com.intellij.psi.PsiReference
 import java.nio.file.Path
 
 interface VB6File : VB6ScopeNode, PsiFile {

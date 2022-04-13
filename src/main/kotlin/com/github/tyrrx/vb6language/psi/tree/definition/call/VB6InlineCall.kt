@@ -5,11 +5,9 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiReference
 
-interface VB6InlineCall : VB6StatementBase {
+interface VB6InlineCall : VB6PsiElement {
     val finalReference: VB6Reference?
 }
 

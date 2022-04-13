@@ -3,15 +3,15 @@ package com.github.tyrrx.vb6language.psi.tree.definition.blockStmt
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
-import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
+import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementInSubtree
 import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6AttributeStmt : VB6StatementBase, VB6NamedElementOwner, VB6NamedElement {
+interface VB6AttributeStmt : VB6PsiElement, VB6NamedElementOwner, VB6NamedElement {
     val literals: Collection<VB6Literal>
 }
 

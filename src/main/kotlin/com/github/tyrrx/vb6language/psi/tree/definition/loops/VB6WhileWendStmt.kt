@@ -2,13 +2,13 @@ package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 
-interface VB6WhileWendStmt : VB6TransparentBlockScopeOwner, VB6StatementBase {
+interface VB6WhileWendStmt : VB6TransparentBlockScopeOwner, VB6PsiElement {
 }
 
 class VB6WhileWendStmtImpl(node: ASTNode) : VB6PsiNode(node),

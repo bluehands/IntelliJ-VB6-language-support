@@ -7,7 +7,7 @@ import com.intellij.lang.ASTNode
 
 interface VB6ModuleVariableStmt :
     VB6EnclosingVisibleNamedElements,
-    VB6StatementBase {
+    VB6PsiElement {
     val variableDefinitions: List<VB6ModuleVariable>
 }
 

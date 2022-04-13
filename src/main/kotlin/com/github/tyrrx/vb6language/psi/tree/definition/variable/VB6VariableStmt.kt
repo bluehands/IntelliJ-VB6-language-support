@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
-interface VB6VariableStmt : VB6StatementBase, VB6EnclosingVisibleNamedElements {
+interface VB6VariableStmt : VB6PsiElement, VB6EnclosingVisibleNamedElements {
     val variables: List<VB6BlockVariable>
 }
 

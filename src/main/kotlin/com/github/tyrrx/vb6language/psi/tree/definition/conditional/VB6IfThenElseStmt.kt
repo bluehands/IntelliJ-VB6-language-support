@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.intellij.lang.ASTNode
 
-interface VB6IfThenElseStmt : VB6StatementBase, VB6EnclosingTransparentBlocks {
+interface VB6IfThenElseStmt : VB6PsiElement, VB6EnclosingTransparentBlocks {
 }
 
 class VB6IfThenElseStmtImpl(node: ASTNode) : VB6PsiNode(node),

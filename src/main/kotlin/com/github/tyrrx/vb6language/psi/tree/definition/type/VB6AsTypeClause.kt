@@ -11,8 +11,6 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.tree.utils.isIElementTypePresentInChildren
 import com.intellij.lang.ASTNode
-import com.intellij.openapi.util.TextRange
-import com.intellij.psi.PsiReference
 
 interface VB6AsTypeClause : VB6ReferenceOwner, VB6ReferenceFactory, VB6PsiElement {
     fun isAutoInitialized(): Boolean // default false

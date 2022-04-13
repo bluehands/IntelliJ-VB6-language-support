@@ -5,15 +5,15 @@ import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicInlineCall
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6LetStmt : VB6StatementBase, VB6NamedElementOwner {
+interface VB6LetStmt : VB6PsiElement, VB6NamedElementOwner {
     val callStatement: VB6InlineCall?
 }
 

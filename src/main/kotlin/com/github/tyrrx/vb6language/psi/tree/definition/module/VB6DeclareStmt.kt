@@ -11,7 +11,7 @@ import com.intellij.psi.PsiElement
 
 interface VB6DeclareStmt :
     VB6EnclosingVisibleNamedElements,
-    VB6StatementBase,
+    VB6PsiElement,
     VB6NamedElementOwner,
     VB6TypeClauseOwner,
 VB6ArgumentOwner {

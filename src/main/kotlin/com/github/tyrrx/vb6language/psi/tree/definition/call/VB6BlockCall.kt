@@ -2,11 +2,11 @@ package com.github.tyrrx.vb6language.psi.tree.definition.call
 
 
 import com.github.tyrrx.vb6language.psi.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6StatementBase
 import com.intellij.lang.ASTNode
 
-interface VB6BlockCall : VB6StatementBase {
+interface VB6BlockCall : VB6PsiElement {
 }
 
 class VB6BlockCallImpl(node: ASTNode) : VB6PsiNode(node),
