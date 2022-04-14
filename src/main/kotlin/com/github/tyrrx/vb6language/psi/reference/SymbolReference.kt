@@ -1,14 +1,11 @@
 package com.github.tyrrx.vb6language.psi.reference
 
 import com.github.tyrrx.vb6language.psi.reference.visitor.SymbolResolveVisitor
+import com.github.tyrrx.vb6language.psi.reference.visitor.TypeMemberDeclarationsVisitor
 import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeDeclaration
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmt
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.base.*
+import com.github.tyrrx.vb6language.psi.tree.definition.module.*
+import com.github.tyrrx.vb6language.psi.tree.visitor.TypeDeclarationVisitor
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.util.containers.toArray
@@ -75,16 +72,34 @@ class SymbolReference(
         return false
     }
 
-    override fun getVariants(): Array<VB6NamedElementOwner> {
-        return when (val resolveResult = resolve()) {
-            is VB6TypeDeclaration ->
-                when (resolveResult) {
-                    is VB6Module -> resolveResult.outsideVisibleNamedElementOwners.toTypedArray()
-                    is VB6EnumerationStmt -> resolveResult.enumMembers.toTypedArray()
-                    is VB6TypeStmt -> resolveResult.members.toTypedArray()
-                    else -> emptyArray()
-                }
-            else -> emptyArray()
-        }
+    override fun getVariants(): Array<String> {
+        return arrayOf("aaaa", "bbbb")
     }
 }
+
+//    private fun getVariantsFromElement(resolveResult: PsiElement?): Array<String> {
+//        val res =  when (resolveResult) {
+//            is VB6TypeDeclaration -> resolveResult.processTypeDeclarations(TypeDeclarationVariantsVisitor())
+//            is VB6TypeInferable -> when(val result = resolveResult.inferType) {
+//                is VB6TypeInferenceResult.ComplexTypeInferenceResult -> getVariantsFromElement(result.typeReference?.resolve())
+//                else -> emptyArray()
+//            }
+//            else -> emptyArray()
+//        }
+//        return res
+//    }
+//}
+//
+//class TypeDeclarationVariantsVisitor : TypeDeclarationVisitor<Array<String>> {
+//    override fun processModuleDeclarations(module: VB6Module): Array<String> {
+//        return module.outsideVisibleNamedElementOwners.mapNotNull { it.name }.toTypedArray()
+//    }
+//
+//    override fun processTypeStmtDeclarations(type: VB6TypeStmtImpl): Array<String> {
+//        return type.members.mapNotNull { it.name }.toTypedArray()
+//    }
+//
+//    override fun processEnumerationStmtDeclarations(enum: VB6EnumerationStmtImpl): Array<String> {
+//        return enum.enumMembers.mapNotNull { it.name }.toTypedArray()
+//    }
+//}

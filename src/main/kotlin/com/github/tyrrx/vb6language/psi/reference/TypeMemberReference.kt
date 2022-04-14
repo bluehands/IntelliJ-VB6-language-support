@@ -2,6 +2,9 @@ package com.github.tyrrx.vb6language.psi.reference
 
 import com.github.tyrrx.vb6language.psi.reference.visitor.TypeMemberDeclarationsVisitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmt
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 

@@ -29,6 +29,9 @@
         <annotator language="VisualBasic6"
                    implementationClass="com.github.tyrrx.vb6language.highlighting.CallableAnnotator"/>
 
+        <completion.contributor language="VisualBasic6"
+                                implementationClass="com.github.tyrrx.vb6language.completion.VB6CompletionContributor"/>
+
     </extensions>
 
     <applicationListeners>
