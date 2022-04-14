@@ -76,4 +76,8 @@ class TypeMemberReference(
     override fun isSoft(): Boolean {
         return false
     }
+
+    override fun getVariants(): Array<Any> {
+        return super.getVariants()
+    }
 }

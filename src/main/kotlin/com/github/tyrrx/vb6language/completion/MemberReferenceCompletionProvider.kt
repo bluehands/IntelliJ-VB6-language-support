@@ -1,14 +1,13 @@
 package com.github.tyrrx.vb6language.completion
 
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmtImpl
+import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.tree.visitor.TypeDeclarationVisitor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionProvider
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder
+import com.intellij.icons.AllIcons
 import com.intellij.psi.PsiElement
 import com.intellij.util.ProcessingContext
 
@@ -21,7 +20,10 @@ class MemberReferenceCompletionProvider : CompletionProvider<CompletionParameter
         val pos = parameters.position
         val placeholderReferenceOwner = getPlaceholderReferenceOwner(pos)
         val previousReferenceOwner = getPreviousReferenceOwnerOf(placeholderReferenceOwner)
-        val lookupElements = resolveVariants(resolveReferenceOf(previousReferenceOwner)).map(LookupElementBuilder::create)
+        val lookupElements = resolveVariants(resolveReferenceOf(previousReferenceOwner))
+                .map {
+                    LookupElementBuilder.create(it)
+                }
 
         result.withPrefixMatcher(".")
         result.addAllElements(lookupElements)
@@ -53,19 +55,4 @@ class MemberReferenceCompletionProvider : CompletionProvider<CompletionParameter
                 is VB6TypeInferenceResult.BaseTypeInferenceResult -> emptyList() // todo basic type methods
                 VB6TypeInferenceResult.Unknown -> emptyList() // todo
             }
-}
-
-class SuggestionTypeDeclarationVisitor : TypeDeclarationVisitor<List<VB6NamedElementOwner>> {
-    override fun processModuleDeclarations(module: VB6Module): List<VB6NamedElementOwner> {
-        return module.outsideVisibleNamedElementOwners
-    }
-
-    override fun processTypeStmtDeclarations(type: VB6TypeStmtImpl): List<VB6NamedElementOwner> {
-        return type.members
-    }
-
-    override fun processEnumerationStmtDeclarations(enum: VB6EnumerationStmtImpl): List<VB6NamedElementOwner> {
-        return enum.enumMembers
-    }
-
 }

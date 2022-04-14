@@ -36,7 +36,7 @@ class VB6LastBlockMemberCallImpl(node: ASTNode) : VB6PsiNode(node), VB6LastBlock
     override val referenceFactory: VB6ReferenceFactory?
         get() = this
 
-    override fun createReference(): VB6Reference? {
+    override fun createReference(): VB6Reference {
         val blockMembersCall = parent as VB6BlockMembersCall
         return blockMembersCall.inlineCall?.let { inlineCall ->
             referencingElement?.let { ref ->
