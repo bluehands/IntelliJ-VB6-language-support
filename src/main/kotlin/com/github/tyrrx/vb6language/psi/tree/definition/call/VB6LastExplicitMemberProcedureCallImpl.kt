@@ -7,11 +7,11 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
-interface VB6LastExplicitMemberProcedureCall : VB6PsiElement, VB6ReferenceOwner, VB6ReferenceFactory {
+interface VB6LastExplicitMemberProcedureCall : VB6PsiElement, VB6MemberReferenceOwner, VB6ReferenceFactory {
     val referencingElement: VB6NamedElement?
 }
 
-class VB6LastExplicitMemberProcedureCallImpl(node: ASTNode) :  VB6PsiNode(node), VB6LastExplicitMemberProcedureCall {
+class VB6LastExplicitMemberProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6LastExplicitMemberProcedureCall {
 
     object Factory : IPsiNodeFactory<VB6LastExplicitMemberProcedureCall> {
         override fun createPsiNode(node: ASTNode): VB6LastExplicitMemberProcedureCall {
@@ -26,6 +26,14 @@ class VB6LastExplicitMemberProcedureCallImpl(node: ASTNode) :  VB6PsiNode(node),
         return createReference()
     }
 
+    override val previousReferenceOwner: VB6ReferenceOwner?
+        get() {
+            val myParent = parent as? VB6MemberReferenceChain
+            val chainRoot = myParent?.chainRoot()
+            return chainRoot?.previousReferenceOwnerOf(this)
+        }
+
+
     override val referenceFactory: VB6ReferenceFactory?
         get() = this
 
@@ -34,10 +42,10 @@ class VB6LastExplicitMemberProcedureCallImpl(node: ASTNode) :  VB6PsiNode(node),
         return blockMembersCall.inlineCall?.let { inlineCall ->
             referencingElement?.let { ref ->
                 TypeMemberReference(
-                    this,
-                    ref,
-                    ref.textRangeInParent,
-                    inlineCall.finalReference
+                        this,
+                        ref,
+                        ref.textRangeInParent,
+                        inlineCall.finalReference
                 )
             }
         } ?: TODO("Search for with statment and get type")
