@@ -1,8 +1,8 @@
-package com.github.tyrrx.vb6language.psi.tree.mixins
+package com.github.tyrrx.vb6language.psi.mixins
 
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6TypeHintOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeHint
-import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 
 interface VB6TypeHintMixin: VB6TypeHintOwner {
     override fun getTypeHint(): VB6TypeHint? {

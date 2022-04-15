@@ -4,9 +4,9 @@ package com.github.tyrrx.vb6language.psi.tree.definition.loops
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6TypeHintMixin
-import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
+import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -14,7 +14,7 @@ interface VB6ForEachStmt :
     VB6PsiElement,
     VB6TransparentBlockScopeOwner,
     VB6NamedElementOwner,
-    VB6TypeHintMixin {
+        VB6TypeHintMixin {
 }
 
 class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),

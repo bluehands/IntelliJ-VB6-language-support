@@ -5,7 +5,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6MemberReferenceO
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6MemberReferenceChain
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
 interface VB6BlockMembersCall : VB6MemberReferenceChain {

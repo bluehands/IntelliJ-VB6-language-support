@@ -4,8 +4,8 @@ package com.github.tyrrx.vb6language.psi.tree.definition.loops
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
-import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 
 interface VB6WhileWendStmt : VB6TransparentBlockScopeOwner, VB6PsiElement {

@@ -6,10 +6,10 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6IsStaticInChildrenMixin
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6VisibilityOwnerMixin
-import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
+import com.github.tyrrx.vb6language.psi.mixins.VB6IsStaticInChildrenMixin
+import com.github.tyrrx.vb6language.psi.mixins.VB6VisibilityOwnerMixin
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -18,8 +18,8 @@ interface VB6SubroutineStatement :
     VB6BlockScopeOwner,
     VB6NamedElementOwner,
     VB6ArgumentOwner,
-    VB6VisibilityOwnerMixin,
-    VB6IsStaticInChildrenMixin {
+        VB6VisibilityOwnerMixin,
+        VB6IsStaticInChildrenMixin {
 }
 
 class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),

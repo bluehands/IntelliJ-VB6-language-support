@@ -6,10 +6,10 @@ import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6ComplexType
 
 interface VB6TypeClauseOwner : VB6TypeInferable {
     val typeClause: VB6AsTypeClause?
-    override val inferType: VB6TypeInferenceResult
-        get() = when (val type = typeClause?.typeRule?.type) {
-            is VB6BaseType -> VB6TypeInferenceResult.BaseTypeInferenceResult(type.name)
-            is VB6ComplexType -> VB6TypeInferenceResult.ComplexTypeInferenceResult(typeClause?.reference)
-            else -> VB6TypeInferenceResult.Unknown
+    override fun inferType(): InferenceResult
+         = when (val type = typeClause?.typeRule?.type) {
+            is VB6BaseType -> InferenceResult.BaseType(type.name)
+            is VB6ComplexType -> InferenceResult.ComplexType(typeClause?.reference)
+            else -> InferenceResult.Unknown
         }
 }

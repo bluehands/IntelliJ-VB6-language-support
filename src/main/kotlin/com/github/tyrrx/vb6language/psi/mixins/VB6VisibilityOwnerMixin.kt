@@ -1,9 +1,9 @@
-package com.github.tyrrx.vb6language.psi.tree.mixins
+package com.github.tyrrx.vb6language.psi.mixins
 
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
-import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 
 interface VB6VisibilityOwnerMixin : VB6VisibilityOwner {
     override val visibility: VB6VisibilityEnum

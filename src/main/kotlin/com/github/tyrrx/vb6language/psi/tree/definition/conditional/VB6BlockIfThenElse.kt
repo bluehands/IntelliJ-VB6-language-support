@@ -3,7 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.conditional
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
-import com.github.tyrrx.vb6language.psi.tree.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 
 interface VB6BlockIfThenElse : VB6PsiElement, VB6EnclosingTransparentBlocks {

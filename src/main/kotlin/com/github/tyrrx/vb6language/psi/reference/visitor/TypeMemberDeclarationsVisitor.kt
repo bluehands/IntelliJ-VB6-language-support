@@ -3,7 +3,7 @@ package com.github.tyrrx.vb6language.psi.reference.visitor
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
-import com.github.tyrrx.vb6language.psi.tree.visitor.TypeDeclarationVisitor
+import com.github.tyrrx.vb6language.psi.visitor.TypeDeclarationVisitor
 
 class TypeMemberDeclarationsVisitor(
     private val referencingIdentifier: VB6NamedElement,

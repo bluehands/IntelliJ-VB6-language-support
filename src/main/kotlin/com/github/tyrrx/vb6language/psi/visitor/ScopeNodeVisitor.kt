@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.tree.visitor
+package com.github.tyrrx.vb6language.psi.visitor
 
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt

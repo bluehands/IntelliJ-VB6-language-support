@@ -4,8 +4,8 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6TypeHintMixin
-import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -13,7 +13,7 @@ interface VB6ConstBase :
     VB6PsiElement,
     VB6NamedElementOwner,
     VB6TypeClauseOwner,
-    VB6TypeHintMixin
+        VB6TypeHintMixin
 
 interface VB6BlockConst : VB6ConstBase
 interface VB6ModuleConst : VB6ConstBase, VB6VisibilityOwner

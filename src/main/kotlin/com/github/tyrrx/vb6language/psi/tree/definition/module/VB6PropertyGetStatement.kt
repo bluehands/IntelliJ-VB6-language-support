@@ -6,10 +6,10 @@ import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6Type
-import com.github.tyrrx.vb6language.psi.tree.mixins.VB6TypeHintMixin
-import com.github.tyrrx.vb6language.psi.tree.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
+import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -17,7 +17,7 @@ interface VB6PropertyGetStatement :
     VB6PropertyStatementBase,
     VB6ReturnTypeOwner,
     VB6TypeClauseOwner,
-    VB6TypeHintMixin {
+        VB6TypeHintMixin {
 }
 
 class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
@@ -66,7 +66,7 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun getReturnType(): VB6Type? {
+    override fun getReturnType(): VB6TypeDeclaration? {
         return getReturnAsTypeClause()
             ?.typeRule
             ?.type

@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.tree.utils
+package com.github.tyrrx.vb6language.psi.utils
 
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
 import com.intellij.psi.PsiElement

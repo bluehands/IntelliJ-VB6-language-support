@@ -1,13 +1,10 @@
 package com.github.tyrrx.vb6language.completion
 
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
-import com.github.tyrrx.vb6language.psi.tree.definition.module.*
-import com.github.tyrrx.vb6language.psi.tree.visitor.TypeDeclarationVisitor
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionProvider
 import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder
-import com.intellij.icons.AllIcons
 import com.intellij.psi.PsiElement
 import com.intellij.util.ProcessingContext
 
@@ -50,9 +47,9 @@ class MemberReferenceCompletionProvider : CompletionProvider<CompletionParameter
     }
 
     private fun resolveVariantsFromInferable(resolvedElement: VB6TypeInferable) =
-            when (val result = resolvedElement.inferType) {
-                is VB6TypeInferenceResult.ComplexTypeInferenceResult -> resolveVariants(result.typeReference?.resolve())
-                is VB6TypeInferenceResult.BaseTypeInferenceResult -> emptyList() // todo basic type methods
-                VB6TypeInferenceResult.Unknown -> emptyList() // todo
+            when (val result = resolvedElement.inferType()) {
+                is InferenceResult.ComplexType -> resolveVariants(result.typeReference?.resolve())
+                is InferenceResult.BaseType -> emptyList() // todo basic type methods
+                InferenceResult.Unknown -> emptyList() // todo
             }
 }

@@ -5,12 +5,12 @@ import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.utils.findIdentifierOwnerRecursive
-import com.github.tyrrx.vb6language.psi.tree.utils.findReferenceOwnerRecursive
+import com.github.tyrrx.vb6language.psi.utils.findIdentifierOwnerRecursive
+import com.github.tyrrx.vb6language.psi.utils.findReferenceOwnerRecursive
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6BaseType: VB6Type, VB6NamedElement {
+interface VB6BaseType: VB6TypeDeclaration, VB6NamedElement {
 
 }
 

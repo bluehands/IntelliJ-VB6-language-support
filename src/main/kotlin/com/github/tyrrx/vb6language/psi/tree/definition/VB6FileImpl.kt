@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.language.VB6Language
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
-import com.github.tyrrx.vb6language.psi.tree.visitor.ScopeNodeVisitor
+import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.openapi.components.service
 import com.intellij.openapi.fileTypes.FileType
