@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.psi.mixins
 
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6VisibilityOwner
+import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType

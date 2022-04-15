@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.highlighting
 
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6DeclareStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6FunctionStatement
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6PropertyStatementBase
@@ -21,8 +21,8 @@ class CallableAnnotator : Annotator {
     }
 
     private fun highlightAsFunctionDeclaration(
-        element: VB6NamedElementOwner,
-        holder: AnnotationHolder
+            element: VB6NamedElementOwner,
+            holder: AnnotationHolder
     ) {
         element.nameIdentifier?.let {
             holder.newSilentAnnotation(HighlightSeverity.INFORMATION)

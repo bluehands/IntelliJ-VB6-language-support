@@ -1,11 +1,11 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.conditional
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.intellij.lang.ASTNode
 
-interface VB6IfConditionStmt : VB6PsiElement  {
+interface VB6IfConditionStmt : VB6PsiElement {
 }
 
 class VB6IfConditionStmtImpl(node: ASTNode) : VB6PsiNode(node),

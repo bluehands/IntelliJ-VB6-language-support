@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.completion
 
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmtImpl

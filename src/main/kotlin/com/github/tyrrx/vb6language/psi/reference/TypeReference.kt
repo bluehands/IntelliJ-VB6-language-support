@@ -2,15 +2,15 @@ package com.github.tyrrx.vb6language.psi.reference
 
 import com.github.tyrrx.vb6language.psi.reference.visitor.TypeResolveVisitor
 import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
 class TypeReference(
-    override val myReferenceOwner: VB6ReferenceOwner,
-    override val referencingNamedElement: VB6NamedElement,
-    override val textRange: TextRange
+        override val myReferenceOwner: VB6ReferenceOwner,
+        override val referencingNamedElement: VB6NamedElement,
+        override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
         return myReferenceOwner

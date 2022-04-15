@@ -1,5 +1,7 @@
 package com.github.tyrrx.vb6language.psi.reference
 
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.reference.visitor.SymbolResolveVisitor
 import com.github.tyrrx.vb6language.psi.reference.visitor.TypeMemberDeclarationsVisitor
 import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
@@ -21,9 +23,9 @@ import com.intellij.util.containers.toArray
  *      property (get, let, set)
  */
 class SymbolReference(
-    override val myReferenceOwner: VB6ReferenceOwner,
-    override val referencingNamedElement: VB6NamedElement,
-    override val textRange: TextRange
+        override val myReferenceOwner: VB6ReferenceOwner,
+        override val referencingNamedElement: VB6NamedElement,
+        override val textRange: TextRange
 ) : VB6Reference {
     override fun getElement(): PsiElement {
         return myReferenceOwner

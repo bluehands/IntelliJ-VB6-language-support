@@ -2,16 +2,16 @@ package com.github.tyrrx.vb6language.psi.tree.definition.blockStmt
 
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6LineLabel : VB6PsiElement,
-    VB6NamedElementOwner {
+        VB6NamedElementOwner {
 }
 
 class VB6LineLabelImpl(node: ASTNode) : VB6PsiNode(node),

@@ -1,8 +1,8 @@
 package com.github.tyrrx.vb6language.project
 
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmt

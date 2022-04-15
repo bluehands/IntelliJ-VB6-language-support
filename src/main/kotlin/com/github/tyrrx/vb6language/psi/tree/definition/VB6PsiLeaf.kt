@@ -1,5 +1,6 @@
-package com.github.tyrrx.vb6language.psi.tree.definition.base
+package com.github.tyrrx.vb6language.psi.tree.definition
 
+import com.github.tyrrx.vb6language.psi.scope.VB6ScopeNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiErrorElement
 import com.intellij.psi.tree.IElementType

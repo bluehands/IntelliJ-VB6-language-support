@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi.utils
 
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
 import com.intellij.psi.PsiElement
 
 fun findOwnerRecursive(element: PsiElement): PsiElement {

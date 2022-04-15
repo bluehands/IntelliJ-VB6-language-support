@@ -3,10 +3,10 @@ package com.github.tyrrx.vb6language.psi.tree.definition.call
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.reference.SymbolReference
 import com.github.tyrrx.vb6language.psi.reference.VB6Reference
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.base.VB6ReferenceFactory
+import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
 import com.intellij.lang.ASTNode
 
 interface VB6AtomicInlineCall : VB6PsiElement, VB6ReferenceFactory, VB6ReferenceOwner {

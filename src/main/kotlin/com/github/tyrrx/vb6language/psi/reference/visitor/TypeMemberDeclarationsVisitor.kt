@@ -1,12 +1,12 @@
 package com.github.tyrrx.vb6language.psi.reference.visitor
 
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.visitor.TypeDeclarationVisitor
 
 class TypeMemberDeclarationsVisitor(
-    private val referencingIdentifier: VB6NamedElement,
+        private val referencingIdentifier: VB6NamedElement,
 ) : TypeDeclarationVisitor<VB6NamedElementOwner?> {
 
     private fun compareNames(it: VB6NamedElementOwner) =

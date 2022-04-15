@@ -1,10 +1,10 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.type
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.utils.findIdentifierOwnerRecursive
 import com.github.tyrrx.vb6language.psi.utils.findReferenceOwnerRecursive
 import com.intellij.lang.ASTNode

@@ -1,5 +1,6 @@
-package com.github.tyrrx.vb6language.psi.tree.definition.base
+package com.github.tyrrx.vb6language.psi.base
 
+import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
 import com.intellij.psi.PsiNameIdentifierOwner
 
 interface VB6NamedElementOwner: PsiNameIdentifierOwner, VB6PsiElement, VB6EnclosingVisibleNamedElements {

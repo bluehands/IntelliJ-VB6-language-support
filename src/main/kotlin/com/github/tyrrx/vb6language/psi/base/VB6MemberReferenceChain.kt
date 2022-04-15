@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.tree.definition.base
+package com.github.tyrrx.vb6language.psi.base
 
 interface VB6MemberReferenceChain : VB6PsiElement {
     /**

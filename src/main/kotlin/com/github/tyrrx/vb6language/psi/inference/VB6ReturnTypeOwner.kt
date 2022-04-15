@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.tree.definition.base
+package com.github.tyrrx.vb6language.psi.inference
 
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeDeclaration

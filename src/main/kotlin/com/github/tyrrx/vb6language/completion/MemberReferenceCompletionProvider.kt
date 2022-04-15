@@ -1,5 +1,12 @@
 package com.github.tyrrx.vb6language.completion
 
+import com.github.tyrrx.vb6language.psi.base.VB6MemberReferenceOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.inference.InferenceResult
+import com.github.tyrrx.vb6language.psi.inference.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
 import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionProvider

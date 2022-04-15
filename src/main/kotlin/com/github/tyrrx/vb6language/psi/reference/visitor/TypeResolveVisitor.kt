@@ -2,10 +2,10 @@ package com.github.tyrrx.vb6language.psi.reference.visitor
 
 import com.github.tyrrx.vb6language.project.projectVisibleTypes
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6BlockOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.base.VB6BlockOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6BlockStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfBlockStmt
@@ -19,8 +19,8 @@ import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.utils.findFirstParentOfType
 
 class TypeResolveVisitor(
-    override val referenceOwner: VB6ReferenceOwner,
-    override val referencingIdentifier: VB6NamedElement,
+        override val referenceOwner: VB6ReferenceOwner,
+        override val referencingIdentifier: VB6NamedElement,
 ) : ReferenceResolveVisitor {
 
     private fun compareNames(it: VB6NamedElementOwner) =

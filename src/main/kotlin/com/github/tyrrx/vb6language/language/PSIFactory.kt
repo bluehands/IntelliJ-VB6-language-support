@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.language
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.definition.base.VB6PsiNode
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6BlockImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6BlockStmtImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.*
