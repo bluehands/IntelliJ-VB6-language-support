@@ -703,7 +703,9 @@ certainIdentifier :
 
 comparisonOperator : LT | LEQ | GT | GEQ | EQ | NEQ | IS | LIKE;
 
-complexType : ambiguousIdentifier (('.' | '!') ambiguousIdentifier)*;
+complexType : firstComplexTypeElement (('.' | '!') followingComplexTypeElement)*;
+firstComplexTypeElement: ambiguousIdentifier;
+followingComplexTypeElement: ambiguousIdentifier;
 
 fieldLength : MULT WS? (INTEGERLITERAL | ambiguousIdentifier);
 

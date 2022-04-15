@@ -70,6 +70,8 @@ object PSIFactory {
         VisualBasic6Parser.RULE_type_ mapsTo VB6TypeRuleImpl.Factory,
         VisualBasic6Parser.RULE_baseType mapsTo VB6BaseTypeImpl.Factory,
         VisualBasic6Parser.RULE_complexType mapsTo VB6ComplexTypeImpl.Factory,
+        VisualBasic6Parser.RULE_firstComplexTypeElement mapsTo VB6FirstComplexTypeElementImpl.Factory,
+        VisualBasic6Parser.RULE_followingComplexTypeElement mapsTo VB6FollowingComplexTypeElementImpl.Factory,
         VisualBasic6Parser.RULE_asTypeClause mapsTo VB6AsTypeClauseImpl.Factory,
         VisualBasic6Parser.RULE_fieldLength mapsTo VB6FieldLengthImpl.Factory,
 
