@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.intellij.lang.ASTNode
 
 interface VB6TypeRule : VB6PsiElement {
-    val type: VB6TypeDeclaration?
+    val type: VB6TypeElement?
 }
 
 class VB6TypeRuleImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeRule {
@@ -17,9 +17,9 @@ class VB6TypeRuleImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeRule {
         }
     }
 
-    override val type: VB6TypeDeclaration?
+    override val type: VB6TypeElement?
         get() = when (val child = firstChild) {
-            is VB6TypeDeclaration -> child
+            is VB6TypeElement -> child
             else -> null
         }
 }

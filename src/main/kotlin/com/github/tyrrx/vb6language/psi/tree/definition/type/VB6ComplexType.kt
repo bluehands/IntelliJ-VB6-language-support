@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 
-interface VB6ComplexType: VB6TypeDeclaration {
+interface VB6ComplexType: VB6TypeElement {
     val identifiers: List<VB6Identifier>
 }
 

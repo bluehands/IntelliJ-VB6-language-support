@@ -11,7 +11,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeElement
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
@@ -70,7 +70,7 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         return findFirstChildByType(this)
     }
 
-    override fun getReturnType(): VB6TypeDeclaration? {
+    override fun getReturnType(): VB6TypeElement? {
         return getReturnAsTypeClause()
             ?.typeRule
             ?.type

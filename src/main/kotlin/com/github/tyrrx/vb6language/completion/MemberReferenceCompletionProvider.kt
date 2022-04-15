@@ -23,7 +23,7 @@ class MemberReferenceCompletionProvider : CompletionProvider<CompletionParameter
         val pos = parameters.position
         val placeholderReferenceOwner = getPlaceholderReferenceOwner(pos)
         val previousReferenceOwner = getPreviousReferenceOwnerOf(placeholderReferenceOwner)
-        val lookupElements = resolveVariants(resolveReferenceOf(previousReferenceOwner))
+        val lookupElements = variantsOf(resolveReferenceOf(previousReferenceOwner))
                 .map {
                     LookupElementBuilder.create(it)
                 }
@@ -46,15 +46,15 @@ class MemberReferenceCompletionProvider : CompletionProvider<CompletionParameter
         else -> null
     }
 
-    private fun resolveVariants(resolvedElement: PsiElement?): List<VB6NamedElementOwner> = when (resolvedElement) {
+    private fun variantsOf(resolvedElement: PsiElement?): List<VB6NamedElementOwner> = when (resolvedElement) {
         is VB6TypeDeclaration -> resolvedElement.processTypeDeclarations(SuggestionTypeDeclarationVisitor())
-        is VB6TypeInferable -> resolveVariantsFromInferable(resolvedElement)
+        is VB6TypeInferable -> variantsOfInferable(resolvedElement)
         else -> emptyList()
     }
 
-    private fun resolveVariantsFromInferable(resolvedElement: VB6TypeInferable) =
+    private fun variantsOfInferable(resolvedElement: VB6TypeInferable) =
             when (val result = resolvedElement.inferType()) {
-                is InferenceResult.ComplexType -> resolveVariants(result.typeReference?.resolve())
+                is InferenceResult.UserDefinedType -> variantsOf(result.typeDeclaration)
                 is InferenceResult.BaseType -> emptyList() // todo basic type methods
                 is InferenceResult.Unknown -> emptyList() // todo
             }

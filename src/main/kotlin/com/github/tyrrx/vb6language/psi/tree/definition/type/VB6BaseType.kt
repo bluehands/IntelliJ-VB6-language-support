@@ -10,7 +10,7 @@ import com.github.tyrrx.vb6language.psi.utils.findReferenceOwnerRecursive
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6BaseType: VB6TypeDeclaration, VB6NamedElement {
+interface VB6BaseType: VB6TypeElement, VB6NamedElement {
 
 }
 

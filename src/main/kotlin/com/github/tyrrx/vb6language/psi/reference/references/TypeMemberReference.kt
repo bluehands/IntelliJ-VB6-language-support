@@ -45,8 +45,8 @@ class TypeMemberReference(
 
     private fun resolveInInferenceResult(typeInferable: VB6TypeInferable) =
         when (val result = typeInferable.inferType()) {
-            is InferenceResult.ComplexType -> {
-                val resolvedType = result.typeReference?.resolve()
+            is InferenceResult.UserDefinedType -> {
+                val resolvedType = result.typeDeclaration
                 resolveInElement(resolvedType)
             }
             else -> null
