@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.inference.VB6ReturnTypeOwner
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.base.*
+
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList

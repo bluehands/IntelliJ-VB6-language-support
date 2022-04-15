@@ -1,11 +1,12 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.identifier
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6AmbiguousKeyword: PsiElement {
+interface VB6AmbiguousKeyword: VB6PsiElement {
 }
 
 class VB6AmbiguousKeywordImpl(node: ASTNode) : VB6PsiNode(node),

@@ -1,11 +1,12 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.general
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6ArgumentDefaultValue:PsiElement {
+interface VB6ArgumentDefaultValue:VB6PsiElement {
 // Todo add members
 }
 

@@ -1,8 +1,8 @@
 package com.github.tyrrx.vb6language.language
 
+import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiElement
 
-interface IPsiNodeFactory<T : PsiElement> {
+interface IPsiNodeFactory<T : VB6PsiElement> {
     fun createPsiNode(node: ASTNode): T
 }

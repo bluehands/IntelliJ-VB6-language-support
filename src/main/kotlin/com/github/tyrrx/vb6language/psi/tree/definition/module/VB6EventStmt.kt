@@ -8,7 +8,6 @@ import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility

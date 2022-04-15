@@ -2,12 +2,13 @@ package com.github.tyrrx.vb6language.psi.tree.definition.general
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.elementType
 
-interface VB6Visibility: PsiElement {
+interface VB6Visibility: VB6PsiElement {
     fun getEnumValue(): VB6VisibilityEnum
 }
 

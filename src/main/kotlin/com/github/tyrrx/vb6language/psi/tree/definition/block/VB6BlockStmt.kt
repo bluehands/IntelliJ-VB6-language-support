@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6BlockStmt : PsiElement {
+interface VB6BlockStmt : VB6PsiElement {
     val statement: VB6PsiElement
 }
 
