@@ -1,13 +1,11 @@
-package com.github.tyrrx.vb6language.psi.reference
+package com.github.tyrrx.vb6language.psi.reference.references
 
-import com.github.tyrrx.vb6language.psi.reference.visitor.TypeResolveVisitor
-import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
-import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
-class TypeReference(
+class EventReference(
         override val myReferenceOwner: VB6ReferenceOwner,
         override val referencingNamedElement: VB6NamedElement,
         override val textRange: TextRange
@@ -21,13 +19,7 @@ class TypeReference(
     }
 
     override fun resolve(): PsiElement? {
-        val resolveInContext = myReferenceOwner.resolveInContext(
-            TypeResolveVisitor(
-                myReferenceOwner,
-                referencingNamedElement
-            )
-        )
-        return resolveInContext
+        TODO("Not yet implemented")
     }
 
     override fun getCanonicalText(): String {
@@ -35,7 +27,7 @@ class TypeReference(
     }
 
     override fun handleElementRename(newElementName: String): PsiElement {
-        return referencingNamedElement.setName(newElementName)
+        TODO("Not yet implemented")
     }
 
     override fun bindToElement(element: PsiElement): PsiElement {
@@ -43,13 +35,7 @@ class TypeReference(
     }
 
     override fun isReferenceTo(element: PsiElement): Boolean {
-        val otherElement = when (element) {
-            is VB6NamedElement -> element.namedElementOwner
-            else -> element
-        }
-
-        val resolve = resolve()
-        return otherElement === resolve
+        TODO("Not yet implemented")
     }
 
     override fun isSoft(): Boolean {

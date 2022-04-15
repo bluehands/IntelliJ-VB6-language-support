@@ -7,7 +7,6 @@ import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeHintOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeHint
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType

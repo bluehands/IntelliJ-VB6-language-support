@@ -1,11 +1,11 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.psi.base.VB6ArgumentOwner
-import com.github.tyrrx.vb6language.psi.scope.VB6BlockScopeOwner
-import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.mixins.VB6IsStaticInChildrenMixin
 import com.github.tyrrx.vb6language.psi.mixins.VB6VisibilityOwnerMixin
+import com.github.tyrrx.vb6language.psi.scope.VB6BlockScopeOwner
+import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
 
 interface VB6PropertyStatementBase :
     VB6EnclosingVisibleNamedElements,

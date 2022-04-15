@@ -1,11 +1,14 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.call
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.base.*
-import com.github.tyrrx.vb6language.psi.reference.TypeMemberReference
-import com.github.tyrrx.vb6language.psi.reference.VB6Reference
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceChain
+import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceOwner
+import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceFactory
+import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.reference.references.TypeMemberReference
+import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.intellij.lang.ASTNode
 
 interface VB6InlineMemberCall : VB6PsiElement, VB6MemberReferenceOwner, VB6ReferenceFactory {

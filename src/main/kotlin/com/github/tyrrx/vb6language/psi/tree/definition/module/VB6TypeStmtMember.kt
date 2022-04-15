@@ -3,10 +3,9 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.base.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.intellij.lang.ASTNode

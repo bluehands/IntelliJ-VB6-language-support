@@ -1,11 +1,10 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
-import com.intellij.psi.PsiElement
 
 interface VB6ModuleDeclarations : VB6PsiElement {
     val elements: List<VB6ModuleDeclarationsElement>

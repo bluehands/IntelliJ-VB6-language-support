@@ -10,6 +10,6 @@ interface VB6TypeClauseOwner : VB6TypeInferable {
          = when (val type = typeClause?.typeRule?.type) {
             is VB6BaseType -> InferenceResult.BaseType(type.name)
             is VB6ComplexType -> InferenceResult.ComplexType(typeClause?.reference)
-            else -> InferenceResult.Unknown
+            else -> InferenceResult.Unknown(null)
         }
 }

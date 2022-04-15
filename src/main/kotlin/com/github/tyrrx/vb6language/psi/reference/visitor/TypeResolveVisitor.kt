@@ -2,11 +2,9 @@ package com.github.tyrrx.vb6language.psi.reference.visitor
 
 import com.github.tyrrx.vb6language.project.projectVisibleTypes
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
-import com.github.tyrrx.vb6language.psi.base.VB6BlockOwner
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.base.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6BlockStmt
+import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfBlockStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfElseBlockStmt
@@ -16,7 +14,6 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForEachStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
-import com.github.tyrrx.vb6language.psi.utils.findFirstParentOfType
 
 class TypeResolveVisitor(
         override val referenceOwner: VB6ReferenceOwner,

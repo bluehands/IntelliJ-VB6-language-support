@@ -1,9 +1,9 @@
 package com.github.tyrrx.vb6language.psi.tree.definition
 
+import com.github.tyrrx.vb6language.language.VB6Language
 import com.github.tyrrx.vb6language.project.VB6Project
 import com.github.tyrrx.vb6language.project.VB6WorkspaceService
-import com.github.tyrrx.vb6language.language.VB6Language
-import com.github.tyrrx.vb6language.psi.reference.VB6Reference
+import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.scope.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor

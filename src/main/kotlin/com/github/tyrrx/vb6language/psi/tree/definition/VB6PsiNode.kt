@@ -1,8 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.definition
 
-import com.github.tyrrx.vb6language.psi.reference.VB6Reference
+import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.scope.VB6ScopeNode
-import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
 import com.intellij.extapi.psi.ASTWrapperPsiElement
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement

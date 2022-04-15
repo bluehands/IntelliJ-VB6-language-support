@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.psi.scope
 
-import com.github.tyrrx.vb6language.psi.base.VB6PsiElement
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 
 interface VB6ScopeNode : VB6PsiElement {

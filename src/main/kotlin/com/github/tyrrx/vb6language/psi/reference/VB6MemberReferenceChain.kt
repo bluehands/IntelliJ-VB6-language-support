@@ -1,4 +1,6 @@
-package com.github.tyrrx.vb6language.psi.base
+package com.github.tyrrx.vb6language.psi.reference
+
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 
 interface VB6MemberReferenceChain : VB6PsiElement {
     /**
