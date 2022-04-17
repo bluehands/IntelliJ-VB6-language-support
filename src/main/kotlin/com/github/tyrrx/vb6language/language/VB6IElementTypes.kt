@@ -7,7 +7,7 @@ import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.intellij.adaptor.lexer.RuleIElementType
 import org.antlr.intellij.adaptor.lexer.TokenIElementType
 
-object VB6IElementTypes: TokenType {
+object VB6IElementTypes : TokenType {
 
     val tokens: List<TokenIElementType> = PSIElementTypeFactory.getTokenIElementTypes(VB6Language.INSTANCE)
 
@@ -34,4 +34,12 @@ object VB6IElementTypes: TokenType {
     val NEW = tokens[VisualBasic6Lexer.NEW]
 
     val WITHEVENTS = tokens[VisualBasic6Lexer.WITHEVENTS]
+
+    val DIM = tokens[VisualBasic6Lexer.DIM]
+
+    val WS = tokens[VisualBasic6Lexer.WS]
+
+    val AS = tokens[VisualBasic6Lexer.AS]
+
+    val STRING = tokens[VisualBasic6Lexer.STRING]
 }

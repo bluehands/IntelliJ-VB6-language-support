@@ -100,10 +100,10 @@ startRule : module EOF;
 module :
 	WS?
 	endOfLine*
-	(moduleHeader endOfLine*)?
-	moduleConfig? endOfLine*
-	moduleAttributes? endOfLine*
-	moduleDeclarations? endOfLine*
+	(moduleHeader endOfLine+)?
+	(moduleConfig endOfLine+)?
+	(moduleAttributes endOfLine+)?
+	(moduleDeclarations endOfLine+)?
 	moduleBody? endOfLine*
 	WS?
 ;

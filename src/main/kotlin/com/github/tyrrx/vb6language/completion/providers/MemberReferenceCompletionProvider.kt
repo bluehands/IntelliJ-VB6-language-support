@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.completion
+package com.github.tyrrx.vb6language.completion.providers
 
 import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceOwner
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement

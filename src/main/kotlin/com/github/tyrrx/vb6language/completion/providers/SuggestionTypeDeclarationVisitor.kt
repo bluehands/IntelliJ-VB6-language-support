@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.completion
+package com.github.tyrrx.vb6language.completion.providers
 
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmtImpl

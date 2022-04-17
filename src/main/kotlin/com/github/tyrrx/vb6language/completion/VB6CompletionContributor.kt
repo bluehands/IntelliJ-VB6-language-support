@@ -1,12 +1,15 @@
 package com.github.tyrrx.vb6language.completion
 
-import com.github.tyrrx.vb6language.language.VB6Language
-import com.intellij.codeInsight.completion.CompletionContributor
-import com.intellij.codeInsight.completion.CompletionType
-import com.intellij.patterns.PlatformPatterns
+import com.github.tyrrx.vb6language.completion.providers.MemberReferenceCompletionProvider
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleBody
+import com.intellij.codeInsight.completion.*
 
-class VB6CompletionContributor: CompletionContributor() {
+class VB6CompletionContributor : CompletionContributor() {
     init {
-        extend(CompletionType.BASIC, PlatformPatterns.psiElement().withLanguage(VB6Language.INSTANCE), MemberReferenceCompletionProvider())
+        extend(CompletionType.BASIC, psiElement(), MemberReferenceCompletionProvider())
+    }
+
+    override fun beforeCompletion(context: CompletionInitializationContext) {
+
     }
 }

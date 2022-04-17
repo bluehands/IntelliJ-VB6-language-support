@@ -32,10 +32,10 @@ class SymbolReference(
 
     override fun resolve(): PsiElement? {
         return myReferenceOwner.resolveInContext(
-            SymbolResolveVisitor(
-                myReferenceOwner,
-                referencingNamedElement
-            )
+                SymbolResolveVisitor(
+                        myReferenceOwner,
+                        referencingNamedElement
+                )
         )
     }
 
@@ -67,10 +67,6 @@ class SymbolReference(
 
     override fun isSoft(): Boolean {
         return false
-    }
-
-    override fun getVariants(): Array<String> {
-        return arrayOf("aaaa", "bbbb")
     }
 }
 
