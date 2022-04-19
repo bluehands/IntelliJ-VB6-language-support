@@ -18,12 +18,12 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.util.elementType
 
 interface VB6ConstBase :
-    VB6PsiElement,
+        VB6PsiElement,
         VB6NamedElementOwner,
         VB6TypeClauseOwner,
         VB6TypeHintMixin {
-            val isModuleConst: Boolean
-        }
+    val isModuleConst: Boolean
+}
 
 interface VB6BlockConst : VB6ConstBase
 interface VB6ModuleConst : VB6ConstBase, VB6VisibilityOwner
@@ -31,7 +31,7 @@ interface VB6ModuleConst : VB6ConstBase, VB6VisibilityOwner
 interface VB6ConstStmt : VB6ModuleConst, VB6BlockConst
 
 class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
-    VB6ConstStmt {
+        VB6ConstStmt {
 
     object Factory : IPsiNodeFactory<VB6ConstStmt> {
         override fun createPsiNode(node: ASTNode): VB6ConstStmt {
@@ -47,18 +47,20 @@ class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
         get() = true
 
     override val isModuleConst: Boolean
-        get() = parent.elementType == VB6IElementTypes.rules[VisualBasic6Parser.RULE_moduleConstListStmt]
+        get() = parent is VB6ModuleConstList
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
     }
 
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        nameIdentifier?.setName(name)
+        return this
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
+
     override val outsideVisibleNamedElements: List<VB6NamedElement>
         get() = TODO("Not yet implemented")
 

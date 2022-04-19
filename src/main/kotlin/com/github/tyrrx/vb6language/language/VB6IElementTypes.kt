@@ -42,4 +42,6 @@ object VB6IElementTypes : TokenType {
     val AS = tokens[VisualBasic6Lexer.AS]
 
     val STRING = tokens[VisualBasic6Lexer.STRING]
+    
+    val PTRSAFE = tokens[VisualBasic6Lexer.PTRSAFE]
 }

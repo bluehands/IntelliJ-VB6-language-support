@@ -264,10 +264,10 @@ constStmt : ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? expressi
 
 dateStmt : DATE WS? EQ WS? expression;
 
-declareStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? (declareFunctionDef | SUB) WS ambiguousIdentifier typeHint? WS declareLibDef declareAliasDef (WS? argList)? (WS asTypeClause)?;
-declareFunctionDef: FUNCTION typeHint?; // todo register
-declareLibDef : LIB WS STRINGLITERAL; // todo register
-declareAliasDef: (WS ALIAS WS STRINGLITERAL)?; // todo register
+declareStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? (declareFunction | SUB) WS ambiguousIdentifier typeHint? WS declareLib declareAlias? (WS? argList)? (WS asTypeClause)?;
+declareFunction: FUNCTION typeHint?;
+declareLib : LIB WS STRINGLITERAL;
+declareAlias: WS ALIAS WS STRINGLITERAL;
 
 deftypeStmt :
 	(

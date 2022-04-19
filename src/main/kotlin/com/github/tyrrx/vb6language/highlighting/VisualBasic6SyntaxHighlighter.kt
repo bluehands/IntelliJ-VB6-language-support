@@ -26,21 +26,21 @@ class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
     private fun mergeAll(vararg maps: Map<IElementType, TextAttributesKey>): HashMap<IElementType, TextAttributesKey> {
         val resultHashMap = HashMap<IElementType, TextAttributesKey>()
         maps
-            .flatMap { it.entries }
-            .forEach { safeMap(resultHashMap, it.key, it.value) }
+                .flatMap { it.entries }
+                .forEach { safeMap(resultHashMap, it.key, it.value) }
         return resultHashMap
     }
 
     private val elementTypeTextAttributeKeyMap = mergeAll(
-        VB6TokenSets.comments mapsTo COMMENT,
-        VB6TokenSets.identifiers mapsTo IDENTIFIER,
-        VB6TokenSets.errorChars mapsTo BAD_CHARACTER,
-        VB6TokenSets.stringLiterals mapsTo STRINGS,
-        //VB6TokenSets.braces mapsTo BRACES,
-        VB6TokenSets.parentheses mapsTo PARENTHESES,
-        VB6TokenSets.brackets mapsTo BRACKETS,
-        VB6TokenSets.keywords mapsTo KEYWORDS,
-        VB6TokenSets.numbers mapsTo NUMBER
+            VB6TokenSets.comments mapsTo COMMENT,
+            VB6TokenSets.identifiers mapsTo IDENTIFIER,
+            VB6TokenSets.errorChars mapsTo BAD_CHARACTER,
+            VB6TokenSets.stringLiterals mapsTo STRINGS,
+            //VB6TokenSets.braces mapsTo BRACES,
+            VB6TokenSets.parentheses mapsTo PARENTHESES,
+            VB6TokenSets.brackets mapsTo BRACKETS,
+            VB6TokenSets.keywords mapsTo KEYWORDS,
+            VB6TokenSets.numbers mapsTo NUMBER
     )
 
 
@@ -55,73 +55,78 @@ class VisualBasic6SyntaxHighlighter : SyntaxHighlighterBase() {
 //        }
 
         val BACKGROUND = createTextAttributesKey(
-            "VB6_BACKGROUND",
-            DefaultLanguageHighlighterColors.TEMPLATE_LANGUAGE_COLOR
+                "VB6_BACKGROUND",
+                DefaultLanguageHighlighterColors.TEMPLATE_LANGUAGE_COLOR
         )
 
         val IDENTIFIER = createTextAttributesKey(
-            "VB6_IDENTIFIER",
-            DefaultLanguageHighlighterColors.IDENTIFIER
+                "VB6_IDENTIFIER",
+                DefaultLanguageHighlighterColors.IDENTIFIER
         )
 
         val BAD_CHARACTER = createTextAttributesKey(
-            "VB6_BAD_CHARACTER",
-            HighlighterColors.BAD_CHARACTER
+                "VB6_BAD_CHARACTER",
+                HighlighterColors.BAD_CHARACTER
         )
 
         val BRACES = createTextAttributesKey(
-            "VB6_BRACES",
-            DefaultLanguageHighlighterColors.BRACES
+                "VB6_BRACES",
+                DefaultLanguageHighlighterColors.BRACES
         )
 
         val BRACKETS = createTextAttributesKey(
-            "VB6_BRACKETS",
-            DefaultLanguageHighlighterColors.BRACKETS
+                "VB6_BRACKETS",
+                DefaultLanguageHighlighterColors.BRACKETS
         )
 
         val COMMENT = createTextAttributesKey(
-            "VB6_COMMENT",
-            DefaultLanguageHighlighterColors.DOC_COMMENT
+                "VB6_COMMENT",
+                DefaultLanguageHighlighterColors.DOC_COMMENT
         )
 
         val DELIMITER = createTextAttributesKey(
-            "VB6_DELIMITER",
-            DefaultLanguageHighlighterColors.INSTANCE_FIELD
+                "VB6_DELIMITER",
+                DefaultLanguageHighlighterColors.INSTANCE_FIELD
         )
 
         val KEYWORDS = createTextAttributesKey(
-            "VB6_KEYWORD",
-            DefaultLanguageHighlighterColors.KEYWORD
+                "VB6_KEYWORD",
+                DefaultLanguageHighlighterColors.KEYWORD
         )
 
         val NUMBER = createTextAttributesKey(
-            "VB6_NUMBER",
-            DefaultLanguageHighlighterColors.NUMBER
+                "VB6_NUMBER",
+                DefaultLanguageHighlighterColors.NUMBER
         )
 
         val OPERATORS = createTextAttributesKey(
-            "VB6_OPERATOR",
-            DefaultLanguageHighlighterColors.OPERATION_SIGN
+                "VB6_OPERATOR",
+                DefaultLanguageHighlighterColors.OPERATION_SIGN
         )
 
         val PARENTHESES = createTextAttributesKey(
-            "VB6_PARENTHESIS",
-            DefaultLanguageHighlighterColors.PARENTHESES
+                "VB6_PARENTHESIS",
+                DefaultLanguageHighlighterColors.PARENTHESES
+        )
+
+        val CONSTANT = createTextAttributesKey(
+                "VB6_CONSTANT",
+                DefaultLanguageHighlighterColors.CONSTANT
         )
 
         val STRINGS = createTextAttributesKey(
-            "VB6_STRING",
-            DefaultLanguageHighlighterColors.STRING
+                "VB6_STRING",
+                DefaultLanguageHighlighterColors.STRING,
         )
 
         val FUNCTION_DECLARATION = createTextAttributesKey(
-            "VB6_FUNCTION_DECLARATION",
-            DefaultLanguageHighlighterColors.FUNCTION_DECLARATION
+                "VB6_FUNCTION_DECLARATION",
+                DefaultLanguageHighlighterColors.FUNCTION_DECLARATION
         )
 
         val FUNCTION_CALL = createTextAttributesKey(
-            "VB6_FUNCTION_CALL",
-            DefaultLanguageHighlighterColors.FUNCTION_CALL
+                "VB6_FUNCTION_CALL",
+                DefaultLanguageHighlighterColors.FUNCTION_CALL
 
         )
     }

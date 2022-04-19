@@ -56,8 +56,23 @@ class VB6DocumentationProvider : AbstractDocumentationProvider() {
                     is VB6DeclareStmt -> {
                         appendVisibility(resolve)
                         append(" Declare ")
+                        if (resolve.isPtrSafe) {
+                            append("PtrSafe ")
+                        }
+                        bold {
+                            if (resolve.function != null) {
+                                append("Function ")
+                            } else {
+                                append("Sub ")
+                            }
+                        }
                         appendName(resolve)
-                        // todo function or sub, lib, alias, ptrsafe
+                        resolve.lib?.let {
+                            append(" Lib \"${it.stringLiteral?.value}\" ")
+                        }
+                        resolve.alias?.let {
+                            append(" Alias \"${it.stringLiteral?.value}\" ")
+                        }
                         appendArguments(resolve)
                         appendTypeInferable(resolve)
 

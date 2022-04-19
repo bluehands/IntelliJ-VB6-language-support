@@ -1,6 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.base.VB6ArgumentOwner
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
@@ -13,6 +14,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.isIElementTypePresentInChildren
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -23,6 +25,10 @@ interface VB6DeclareStmt :
         VB6TypeClauseOwner,
         VB6ArgumentOwner,
         VB6VisibilityOwnerMixin {
+    val lib: VB6DeclareLib?
+    val alias: VB6DeclareAlias?
+    val function: VB6DeclareFunction?
+    val isPtrSafe: Boolean
 }
 
 class VB6DeclareStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareStmt {
@@ -54,6 +60,18 @@ class VB6DeclareStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareStmt {
 
     override val isDefinition: Boolean
         get() = true
+
+    override val lib: VB6DeclareLib?
+        get() = findFirstChildByType(this)
+
+    override val alias: VB6DeclareAlias?
+        get() = findFirstChildByType(this)
+
+    override val function: VB6DeclareFunction?
+        get() = findFirstChildByType(this)
+
+    override val isPtrSafe: Boolean
+        get() = VB6IElementTypes.PTRSAFE.isIElementTypePresentInChildren(this)
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
