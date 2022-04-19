@@ -1,6 +1,8 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
@@ -13,12 +15,15 @@ import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
+import com.intellij.psi.util.elementType
 
 interface VB6ConstBase :
     VB6PsiElement,
         VB6NamedElementOwner,
         VB6TypeClauseOwner,
-        VB6TypeHintMixin
+        VB6TypeHintMixin {
+            val isModuleConst: Boolean
+        }
 
 interface VB6BlockConst : VB6ConstBase
 interface VB6ModuleConst : VB6ConstBase, VB6VisibilityOwner
@@ -40,6 +45,9 @@ class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val isDefinition: Boolean
         get() = true
+
+    override val isModuleConst: Boolean
+        get() = parent.elementType == VB6IElementTypes.rules[VisualBasic6Parser.RULE_moduleConstListStmt]
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)

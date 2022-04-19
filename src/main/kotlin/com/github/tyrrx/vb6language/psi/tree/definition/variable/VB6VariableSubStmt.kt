@@ -2,6 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
@@ -14,12 +15,14 @@ import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.utils.isIElementTypePresentInChildren
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
+import com.intellij.psi.util.elementType
 
-interface VB6VariableSubStmt: VB6BlockVariable, VB6ModuleVariable {
+interface VB6VariableSubStmt : VB6BlockVariable, VB6ModuleVariable {
+    val isModuleVariable: Boolean
 }
 
 class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
-    VB6VariableSubStmt {
+        VB6VariableSubStmt {
 
     object Factory : IPsiNodeFactory<VB6VariableSubStmt> {
         override fun createPsiNode(node: ASTNode): VB6VariableSubStmt {
@@ -31,17 +34,18 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return VB6IElementTypes.WITHEVENTS.isIElementTypePresentInChildren(parent.parent)
     }
 
-    override fun getVisibility(): VB6VisibilityEnum {
-        return findFirstChildByType<VB6Visibility>(parent.parent)
+    override val visibility: VB6VisibilityEnum = findFirstChildByType<VB6Visibility>(parent.parent)
             ?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
-    }
 
     override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
 
     override fun getSubscripts(): List<VB6SubscriptElement> {
         return findFirstChildByType<VB6Subscripts>(this)
-            ?.getElements() ?: emptyList()
+                ?.getElements() ?: emptyList()
     }
+
+    override val isModuleVariable: Boolean
+        get() = parent.parent.elementType == VB6IElementTypes.rules[VisualBasic6Parser.RULE_moduleVariableStmt]
 
     override fun isStatic(): Boolean {
         return VB6IElementTypes.STATIC.isIElementTypePresentInChildren(parent.parent)
