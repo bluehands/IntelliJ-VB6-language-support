@@ -36,7 +36,7 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun setName(name: String): PsiElement {
-        return nameIdentifier?.setName(name) ?: this
+        return this
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
@@ -73,5 +73,7 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val isDefinition: Boolean
         get() = true
 
-
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
 }

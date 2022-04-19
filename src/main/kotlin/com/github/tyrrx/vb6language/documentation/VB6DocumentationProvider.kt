@@ -164,7 +164,7 @@ private fun StringBuilder.appendArguments(resolve: VB6ArgumentOwner) {
 private fun StringBuilder.appendTypeInferable(resolve: VB6TypeInferable) {
     when (val inferenceResult = resolve.inferType()) {
         is InferenceResult.BaseType -> appendTypeName(inferenceResult.typeName)
-        is InferenceResult.Unknown -> appendTypeName("Unknown")
+        is InferenceResult.Unknown -> appendTypeName("Variant")
         is InferenceResult.UserDefinedType -> appendTypeName(inferenceResult.typeDeclaration.name)
     }
 }
