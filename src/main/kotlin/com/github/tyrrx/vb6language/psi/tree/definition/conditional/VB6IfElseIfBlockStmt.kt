@@ -1,7 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.conditional
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.scope.VB6TransparentBlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
@@ -26,7 +25,7 @@ class VB6IfElseIfBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),
         get() = findFirstChildByType(this)
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolveIfElseIfStmt(this)
+        return resolveVisitor.visitIfElseIfStmt(this)
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>

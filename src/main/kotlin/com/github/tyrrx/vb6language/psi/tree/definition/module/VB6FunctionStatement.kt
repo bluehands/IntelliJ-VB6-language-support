@@ -76,7 +76,7 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
         get() = listOf(this)
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolveFunctionStmt(this)
+        return resolveVisitor.visitFunctionStmt(this)
     }
 
     override fun setName(name: String): PsiElement {

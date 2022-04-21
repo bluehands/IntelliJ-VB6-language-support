@@ -13,19 +13,19 @@ import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 
 interface ScopeNodeVisitor<TReturn> {
 
-    fun resolveFile(scope: VB6File): TReturn
-    fun resolveModule(scope: VB6Module): TReturn
-    fun resolveWithStmt(scope: VB6WithStmt): TReturn
-    fun resolveIfBlockStmt(scope: VB6IfBlockStmt): TReturn
-    fun resolveIfElseBlockStmt(scope: VB6IfElseBlockStmt): TReturn
-    fun resolveIfElseIfStmt(scope: VB6IfElseIfBlockStmt): TReturn
-    fun resolveDoLoopStmt(scope: VB6DoLoopStmt): TReturn
-    fun resolveForEachStmt(scope: VB6ForEachStmt): TReturn
-    fun resolveForNextStmt(scope: VB6ForNextStmt): TReturn
-    fun resolveWhileWendStmt(scope: VB6WhileWendStmt): TReturn
-    fun resolveFunctionStmt(scope: VB6FunctionStatement): TReturn
-    fun resolveSubroutineStmt(scope: VB6SubroutineStatement): TReturn
-    fun resolvePropertyGetStmt(scope: VB6PropertyGetStatement): TReturn
-    fun resolvePropertySetStmt(scope: VB6PropertySetStatement): TReturn
-    fun resolvePropertyLetStmt(scope: VB6PropertyLetStatement): TReturn
+    fun visitFile(scope: VB6File): TReturn
+    fun visitModule(scope: VB6Module): TReturn
+    fun visitWithStmt(scope: VB6WithStmt): TReturn
+    fun visitIfBlockStmt(scope: VB6IfBlockStmt): TReturn
+    fun visitIfElseBlockStmt(scope: VB6IfElseBlockStmt): TReturn
+    fun visitIfElseIfStmt(scope: VB6IfElseIfBlockStmt): TReturn
+    fun visitDoLoopStmt(scope: VB6DoLoopStmt): TReturn
+    fun visitForEachStmt(scope: VB6ForEachStmt): TReturn
+    fun visitForNextStmt(scope: VB6ForNextStmt): TReturn
+    fun visitWhileWendStmt(scope: VB6WhileWendStmt): TReturn
+    fun visitFunctionStmt(scope: VB6FunctionStatement): TReturn
+    fun visitSubroutineStmt(scope: VB6SubroutineStatement): TReturn
+    fun visitPropertyGetStmt(scope: VB6PropertyGetStatement): TReturn
+    fun visitPropertySetStmt(scope: VB6PropertySetStatement): TReturn
+    fun visitPropertyLetStmt(scope: VB6PropertyLetStatement): TReturn
 }

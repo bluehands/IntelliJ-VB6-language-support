@@ -4,7 +4,6 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeDeclaration
@@ -64,7 +63,7 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     override val moduleBody: VB6ModuleBody? get() = findFirstChildByType(this)
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolveModule(this)
+        return resolveVisitor.visitModule(this)
     }
 
     override fun isClass(): Boolean {

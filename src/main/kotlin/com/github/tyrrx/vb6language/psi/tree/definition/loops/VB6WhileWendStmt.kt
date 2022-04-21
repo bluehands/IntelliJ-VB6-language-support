@@ -2,7 +2,6 @@ package com.github.tyrrx.vb6language.psi.tree.definition.loops
 
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.scope.VB6TransparentBlockScopeOwner
@@ -28,7 +27,7 @@ class VB6WhileWendStmtImpl(node: ASTNode) : VB6PsiNode(node),
         get() = findFirstChildByType(this)
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolveWhileWendStmt(this)
+        return resolveVisitor.visitWhileWendStmt(this)
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>

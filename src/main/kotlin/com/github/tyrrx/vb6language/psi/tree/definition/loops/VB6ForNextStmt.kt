@@ -37,7 +37,7 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
         get() = findFirstChildByType(this)
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolveForNextStmt(this)
+        return resolveVisitor.visitForNextStmt(this)
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {

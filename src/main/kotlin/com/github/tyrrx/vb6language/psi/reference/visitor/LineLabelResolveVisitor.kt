@@ -30,63 +30,63 @@ class LineLabelResolveVisitor(
                     ?.filterIsInstance<VB6LineLabel>()
                     ?.find(::compareNames)
 
-    override fun resolveFile(scope: VB6File): VB6NamedElementOwner? {
+    override fun visitFile(scope: VB6File): VB6NamedElementOwner? {
         throw IllegalStateException("Cannot resolve a line label in a file scope. Only enclosing block of functions, properties or subs are valid.")
     }
 
-    override fun resolveModule(scope: VB6Module): VB6NamedElementOwner? {
+    override fun visitModule(scope: VB6Module): VB6NamedElementOwner? {
         throw IllegalStateException("Cannot resolve a line label in a module scope. Only enclosing block of functions, properties or subs are valid.")
     }
 
-    override fun resolveWithStmt(scope: VB6WithStmt): VB6NamedElementOwner? {
+    override fun visitWithStmt(scope: VB6WithStmt): VB6NamedElementOwner? {
         return scope.resolveInContext(this)
     }
 
-    override fun resolveIfBlockStmt(scope: VB6IfBlockStmt): VB6NamedElementOwner? {
+    override fun visitIfBlockStmt(scope: VB6IfBlockStmt): VB6NamedElementOwner? {
         return scope.resolveInContext(this)
     }
 
-    override fun resolveIfElseBlockStmt(scope: VB6IfElseBlockStmt): VB6NamedElementOwner? {
+    override fun visitIfElseBlockStmt(scope: VB6IfElseBlockStmt): VB6NamedElementOwner? {
         return scope.resolveInContext(this)
     }
 
-    override fun resolveIfElseIfStmt(scope: VB6IfElseIfBlockStmt): VB6NamedElementOwner? {
+    override fun visitIfElseIfStmt(scope: VB6IfElseIfBlockStmt): VB6NamedElementOwner? {
         return scope.resolveInContext(this)
     }
 
-    override fun resolveDoLoopStmt(scope: VB6DoLoopStmt): VB6NamedElementOwner? {
+    override fun visitDoLoopStmt(scope: VB6DoLoopStmt): VB6NamedElementOwner? {
         return scope.resolveInContext(this)
     }
 
-    override fun resolveForEachStmt(scope: VB6ForEachStmt): VB6NamedElementOwner? {
+    override fun visitForEachStmt(scope: VB6ForEachStmt): VB6NamedElementOwner? {
         return scope.resolveInContext(this)
     }
 
-    override fun resolveForNextStmt(scope: VB6ForNextStmt): VB6NamedElementOwner? {
+    override fun visitForNextStmt(scope: VB6ForNextStmt): VB6NamedElementOwner? {
         return scope.resolveInContext(this)
     }
 
-    override fun resolveWhileWendStmt(scope: VB6WhileWendStmt): VB6NamedElementOwner? {
+    override fun visitWhileWendStmt(scope: VB6WhileWendStmt): VB6NamedElementOwner? {
         return scope.resolveInContext(this)
     }
 
-    override fun resolveFunctionStmt(scope: VB6FunctionStatement): VB6NamedElementOwner? {
+    override fun visitFunctionStmt(scope: VB6FunctionStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
     }
 
-    override fun resolveSubroutineStmt(scope: VB6SubroutineStatement): VB6NamedElementOwner? {
+    override fun visitSubroutineStmt(scope: VB6SubroutineStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
     }
 
-    override fun resolvePropertyGetStmt(scope: VB6PropertyGetStatement): VB6NamedElementOwner? {
+    override fun visitPropertyGetStmt(scope: VB6PropertyGetStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
     }
 
-    override fun resolvePropertySetStmt(scope: VB6PropertySetStatement): VB6NamedElementOwner? {
+    override fun visitPropertySetStmt(scope: VB6PropertySetStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
     }
 
-    override fun resolvePropertyLetStmt(scope: VB6PropertyLetStatement): VB6NamedElementOwner? {
+    override fun visitPropertyLetStmt(scope: VB6PropertyLetStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
     }
 }

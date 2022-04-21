@@ -14,11 +14,11 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6LetStmt : VB6PsiElement, VB6NamedElementOwner {
-    val callStatement: VB6InlineCall?
+    val inlineCall: VB6InlineCall?
 }
 
 class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
-    VB6LetStmt {
+        VB6LetStmt {
 
     object Factory : IPsiNodeFactory<VB6LetStmt> {
         override fun createPsiNode(node: ASTNode): VB6LetStmt {
@@ -26,20 +26,23 @@ class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
-    override val callStatement: VB6InlineCall?
+    override val inlineCall: VB6InlineCall?
         get() = findFirstChildByType(this)
 
     override val isDefinition: Boolean
-        get() = callStatementReference?.resolve() == null
+        get() {
+            return callStatementReference?.let {
+                it.resolve() == null
+            } ?: false
+        }
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return callStatementReference?.referencingNamedElement
     }
 
     private val callStatementReference: VB6Reference?
-        get() = when (val def = callStatement?.firstChild) {
+        get() = when (val def = inlineCall?.firstChild) {
             is VB6AtomicInlineCall -> def.reference
-            //Todo other cases
             else -> null
         }
 

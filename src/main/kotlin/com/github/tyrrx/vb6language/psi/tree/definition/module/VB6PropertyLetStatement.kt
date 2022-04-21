@@ -31,7 +31,7 @@ class VB6PropertyLetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         get() = findFirstChildByType(this)
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolvePropertyLetStmt(this)
+        return resolveVisitor.visitPropertyLetStmt(this)
     }
 
     override fun setName(name: String): PsiElement {

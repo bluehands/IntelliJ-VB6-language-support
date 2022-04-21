@@ -37,7 +37,7 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
         get() = listOf(this)
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolveSubroutineStmt(this)
+        return resolveVisitor.visitSubroutineStmt(this)
     }
 
     override fun setName(name: String): PsiElement {

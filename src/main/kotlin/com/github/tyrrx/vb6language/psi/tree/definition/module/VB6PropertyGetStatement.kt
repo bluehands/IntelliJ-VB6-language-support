@@ -41,7 +41,7 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.resolvePropertyGetStmt(this)
+        return resolveVisitor.visitPropertyGetStmt(this)
     }
 
     override fun setName(name: String): PsiElement {
