@@ -24,8 +24,8 @@ class VB6IfElseBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val block: VB6Block?
         get() = findFirstChildByType(this)
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.visitIfElseBlockStmt(this)
+    override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return nodeVisitor.visitIfElseBlockStmt(this)
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>

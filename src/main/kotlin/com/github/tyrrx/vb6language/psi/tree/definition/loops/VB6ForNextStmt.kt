@@ -36,8 +36,8 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val block: VB6Block?
         get() = findFirstChildByType(this)
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.visitForNextStmt(this)
+    override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return nodeVisitor.visitForNextStmt(this)
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {

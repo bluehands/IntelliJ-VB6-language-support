@@ -3,7 +3,7 @@ package com.github.tyrrx.vb6language.psi.reference.references
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.reference.visitor.SymbolResolveVisitor
-import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
+import com.github.tyrrx.vb6language.psi.reference.visitor.acceptToContext
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
@@ -31,7 +31,7 @@ class SymbolReference(
     }
 
     override fun resolve(): PsiElement? {
-        return myReferenceOwner.resolveInContext(
+        return myReferenceOwner.acceptToContext(
                 SymbolResolveVisitor(
                         myReferenceOwner,
                         referencingNamedElement

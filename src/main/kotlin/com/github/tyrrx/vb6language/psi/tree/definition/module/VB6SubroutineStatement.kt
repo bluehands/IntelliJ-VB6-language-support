@@ -36,8 +36,8 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.visitSubroutineStmt(this)
+    override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return nodeVisitor.visitSubroutineStmt(this)
     }
 
     override fun setName(name: String): PsiElement {

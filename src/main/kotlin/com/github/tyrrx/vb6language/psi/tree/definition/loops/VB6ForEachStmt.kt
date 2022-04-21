@@ -33,8 +33,8 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val block: VB6Block?
         get() = findFirstChildByType(this)
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.visitForEachStmt(this)
+    override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return nodeVisitor.visitForEachStmt(this)
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {

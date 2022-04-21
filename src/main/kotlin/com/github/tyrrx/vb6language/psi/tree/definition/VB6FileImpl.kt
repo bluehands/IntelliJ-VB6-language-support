@@ -40,8 +40,8 @@ class VB6FileImpl(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VB
     override val path: Path
         get() = viewProvider.virtualFile.toNioPath()
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.visitFile(this)
+    override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return nodeVisitor.visitFile(this)
     }
 
     override fun getContext(): VB6ScopeNode? {

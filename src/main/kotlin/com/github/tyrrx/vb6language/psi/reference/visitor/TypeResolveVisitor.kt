@@ -35,58 +35,58 @@ class TypeResolveVisitor(
             .namedElementOwners
             .filter { it is VB6EnumerationStmt || it is VB6TypeStmt }
             .find { compareNames(it) }
-            ?: scope.resolveInContext(this)
+            ?: scope.acceptToContext(this)
     }
 
     override fun visitWithStmt(scope: VB6WithStmt): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitIfBlockStmt(scope: VB6IfBlockStmt): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitIfElseBlockStmt(scope: VB6IfElseBlockStmt): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitIfElseIfStmt(scope: VB6IfElseIfBlockStmt): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitDoLoopStmt(scope: VB6DoLoopStmt): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitForEachStmt(scope: VB6ForEachStmt): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitForNextStmt(scope: VB6ForNextStmt): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitWhileWendStmt(scope: VB6WhileWendStmt): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitFunctionStmt(scope: VB6FunctionStatement): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitSubroutineStmt(scope: VB6SubroutineStatement): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitPropertyGetStmt(scope: VB6PropertyGetStatement): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitPropertySetStmt(scope: VB6PropertySetStatement): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 
     override fun visitPropertyLetStmt(scope: VB6PropertyLetStatement): VB6NamedElementOwner? {
-        return scope.resolveInContext(this)
+        return scope.acceptToContext(this)
     }
 }

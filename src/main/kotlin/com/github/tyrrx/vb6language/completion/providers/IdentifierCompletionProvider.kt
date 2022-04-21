@@ -1,12 +1,12 @@
 package com.github.tyrrx.vb6language.completion.providers
 
-import com.github.tyrrx.vb6language.completion.visitors.SuggestionSymbolVisitor
+import com.github.tyrrx.vb6language.completion.visitors.DeclarationSuggestionsCollectingVisitor
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
-import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
+import com.github.tyrrx.vb6language.psi.reference.visitor.acceptToContext
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicBlockCall
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicInlineCall
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Expression
@@ -50,7 +50,7 @@ class IdentifierCompletionProvider : CompletionProvider<CompletionParameters>() 
 
     private fun searchDeclarationsBefore(placeholderReferenceOwner: VB6ReferenceOwner): List<VB6NamedElementOwner> {
         return placeholderReferenceOwner
-                .resolveInContext(SuggestionSymbolVisitor(placeholderReferenceOwner))
+                .acceptToContext(DeclarationSuggestionsCollectingVisitor(placeholderReferenceOwner))
                 ?: emptyList()
     }
 

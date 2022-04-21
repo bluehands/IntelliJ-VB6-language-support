@@ -23,7 +23,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6FunctionStatement :
-    VB6EnclosingVisibleNamedElements,
+        VB6EnclosingVisibleNamedElements,
         VB6BlockScopeOwner,
         VB6NamedElementOwner,
         VB6ArgumentOwner,
@@ -36,7 +36,7 @@ interface VB6FunctionStatement :
 }
 
 class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
-    VB6FunctionStatement {
+        VB6FunctionStatement {
 
     object Factory : IPsiNodeFactory<VB6FunctionStatementImpl> {
         override fun createPsiNode(node: ASTNode): VB6FunctionStatementImpl {
@@ -62,8 +62,8 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override fun getReturnType(): VB6TypeElement? {
         return getReturnAsTypeClause()
-            ?.typeRule
-            ?.type
+                ?.typeRule
+                ?.type
     }
 
     override val typeClause: VB6AsTypeClause?
@@ -75,8 +75,8 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.visitFunctionStmt(this)
+    override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return nodeVisitor.visitFunctionStmt(this)
     }
 
     override fun setName(name: String): PsiElement {
@@ -86,7 +86,7 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)
-            ?.arguments() ?: emptyList()
+                ?.arguments() ?: emptyList()
 
     override val isDefinition: Boolean
         get() = true

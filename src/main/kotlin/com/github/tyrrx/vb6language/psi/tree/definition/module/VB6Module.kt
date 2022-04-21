@@ -36,7 +36,11 @@ val VB6Module.bodyElements: List<VB6PsiElement>
     get() = moduleBody?.getStatements() ?: emptyList()
 
 val VB6Module.declarationElements: List<VB6PsiElement>
-    get() = moduleDeclarations?.elements?.mapNotNull { it.declaration } ?: emptyList()
+    get() = moduleDeclarations
+            ?.elements
+            ?.mapNotNull { it.declaration }
+            ?.filterNot { it is VB6AttributeStmt }
+            ?: emptyList()
 
 val VB6Module.moduleElements: List<VB6PsiElement>
     get() = bodyElements + declarationElements
@@ -62,8 +66,8 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     override val moduleDeclarations: VB6ModuleDeclarations? get() = findFirstChildByType(this)
     override val moduleBody: VB6ModuleBody? get() = findFirstChildByType(this)
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.visitModule(this)
+    override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return nodeVisitor.visitModule(this)
     }
 
     override fun isClass(): Boolean {

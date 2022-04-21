@@ -1,7 +1,7 @@
 package com.github.tyrrx.vb6language.psi.reference.references
 
 import com.github.tyrrx.vb6language.psi.reference.visitor.TypeResolveVisitor
-import com.github.tyrrx.vb6language.psi.reference.visitor.resolveInContext
+import com.github.tyrrx.vb6language.psi.reference.visitor.acceptToContext
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.intellij.openapi.util.TextRange
@@ -21,7 +21,7 @@ class TypeReference(
     }
 
     override fun resolve(): PsiElement? {
-        val resolveInContext = myReferenceOwner.resolveInContext(
+        val resolveInContext = myReferenceOwner.acceptToContext(
             TypeResolveVisitor(
                 myReferenceOwner,
                 referencingNamedElement

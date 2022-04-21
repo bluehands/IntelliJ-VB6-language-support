@@ -40,8 +40,8 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
         get() = listOf(this)
 
 
-    override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
-        return resolveVisitor.visitPropertyGetStmt(this)
+    override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
+        return nodeVisitor.visitPropertyGetStmt(this)
     }
 
     override fun setName(name: String): PsiElement {
