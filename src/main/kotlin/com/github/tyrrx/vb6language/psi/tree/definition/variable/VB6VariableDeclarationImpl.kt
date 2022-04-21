@@ -2,44 +2,39 @@ package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6SubscriptElement
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Subscripts
-import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.utils.isIElementTypePresentInChildren
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import com.intellij.psi.util.elementType
 
-interface VB6VariableSubStmt : VB6BlockVariable, VB6ModuleVariable {
-    val isModuleVariable: Boolean
-    val statementParent: PsiElement
-}
+class VB6VariableDeclarationImpl(node: ASTNode) : VB6PsiNode(node),
+        VB6VariableDeclaration {
 
-class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
-        VB6VariableSubStmt {
-
-    object Factory : IPsiNodeFactory<VB6VariableSubStmt> {
-        override fun createPsiNode(node: ASTNode): VB6VariableSubStmt {
-            return VB6VariableSubStmtImpl(node)
+    object Factory : IPsiNodeFactory<VB6VariableDeclaration> {
+        override fun createPsiNode(node: ASTNode): VB6VariableDeclaration {
+            return VB6VariableDeclarationImpl(node)
         }
     }
 
-    override fun withEvents(): Boolean {
-        return VB6IElementTypes.WITHEVENTS.isIElementTypePresentInChildren(parent.parent)
-    }
+    override val withEvents: Boolean
+        get() = VB6IElementTypes.WITHEVENTS.isIElementTypePresentInChildren(statementParent)
 
-    override val visibility: VB6VisibilityEnum = (statementParent as? VB6ModuleVariableStmt)
-            ?.visibility?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+    override val visibility: VB6VisibilityEnum
+        get() = when (val parent = statementParent) {
+            is VB6ModuleVariableStmt -> parent.visibility?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+            else -> VB6VisibilityEnum.PUBLIC
+        }
 
-    override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
+
+    override val typeClause: VB6AsTypeClause?
+        get() = findFirstChildByType(this)
 
     override fun getSubscripts(): List<VB6SubscriptElement> {
         return findFirstChildByType<VB6Subscripts>(this)
@@ -52,13 +47,13 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val statementParent: PsiElement
         get() = parent.parent
 
-    override fun isStatic(): Boolean {
-        return VB6IElementTypes.STATIC.isIElementTypePresentInChildren(statementParent)
-    }
+    override val isStatic: Boolean
+        get() = VB6IElementTypes.STATIC.isIElementTypePresentInChildren(statementParent)
 
-    override fun isArray(): Boolean {
-        return getSubscripts().any()
-    }
+    override val isArray: Boolean
+        get() = getSubscripts().any()
+
+    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner> = listOf(this)
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
@@ -73,9 +68,5 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return this
     }
 
-    override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
-        get() = listOf(this)
-
-    override val isDefinition: Boolean
-        get() = true
+    override val isDefinition: Boolean = true
 }

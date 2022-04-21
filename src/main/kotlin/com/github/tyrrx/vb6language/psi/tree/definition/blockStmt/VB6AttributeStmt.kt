@@ -20,7 +20,7 @@ interface VB6AttributeStmt : VB6PsiElement, VB6NamedElementOwner, VB6NamedElemen
 }
 
 class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
-    VB6AttributeStmt {
+        VB6AttributeStmt {
 
     object Factory : IPsiNodeFactory<VB6AttributeStmt> {
         override fun createPsiNode(node: ASTNode): VB6AttributeStmt {
@@ -28,11 +28,12 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
         }
     }
 
-    override val literals: Collection<VB6Literal> = findPsiElementsInDirectChildrenByType(this)
+    override val literals: Collection<VB6Literal>
+        get() = findPsiElementsInDirectChildrenByType(this)
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType<VB6InlineCall>(this)
-            ?.let { findPsiElementInSubtree(it) }
+                ?.let { findPsiElementInSubtree(it) }
     }
 
     override fun setName(name: String): PsiElement {

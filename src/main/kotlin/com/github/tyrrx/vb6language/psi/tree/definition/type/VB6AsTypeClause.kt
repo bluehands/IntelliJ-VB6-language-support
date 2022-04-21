@@ -36,6 +36,7 @@ class VB6AsTypeClauseImpl(node: ASTNode) : VB6PsiNode(node), VB6AsTypeClause {
         return findFirstChildByType(this)
     }
 
-    override val typeRule: VB6TypeRule? get() = findFirstChildByType(this)
+    override val typeRule: VB6TypeRule?
+        get() = findFirstChildByType(this)
 
 }

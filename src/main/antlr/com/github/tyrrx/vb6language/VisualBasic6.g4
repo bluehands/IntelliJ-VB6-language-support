@@ -579,9 +579,9 @@ variableStmt : (DIM | STATIC) WS variableListStmt; // definition
 
 moduleVariableStmt : (DIM | visibility) WS (WITHEVENTS WS)? variableListStmt; // definition
 
-variableListStmt : variableSubStmt (WS? ',' WS? variableSubStmt)*;
+variableListStmt : variableDeclaration (WS? ',' WS? variableDeclaration)*;
 
-variableSubStmt : ambiguousIdentifier (WS? LPAREN WS? (subscripts WS?)? RPAREN WS?)? typeHint? (WS asTypeClause)?;
+variableDeclaration : ambiguousIdentifier (WS? LPAREN WS? (subscripts WS?)? RPAREN WS?)? typeHint? (WS asTypeClause)?;
 
 
 

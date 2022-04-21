@@ -18,7 +18,6 @@ class VB6ModuleDeclarationsImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleDecl
         }
     }
 
-    override val elements: List<VB6ModuleDeclarationsElement> get() {
-        return findPsiElementsInDirectChildrenByType(this)
-    }
+    override val elements: List<VB6ModuleDeclarationsElement>
+        get() = findPsiElementsInDirectChildrenByType(this)
 }

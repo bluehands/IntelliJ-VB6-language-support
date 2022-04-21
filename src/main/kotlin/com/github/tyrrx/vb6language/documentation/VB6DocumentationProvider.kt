@@ -10,10 +10,7 @@ import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6BaseType
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6BlockConst
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ConstStmt
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ModuleConst
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableSubStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.variable.*
 import com.intellij.lang.documentation.AbstractDocumentationProvider
 import com.intellij.lang.documentation.DocumentationMarkup
 import com.intellij.lang.documentation.DocumentationProvider
@@ -114,16 +111,16 @@ class VB6DocumentationProvider : AbstractDocumentationProvider() {
                         appendName(resolve)
                         appendTypeInferable(resolve)
                     }
-                    is VB6VariableSubStmt -> {
+                    is VB6VariableDeclaration -> {
                         if (resolve.isModuleVariable) {
                             appendVisibility(resolve)
                             bold { append(" Dim ") }
-                            if (resolve.withEvents()) {
+                            if (resolve.withEvents) {
                                 append("Withevents ")
                             }
                         } else {
                             bold {
-                                if (resolve.isStatic()) {
+                                if (resolve.isStatic) {
                                     append("Static")
                                 } else {
                                     append("Dim ")

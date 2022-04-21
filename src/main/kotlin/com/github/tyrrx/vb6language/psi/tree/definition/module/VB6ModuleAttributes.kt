@@ -12,7 +12,9 @@ interface VB6ModuleAttributes : VB6PsiElement {
 }
 
 class VB6ModuleAttributesImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleAttributes {
-    override val attributes: List<VB6AttributeStmt> get() = findPsiElementsInDirectChildrenByType(this)
+
+    override val attributes: List<VB6AttributeStmt>
+        get() = findPsiElementsInDirectChildrenByType(this)
 
     object Factory : IPsiNodeFactory<VB6ModuleAttributes> {
         override fun createPsiNode(node: ASTNode): VB6ModuleAttributes {

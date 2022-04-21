@@ -83,11 +83,10 @@ object PSIFactory {
         VisualBasic6Parser.RULE_expression mapsTo VB6ExpressionImpl.Factory,
 
         VisualBasic6Parser.RULE_variableListStmt mapsTo VB6VariableListStmtImpl.Factory,
-        VisualBasic6Parser.RULE_variableSubStmt mapsTo VB6VariableSubStmtImpl.Factory,
+        VisualBasic6Parser.RULE_variableDeclaration mapsTo VB6VariableDeclarationImpl.Factory,
         VisualBasic6Parser.RULE_moduleConstListStmt mapsTo VB6ModuleConstListImpl.Factory,
         VisualBasic6Parser.RULE_constListStmt mapsTo VB6ConstListImpl.Factory,
         VisualBasic6Parser.RULE_constStmt mapsTo VB6ConstStmtImpl.Factory,
-
         VisualBasic6Parser.RULE_subscripts mapsTo VB6SubscriptsImpl.Factory,
         VisualBasic6Parser.RULE_subscriptElement mapsTo VB6SubscriptElementImpl.Factory,
 
