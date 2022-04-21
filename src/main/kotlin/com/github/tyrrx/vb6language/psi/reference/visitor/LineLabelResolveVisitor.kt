@@ -22,15 +22,13 @@ class LineLabelResolveVisitor(
 ) : ReferenceResolveVisitor {
 
     private fun compareNames(it: VB6NamedElementOwner) =
-        it.name == referencingIdentifier.name
+            it.name == referencingIdentifier.name
 
-    private fun resolveBlock(scope: VB6BlockOwner): VB6NamedElementOwner? {
-        return scope
-            .block
-            ?.outsideVisibleNamedElementOwners
-            ?.filterIsInstance<VB6LineLabel>()
-            ?.find(::compareNames)
-    }
+    private fun resolveBlock(scope: VB6BlockOwner): VB6NamedElementOwner? =
+            scope.block
+                    ?.outsideVisibleNamedElementOwners
+                    ?.filterIsInstance<VB6LineLabel>()
+                    ?.find(::compareNames)
 
     override fun resolveFile(scope: VB6File): VB6NamedElementOwner? {
         throw IllegalStateException("Cannot resolve a line label in a file scope. Only enclosing block of functions, properties or subs are valid.")

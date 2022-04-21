@@ -8,10 +8,9 @@ import com.github.tyrrx.vb6language.psi.scope.VB6BlockScopeOwner
 import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
 
 interface VB6PropertyStatementBase :
-    VB6EnclosingVisibleNamedElements,
+        VB6EnclosingVisibleNamedElements,
         VB6BlockScopeOwner,
         VB6NamedElementOwner,
         VB6ArgumentOwner,
         VB6VisibilityOwnerMixin,
-        VB6IsStaticInChildrenMixin {
-}
+        VB6IsStaticInChildrenMixin
