@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
 
 interface VB6VariableBase :
-    VB6NamedElementOwner,
+        VB6NamedElementOwner,
         VB6TypeClauseOwner,
         VB6SubscriptsOwner,
         VB6TypeHintMixin {

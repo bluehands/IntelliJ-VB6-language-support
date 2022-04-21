@@ -34,7 +34,4 @@ class VB6ModuleConstListImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = constDefinitions
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = emptyList() // todo also this?
-
 }

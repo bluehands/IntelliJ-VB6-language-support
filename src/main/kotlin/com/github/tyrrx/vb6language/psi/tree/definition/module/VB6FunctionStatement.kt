@@ -74,15 +74,14 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = emptyList() //todo also this?
 
     override fun <TReturn> resolve(resolveVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return resolveVisitor.resolveFunctionStmt(this)
     }
 
     override fun setName(name: String): PsiElement {
-        return nameIdentifier?.setName(name) ?: this
+        nameIdentifier?.setName(name)
+        return this
     }
 
     override val arguments: List<VB6Argument>

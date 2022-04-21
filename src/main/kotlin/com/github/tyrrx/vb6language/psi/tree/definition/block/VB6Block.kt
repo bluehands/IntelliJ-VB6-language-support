@@ -30,6 +30,4 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
             .filterIsInstance<VB6EnclosingVisibleNamedElements>()
             .flatMap { it.outsideVisibleNamedElementOwners }
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = statements.filterIsInstance<VB6EnclosingVisibleNamedElements>().flatMap { it.outsideVisibleNamedElements }
 }

@@ -12,7 +12,6 @@ class VB6ParserAdaptor(@NotNull parser: VisualBasic6Parser) :
     ANTLRParserAdaptor(VB6Language.INSTANCE, parser) {
     override fun parse(parser: Parser?, root: IElementType?): ParseTree {
         val vbParser = parser as VisualBasic6Parser
-        // Todo change
         return when(root) {
             is IFileElementType -> vbParser.startRule()
             VB6IElementTypes.rules[VisualBasic6Parser.RULE_ambiguousIdentifier] -> vbParser.ambiguousIdentifier()

@@ -32,6 +32,4 @@ class VB6IfElseIfBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = block?.outsideVisibleNamedElementOwners ?: emptyList()
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = block?.outsideVisibleNamedElements ?: emptyList()
 }

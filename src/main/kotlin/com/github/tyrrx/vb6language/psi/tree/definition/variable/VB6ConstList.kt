@@ -28,6 +28,4 @@ class VB6ConstListImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = declarations
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = TODO("Not yet implemented")
 }

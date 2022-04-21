@@ -5,6 +5,7 @@ import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6SubscriptElement
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Subscripts
@@ -19,6 +20,7 @@ import com.intellij.psi.util.elementType
 
 interface VB6VariableSubStmt : VB6BlockVariable, VB6ModuleVariable {
     val isModuleVariable: Boolean
+    val statementParent: PsiElement
 }
 
 class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -34,8 +36,8 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
         return VB6IElementTypes.WITHEVENTS.isIElementTypePresentInChildren(parent.parent)
     }
 
-    override val visibility: VB6VisibilityEnum = findFirstChildByType<VB6Visibility>(parent.parent)
-            ?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+    override val visibility: VB6VisibilityEnum = (statementParent as? VB6ModuleVariableStmt)
+            ?.visibility?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
 
     override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
 
@@ -45,14 +47,17 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val isModuleVariable: Boolean
-        get() = parent.parent.elementType == VB6IElementTypes.rules[VisualBasic6Parser.RULE_moduleVariableStmt]
+        get() = statementParent is VB6ModuleVariableStmt
+
+    override val statementParent: PsiElement
+        get() = parent.parent
 
     override fun isStatic(): Boolean {
-        return VB6IElementTypes.STATIC.isIElementTypePresentInChildren(parent.parent)
+        return VB6IElementTypes.STATIC.isIElementTypePresentInChildren(statementParent)
     }
 
     override fun isArray(): Boolean {
-        return getSubscripts().any() // todo correct or just LPAREN?
+        return getSubscripts().any()
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
@@ -64,14 +69,12 @@ class VB6VariableSubStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun setName(name: String): PsiElement {
-        return nameIdentifier?.setName(name) ?: this // todo correct?
+        nameIdentifier?.setName(name)
+        return this
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
-
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = TODO("Not yet implemented")
 
     override val isDefinition: Boolean
         get() = true

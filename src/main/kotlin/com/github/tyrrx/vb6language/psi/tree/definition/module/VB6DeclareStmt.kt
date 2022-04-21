@@ -76,9 +76,6 @@ class VB6DeclareStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareStmt {
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = emptyList() // Todo also this?
-
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()
     }

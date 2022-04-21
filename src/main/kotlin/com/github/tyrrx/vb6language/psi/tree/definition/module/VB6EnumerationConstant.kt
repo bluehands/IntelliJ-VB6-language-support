@@ -32,9 +32,6 @@ class VB6EnumerationConstantImpl(node: ASTNode) : VB6PsiNode(node), VB6Enumerati
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = TODO("Not yet implemented")
-
     object Factory : IPsiNodeFactory<VB6EnumerationConstant> {
         override fun createPsiNode(node: ASTNode): VB6EnumerationConstant {
             return VB6EnumerationConstantImpl(node)

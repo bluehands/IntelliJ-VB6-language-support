@@ -75,14 +75,12 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
         get() = true
 
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        nameIdentifier?.setName(name)
+        return this
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
-
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = TODO("Not yet implemented")
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)

@@ -34,8 +34,6 @@ class VB6EventStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EventStmt {
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = emptyList() // todo also this?
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)

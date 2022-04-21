@@ -42,9 +42,6 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = TODO("Not yet implemented")
-
     override val referenceOwner: VB6ReferenceOwner?
         get() = null
 

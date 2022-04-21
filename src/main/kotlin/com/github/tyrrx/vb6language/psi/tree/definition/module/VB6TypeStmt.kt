@@ -43,8 +43,6 @@ class VB6TypeStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmt {
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = TODO("Not yet implemented")
 
     override val visibility: VB6VisibilityEnum
         get() = findFirstChildByType<VB6Visibility>(this)

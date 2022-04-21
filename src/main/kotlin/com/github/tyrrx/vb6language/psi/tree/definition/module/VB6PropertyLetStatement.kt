@@ -27,9 +27,6 @@ class VB6PropertyLetStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = emptyList() // todo also this?
-
     override val block: VB6Block?
         get() = findFirstChildByType(this)
 
@@ -38,7 +35,8 @@ class VB6PropertyLetStatementImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        nameIdentifier?.setName(name)
+        return this
     }
 
     override fun getTextOffset(): Int {

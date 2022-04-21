@@ -3,6 +3,7 @@ package com.github.tyrrx.vb6language.completion
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleBody
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleDeclarations
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.icons.AllIcons
@@ -19,7 +20,9 @@ class VB6ModuleBodyContributor : CompletionContributor() {
     override fun beforeCompletion(context: CompletionInitializationContext) {
         val ctx = context.file.findElementAt(context.startOffset)
 
-        if (ctx?.parent?.parent is VB6ModuleBody) {
+        if (ctx?.parent?.parent is VB6ModuleBody
+                || ctx?.parent?.prevSibling is VB6ModuleBody
+                || (ctx?.parent?.prevSibling is VB6ModuleDeclarations && ctx.parent?.nextSibling is VB6ModuleBody)) {
             context.dummyIdentifier = "Public Sub dummy\n End Sub"
         }
     }

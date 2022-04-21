@@ -17,13 +17,11 @@ interface VB6ModuleConfigElement: VB6NamedElementOwner {
 class VB6ModuleConfigElementImpl(node: ASTNode) : VB6PsiNode(node),
     VB6ModuleConfigElement {
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        return this
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = TODO("Not yet implemented")
 
     override fun getLiteral(): VB6Literal? {
         return findPsiElementInSubtree(this)

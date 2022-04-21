@@ -43,9 +43,6 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this) + enumMembers
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = emptyList() // todo also this?
-
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
     }

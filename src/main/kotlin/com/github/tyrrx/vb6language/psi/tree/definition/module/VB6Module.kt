@@ -1,6 +1,9 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
+import com.github.tyrrx.vb6language.language.VB6IElementTypes
+import com.github.tyrrx.vb6language.language.VB6Language
+import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
@@ -12,6 +15,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
+import com.github.tyrrx.vb6language.psi.utils.createElementFromText
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.visitor.TypeDeclarationVisitor
@@ -40,8 +44,8 @@ val VB6Module.moduleElements: List<VB6PsiElement>
 
 val VB6Module.namedElementOwners: List<VB6NamedElementOwner>
     get() = moduleElements
-        .filterIsInstance<VB6EnclosingVisibleNamedElements>()
-        .flatMap { it.outsideVisibleNamedElementOwners }
+            .filterIsInstance<VB6EnclosingVisibleNamedElements>()
+            .flatMap { it.outsideVisibleNamedElementOwners }
 
 //inline fun <reified TStatement> VB6Module.fromModuleBodyGetByType(): List<TStatement> {
 //    return fromBodyGetElements().filterIsInstance<TStatement>()
@@ -68,24 +72,31 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     }
 
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        val element = createElementFromText(
+                project,
+                VB6Language.INSTANCE,
+                context,
+                "\"$name\"",
+                VB6IElementTypes.rules[VisualBasic6Parser.RULE_literal]
+        )
+        element?.let {
+            nameIdentifier?.literals?.firstOrNull()?.literalElement?.replace(it);
+        }
+        return this
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = namedElementOwners
-            .filterIsInstance<VB6VisibilityOwner>()
-            .filter {
-                when (it.visibility) {
-                    VB6VisibilityEnum.PRIVATE -> false
-                    VB6VisibilityEnum.PUBLIC -> true
-                    VB6VisibilityEnum.FRIEND -> true
-                    VB6VisibilityEnum.GLOBAL -> true
+                .filterIsInstance<VB6VisibilityOwner>()
+                .filter {
+                    when (it.visibility) {
+                        VB6VisibilityEnum.PRIVATE -> false
+                        VB6VisibilityEnum.PUBLIC -> true
+                        VB6VisibilityEnum.FRIEND -> true
+                        VB6VisibilityEnum.GLOBAL -> true
+                    }
                 }
-            }
-            .flatMap { it.outsideVisibleNamedElementOwners } // todo dangerous exposing of inner elements when visible
-
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = emptyList()
+                .flatMap { it.outsideVisibleNamedElementOwners } // todo dangerous exposing of inner elements when visible
 
     override fun <TReturn> processTypeDeclarations(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
         return visitor.processModuleDeclarations(this)
@@ -103,10 +114,10 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
 
     override fun getNameIdentifier(): VB6AttributeStmt? {
         return moduleAttributes
-            ?.attributes
-            ?.firstOrNull { declaration ->
-                declaration.nameIdentifier?.name == "VB_Name"
-            }
+                ?.attributes
+                ?.firstOrNull { declaration ->
+                    declaration.nameIdentifier?.name == "VB_Name"
+                }
     }
 
     object Factory : IPsiNodeFactory<VB6Module> {

@@ -48,14 +48,12 @@ class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun setName(name: String): PsiElement {
-        return nameIdentifier?.setName(name) ?: this
+        nameIdentifier?.setName(name)
+        return this
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
-
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = TODO("Not yet implemented")
 
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()

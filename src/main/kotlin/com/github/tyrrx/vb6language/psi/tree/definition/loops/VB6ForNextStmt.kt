@@ -49,7 +49,8 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun setName(name: String): PsiElement {
-        TODO("Not yet implemented")
+        nameIdentifier?.setName(name)
+        return this
     }
 
     override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
@@ -60,6 +61,4 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = block?.outsideVisibleNamedElementOwners ?: emptyList()
 
-    override val outsideVisibleNamedElements: List<VB6NamedElement>
-        get() = block?.outsideVisibleNamedElements ?: emptyList()
 }
