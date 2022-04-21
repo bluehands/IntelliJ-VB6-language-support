@@ -16,6 +16,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnu
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
 import com.github.tyrrx.vb6language.psi.utils.createElementFromText
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.visitor.TypeDeclarationVisitor
 import com.intellij.lang.ASTNode
@@ -68,6 +69,10 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
 
     override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return nodeVisitor.visitModule(this)
+    }
+
+    override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
+        return namedElementOwnerVisitor.visitModule(this)
     }
 
     override fun isClass(): Boolean {

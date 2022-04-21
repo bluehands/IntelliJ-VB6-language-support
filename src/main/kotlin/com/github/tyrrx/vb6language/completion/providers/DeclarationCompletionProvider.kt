@@ -17,7 +17,7 @@ import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.psi.PsiElement
 import com.intellij.util.ProcessingContext
 
-class IdentifierCompletionProvider : CompletionProvider<CompletionParameters>() {
+class DeclarationCompletionProvider : CompletionProvider<CompletionParameters>() {
     override fun addCompletions(
             parameters: CompletionParameters,
             context: ProcessingContext,

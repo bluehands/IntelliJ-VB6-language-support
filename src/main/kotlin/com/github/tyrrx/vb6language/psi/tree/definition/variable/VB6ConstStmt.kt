@@ -13,6 +13,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 import com.intellij.psi.util.elementType
@@ -48,6 +49,10 @@ class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val isModuleConst: Boolean
         get() = parent is VB6ModuleConstList
+
+    override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
+        return namedElementOwnerVisitor.visitConstStmt(this)
+    }
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)

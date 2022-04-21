@@ -7,6 +7,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.utils.findPsiElementInSubtree
+import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -25,6 +26,10 @@ class VB6ModuleConfigElementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override fun getLiteral(): VB6Literal? {
         return findPsiElementInSubtree(this)
+    }
+
+    override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
+        return namedElementOwnerVisitor.visitModuleConfigElement(this)
     }
 
     override fun getName(): String? {

@@ -13,6 +13,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -34,6 +35,10 @@ class VB6EventStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EventStmt {
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
+
+    override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
+        return namedElementOwnerVisitor.visitEventStmt(this)
+    }
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)

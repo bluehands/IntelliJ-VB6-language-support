@@ -11,6 +11,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnu
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.utils.isIElementTypePresentInChildren
+import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -31,6 +32,10 @@ class VB6VariableDeclarationImpl(node: ASTNode) : VB6PsiNode(node),
             is VB6ModuleVariableStmt -> parent.visibility?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
             else -> VB6VisibilityEnum.PUBLIC
         }
+
+    override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
+        return namedElementOwnerVisitor.visitVariableDeclaration(this)
+    }
 
 
     override val typeClause: VB6AsTypeClause?

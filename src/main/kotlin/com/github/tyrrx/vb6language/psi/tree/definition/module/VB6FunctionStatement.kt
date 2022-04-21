@@ -18,6 +18,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6TypeElement
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -77,6 +78,10 @@ class VB6FunctionStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return nodeVisitor.visitFunctionStmt(this)
+    }
+
+    override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
+        return namedElementOwnerVisitor.visitFunctionStmt(this)
     }
 
     override fun setName(name: String): PsiElement {

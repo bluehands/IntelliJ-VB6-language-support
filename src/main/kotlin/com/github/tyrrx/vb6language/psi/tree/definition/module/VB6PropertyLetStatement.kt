@@ -8,6 +8,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -33,6 +34,11 @@ class VB6PropertyLetStatementImpl(node: ASTNode) : VB6PsiNode(node),
     override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return nodeVisitor.visitPropertyLetStmt(this)
     }
+
+    override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
+        return namedElementOwnerVisitor.visitPropertyLetStmt(this)
+    }
+
 
     override fun setName(name: String): PsiElement {
         nameIdentifier?.setName(name)

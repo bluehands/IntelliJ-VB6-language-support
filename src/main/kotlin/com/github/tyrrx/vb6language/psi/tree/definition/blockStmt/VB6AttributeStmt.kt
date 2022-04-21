@@ -12,6 +12,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.utils.findPsiElementInSubtree
 import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
@@ -73,5 +74,9 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
+
+    override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
+        return namedElementOwnerVisitor.visitAttribute(this)
     }
 }
