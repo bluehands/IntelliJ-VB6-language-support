@@ -1,9 +1,9 @@
 package com.github.tyrrx.vb6language.psi.base
 
-import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
-import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
+import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 
 interface VB6ProcedureDeclaration :
         VB6NamedElementOwner,
-        VB6ArgumentOwner{
+        VB6ArgumentOwner,
+        VB6VisibilityOwner {
 }

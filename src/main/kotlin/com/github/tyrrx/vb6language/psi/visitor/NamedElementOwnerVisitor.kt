@@ -17,7 +17,8 @@ interface NamedElementOwnerVisitor<TReturn> {
     fun visitArgument(argument: VB6Argument): TReturn
     fun visitForEachStmt(forEachStmt: VB6ForEachStmt): TReturn
     fun visitForNextStmt(forNextStmt: VB6ForNextStmt): TReturn
-    fun visitDeclareStmt(declareStmt: VB6DeclareStmt): TReturn
+    fun visitDeclareFunctionStmt(declareFunctionStmt: VB6DeclareFunctionStmt): TReturn
+    fun visitDeclareSubStmt(declareSubStmt: VB6DeclareSubStmt): TReturn
     fun visitEnumerationConstant(enumerationConstant: VB6EnumerationConstant): TReturn
     fun visitEnumerationStmt(enumerationStmt: VB6EnumerationStmt): TReturn
     fun visitEventStmt(eventStmt: VB6EventStmt): TReturn
@@ -32,4 +33,5 @@ interface NamedElementOwnerVisitor<TReturn> {
     fun visitTypeStmtMember(typeStmtMember: VB6TypeStmtMember): TReturn
     fun visitConstStmt(constStmt: VB6ConstStmt): TReturn
     fun visitVariableDeclaration(variableDeclaration: VB6VariableDeclaration): TReturn
+
 }

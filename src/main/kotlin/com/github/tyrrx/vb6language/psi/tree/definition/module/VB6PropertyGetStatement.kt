@@ -20,7 +20,6 @@ import com.intellij.psi.PsiElement
 
 interface VB6PropertyGetStatement :
     VB6PropertyStatementBase,
-        VB6ReturnTypeOwner,
         VB6TypeClauseOwner,
         VB6TypeHintMixin {
 }
@@ -68,16 +67,6 @@ class VB6PropertyGetStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override fun getNameIdentifier(): VB6NamedElement? {
         return findFirstChildByType(this)
-    }
-
-    override fun getReturnAsTypeClause(): VB6AsTypeClause? {
-        return findFirstChildByType(this)
-    }
-
-    override fun getReturnType(): VB6TypeElement? {
-        return getReturnAsTypeClause()
-            ?.typeRule
-            ?.type
     }
 
     override val typeClause: VB6AsTypeClause?

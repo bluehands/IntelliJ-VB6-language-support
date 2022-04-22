@@ -1,9 +1,7 @@
 package com.github.tyrrx.vb6language.documentation
 
 import com.github.tyrrx.vb6language.psi.base.VB6ArgumentOwner
-import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
-import com.github.tyrrx.vb6language.psi.inference.VB6TypeDeclaration
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
@@ -50,7 +48,7 @@ class VB6DocumentationProvider : AbstractDocumentationProvider() {
                         appendName(resolve)
                         appendArguments(resolve)
                     }
-                    is VB6DeclareStmt -> {
+                    is VB6DeclareFunctionStmt -> {
                         appendVisibility(resolve)
                         append(" Declare ")
                         if (resolve.isPtrSafe) {

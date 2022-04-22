@@ -4,6 +4,7 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6ArgumentOwner
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.base.VB6SubroutineDeclaration
 import com.github.tyrrx.vb6language.psi.mixins.VB6IsStaticInChildrenMixin
 import com.github.tyrrx.vb6language.psi.mixins.VB6VisibilityOwnerMixin
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
@@ -20,16 +21,14 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6SubroutineStatement :
-    VB6EnclosingVisibleNamedElements,
+        VB6SubroutineDeclaration,
         VB6BlockScopeOwner,
-        VB6NamedElementOwner,
-        VB6ArgumentOwner,
         VB6VisibilityOwnerMixin,
         VB6IsStaticInChildrenMixin {
 }
 
 class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
-    VB6SubroutineStatement {
+        VB6SubroutineStatement {
 
     override val block: VB6Block?
         get() = findFirstChildByType(this)
@@ -56,7 +55,7 @@ class VB6SubroutineStatementImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val arguments: List<VB6Argument>
         get() = findFirstChildByType<VB6ArgumentList>(this)
-            ?.arguments() ?: emptyList()
+                ?.arguments() ?: emptyList()
 
     override fun getName(): String? {
         return nameIdentifier?.name
