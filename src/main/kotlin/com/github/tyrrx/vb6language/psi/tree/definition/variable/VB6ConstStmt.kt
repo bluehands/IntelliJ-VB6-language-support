@@ -5,6 +5,7 @@ import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6ConstantDeclaration
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
@@ -19,8 +20,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.util.elementType
 
 interface VB6ConstBase :
-        VB6PsiElement,
-        VB6NamedElementOwner,
+        VB6ConstantDeclaration,
         VB6TypeClauseOwner,
         VB6TypeHintMixin {
     val isModuleConst: Boolean

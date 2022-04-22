@@ -17,6 +17,8 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.utils.findFirstParentOfType
+import com.intellij.refactoring.suggested.endOffset
+import com.intellij.refactoring.suggested.startOffset
 
 class SymbolResolveVisitor(
         override val referenceOwner: VB6ReferenceOwner,
@@ -24,28 +26,18 @@ class SymbolResolveVisitor(
 ) : ReferenceResolveVisitor {
 
     private fun compareNames(it: VB6NamedElementOwner) =
-        it.name == referencingIdentifier.name
+            it.name == referencingIdentifier.name
 
     private fun resolveBlock(scope: VB6BlockOwner): VB6NamedElementOwner? {
-        val textOffsetOfEnclosingBlockStatement = null // todo findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
-        val textOffsetOfReferenceOwner = referenceOwner.textOffset
+        val blockStatement = findFirstParentOfType<VB6BlockStmt>(referenceOwner)!!
 
-        return scope.block
-            ?.outsideVisibleNamedElementOwners
-            ?.takeWhile { // remove elements that are after the reference owner to avoid endless recursion in filter it.isDefinition as this calls resolve too
-                it.isBeforeEnclosingStatementOrReferenceOwner(
-                    textOffsetOfEnclosingBlockStatement,
-                    textOffsetOfReferenceOwner
-                )
-            }
-            ?.filter { it.isDefinition }
-            ?.find { compareNames(it) }
+        return scope.block?.outsideVisibleNamedElementOwners
+                ?.takeWhile { // remove elements that are after the reference owner to avoid endless recursion in filter it.isDefinition as this calls resolve too
+                    it.endOffset < referenceOwner.startOffset
+                }
+                ?.filter { it.isDefinition }
+                ?.find { compareNames(it) }
     }
-
-    private fun VB6NamedElementOwner.isBeforeEnclosingStatementOrReferenceOwner(
-        textOffsetOfEnclosingBlockStatement: Int?,
-        textOffsetOfReferenceOwner: Int
-    ) = this.textOffset < (textOffsetOfEnclosingBlockStatement ?: textOffsetOfReferenceOwner)
 
     /**
      * A [com.github.tyrrx.vb6language.psi.reference.SymbolReference] on project level can resolve to:
@@ -62,85 +54,89 @@ class SymbolResolveVisitor(
      */
     override fun visitFile(scope: VB6File): VB6NamedElementOwner? {
         return scope.projects
-            .flatMap { standardModules(it) + visibleElementsOfProjectModules(it) }
-            .find { it.name == referencingIdentifier.name }
+                .flatMap { standardModules(it) + visibleElementsOfProjectModules(it) }
+                .find { it.name == referencingIdentifier.name }
     }
 
     private fun visibleElementsOfProjectModules(project: VB6Project) =
-        project.modules.flatMap { module -> module.outsideVisibleNamedElementOwners }
+            project.modules.flatMap { module -> module.outsideVisibleNamedElementOwners }
 
     private fun standardModules(project: VB6Project) =
-        project.modules.filter { module -> !module.isClass() }
+            project.modules.filter { module -> !module.isClass() }
 
     override fun visitModule(scope: VB6Module): VB6NamedElementOwner? {
         return scope
-            .namedElementOwners
-            .flatMap { it.outsideVisibleNamedElementOwners }
-            .find { compareNames(it) }
-            ?: scope.acceptToContext(this)
+                .namedElementOwners
+                .flatMap { it.outsideVisibleNamedElementOwners }
+                .find { compareNames(it) }
+                ?: scope.contextAccept(this)
     }
 
     override fun visitWithStmt(scope: VB6WithStmt): VB6NamedElementOwner? {
-        return scope.acceptToContext(this)
+        return scope.contextAccept(this)
     }
 
     override fun visitIfBlockStmt(scope: VB6IfBlockStmt): VB6NamedElementOwner? {
-        return scope.acceptToContext(this)
+        return scope.contextAccept(this)
     }
 
     override fun visitIfElseBlockStmt(scope: VB6IfElseBlockStmt): VB6NamedElementOwner? {
-        return scope.acceptToContext(this)
+        return scope.contextAccept(this)
     }
 
     override fun visitIfElseIfStmt(scope: VB6IfElseIfBlockStmt): VB6NamedElementOwner? {
-        return scope.acceptToContext(this)
+        return scope.contextAccept(this)
     }
 
     override fun visitDoLoopStmt(scope: VB6DoLoopStmt): VB6NamedElementOwner? {
-        return scope.acceptToContext(this)
+        return scope.contextAccept(this)
     }
 
     override fun visitForEachStmt(scope: VB6ForEachStmt): VB6NamedElementOwner? {
-        // todo resolve to self
-        return scope.acceptToContext(this)
+        if (scope.isDefinition && compareNames(scope)) {
+            return scope
+        }
+        return scope.contextAccept(this)
     }
 
     override fun visitForNextStmt(scope: VB6ForNextStmt): VB6NamedElementOwner? {
-        // todo resolve to self
-        return scope.acceptToContext(this)
+        if (scope.isDefinition && compareNames(scope)) {
+            return scope
+        }
+        return scope.contextAccept(this)
     }
 
     override fun visitWhileWendStmt(scope: VB6WhileWendStmt): VB6NamedElementOwner? {
-        return scope.acceptToContext(this)
+        return scope.contextAccept(this)
     }
 
     override fun visitFunctionStmt(scope: VB6FunctionStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
-            ?: scope.arguments.find { compareNames(it) }
-            ?: scope.acceptToContext(this)
+                ?: scope.arguments.find { compareNames(it) }
+                ?: scope.contextAccept(this)
     }
 
     override fun visitSubroutineStmt(scope: VB6SubroutineStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
-            ?: scope.arguments.find { compareNames(it) }
-            ?: scope.acceptToContext(this)
+                ?: scope.arguments.find { compareNames(it) }
+                ?: scope.contextAccept(this)
     }
 
     override fun visitPropertyGetStmt(scope: VB6PropertyGetStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
-            ?: scope.arguments.find { compareNames(it) }
-            ?: scope.acceptToContext(this)
+                ?: scope.arguments.find { compareNames(it) }
+                ?: scope.contextAccept(this)
     }
 
     override fun visitPropertySetStmt(scope: VB6PropertySetStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
-            ?: scope.arguments.find { compareNames(it) }
-            ?: scope.acceptToContext(this)
+                ?: scope.arguments.find { compareNames(it) }
+                ?: scope.contextAccept(this)
     }
 
     override fun visitPropertyLetStmt(scope: VB6PropertyLetStatement): VB6NamedElementOwner? {
         return resolveBlock(scope)
-            ?: scope.arguments.find { compareNames(it) }
-            ?: scope.acceptToContext(this)
+                ?: scope.arguments.find { compareNames(it) }
+                ?: scope.contextAccept(this)
     }
 }

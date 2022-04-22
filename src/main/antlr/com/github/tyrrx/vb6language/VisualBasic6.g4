@@ -125,7 +125,7 @@ moduleConfigElement :
 	ambiguousIdentifier WS? EQ WS? literal endOfLine*
 ;
 
-moduleAttributes : (attributeStmt endOfLine+)+;
+moduleAttributes : attributeStmt (endOfLine+ attributeStmt)*;
 
 moduleDeclarations : moduleDeclarationsElement (endOfLine+ moduleDeclarationsElement)*;
 

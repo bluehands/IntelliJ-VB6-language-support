@@ -6,8 +6,10 @@ import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.reference.references.SymbolReference
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
+import com.github.tyrrx.vb6language.psi.scope.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstParentOfType
 import com.intellij.lang.ASTNode
 
 interface VB6ForNextStmtIteratorDeclaration : VB6ReferenceOwner, VB6ReferenceFactory {
@@ -37,5 +39,9 @@ class VB6ForNextStmtIteratorDeclarationImpl(node: ASTNode) :
 
     override fun getReference(): VB6Reference? {
         return createReference()
+    }
+
+    override fun getContext(): VB6ScopeNode? {
+        return findFirstParentOfType<VB6ForNextStmt>(this)?.context
     }
 }

@@ -3,13 +3,15 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6ConstantDeclaration
+import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6EnumerationConstant : VB6NamedElementOwner {
+interface VB6EnumerationConstant : VB6ConstantDeclaration {
     // todo expression
 }
 
@@ -36,6 +38,10 @@ class VB6EnumerationConstantImpl(node: ASTNode) : VB6PsiNode(node), VB6Enumerati
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
+
+    override fun inferType(): InferenceResult {
+        return InferenceResult.BaseType("Long")
+    }
 
     object Factory : IPsiNodeFactory<VB6EnumerationConstant> {
         override fun createPsiNode(node: ASTNode): VB6EnumerationConstant {

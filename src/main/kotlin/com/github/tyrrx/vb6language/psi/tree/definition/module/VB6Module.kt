@@ -4,9 +4,11 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.declarations.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
 import com.github.tyrrx.vb6language.psi.scope.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
@@ -21,14 +23,17 @@ import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.visitor.TypeDeclarationVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiNamedElement
 
-interface VB6Module : VB6ScopeNode, VB6NamedElementOwner, VB6TypeDeclaration {
+interface VB6Module : VB6ScopeNode, VB6NamedElementOwner, VB6NamedElement, VB6TypeDeclaration {
     // base
     val moduleHeader: VB6ModuleHeader?
     val moduleConfig: VB6ModuleConfig?
     val moduleAttributes: VB6ModuleAttributes?
     val moduleDeclarations: VB6ModuleDeclarations?
     val moduleBody: VB6ModuleBody?
+
+    val nameAttribute: VB6AttributeStmt?
 
     fun isClass(): Boolean
 }
@@ -67,6 +72,13 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     override val moduleDeclarations: VB6ModuleDeclarations? get() = findFirstChildByType(this)
     override val moduleBody: VB6ModuleBody? get() = findFirstChildByType(this)
 
+    override val nameAttribute: VB6AttributeStmt?
+        get() = moduleAttributes
+                ?.attributes
+                ?.firstOrNull { declaration ->
+                    declaration.nameIdentifier?.name == "VB_Name"
+                }
+
     override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return nodeVisitor.visitModule(this)
     }
@@ -88,7 +100,7 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
                 VB6IElementTypes.rules[VisualBasic6Parser.RULE_literal]
         )
         element?.let {
-            nameIdentifier?.literals?.firstOrNull()?.literalElement?.replace(it);
+            nameAttribute?.literals?.firstOrNull()?.literalElement?.replace(it);
         }
         return this
     }
@@ -106,12 +118,18 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
                 }
                 .flatMap { it.outsideVisibleNamedElementOwners } // todo dangerous exposing of inner elements when visible
 
+    override val referenceOwner: VB6ReferenceOwner?
+        get() = null
+
+    override val namedElementOwner: VB6NamedElementOwner?
+        get() = this
+
     override fun <TReturn> processTypeDeclarations(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
         return visitor.processModuleDeclarations(this)
     }
 
     override fun getName(): String? {
-        return when (val literal = nameIdentifier?.literals?.firstOrNull()?.literalElement) {
+        return when (val literal = nameAttribute?.literals?.firstOrNull()?.literalElement) {
             is VB6StringLiteral -> literal.value
             else -> null
         }
@@ -120,12 +138,9 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     override val isDefinition: Boolean
         get() = true
 
-    override fun getNameIdentifier(): VB6AttributeStmt? {
-        return moduleAttributes
-                ?.attributes
-                ?.firstOrNull { declaration ->
-                    declaration.nameIdentifier?.name == "VB_Name"
-                }
+    // return this because a literal cannot be named
+    override fun getNameIdentifier(): VB6NamedElement {
+        return this
     }
 
     object Factory : IPsiNodeFactory<VB6Module> {

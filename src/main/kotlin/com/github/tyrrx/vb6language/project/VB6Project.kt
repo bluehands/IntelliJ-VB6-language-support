@@ -19,27 +19,18 @@ interface VB6Project {
     fun containsVB6File(file: VB6File): Boolean
 }
 
-val VB6Project.projectVisibleTypes: List<VB6NamedElementOwner?>
-    get() = modules
-        .filter { it.isClass() } + modules
-        .flatMap {
-            it.outsideVisibleNamedElementOwners
-                .filter { element ->
-                    element is VB6EnumerationStmt || element is VB6TypeStmt
-                }
-        }
-
 class VB6ProjectImpl(
-    override val myVirtualFile: VirtualFile,
-    override val myIntellijProject: Project
+        override val myVirtualFile: VirtualFile,
+        override val myIntellijProject: Project
 ) : VB6Project {
     private val vbpFileContext: List<VBPFileContext> = parseVbpFile(myVirtualFile)
 
-    private val standardModulePaths = vbpFileContext.standardModules
-        ?.mapNotNull { myVirtualFile.toNioPath().resolveSibling(it.path) } ?: emptyList()
+    private val standardModulePaths
+        get() = vbpFileContext.standardModules
+                ?.mapNotNull { myVirtualFile.toNioPath().resolveSibling(it.path) } ?: emptyList()
 
-    private val classModulePaths =
-        vbpFileContext.classes?.mapNotNull { myVirtualFile.toNioPath().resolveSibling(it.path) } ?: emptyList()
+    private val classModulePaths
+        get() = vbpFileContext.classes?.mapNotNull { myVirtualFile.toNioPath().resolveSibling(it.path) } ?: emptyList()
 
     private val modulePathsUnion = standardModulePaths + classModulePaths
 

@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
-import com.github.tyrrx.vb6language.psi.reference.visitor.acceptToContext
+import com.github.tyrrx.vb6language.psi.reference.visitor.contextAccept
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicBlockCall
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicInlineCall
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Expression
@@ -50,7 +50,7 @@ class DeclarationCompletionProvider : CompletionProvider<CompletionParameters>()
 
     private fun searchDeclarationsBefore(placeholderReferenceOwner: VB6ReferenceOwner): List<VB6NamedElementOwner> {
         return placeholderReferenceOwner
-                .acceptToContext(DeclarationSuggestionsCollectingVisitor(placeholderReferenceOwner))
+                .contextAccept(DeclarationSuggestionsCollectingVisitor(placeholderReferenceOwner))
                 ?: emptyList()
     }
 

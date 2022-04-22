@@ -5,7 +5,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.base.VB6BlockOwner
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.reference.visitor.acceptToContext
+import com.github.tyrrx.vb6language.psi.reference.visitor.contextAccept
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6BlockStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6WithStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.conditional.VB6IfBlockStmt
@@ -24,7 +24,7 @@ class DeclarationSuggestionsCollectingVisitor(
 ) : ScopeNodeVisitor<List<VB6NamedElementOwner>> {
 
     private fun visitBlock(scope: VB6BlockOwner): List<VB6NamedElementOwner> {
-        val textOffsetOfEnclosingBlockStatement = null //findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
+        val textOffsetOfEnclosingBlockStatement = findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
         val textOffsetOfReferenceOwner = referenceOwner.textOffset
 
         val declarations = scope.block
@@ -76,71 +76,71 @@ class DeclarationSuggestionsCollectingVisitor(
         val moduleDeclarations = scope
                 .namedElementOwners
                 .flatMap { it.outsideVisibleNamedElementOwners }
-        val contextDeclarations = scope.acceptToContext(this) ?: emptyList()
+        val contextDeclarations = scope.contextAccept(this) ?: emptyList()
         return moduleDeclarations + contextDeclarations
     }
 
     override fun visitWithStmt(scope: VB6WithStmt): List<VB6NamedElementOwner> {
-        return scope.acceptToContext(this) ?: emptyList()
+        return scope.contextAccept(this) ?: emptyList()
     }
 
     override fun visitIfBlockStmt(scope: VB6IfBlockStmt): List<VB6NamedElementOwner> {
-        return scope.acceptToContext(this) ?: emptyList()
+        return scope.contextAccept(this) ?: emptyList()
     }
 
     override fun visitIfElseBlockStmt(scope: VB6IfElseBlockStmt): List<VB6NamedElementOwner> {
-        return scope.acceptToContext(this) ?: emptyList()
+        return scope.contextAccept(this) ?: emptyList()
     }
 
     override fun visitIfElseIfStmt(scope: VB6IfElseIfBlockStmt): List<VB6NamedElementOwner> {
-        return scope.acceptToContext(this) ?: emptyList()
+        return scope.contextAccept(this) ?: emptyList()
     }
 
     override fun visitDoLoopStmt(scope: VB6DoLoopStmt): List<VB6NamedElementOwner> {
-        return scope.acceptToContext(this) ?: emptyList()
+        return scope.contextAccept(this) ?: emptyList()
     }
 
     override fun visitForEachStmt(scope: VB6ForEachStmt): List<VB6NamedElementOwner> {
         // todo resolve to self
-        return scope.acceptToContext(this) ?: emptyList()
+        return scope.contextAccept(this) ?: emptyList()
     }
 
     override fun visitForNextStmt(scope: VB6ForNextStmt): List<VB6NamedElementOwner> {
         // todo resolve to self
-        return scope.acceptToContext(this) ?: emptyList()
+        return scope.contextAccept(this) ?: emptyList()
     }
 
     override fun visitWhileWendStmt(scope: VB6WhileWendStmt): List<VB6NamedElementOwner> {
-        return scope.acceptToContext(this) ?: emptyList()
+        return scope.contextAccept(this) ?: emptyList()
     }
 
     override fun visitFunctionStmt(scope: VB6FunctionStatement): List<VB6NamedElementOwner> {
         val blockDeclarations = visitBlock(scope)
-        val contextDeclarations = scope.acceptToContext(this) ?: emptyList()
+        val contextDeclarations = scope.contextAccept(this) ?: emptyList()
         return blockDeclarations + contextDeclarations
     }
 
     override fun visitSubroutineStmt(scope: VB6SubroutineStatement): List<VB6NamedElementOwner> {
         val blockDeclarations = visitBlock(scope)
-        val contextDeclarations = scope.acceptToContext(this) ?: emptyList()
+        val contextDeclarations = scope.contextAccept(this) ?: emptyList()
         return blockDeclarations + contextDeclarations
     }
 
     override fun visitPropertyGetStmt(scope: VB6PropertyGetStatement): List<VB6NamedElementOwner> {
         val blockDeclarations = visitBlock(scope)
-        val contextDeclarations = scope.acceptToContext(this) ?: emptyList()
+        val contextDeclarations = scope.contextAccept(this) ?: emptyList()
         return blockDeclarations + contextDeclarations
     }
 
     override fun visitPropertySetStmt(scope: VB6PropertySetStatement): List<VB6NamedElementOwner> {
         val blockDeclarations = visitBlock(scope)
-        val contextDeclarations = scope.acceptToContext(this) ?: emptyList()
+        val contextDeclarations = scope.contextAccept(this) ?: emptyList()
         return blockDeclarations + contextDeclarations
     }
 
     override fun visitPropertyLetStmt(scope: VB6PropertyLetStatement): List<VB6NamedElementOwner> {
         val blockDeclarations = visitBlock(scope)
-        val contextDeclarations = scope.acceptToContext(this) ?: emptyList()
+        val contextDeclarations = scope.contextAccept(this) ?: emptyList()
         return blockDeclarations + contextDeclarations
     }
 }

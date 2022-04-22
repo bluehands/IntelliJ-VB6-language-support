@@ -4,6 +4,9 @@ package com.github.tyrrx.vb6language.psi.tree.definition.blockStmt
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6VariableDeclaration
+import com.github.tyrrx.vb6language.psi.inference.InferenceResult
+import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
@@ -14,7 +17,7 @@ import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6LetStmt : VB6PsiElement, VB6NamedElementOwner {
+interface VB6LetStmt : VB6VariableDeclaration {
     val inlineCall: VB6InlineCall?
 }
 
@@ -58,6 +61,13 @@ class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = listOf(this)
+
+    override fun inferType(): InferenceResult {
+        return when (val resolve = callStatementReference?.resolve()) {
+            is VB6TypeInferable -> resolve.inferType()
+            else -> InferenceResult.Unknown("Variant") // todo infer from assignment expression
+        }
+    }
 
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()

@@ -4,6 +4,7 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6VariableDeclaration
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeHintOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
@@ -18,7 +19,8 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.util.elementType
 
 interface VB6Argument :
-    VB6NamedElementOwner,
+        VB6VariableDeclaration,
+        VB6NamedElementOwner,
         VB6TypeClauseOwner,
         VB6TypeHintOwner {
     fun isOptional(): Boolean //= false
@@ -41,8 +43,8 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
 
     override fun getPassType(): ByValOrRef {
         val findResult = findInChildrenByAnyOfGivenElementTypes(
-            this,
-            listOf(VB6IElementTypes.BYVAL, VB6IElementTypes.BYREF)
+                this,
+                listOf(VB6IElementTypes.BYVAL, VB6IElementTypes.BYREF)
         )
         return when (findResult.elementType) {
             null -> ByValOrRef.BYREFERENCE
@@ -61,7 +63,6 @@ class VB6ArgumentImpl(node: ASTNode) : VB6PsiNode(node), VB6Argument {
     }
 
     override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
-
 
 
     override fun getArgumentDefaultValue(): VB6ArgumentDefaultValue? {
