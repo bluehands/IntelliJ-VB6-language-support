@@ -7,7 +7,7 @@ import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByT
 import com.intellij.lang.ASTNode
 
 interface VB6VariableListStmt : VB6PsiElement {
-    fun getVariableDefinitions(): List<VB6VariableDeclaration>
+    fun getVariableDefinitions(): List<VB6VariableSubRule>
 }
 
 class VB6VariableListStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6VariableListStmt {
@@ -18,7 +18,7 @@ class VB6VariableListStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6VariableList
         }
     }
 
-    override fun getVariableDefinitions(): List<VB6VariableDeclaration> {
+    override fun getVariableDefinitions(): List<VB6VariableSubRule> {
         return findPsiElementsInDirectChildrenByType(this)
     }
 }

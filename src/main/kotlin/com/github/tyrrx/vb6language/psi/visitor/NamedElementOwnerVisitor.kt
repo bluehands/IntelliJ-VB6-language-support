@@ -8,7 +8,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForEachStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6ConstStmt
-import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableDeclaration
+import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableSubRule
 
 interface NamedElementOwnerVisitor<TReturn> {
     fun visitAttribute(attributeStmt: VB6AttributeStmt): TReturn
@@ -32,6 +32,6 @@ interface NamedElementOwnerVisitor<TReturn> {
     fun visitTypeStmt(typeStmt: VB6TypeStmt): TReturn
     fun visitTypeStmtMember(typeStmtMember: VB6TypeStmtMember): TReturn
     fun visitConstStmt(constStmt: VB6ConstStmt): TReturn
-    fun visitVariableDeclaration(variableDeclaration: VB6VariableDeclaration): TReturn
+    fun visitVariableDeclaration(variableDeclaration: VB6VariableSubRule): TReturn
 
 }

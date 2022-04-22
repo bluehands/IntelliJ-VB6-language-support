@@ -15,12 +15,12 @@ import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-class VB6VariableDeclarationImpl(node: ASTNode) : VB6PsiNode(node),
-        VB6VariableDeclaration {
+class VB6VariableSubRuleImpl(node: ASTNode) : VB6PsiNode(node),
+        VB6VariableSubRule {
 
-    object Factory : IPsiNodeFactory<VB6VariableDeclaration> {
-        override fun createPsiNode(node: ASTNode): VB6VariableDeclaration {
-            return VB6VariableDeclarationImpl(node)
+    object Factory : IPsiNodeFactory<VB6VariableSubRule> {
+        override fun createPsiNode(node: ASTNode): VB6VariableSubRule {
+            return VB6VariableSubRuleImpl(node)
         }
     }
 

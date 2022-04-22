@@ -1,6 +1,7 @@
 package com.github.tyrrx.vb6language.documentation
 
 import com.github.tyrrx.vb6language.psi.base.VB6ArgumentOwner
+import com.github.tyrrx.vb6language.psi.tree.definition.variable.VB6VariableSubRule
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
@@ -109,7 +110,7 @@ class VB6DocumentationProvider : AbstractDocumentationProvider() {
                         appendName(resolve)
                         appendTypeInferable(resolve)
                     }
-                    is VB6VariableDeclaration -> {
+                    is VB6VariableSubRule -> {
                         if (resolve.isModuleVariable) {
                             appendVisibility(resolve)
                             bold { append(" Dim ") }

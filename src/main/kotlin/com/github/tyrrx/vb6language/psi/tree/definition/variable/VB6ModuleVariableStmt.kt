@@ -1,7 +1,6 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
@@ -11,7 +10,7 @@ import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.intellij.lang.ASTNode
 
 interface VB6ModuleVariableStmt : VB6EnclosingVisibleNamedElements, VB6PsiElement {
-    val variableDeclarations: List<VB6VariableDeclaration>
+    val variableDeclarations: List<VB6VariableSubRule>
     val visibility: VB6Visibility?
 }
 
@@ -23,7 +22,7 @@ class VB6ModuleVariableStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6ModuleVari
         }
     }
 
-    override val variableDeclarations: List<VB6VariableDeclaration>
+    override val variableDeclarations: List<VB6VariableSubRule>
         get() = findFirstChildByType<VB6VariableListStmt>(this)
             ?.getVariableDefinitions() ?: emptyList()
 

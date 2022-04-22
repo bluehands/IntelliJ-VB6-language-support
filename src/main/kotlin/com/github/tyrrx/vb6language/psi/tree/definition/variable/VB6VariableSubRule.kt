@@ -1,15 +1,16 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
-import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.base.VB6SubscriptsOwner
+import com.github.tyrrx.vb6language.psi.base.VB6ValueDeclaration
+import com.github.tyrrx.vb6language.psi.base.VB6VariableDeclaration
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 import com.intellij.psi.PsiElement
 
-interface VB6VariableDeclaration :
+interface VB6VariableSubRule :
+        VB6VariableDeclaration,
         VB6VisibilityOwner,
-        VB6NamedElementOwner,
         VB6TypeClauseOwner,
         VB6SubscriptsOwner,
         VB6TypeHintMixin {
