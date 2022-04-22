@@ -17,9 +17,10 @@ import com.intellij.psi.PsiElement
 
 interface VB6ForEachStmt :
     VB6PsiElement,
-        VB6TransparentBlockScopeOwner,
-        VB6NamedElementOwner,
-        VB6TypeHintMixin {
+    VB6TransparentBlockScopeOwner,
+    VB6NamedElementOwner,
+    VB6TypeHintMixin {
+    val iteratorDeclaration: VB6ForEachStmtIteratorDeclaration?
 }
 
 class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -43,8 +44,7 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
-        // todo match better as there are two
+        return iteratorDeclaration?.identifier
     }
 
     override fun getName(): String? {
@@ -52,7 +52,11 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val isDefinition: Boolean
-        get() = false // todo implement resolve an reference
+        get() = iteratorDeclaration?.let { iterator ->
+            iterator.reference?.let { reference ->
+                reference.resolve() == null
+            }
+        } ?: false
 
     override fun setName(name: String): PsiElement {
         nameIdentifier?.setName(name)
@@ -60,7 +64,10 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
-        get() = block?.outsideVisibleNamedElementOwners ?: emptyList()
+        get() = listOf(this) + (block?.outsideVisibleNamedElementOwners ?: emptyList())
+
+    override val iteratorDeclaration: VB6ForEachStmtIteratorDeclaration?
+        get() = findFirstChildByType(this)
 
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()

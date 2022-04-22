@@ -19,10 +19,11 @@ import com.intellij.psi.PsiElement
 
 interface VB6ForNextStmt :
     VB6PsiElement,
-        VB6TransparentBlockScopeOwner,
-        VB6NamedElementOwner,
-        VB6TypeClauseOwner,
-        VB6TypeHintMixin {
+    VB6TransparentBlockScopeOwner,
+    VB6NamedElementOwner,
+    VB6TypeClauseOwner,
+    VB6TypeHintMixin {
+    val iteratorDeclaration: VB6ForNextStmtIteratorDeclaration?
 }
 
 class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
@@ -37,6 +38,9 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val block: VB6Block?
         get() = findFirstChildByType(this)
 
+    override val iteratorDeclaration: VB6ForNextStmtIteratorDeclaration?
+        get() = findFirstChildByType(this)
+
     override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return nodeVisitor.visitForNextStmt(this)
     }
@@ -46,7 +50,7 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return iteratorDeclaration?.identifier
     }
 
     override fun getName(): String? {
@@ -61,9 +65,16 @@ class VB6ForNextStmtImpl(node: ASTNode) : VB6PsiNode(node),
     override val typeClause: VB6AsTypeClause? get() = findFirstChildByType(this)
 
     override val isDefinition: Boolean
-        get() = true
+        get() = iteratorDeclaration?.let { iterator ->
+            iterator.reference?.let { reference ->
+                reference.resolve() == null
+            }
+        } ?: false
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
-        get() = block?.outsideVisibleNamedElementOwners ?: emptyList()
+        get() = listOf(this) + (block?.outsideVisibleNamedElementOwners ?: emptyList())
 
+    override fun getTextOffset(): Int {
+        return nameIdentifier?.textOffset ?: super.getTextOffset()
+    }
 }

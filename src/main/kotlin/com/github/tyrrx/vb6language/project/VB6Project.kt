@@ -35,10 +35,12 @@ class VB6ProjectImpl(
 ) : VB6Project {
     private val vbpFileContext: List<VBPFileContext> = parseVbpFile(myVirtualFile)
 
-    private val standardModulePaths =
-        vbpFileContext.standardModules?.mapNotNull { myVirtualFile.toNioPath().resolveSibling(it.path) } ?: emptyList()
+    private val standardModulePaths = vbpFileContext.standardModules
+        ?.mapNotNull { myVirtualFile.toNioPath().resolveSibling(it.path) } ?: emptyList()
+
     private val classModulePaths =
         vbpFileContext.classes?.mapNotNull { myVirtualFile.toNioPath().resolveSibling(it.path) } ?: emptyList()
+
     private val modulePathsUnion = standardModulePaths + classModulePaths
 
     override val projectName: String

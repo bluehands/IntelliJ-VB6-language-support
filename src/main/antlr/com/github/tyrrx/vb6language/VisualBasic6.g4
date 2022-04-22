@@ -316,16 +316,18 @@ exitStmt : EXIT_DO | EXIT_FOR | EXIT_FUNCTION | EXIT_PROPERTY | EXIT_SUB;
 filecopyStmt : FILECOPY WS expression WS? ',' WS? expression;
 
 forEachStmt :
-	FOR WS EACH WS ambiguousIdentifier typeHint? WS IN WS expression endOfStatement // definition
+	FOR WS EACH WS forEachStmtIteratorDeclaration typeHint? WS IN WS expression endOfStatement // definition
 	block?
 	NEXT (WS forSelfReference)? // reference
 ;
+forEachStmtIteratorDeclaration: ambiguousIdentifier;
 
 forNextStmt :
-	FOR WS ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? expression WS TO WS expression (WS STEP WS expression)? endOfStatement
+	FOR WS forNextStmtIteratorDeclaration typeHint? (WS asTypeClause)? WS? EQ WS? expression WS TO WS expression (WS STEP WS expression)? endOfStatement
 	block?
 	NEXT (WS forSelfReference)?
 ;
+forNextStmtIteratorDeclaration: ambiguousIdentifier;
 
 forSelfReference: ambiguousIdentifier;
 
