@@ -23,7 +23,7 @@ interface VB6File : VB6ScopeNode, PsiFile {
 
 class VB6FileImpl(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VB6Language.INSTANCE), VB6File {
     override fun getFileType(): FileType {
-        return viewProvider.virtualFile.fileType
+        return originalVirtualFile().fileType
     }
 
     override val module: VB6Module?
@@ -34,11 +34,16 @@ class VB6FileImpl(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VB
             val workspaceService = project.service<VB6WorkspaceService>()
             return workspaceService.findVB6Projects(this)
         }
+
     override val isProjectMember: Boolean
         get() = projects.any()
 
     override val path: Path
-        get() = originalFile.virtualFile.toNioPath()
+        get() {
+            return originalVirtualFile().toNioPath()
+        }
+
+    private fun originalVirtualFile() = originalFile.virtualFile
 
     override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return nodeVisitor.visitFile(this)

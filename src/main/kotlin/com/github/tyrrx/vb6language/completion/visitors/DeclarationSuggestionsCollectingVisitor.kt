@@ -24,7 +24,7 @@ class DeclarationSuggestionsCollectingVisitor(
 ) : ScopeNodeVisitor<List<VB6NamedElementOwner>> {
 
     private fun visitBlock(scope: VB6BlockOwner): List<VB6NamedElementOwner> {
-        val textOffsetOfEnclosingBlockStatement = findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
+        val textOffsetOfEnclosingBlockStatement = null //findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
         val textOffsetOfReferenceOwner = referenceOwner.textOffset
 
         val declarations = scope.block
@@ -60,7 +60,10 @@ class DeclarationSuggestionsCollectingVisitor(
      */
     override fun visitFile(scope: VB6File): List<VB6NamedElementOwner> {
         return scope.projects
-                .flatMap { standardModules(it) + visibleElementsOfProjectModules(it) }
+                .flatMap {
+                    val standardModules = standardModules(it)
+                    standardModules + visibleElementsOfProjectModules(it)
+                }
     }
 
     private fun visibleElementsOfProjectModules(project: VB6Project) =

@@ -27,7 +27,7 @@ class SymbolResolveVisitor(
         it.name == referencingIdentifier.name
 
     private fun resolveBlock(scope: VB6BlockOwner): VB6NamedElementOwner? {
-        val textOffsetOfEnclosingBlockStatement = findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
+        val textOffsetOfEnclosingBlockStatement = null // todo findFirstParentOfType<VB6BlockStmt>(referenceOwner)?.textOffset
         val textOffsetOfReferenceOwner = referenceOwner.textOffset
 
         return scope.block

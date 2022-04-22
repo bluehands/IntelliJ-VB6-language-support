@@ -138,7 +138,8 @@ moduleOption :
 
 moduleDeclarationsElement :
 	comment
-	| declareStmt
+	| declareFunctionStmt
+	| declareSubStmt
 	| enumerationStmt
 	| eventStmt
 	| moduleConstListStmt
@@ -264,7 +265,8 @@ constStmt : ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? expressi
 
 dateStmt : DATE WS? EQ WS? expression;
 
-declareStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? (declareFunction | SUB) WS ambiguousIdentifier typeHint? WS declareLib declareAlias? (WS? argList)? (WS asTypeClause)?;
+declareFunctionStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? declareFunction WS ambiguousIdentifier typeHint? WS declareLib declareAlias? (WS? argList)? (WS asTypeClause)?;
+declareSubStmt : (visibility WS)? DECLARE WS (PTRSAFE WS)? SUB WS ambiguousIdentifier typeHint? WS declareLib declareAlias? (WS? argList)?;
 declareFunction: FUNCTION typeHint?;
 declareLib : LIB WS STRINGLITERAL;
 declareAlias: WS ALIAS WS STRINGLITERAL;
