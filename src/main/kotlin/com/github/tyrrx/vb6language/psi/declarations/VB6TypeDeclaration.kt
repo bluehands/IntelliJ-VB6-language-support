@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.psi.inference
+package com.github.tyrrx.vb6language.psi.declarations
 
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement

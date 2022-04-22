@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.language.VB6Language
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.inference.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.declarations.VB6TypeDeclaration
 import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
 import com.github.tyrrx.vb6language.psi.scope.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner

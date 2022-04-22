@@ -1,9 +1,9 @@
 package com.github.tyrrx.vb6language.psi.scope
 
-import com.github.tyrrx.vb6language.psi.base.VB6FunctionDeclaration
-import com.github.tyrrx.vb6language.psi.base.VB6ProcedureDeclaration
-import com.github.tyrrx.vb6language.psi.base.VB6SubroutineDeclaration
-import com.github.tyrrx.vb6language.psi.inference.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.declarations.VB6FunctionDeclaration
+import com.github.tyrrx.vb6language.psi.declarations.VB6ProcedureDeclaration
+import com.github.tyrrx.vb6language.psi.declarations.VB6SubroutineDeclaration
+import com.github.tyrrx.vb6language.psi.declarations.VB6TypeDeclaration
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
 

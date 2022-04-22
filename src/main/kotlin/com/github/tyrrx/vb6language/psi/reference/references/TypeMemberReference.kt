@@ -3,7 +3,7 @@ package com.github.tyrrx.vb6language.psi.reference.references
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
-import com.github.tyrrx.vb6language.psi.inference.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.declarations.VB6TypeDeclaration
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
 import com.github.tyrrx.vb6language.psi.reference.visitor.TypeMemberDeclarationsVisitor
 import com.intellij.openapi.util.TextRange

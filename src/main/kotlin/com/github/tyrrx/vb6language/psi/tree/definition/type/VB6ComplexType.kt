@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.type
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
-import com.github.tyrrx.vb6language.psi.inference.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.declarations.VB6TypeDeclaration
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
 import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceChain
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner

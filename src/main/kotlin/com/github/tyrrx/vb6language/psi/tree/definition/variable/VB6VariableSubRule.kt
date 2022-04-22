@@ -1,8 +1,7 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.psi.base.VB6SubscriptsOwner
-import com.github.tyrrx.vb6language.psi.base.VB6ValueDeclaration
-import com.github.tyrrx.vb6language.psi.base.VB6VariableDeclaration
+import com.github.tyrrx.vb6language.psi.declarations.VB6VariableDeclaration
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner

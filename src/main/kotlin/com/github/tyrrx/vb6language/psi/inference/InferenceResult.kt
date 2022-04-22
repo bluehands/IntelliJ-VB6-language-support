@@ -1,6 +1,6 @@
 package com.github.tyrrx.vb6language.psi.inference
 
-import com.intellij.psi.PsiElement
+import com.github.tyrrx.vb6language.psi.declarations.VB6TypeDeclaration
 
 sealed interface InferenceResult {
     data class UserDefinedType(val typeDeclaration: VB6TypeDeclaration) : InferenceResult

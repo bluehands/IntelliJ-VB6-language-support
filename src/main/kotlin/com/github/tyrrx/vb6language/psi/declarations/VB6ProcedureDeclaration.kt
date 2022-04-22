@@ -1,5 +1,7 @@
-package com.github.tyrrx.vb6language.psi.base
+package com.github.tyrrx.vb6language.psi.declarations
 
+import com.github.tyrrx.vb6language.psi.base.VB6ArgumentOwner
+import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 
 interface VB6ProcedureDeclaration :
