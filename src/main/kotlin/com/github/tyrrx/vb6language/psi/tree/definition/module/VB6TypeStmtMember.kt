@@ -13,6 +13,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6TypeStmtMember : VB6PsiElement, VB6NamedElementOwner, VB6TypeClauseOwner {
+    val ofTypeStmt: VB6TypeStmt?
 }
 
 class VB6TypeStmtMemberImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmtMember {
@@ -25,6 +26,9 @@ class VB6TypeStmtMemberImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmtMember
 
     override val typeClause: VB6AsTypeClause?
         get() = findFirstChildByType(this)
+
+    override val ofTypeStmt: VB6TypeStmt?
+        get() = parent as? VB6TypeStmt
 
     override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
         return namedElementOwnerVisitor.visitTypeStmtMember(this)

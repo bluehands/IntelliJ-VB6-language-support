@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
-import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
+import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintOwnerMixin
 import com.github.tyrrx.vb6language.psi.scope.VB6TransparentBlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
@@ -22,7 +22,7 @@ interface VB6ForNextStmt :
     VB6TransparentBlockScopeOwner,
     VB6NamedElementOwner,
     VB6TypeClauseOwner,
-    VB6TypeHintMixin {
+    VB6TypeHintOwnerMixin {
     val iteratorDeclaration: VB6ForNextStmtIteratorDeclaration?
 }
 

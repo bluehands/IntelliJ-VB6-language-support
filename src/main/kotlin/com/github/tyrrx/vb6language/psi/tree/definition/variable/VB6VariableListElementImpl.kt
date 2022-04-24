@@ -15,20 +15,20 @@ import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-class VB6VariableSubRuleImpl(node: ASTNode) : VB6PsiNode(node),
-        VB6VariableSubRule {
+class VB6VariableListElementImpl(node: ASTNode) : VB6PsiNode(node),
+        VB6VariableListElement {
 
-    object Factory : IPsiNodeFactory<VB6VariableSubRule> {
-        override fun createPsiNode(node: ASTNode): VB6VariableSubRule {
-            return VB6VariableSubRuleImpl(node)
+    object Factory : IPsiNodeFactory<VB6VariableListElement> {
+        override fun createPsiNode(node: ASTNode): VB6VariableListElement {
+            return VB6VariableListElementImpl(node)
         }
     }
 
     override val withEvents: Boolean
-        get() = VB6IElementTypes.WITHEVENTS.isIElementTypePresentInChildren(statementParent)
+        get() = VB6IElementTypes.WITHEVENTS.isIElementTypePresentInChildren(parentVariableStmt)
 
     override val visibility: VB6VisibilityEnum
-        get() = when (val parent = statementParent) {
+        get() = when (val parent = parentVariableStmt) {
             is VB6ModuleVariableStmt -> parent.visibility?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
             else -> VB6VisibilityEnum.PUBLIC
         }
@@ -47,13 +47,13 @@ class VB6VariableSubRuleImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val isModuleVariable: Boolean
-        get() = statementParent is VB6ModuleVariableStmt
+        get() = parentVariableStmt is VB6ModuleVariableStmt
 
-    override val statementParent: PsiElement
+    override val parentVariableStmt: PsiElement
         get() = parent.parent
 
     override val isStatic: Boolean
-        get() = VB6IElementTypes.STATIC.isIElementTypePresentInChildren(statementParent)
+        get() = VB6IElementTypes.STATIC.isIElementTypePresentInChildren(parentVariableStmt)
 
     override val isArray: Boolean
         get() = getSubscripts().any()

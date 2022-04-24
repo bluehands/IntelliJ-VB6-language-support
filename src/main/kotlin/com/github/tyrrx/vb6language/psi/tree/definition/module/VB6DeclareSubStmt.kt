@@ -24,9 +24,9 @@ interface VB6DeclareSubStmt :
 
 class VB6DeclareSubStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareSubStmt {
 
-    object Factory : IPsiNodeFactory<VB6DeclareFunctionStmt> {
-        override fun createPsiNode(node: ASTNode): VB6DeclareFunctionStmt {
-            return VB6DeclareFunctionStmtImpl(node)
+    object Factory : IPsiNodeFactory<VB6DeclareSubStmt> {
+        override fun createPsiNode(node: ASTNode): VB6DeclareSubStmt {
+            return VB6DeclareSubStmtImpl(node)
         }
     }
 

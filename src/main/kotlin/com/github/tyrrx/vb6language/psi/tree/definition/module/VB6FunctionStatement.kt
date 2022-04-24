@@ -5,7 +5,7 @@ import com.github.tyrrx.vb6language.psi.declarations.VB6FunctionDeclaration
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.mixins.VB6IsStaticInChildrenMixin
-import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
+import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintOwnerMixin
 import com.github.tyrrx.vb6language.psi.mixins.VB6VisibilityOwnerMixin
 import com.github.tyrrx.vb6language.psi.scope.VB6BlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
@@ -24,7 +24,7 @@ interface VB6FunctionStatement :
         VB6BlockScopeOwner,
         VB6VisibilityOwnerMixin,
         VB6IsStaticInChildrenMixin,
-        VB6TypeHintMixin {
+        VB6TypeHintOwnerMixin {
 
 }
 

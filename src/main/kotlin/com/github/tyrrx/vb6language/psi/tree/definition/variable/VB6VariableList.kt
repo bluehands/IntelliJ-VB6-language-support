@@ -6,19 +6,19 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
 import com.intellij.lang.ASTNode
 
-interface VB6VariableListStmt : VB6PsiElement {
-    fun getVariableDefinitions(): List<VB6VariableSubRule>
+interface VB6VariableList : VB6PsiElement {
+    fun getVariableDefinitions(): List<VB6VariableListElement>
 }
 
-class VB6VariableListStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6VariableListStmt {
+class VB6VariableListImpl(node: ASTNode) : VB6PsiNode(node), VB6VariableList {
 
-    object Factory : IPsiNodeFactory<VB6VariableListStmt> {
-        override fun createPsiNode(node: ASTNode): VB6VariableListStmt {
-            return VB6VariableListStmtImpl(node)
+    object Factory : IPsiNodeFactory<VB6VariableList> {
+        override fun createPsiNode(node: ASTNode): VB6VariableList {
+            return VB6VariableListImpl(node)
         }
     }
 
-    override fun getVariableDefinitions(): List<VB6VariableSubRule> {
+    override fun getVariableDefinitions(): List<VB6VariableListElement> {
         return findPsiElementsInDirectChildrenByType(this)
     }
 }

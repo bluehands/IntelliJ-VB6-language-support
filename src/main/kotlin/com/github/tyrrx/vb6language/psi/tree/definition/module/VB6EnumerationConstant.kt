@@ -12,10 +12,14 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6EnumerationConstant : VB6ConstantDeclaration {
-    // todo expression
+    val ofEnum: VB6EnumerationStmt?
 }
 
 class VB6EnumerationConstantImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationConstant {
+
+    override val ofEnum: VB6EnumerationStmt?
+        get() = parent as? VB6EnumerationStmt
+
     override fun <TReturn> accept(namedElementOwnerVisitor: NamedElementOwnerVisitor<TReturn>): TReturn {
         return namedElementOwnerVisitor.visitEnumerationConstant(this)
     }

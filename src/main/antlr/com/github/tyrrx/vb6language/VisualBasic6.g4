@@ -579,13 +579,13 @@ expression
 	| NOT WS? expression 									    # vsNot
 ;
 
-variableStmt : (DIM | STATIC) WS variableListStmt; // definition
+variableStmt : (DIM | STATIC) WS variableList; // definition
 
-moduleVariableStmt : (DIM | visibility) WS (WITHEVENTS WS)? variableListStmt; // definition
+moduleVariableStmt : (DIM | visibility) WS (WITHEVENTS WS)? variableList; // definition
 
-variableListStmt : variableDeclaration (WS? ',' WS? variableDeclaration)*;
+variableList : variableListElement (WS? ',' WS? variableListElement)*;
 
-variableDeclaration : ambiguousIdentifier (WS? LPAREN WS? (subscripts WS?)? RPAREN WS?)? typeHint? (WS asTypeClause)?;
+variableListElement : ambiguousIdentifier (WS? LPAREN WS? (subscripts WS?)? RPAREN WS?)? typeHint? (WS asTypeClause)?;
 
 
 

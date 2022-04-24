@@ -5,10 +5,11 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
+import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintOwnerMixin
 import com.github.tyrrx.vb6language.psi.scope.VB6TransparentBlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
+import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Expression
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
@@ -16,15 +17,16 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6ForEachStmt :
-    VB6PsiElement,
-    VB6TransparentBlockScopeOwner,
-    VB6NamedElementOwner,
-    VB6TypeHintMixin {
+        VB6PsiElement,
+        VB6TransparentBlockScopeOwner,
+        VB6NamedElementOwner,
+        VB6TypeHintOwnerMixin {
     val iteratorDeclaration: VB6ForEachStmtIteratorDeclaration?
+    val inCollection: VB6Expression?
 }
 
 class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
-    VB6ForEachStmt {
+        VB6ForEachStmt {
 
     object Factory : IPsiNodeFactory<VB6ForEachStmt> {
         override fun createPsiNode(node: ASTNode): VB6ForEachStmt {
@@ -67,6 +69,9 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
         get() = listOf(this) + (block?.outsideVisibleNamedElementOwners ?: emptyList())
 
     override val iteratorDeclaration: VB6ForEachStmtIteratorDeclaration?
+        get() = findFirstChildByType(this)
+
+    override val inCollection: VB6Expression?
         get() = findFirstChildByType(this)
 
     override fun getTextOffset(): Int {

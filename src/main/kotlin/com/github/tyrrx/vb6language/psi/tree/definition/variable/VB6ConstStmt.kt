@@ -1,14 +1,11 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.declarations.VB6ConstantDeclaration
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
-import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintMixin
+import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintOwnerMixin
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
@@ -17,12 +14,11 @@ import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import com.intellij.psi.util.elementType
 
 interface VB6ConstBase :
         VB6ConstantDeclaration,
         VB6TypeClauseOwner,
-        VB6TypeHintMixin {
+        VB6TypeHintOwnerMixin {
     val isModuleConst: Boolean
 }
 
