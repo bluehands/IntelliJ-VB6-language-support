@@ -1,6 +1,5 @@
 package com.github.tyrrx.vb6language.language
 
-import com.github.tyrrx.vb6language.MyBundle
 import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.intellij.psi.tree.TokenSet
@@ -16,7 +15,41 @@ object VB6TokenSets {
         )
     }
 
-    val comments: TokenSet = PSIElementTypeFactory.createTokenSet(
+        val binaryOperators: TokenSet = PSIElementTypeFactory.createTokenSet(VB6Language.INSTANCE,
+                VisualBasic6Lexer.ASSIGN,
+                VisualBasic6Lexer.IS,
+                VisualBasic6Lexer.LIKE,
+                VisualBasic6Lexer.GEQ,
+                VisualBasic6Lexer.LEQ,
+                VisualBasic6Lexer.GT,
+                VisualBasic6Lexer.LT,
+                VisualBasic6Lexer.NEQ,
+                VisualBasic6Lexer.EQ,
+                VisualBasic6Lexer.POW,
+                VisualBasic6Lexer.DIV,
+                VisualBasic6Lexer.MULT,
+                VisualBasic6Lexer.MOD,
+                VisualBasic6Lexer.PLUS,
+                VisualBasic6Lexer.MINUS,
+                VisualBasic6Lexer.AMPERSAND,
+                VisualBasic6Lexer.IMP,
+                VisualBasic6Lexer.EQV,
+                VisualBasic6Lexer.XOR,
+                VisualBasic6Lexer.OR,
+                VisualBasic6Lexer.AND
+        )
+
+        val unaryPrefixOperators: TokenSet = PSIElementTypeFactory.createTokenSet(VB6Language.INSTANCE,
+                VisualBasic6Lexer.NEW,
+                VisualBasic6Lexer.MINUS,
+                VisualBasic6Lexer.PLUS,
+                VisualBasic6Lexer.NOT,
+                VisualBasic6Lexer.MID, // midStmt
+                VisualBasic6Lexer.TYPEOF, // typeOfStmt
+        )
+
+
+        val comments: TokenSet = PSIElementTypeFactory.createTokenSet(
             VB6Language.INSTANCE,
             VisualBasic6Lexer.COMMENT,
             VisualBasic6Lexer.REMCOMMENT

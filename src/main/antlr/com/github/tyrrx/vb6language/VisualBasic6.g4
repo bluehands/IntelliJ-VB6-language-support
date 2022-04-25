@@ -307,7 +307,7 @@ enumerationStmt:
 // expression must evaluate to a long
 enumerationConstant : ambiguousIdentifier (WS? EQ WS? expression)? endOfStatement;
 
-eraseStmt : ERASE WS expression (COMMA WS? expression)*?;
+eraseStmt : ERASE WS expression (WS? COMMA WS? expression)*?;
 
 errorStmt : ERROR WS expression;
 
