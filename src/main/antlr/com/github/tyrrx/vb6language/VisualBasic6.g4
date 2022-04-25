@@ -112,7 +112,7 @@ moduleHeader : VERSION WS DOUBLELITERAL WS CLASS;
 
 //moduleImports: moduleImportElement (endOfLine+ moduleImportElement)*; //todo register
 
-//moduleImportElement: 'Object' WS? EQ WS? STRINGLITERAL WS? ';' WS? STRINGLITERAL; //todo register
+//moduleImportElement: 'Object' WS? EQ WS? STRINGLITERAL WS? SEMICOLON WS? STRINGLITERAL; //todo register
 
 
 moduleConfig :
@@ -170,7 +170,7 @@ moduleBodyElement :
 
 // block ----------------------------------
 
-attributeStmt : ATTRIBUTE WS inlineCall WS? EQ WS? literal (WS? ',' WS? literal)*;
+attributeStmt : ATTRIBUTE WS inlineCall WS? EQ WS? literal (WS? COMMA WS? literal)*;
 
 block : blockStmt (endOfStatement blockStmt)* endOfStatement;
 
@@ -248,7 +248,7 @@ blockStmt :
 
 // statements ----------------------------------
 
-appactivateStmt : APPACTIVATE WS expression (WS? ',' WS? expression)?;
+appactivateStmt : APPACTIVATE WS expression (WS? COMMA WS? expression)?;
 
 beepStmt : BEEP;
 
@@ -256,10 +256,10 @@ chdirStmt : CHDIR WS expression;
 
 chdriveStmt : CHDRIVE WS expression;
 
-closeStmt : CLOSE (WS fileNumber (WS? ',' WS? fileNumber)*)?;
+closeStmt : CLOSE (WS fileNumber (WS? COMMA WS? fileNumber)*)?;
 
-moduleConstListStmt: (visibility WS)? CONST WS constStmt (WS? ',' WS? constStmt)*;
-constListStmt : CONST WS constStmt (WS? ',' WS? constStmt)*;
+moduleConstListStmt: (visibility WS)? CONST WS constStmt (WS? COMMA WS? constStmt)*;
+constListStmt : CONST WS constStmt (WS? COMMA WS? constStmt)*;
 
 constStmt : ambiguousIdentifier typeHint? (WS asTypeClause)? WS? EQ WS? expression;
 
@@ -277,10 +277,10 @@ deftypeStmt :
 		DEFSNG | DEFDBL | DEFDEC | DEFDATE |
 		DEFSTR | DEFOBJ | DEFVAR
 	) WS
-	letterrange (WS? ',' WS? letterrange)*
+	letterrange (WS? COMMA WS? letterrange)*
 ;
 
-deleteSettingStmt : DELETESETTING WS expression WS? ',' WS? expression (WS? ',' WS? expression)?;
+deleteSettingStmt : DELETESETTING WS expression WS? COMMA WS? expression (WS? COMMA WS? expression)?;
 
 doLoopStmt :
 	DO endOfStatement
@@ -307,7 +307,7 @@ enumerationStmt:
 // expression must evaluate to a long
 enumerationConstant : ambiguousIdentifier (WS? EQ WS? expression)? endOfStatement;
 
-eraseStmt : ERASE WS expression (',' WS? expression)*?;
+eraseStmt : ERASE WS expression (COMMA WS? expression)*?;
 
 errorStmt : ERROR WS expression;
 
@@ -315,7 +315,7 @@ eventStmt : (visibility WS)? EVENT WS ambiguousIdentifier WS? argList;
 
 exitStmt : EXIT_DO | EXIT_FOR | EXIT_FUNCTION | EXIT_PROPERTY | EXIT_SUB;
 
-filecopyStmt : FILECOPY WS expression WS? ',' WS? expression;
+filecopyStmt : FILECOPY WS expression WS? COMMA WS? expression;
 
 forEachStmt :
 	FOR WS EACH WS forEachStmtIteratorDeclaration typeHint? WS IN WS expression endOfStatement // definition
@@ -339,7 +339,7 @@ functionStmt :
 	END_FUNCTION
 ;
 
-getStmt : GET WS fileNumber WS? ',' WS? expression? WS? ',' WS? expression;
+getStmt : GET WS fileNumber WS? COMMA WS? expression? WS? COMMA WS? expression;
 
 goSubStmt : GOSUB WS expression;
 
@@ -374,17 +374,17 @@ ifElseBlockStmt :
 
 implementsStmt : IMPLEMENTS WS ambiguousIdentifier; // reference
 
-inputStmt : INPUT WS fileNumber (WS? ',' WS? expression)+;
+inputStmt : INPUT WS fileNumber (WS? COMMA WS? expression)+;
 
 killStmt : KILL WS expression;
 
 letStmt : (LET WS)? inlineCall WS? (EQ | PLUS_EQ | MINUS_EQ) WS? expression; // reference
 
-lineInputStmt : LINE_INPUT WS fileNumber WS? ',' WS? expression;
+lineInputStmt : LINE_INPUT WS fileNumber WS? COMMA WS? expression;
 
 loadStmt : LOAD WS expression;
 
-lockStmt : LOCK WS expression (WS? ',' WS? expression (WS TO WS expression)?)?;
+lockStmt : LOCK WS expression (WS? COMMA WS? expression (WS TO WS expression)?)?;
 
 lsetStmt : LSET WS inlineCall WS? EQ WS? expression; // reference
 
@@ -419,7 +419,7 @@ onGoToStmt : ON WS expression WS GOTO WS goToDestinationList;
 
 onGoSubStmt : ON WS expression WS GOSUB WS goToDestinationList;
 
-goToDestinationList: goToDestination (WS? ',' WS? goToDestination)*;    //todo register
+goToDestinationList: goToDestination (WS? COMMA WS? goToDestination)*;    //todo register
 // literal must be a long
 goToDestination: literal | ambiguousIdentifier;                    //todo register
 
@@ -433,8 +433,8 @@ openStmt :
 ;
 
 outputList :
-	outputList_Expression (WS? (';' | ',') WS? outputList_Expression?)*
-	| outputList_Expression? (WS? (';' | ',') WS? outputList_Expression?)+
+	outputList_Expression (WS? (SEMICOLON | COMMA) WS? outputList_Expression?)*
+	| outputList_Expression? (WS? (SEMICOLON | COMMA) WS? outputList_Expression?)+
 ;
 
 outputList_Expression :
@@ -442,7 +442,7 @@ outputList_Expression :
 	| (SPC | TAB) (WS? LPAREN WS? parameters WS? RPAREN)?
 ;
 
-printStmt : PRINT WS fileNumber WS? ',' (WS? outputList)?;
+printStmt : PRINT WS fileNumber WS? COMMA (WS? outputList)?;
 
 propertyGetStmt :
 	(visibility WS)? (STATIC WS)? PROPERTY_GET WS ambiguousIdentifier typeHint? (WS? argList)? (WS asTypeClause)? endOfStatement
@@ -462,13 +462,13 @@ propertyLetStmt :
 	END_PROPERTY
 ;
 
-putStmt : PUT WS fileNumber WS? ',' WS? expression? WS? ',' WS? expression;
+putStmt : PUT WS fileNumber WS? COMMA WS? expression? WS? COMMA WS? expression;
 
 raiseEventStmt : RAISEEVENT WS ambiguousIdentifier (WS? LPAREN WS? (parameters WS?)? RPAREN)?; // reference
 
 randomizeStmt : RANDOMIZE (WS expression)?;
 
-redimStmt : REDIM WS (PRESERVE WS)? redimSubStmt (WS?',' WS? redimSubStmt)*;
+redimStmt : REDIM WS (PRESERVE WS)? redimSubStmt (WS? COMMA WS? redimSubStmt)*;
 
 redimSubStmt : inlineCall WS? LPAREN WS? subscripts WS? RPAREN (WS asTypeClause)?; // reference
 
@@ -482,11 +482,11 @@ rmdirStmt : RMDIR WS expression;
 
 rsetStmt : RSET WS inlineCall WS? EQ WS? expression; // todo
 
-savepictureStmt : SAVEPICTURE WS expression WS? ',' WS? expression;
+savepictureStmt : SAVEPICTURE WS expression WS? COMMA WS? expression;
 
-saveSettingStmt : SAVESETTING WS expression WS? ',' WS? expression WS? ',' WS? expression WS? ',' WS? expression;
+saveSettingStmt : SAVESETTING WS expression WS? COMMA WS? expression WS? COMMA WS? expression WS? COMMA WS? expression;
 
-seekStmt : SEEK WS fileNumber WS? ',' WS? expression;
+seekStmt : SEEK WS fileNumber WS? COMMA WS? expression;
 
 selectCaseStmt :
 	SELECT WS CASE WS expression endOfStatement
@@ -508,12 +508,12 @@ sC_Case : // todo implement
 // ELSE first, so that it is not interpreted as a variable call
 sC_Cond : // Todo split rules to make them visible & implement
     ELSE                                                            # caseCondElse
-    | sC_Selection (WS? ',' WS? sC_Selection)*                      # caseCondSelection
+    | sC_Selection (WS? COMMA WS? sC_Selection)*                      # caseCondSelection
 ;
 
-sendkeysStmt : SENDKEYS WS expression (WS? ',' WS? expression)?;
+sendkeysStmt : SENDKEYS WS expression (WS? COMMA WS? expression)?;
 
-setattrStmt : SETATTR WS expression WS? ',' WS? expression;
+setattrStmt : SETATTR WS expression WS? COMMA WS? expression;
 
 setStmt : SET WS inlineCall WS? EQ WS? expression; // reference
 
@@ -539,13 +539,13 @@ typeOfStmt : TYPEOF WS expression (WS IS WS type_)?;
 
 unloadStmt : UNLOAD WS expression;
 
-unlockStmt : UNLOCK WS fileNumber (WS? ',' WS? expression (WS TO WS expression)?)?;
+unlockStmt : UNLOCK WS fileNumber (WS? COMMA WS? expression (WS TO WS expression)?)?;
 
 // operator precedence is represented by rule order
 expression
     : literal 												    # vsLiteral
 	| inlineCall 								                # vsICS
-	| LPAREN WS? expression (WS? ',' WS? expression)* RPAREN 	# vsStruct
+	| LPAREN WS? expression (WS? COMMA WS? expression)* RPAREN 	# vsStruct
 	| NEW WS? expression 									    # vsNew
 	| typeOfStmt 											    # vsTypeOf
 	| midStmt 												    # vsMid
@@ -583,7 +583,7 @@ variableStmt : (DIM | STATIC) WS variableList; // definition
 
 moduleVariableStmt : (DIM | visibility) WS (WITHEVENTS WS)? variableList; // definition
 
-variableList : variableListElement (WS? ',' WS? variableListElement)*;
+variableList : variableListElement (WS? COMMA WS? variableListElement)*;
 
 variableListElement : ambiguousIdentifier (WS? LPAREN WS? (subscripts WS?)? RPAREN WS?)? typeHint? (WS asTypeClause)?;
 
@@ -595,7 +595,7 @@ whileWendStmt :
 	WEND
 ;
 
-widthStmt : WIDTH WS fileNumber WS? ',' WS? expression;
+widthStmt : WIDTH WS fileNumber WS? COMMA WS? expression;
 
 withStmt :
 	WITH WS (inlineCall | (NEW WS type_)) endOfStatement
@@ -603,7 +603,7 @@ withStmt :
 	END_WITH
 ;
 
-writeStmt : WRITE WS fileNumber WS? ',' (WS? outputList)?;
+writeStmt : WRITE WS fileNumber WS? COMMA (WS? outputList)?;
 
 
 fileNumber : '#'? expression;
@@ -666,7 +666,7 @@ inlineDictionaryCall : dictionaryCallStmt;
 
 // atomic call statements ----------------------------------
 
-parameters : (parameter? WS? (',' | ';') WS?)* parameter (WS? (',' | ';') WS? parameter?)*; //todo register
+parameters : (parameter? WS? (COMMA | SEMICOLON) WS?)* parameter (WS? (COMMA | SEMICOLON) WS? parameter?)*; //todo register
 
 parameter : LPAREN? ((BYVAL | BYREF | PARAMARRAY) WS)? RPAREN? expression; //todo register
 
@@ -675,7 +675,7 @@ dictionaryCallStmt : '!' ambiguousIdentifier typeHint?; // reference
 
 // atomic rules for statements
 
-argList : LPAREN (WS? arg (WS? ',' WS? arg)*)? WS? RPAREN;
+argList : LPAREN (WS? arg (WS? COMMA WS? arg)*)? WS? RPAREN;
 
 arg : (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)?
     ambiguousIdentifier typeHint? (WS? LPAREN WS? RPAREN)?
@@ -684,7 +684,7 @@ arg : (OPTIONAL WS)? ((BYVAL | BYREF) WS)? (PARAMARRAY WS)?
 argDefaultValue : EQ WS? expression;
 
 
-subscripts : subscriptElement (WS? ',' WS? subscriptElement)*;
+subscripts : subscriptElement (WS? COMMA WS? subscriptElement)*;
 // expression must evaluate (infere) to a int or long value
 subscriptElement : (expression WS TO WS)? expression;
 
@@ -990,6 +990,8 @@ REMCOMMENT : COLON? REM WS (LINE_CONTINUATION | ~[\r\n\u2028\u2029])*;
 COMMENT : SINGLEQUOTE (LINE_CONTINUATION | ~[\r\n\u2028\u2029])*;
 SINGLEQUOTE : '\'';
 COLON : ':';
+SEMICOLON : ';';
+COMMA : ',';
 UNDERSCORE : '_';
 WS : ([ \t] | LINE_CONTINUATION)+;
 
