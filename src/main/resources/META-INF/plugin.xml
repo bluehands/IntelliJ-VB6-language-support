@@ -33,6 +33,8 @@
                                 implementationClass="com.github.tyrrx.vb6language.completion.VB6CompletionContributor"/>
 <!--        <completion.contributor language="VisualBasic6"-->
 <!--                                implementationClass="com.github.tyrrx.vb6language.completion.VB6ModuleBodyContributor"/>-->
+
+        <lang.formatter language="VisualBasic6" implementationClass="com.github.tyrrx.vb6language.formatting.VB6FormattingModelBuilder"/>
         
         <documentationProvider implementation="com.github.tyrrx.vb6language.documentation.VB6DocumentationProvider"/>
 
