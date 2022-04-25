@@ -15,6 +15,11 @@ class ASTFactory : DefaultASTFactoryImpl() {
 
     private val factoriesMap = mergeAll(
         VB6TokenSets.stringLiterals mapsTo VB6StringLiteral.Factory,
+//        VB6TokenSets.whitespaces mapsTo object : ILeafFactory {
+//            override fun createLeaf(type: IElementType, text: CharSequence): LeafElement {
+//                return PsiWhiteSpaceImpl(text)
+//            }
+//        }
     )
 
     override fun createLeaf(type: IElementType, text: CharSequence): LeafElement {

@@ -17,28 +17,34 @@ class VB6Block(node: ASTNode, wrap: Wrap?, alignment: Alignment?) : AbstractBloc
     }
 
     override fun buildChildren(): List<Block> {
-        return myNode.getChildren(null).mapNotNull { iteratedAstNode ->
-            if (iteratedAstNode.textLength == 0) {
+        return myNode.getChildren(null).mapNotNull { childAstNode ->
+            if (childAstNode.textLength == 0) {
                 null
             } else {
-                if (iteratedAstNode.elementType == TokenType.WHITE_SPACE) {
+                if (childAstNode.elementType == TokenType.WHITE_SPACE
+                    || childAstNode.elementType === VB6IElementTypes.rules[VisualBasic6Parser.RULE_endOfLine]
+                    || (childAstNode.elementType === VB6IElementTypes.rules[VisualBasic6Parser.RULE_endOfStatement] && !childAstNode.text.contains(
+                        ":"
+                    ))
+                ) {
                     null
                 } else {
-                    VB6Block(iteratedAstNode, null, null)
+                    VB6Block(childAstNode, Wrap.createWrap(WrapType.NONE, false), null)
                 }
             }
         }
     }
 
     override fun getIndent(): Indent? {
-        if (myNode.elementType == VB6IElementTypes.rules[VisualBasic6Parser.RULE_blockStmt]) {
-            println("$myNode")
-            return Indent.getSpaceIndent(4)
+        return when(myNode.elementType) {
+            VB6IElementTypes.rules[VisualBasic6Parser.RULE_blockStmt] -> Indent.getNormalIndent()
+            VB6IElementTypes.rules[VisualBasic6Parser.RULE_moduleConfigElement] -> Indent.getNormalIndent()
+            else -> Indent.getNoneIndent()
         }
-        return Indent.getNoneIndent()
     }
 
+
 //    override fun getChildIndent(): Indent? {
-//        return Indent.getSpaceIndent(4)
+//        return Indent.getNoneIndent()
 //    }
 }

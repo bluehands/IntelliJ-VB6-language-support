@@ -10,4 +10,5 @@ class VB6FormattingModelBuilder : FormattingModelBuilder {
                 formattingContext.codeStyleSettings
         )
     }
+
 }
