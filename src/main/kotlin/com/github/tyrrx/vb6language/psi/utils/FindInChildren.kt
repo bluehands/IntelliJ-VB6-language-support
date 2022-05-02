@@ -5,11 +5,11 @@ import com.intellij.psi.tree.IElementType
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.util.elementType
 
-inline fun <reified TResult: PsiElement> findFirstChildByType(parentOfChildren: PsiElement): TResult? {
+inline fun <reified TResult: PsiElement> findFirstChildByTypeOf(parentOfChildren: PsiElement): TResult? {
     return PsiTreeUtil.getChildOfType(parentOfChildren, TResult::class.java)
 }
 
-inline fun <reified TResult: PsiElement> findPsiElementsInDirectChildrenByType(parentOfChildren: PsiElement): List<TResult> {
+inline fun <reified TResult: PsiElement> findChildElementsByTypeOf(parentOfChildren: PsiElement): List<TResult> {
     return PsiTreeUtil.getChildrenOfTypeAsList(parentOfChildren, TResult::class.java)
 }
 

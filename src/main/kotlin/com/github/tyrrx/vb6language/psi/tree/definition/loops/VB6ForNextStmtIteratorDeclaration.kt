@@ -8,7 +8,7 @@ import com.github.tyrrx.vb6language.psi.reference.references.SymbolReference
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.scope.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.utils.findFirstParentOfType
 import com.intellij.lang.ASTNode
 
@@ -35,7 +35,7 @@ class VB6ForNextStmtIteratorDeclarationImpl(node: ASTNode) :
     }
 
     override val identifier: VB6NamedElement?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override fun getReference(): VB6Reference? {
         return createReference()

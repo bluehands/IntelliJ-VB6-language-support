@@ -7,7 +7,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -25,7 +25,7 @@ class VB6TypeStmtMemberImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmtMember
     }
 
     override val typeClause: VB6AsTypeClause?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override val ofTypeStmt: VB6TypeStmt?
         get() = parent as? VB6TypeStmt
@@ -35,7 +35,7 @@ class VB6TypeStmtMemberImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmtMember
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return findFirstChildByTypeOf(this)
     }
 
     override fun getName(): String? {

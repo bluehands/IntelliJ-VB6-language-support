@@ -12,7 +12,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -41,7 +41,7 @@ class VB6EventStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EventStmt {
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return findFirstChildByTypeOf(this)
     }
 
     override fun getName(): String? {
@@ -57,8 +57,8 @@ class VB6EventStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EventStmt {
     }
 
     override val visibility: VB6VisibilityEnum
-        get() = findFirstChildByType<VB6Visibility>(this)?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+        get() = findFirstChildByTypeOf<VB6Visibility>(this)?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
 
     override val arguments: List<VB6Argument>
-        get() = findFirstChildByType<VB6ArgumentList>(this)?.arguments() ?: emptyList()
+        get() = findFirstChildByTypeOf<VB6ArgumentList>(this)?.arguments() ?: emptyList()
 }

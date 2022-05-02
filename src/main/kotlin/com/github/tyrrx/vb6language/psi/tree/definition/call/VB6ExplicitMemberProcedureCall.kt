@@ -5,7 +5,7 @@ import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceChain
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6ExplicitMemberProcedureCall : VB6PsiElement, VB6MemberReferenceChain {
@@ -22,10 +22,10 @@ class VB6ExplicitMemberProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6E
     }
 
     override val inlineCall: VB6InlineCall?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override val lastExplicitMemberProcedureCall: VB6LastExplicitMemberProcedureCall?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override val referenceOwners: List<VB6ReferenceOwner>
         get() {

@@ -17,13 +17,12 @@ import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6AttributeSt
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
 import com.github.tyrrx.vb6language.psi.utils.createElementFromText
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.github.tyrrx.vb6language.psi.visitor.TypeDeclarationVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiNamedElement
 
 interface VB6Module : VB6ScopeNode, VB6NamedElementOwner, VB6NamedElement, VB6TypeDeclaration {
     // base
@@ -66,11 +65,11 @@ val VB6Module.namedElementOwners: List<VB6NamedElementOwner>
 
 
 class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
-    override val moduleHeader: VB6ModuleHeader? get() = findFirstChildByType(this)
-    override val moduleConfig: VB6ModuleConfig? get() = findFirstChildByType(this)
-    override val moduleAttributes: VB6ModuleAttributes? get() = findFirstChildByType(this)
-    override val moduleDeclarations: VB6ModuleDeclarations? get() = findFirstChildByType(this)
-    override val moduleBody: VB6ModuleBody? get() = findFirstChildByType(this)
+    override val moduleHeader: VB6ModuleHeader? get() = findFirstChildByTypeOf(this)
+    override val moduleConfig: VB6ModuleConfig? get() = findFirstChildByTypeOf(this)
+    override val moduleAttributes: VB6ModuleAttributes? get() = findFirstChildByTypeOf(this)
+    override val moduleDeclarations: VB6ModuleDeclarations? get() = findFirstChildByTypeOf(this)
+    override val moduleBody: VB6ModuleBody? get() = findFirstChildByTypeOf(this)
 
     override val nameAttribute: VB6AttributeStmt?
         get() = moduleAttributes

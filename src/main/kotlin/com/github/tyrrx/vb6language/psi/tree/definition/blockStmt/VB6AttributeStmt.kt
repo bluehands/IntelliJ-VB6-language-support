@@ -9,9 +9,9 @@ import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6Literal
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.utils.findPsiElementInSubtree
-import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.utils.findChildElementsByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -30,10 +30,10 @@ class VB6AttributeStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val literals: Collection<VB6Literal>
-        get() = findPsiElementsInDirectChildrenByType(this)
+        get() = findChildElementsByTypeOf(this)
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType<VB6InlineCall>(this)
+        return findFirstChildByTypeOf<VB6InlineCall>(this)
                 ?.let { findPsiElementInSubtree(it) }
     }
 

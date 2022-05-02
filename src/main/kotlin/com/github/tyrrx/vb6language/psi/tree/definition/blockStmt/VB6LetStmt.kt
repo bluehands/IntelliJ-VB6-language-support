@@ -7,12 +7,11 @@ import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.declarations.VB6VariableDeclaration
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicInlineCall
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6InlineCall
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -31,7 +30,7 @@ class VB6LetStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val inlineCall: VB6InlineCall?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override val isDefinition: Boolean
         get() {

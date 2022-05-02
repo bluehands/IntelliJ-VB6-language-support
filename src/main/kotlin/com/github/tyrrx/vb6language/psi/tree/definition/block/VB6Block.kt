@@ -1,12 +1,11 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.block
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.utils.findChildElementsByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6Block : VB6PsiElement, VB6EnclosingVisibleNamedElements {
@@ -22,8 +21,8 @@ class VB6BlockImpl(node: ASTNode) : VB6PsiNode(node), VB6Block {
     }
 
     override val statements: List<VB6PsiElement>
-        get() = findPsiElementsInDirectChildrenByType<VB6BlockStmt>(this)
-            .map { it.statement }
+        get() = findChildElementsByTypeOf<VB6BlockStmt>(this)
+            .mapNotNull { it.statement }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>
         get() = statements

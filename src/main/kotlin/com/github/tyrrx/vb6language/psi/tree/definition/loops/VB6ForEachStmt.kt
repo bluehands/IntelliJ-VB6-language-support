@@ -10,7 +10,7 @@ import com.github.tyrrx.vb6language.psi.scope.VB6TransparentBlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Expression
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
@@ -35,7 +35,7 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val block: VB6Block?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return nodeVisitor.visitForEachStmt(this)
@@ -69,10 +69,10 @@ class VB6ForEachStmtImpl(node: ASTNode) : VB6PsiNode(node),
         get() = listOf(this) + (block?.outsideVisibleNamedElementOwners ?: emptyList())
 
     override val iteratorDeclaration: VB6ForEachStmtIteratorDeclaration?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override val inCollection: VB6Expression?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()

@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.intellij.lang.ASTNode
 
 interface VB6BlockStmt : VB6PsiElement {
-    val statement: VB6PsiElement
+    val statement: VB6PsiElement?
 }
 
 class VB6BlockStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6BlockStmt {
@@ -17,7 +17,7 @@ class VB6BlockStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6BlockStmt {
         }
     }
 
-    override val statement: VB6PsiElement
-        get() = firstChild as VB6PsiElement
+    override val statement: VB6PsiElement?
+        get() = firstChild as? VB6PsiElement
 
 }

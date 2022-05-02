@@ -10,7 +10,7 @@ import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.reference.references.TypeMemberReference
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6LastExplicitMemberProcedureCall : VB6PsiElement, VB6MemberReferenceOwner, VB6ReferenceFactory {
@@ -26,7 +26,7 @@ class VB6LastExplicitMemberProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), 
     }
 
     override val referencingElement: VB6NamedElement?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override fun getReference(): VB6Reference? {
         return createReference()

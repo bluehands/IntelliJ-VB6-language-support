@@ -81,7 +81,7 @@ object VB6TokenSets {
 
     val whitespaces: TokenSet = PSIElementTypeFactory.createTokenSet(
             VB6Language.INSTANCE,
-            VisualBasic6Lexer.WS,
+            VisualBasic6Lexer.SINGLESPACE,
             VisualBasic6Lexer.NEWLINE
     )
 

@@ -5,7 +5,7 @@ import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.scope.VB6TransparentBlockScopeOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 
@@ -22,7 +22,7 @@ class VB6IfBlockStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val block: VB6Block?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override fun <TReturn> accept(nodeVisitor: ScopeNodeVisitor<TReturn>): TReturn {
         return nodeVisitor.visitIfBlockStmt(this)

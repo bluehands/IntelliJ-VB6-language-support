@@ -8,7 +8,7 @@ import com.github.tyrrx.vb6language.psi.reference.references.TypeReference
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6FirstComplexTypeElement : VB6PsiElement, VB6ReferenceOwner, VB6ReferenceFactory {
@@ -33,7 +33,7 @@ class VB6FirstComplexTypeElementImpl(node: ASTNode) : VB6PsiNode(node), VB6First
     }
 
     override val namedElement: VB6NamedElement?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override fun getReference(): VB6Reference? {
         return createReference()

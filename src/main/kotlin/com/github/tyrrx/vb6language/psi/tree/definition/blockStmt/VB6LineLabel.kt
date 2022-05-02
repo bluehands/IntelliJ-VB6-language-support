@@ -6,7 +6,7 @@ import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -36,7 +36,7 @@ class VB6LineLabelImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return findFirstChildByTypeOf(this)
     }
 
     override fun setName(name: String): PsiElement {

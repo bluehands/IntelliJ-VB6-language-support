@@ -3,7 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.general
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.utils.findChildElementsByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6ArgumentList: VB6PsiElement {
@@ -20,6 +20,6 @@ class VB6ArgumentListImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun arguments(): List<VB6Argument> {
-        return findPsiElementsInDirectChildrenByType(this)
+        return findChildElementsByTypeOf(this)
     }
 }

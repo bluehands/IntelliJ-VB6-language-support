@@ -10,7 +10,7 @@ import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
@@ -51,7 +51,7 @@ class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return findFirstChildByTypeOf(this)
     }
 
     override fun setName(name: String): PsiElement {
@@ -71,5 +71,5 @@ class VB6ConstStmtImpl(node: ASTNode) : VB6PsiNode(node),
         }
 
     override val typeClause: VB6AsTypeClause?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 }

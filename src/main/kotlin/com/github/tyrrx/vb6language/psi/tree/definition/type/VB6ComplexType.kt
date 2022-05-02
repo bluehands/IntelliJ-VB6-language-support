@@ -8,8 +8,8 @@ import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceChain
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
+import com.github.tyrrx.vb6language.psi.utils.findChildElementsByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6ComplexType : VB6TypeElement, VB6MemberReferenceChain, VB6TypeInferable {
@@ -26,11 +26,11 @@ class VB6ComplexTypeImpl(node: ASTNode) : VB6PsiNode(node),
     }
 
     override val identifiers: List<VB6Identifier>
-        get() = findPsiElementsInDirectChildrenByType(this)
+        get() = findChildElementsByTypeOf(this)
 
     override val referenceOwners: List<VB6ReferenceOwner>
-        get() = listOfNotNull(findFirstChildByType<VB6FirstComplexTypeElement>(this)) +
-                findPsiElementsInDirectChildrenByType<VB6FollowingComplexTypeElement>(this)
+        get() = listOfNotNull(findFirstChildByTypeOf<VB6FirstComplexTypeElement>(this)) +
+                findChildElementsByTypeOf<VB6FollowingComplexTypeElement>(this)
     override fun inferType(): InferenceResult {
         return when (val resolveTarget = referenceOwners.lastOrNull()?.reference?.resolve()) {
             is VB6TypeDeclaration -> InferenceResult.UserDefinedType(resolveTarget)

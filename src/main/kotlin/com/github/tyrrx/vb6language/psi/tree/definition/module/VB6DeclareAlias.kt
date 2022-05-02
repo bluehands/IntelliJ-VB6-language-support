@@ -4,7 +4,7 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.literal.VB6StringLiteral
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6DeclareAlias : VB6PsiElement {
@@ -19,5 +19,5 @@ class VB6DeclareAliasImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareAlias {
     }
 
     override val stringLiteral: VB6StringLiteral?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 }

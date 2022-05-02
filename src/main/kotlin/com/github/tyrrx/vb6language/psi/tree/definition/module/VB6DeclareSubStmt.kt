@@ -8,7 +8,7 @@ import com.github.tyrrx.vb6language.psi.mixins.VB6VisibilityOwnerMixin
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6ArgumentList
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.utils.isIElementTypePresentInChildren
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
@@ -31,7 +31,7 @@ class VB6DeclareSubStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareSubStmt
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return findFirstChildByTypeOf(this)
     }
 
     override fun getName(): String? {
@@ -44,16 +44,16 @@ class VB6DeclareSubStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6DeclareSubStmt
     }
 
     override val arguments: List<VB6Argument>
-        get() = findFirstChildByType<VB6ArgumentList>(this)?.arguments() ?: emptyList()
+        get() = findFirstChildByTypeOf<VB6ArgumentList>(this)?.arguments() ?: emptyList()
 
     override val isDefinition: Boolean
         get() = true
 
     override val lib: VB6DeclareLib?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override val alias: VB6DeclareAlias?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override val isPtrSafe: Boolean
         get() = VB6IElementTypes.PTRSAFE.isIElementTypePresentInChildren(this)

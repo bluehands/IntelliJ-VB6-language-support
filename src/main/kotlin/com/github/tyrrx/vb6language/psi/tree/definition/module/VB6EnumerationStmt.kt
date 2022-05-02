@@ -10,8 +10,8 @@ import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
-import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
+import com.github.tyrrx.vb6language.psi.utils.findChildElementsByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.github.tyrrx.vb6language.psi.visitor.TypeDeclarationVisitor
 import com.intellij.lang.ASTNode
@@ -35,7 +35,7 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
     }
 
     override val enumMembers: List<VB6EnumerationConstant>
-        get() = findPsiElementsInDirectChildrenByType(this)
+        get() = findChildElementsByTypeOf(this)
 
     override fun <TReturn> processTypeDeclarations(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
         return visitor.processEnumerationStmtDeclarations(this)
@@ -45,7 +45,7 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
         get() = listOf(this) + enumMembers
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return findFirstChildByTypeOf(this)
     }
 
     override fun getName(): String? {
@@ -61,7 +61,7 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
     }
 
     override val visibility: VB6VisibilityEnum
-        get() = findFirstChildByType<VB6Visibility>(this)?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
+        get() = findFirstChildByTypeOf<VB6Visibility>(this)?.getEnumValue() ?: VB6VisibilityEnum.PUBLIC
 
     override fun getTextOffset(): Int {
         return nameIdentifier?.textOffset ?: super.getTextOffset()

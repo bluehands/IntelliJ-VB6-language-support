@@ -28,7 +28,6 @@ class VB6Block(private val spacingBuilder: SpacingBuilder, node: ASTNode, wrap: 
     override fun getIndent(): Indent? {
         return when (myNode.elementType) {
             VB6IElementTypes.rules[VisualBasic6Parser.RULE_blockStmt] -> Indent.getNormalIndent()
-            VB6IElementTypes.rules[VisualBasic6Parser.RULE_moduleConfigElement] -> Indent.getNormalIndent()
             VB6IElementTypes.rules[VisualBasic6Parser.RULE_enumerationConstant] -> Indent.getNormalIndent()
             VB6IElementTypes.rules[VisualBasic6Parser.RULE_typeStmtMember] -> Indent.getNormalIndent()
             else -> Indent.getNoneIndent()
@@ -43,9 +42,7 @@ class VB6Block(private val spacingBuilder: SpacingBuilder, node: ASTNode, wrap: 
 private fun ASTNode.isNotBlockWrapped(): Boolean {
     if (this.textLength == 0) return true
     return when (this.elementType) {
-        TokenType.WHITE_SPACE -> {
-            return !this.textContains('_')
-        }
+        TokenType.WHITE_SPACE -> true
         VB6IElementTypes.rules[VisualBasic6Parser.RULE_endOfLine] -> {
             val noComment = this.findChildByType(VB6IElementTypes.tokens[VisualBasic6Parser.COMMENT]) == null
             val noRemComment = this.findChildByType(VB6IElementTypes.tokens[VisualBasic6Parser.REMCOMMENT]) == null

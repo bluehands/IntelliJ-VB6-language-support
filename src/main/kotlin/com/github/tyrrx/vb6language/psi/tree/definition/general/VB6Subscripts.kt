@@ -3,7 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.general
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findPsiElementsInDirectChildrenByType
+import com.github.tyrrx.vb6language.psi.utils.findChildElementsByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6Subscripts : VB6PsiElement {
@@ -19,6 +19,6 @@ class VB6SubscriptsImpl(node: ASTNode) : VB6PsiNode(node), VB6Subscripts {
     }
 
     override fun getElements(): List<VB6SubscriptElement> {
-        return findPsiElementsInDirectChildrenByType(this)
+        return findChildElementsByTypeOf(this)
     }
 }

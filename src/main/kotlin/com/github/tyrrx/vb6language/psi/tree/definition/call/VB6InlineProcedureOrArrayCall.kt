@@ -3,7 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.call
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6InlineProcedureOrArrayCall : VB6AtomicCall {
@@ -18,5 +18,5 @@ class VB6InlineProcedureOrArrayCallImpl(node: ASTNode) : VB6PsiNode(node), VB6In
     }
 
     override val referenceIdentifier: VB6NamedElement?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 }

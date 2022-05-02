@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.mixins
 
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 
 interface VB6IdentifierFromChildrenMixin:
         VB6NamedElementOwner {
@@ -12,6 +12,6 @@ interface VB6IdentifierFromChildrenMixin:
     }
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return findFirstChildByTypeOf(this)
     }
 }

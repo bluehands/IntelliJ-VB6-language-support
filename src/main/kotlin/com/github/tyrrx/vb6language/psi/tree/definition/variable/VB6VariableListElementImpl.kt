@@ -9,7 +9,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6SubscriptElem
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Subscripts
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6VisibilityEnum
 import com.github.tyrrx.vb6language.psi.tree.definition.type.VB6AsTypeClause
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByType
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.utils.isIElementTypePresentInChildren
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor
 import com.intellij.lang.ASTNode
@@ -39,10 +39,10 @@ class VB6VariableListElementImpl(node: ASTNode) : VB6PsiNode(node),
 
 
     override val typeClause: VB6AsTypeClause?
-        get() = findFirstChildByType(this)
+        get() = findFirstChildByTypeOf(this)
 
     override fun getSubscripts(): List<VB6SubscriptElement> {
-        return findFirstChildByType<VB6Subscripts>(this)
+        return findFirstChildByTypeOf<VB6Subscripts>(this)
                 ?.getElements() ?: emptyList()
     }
 
@@ -61,7 +61,7 @@ class VB6VariableListElementImpl(node: ASTNode) : VB6PsiNode(node),
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner> = listOf(this)
 
     override fun getNameIdentifier(): VB6NamedElement? {
-        return findFirstChildByType(this)
+        return findFirstChildByTypeOf(this)
     }
 
     override fun getName(): String? {
