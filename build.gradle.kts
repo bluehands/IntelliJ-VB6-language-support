@@ -59,7 +59,7 @@ qodana {
 }
 
 tasks.runIde {
-    //jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+    jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
 }
 
 tasks {

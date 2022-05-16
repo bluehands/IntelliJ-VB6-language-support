@@ -9,8 +9,8 @@ import com.intellij.openapi.vfs.VirtualFile
 class VB6WorkspaceService(val project: Project) {
 
     private val logger = Logger.getInstance(VB6WorkspaceService::class.java)
-    private val projects: MutableMap<VirtualFile, VB6Project> = HashMap()
-    private val activeProjects: Set<VB6Project> = HashSet()
+    val projects: MutableMap<VirtualFile, VB6Project> = HashMap()
+
 
     init {
         println("VB6WorkspaceService")
@@ -51,5 +51,9 @@ class VB6WorkspaceService(val project: Project) {
         } else {
             logger.error("Failed to add project ${file.name} to the workspace because it is already loaded")
         }
+    }
+
+    fun detachVB6Project(project: VB6Project) {
+        projects.remove(project.myVirtualFile)
     }
 }
