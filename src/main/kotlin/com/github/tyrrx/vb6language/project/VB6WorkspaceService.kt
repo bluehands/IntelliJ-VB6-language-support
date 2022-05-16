@@ -18,6 +18,7 @@ import java.nio.file.Paths
 class VB6WorkspaceService(val project: Project) : PersistentStateComponent<Element> {
 
     private val logger = Logger.getInstance(VB6WorkspaceService::class.java)
+
     val projects: MutableMap<VirtualFile, VB6Project> = HashMap()
 
 
@@ -61,26 +62,31 @@ class VB6WorkspaceService(val project: Project) : PersistentStateComponent<Eleme
     }
 
     override fun getState(): Element {
-        val state = Element("state")
-        val projectsElement = Element("projects")
+        val state = Element(stateKey)
+        val projectsElement = Element(projectsKey)
         state.addContent(projectsElement)
         projects.keys.forEach {
-            val attribute = Element("project")
-                    .setAttribute("path", it.toNioPath().systemIndependentPath)
+            val attribute = Element(projectKey)
+                    .setAttribute(pathKey, it.toNioPath().systemIndependentPath)
             projectsElement.addContent(attribute)
         }
         return state
     }
 
     override fun loadState(state: Element) {
-        val projectsOfState = state.getChild("projects")
-        val projectElementsOfState = projectsOfState.getChildren("project")
+        val projectsOfState = state.getChild(projectsKey)
+        val projectElementsOfState = projectsOfState.getChildren(projectKey)
         projectElementsOfState
-                .mapNotNull { it.getAttributeValue("path") }
+                .mapNotNull { it.getAttributeValue(pathKey) }
                 .mapNotNull { Paths.get(it) }
                 .mapNotNull {
                     service<VirtualFileManager>().findFileByNioPath(it)
                 }
                 .forEach { attachVB6Project(it) }
     }
+
+    private val stateKey = "state"
+    private val projectsKey = "projects"
+    private val projectKey = "project"
+    private val pathKey = "path"
 }
