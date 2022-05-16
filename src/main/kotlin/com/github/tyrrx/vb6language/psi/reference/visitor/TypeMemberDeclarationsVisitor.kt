@@ -12,20 +12,20 @@ class TypeMemberDeclarationsVisitor(
     private fun compareNames(it: VB6NamedElementOwner) =
         it.name == referencingIdentifier.name
 
-    override fun processModuleDeclarations(module: VB6Module): VB6NamedElementOwner? {
+    override fun visitModule(module: VB6Module): VB6NamedElementOwner? {
         return module
             .outsideVisibleNamedElementOwners
             .find { compareNames(it) }
     }
 
-    override fun processTypeStmtDeclarations(type: VB6TypeStmtImpl): VB6NamedElementOwner? {
+    override fun visitType(type: VB6TypeStmtImpl): VB6NamedElementOwner? {
         return type
             .members
             .flatMap { it.outsideVisibleNamedElementOwners }
             .find { compareNames(it) }
     }
 
-    override fun processEnumerationStmtDeclarations(enum: VB6EnumerationStmtImpl): VB6NamedElementOwner? {
+    override fun visitEnum(enum: VB6EnumerationStmtImpl): VB6NamedElementOwner? {
         return enum
             .enumMembers
             .flatMap { it.outsideVisibleNamedElementOwners }

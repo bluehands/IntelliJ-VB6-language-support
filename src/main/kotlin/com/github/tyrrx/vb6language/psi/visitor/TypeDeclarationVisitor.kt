@@ -1,11 +1,9 @@
 package com.github.tyrrx.vb6language.psi.visitor
 
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmtImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmtImpl
+import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 
 interface TypeDeclarationVisitor<TReturn> {
-    fun processModuleDeclarations(module: VB6Module): TReturn
-    fun processTypeStmtDeclarations(type: VB6TypeStmtImpl): TReturn
-    fun processEnumerationStmtDeclarations(enum: VB6EnumerationStmtImpl): TReturn
+    fun visitModule(module: VB6Module): TReturn
+    fun visitType(type: VB6TypeStmt): TReturn
+    fun visitEnum(enum: VB6EnumerationStmt): TReturn
 }

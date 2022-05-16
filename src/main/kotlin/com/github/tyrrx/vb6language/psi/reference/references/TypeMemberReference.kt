@@ -33,7 +33,7 @@ class TypeMemberReference(
 
     private fun resolveInElement(element: PsiElement?): PsiElement? {
         return when (element) {
-            is VB6TypeDeclaration -> element.processTypeDeclarations(
+            is VB6TypeDeclaration -> element.accept(
                 TypeMemberDeclarationsVisitor(
                     referencingNamedElement
                 )

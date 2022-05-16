@@ -1,6 +1,7 @@
 package com.github.tyrrx.vb6language.highlighting
 
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6PropertyDeclaration
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
@@ -12,7 +13,7 @@ class CallableAnnotator : Annotator {
         when (element) {
             is VB6FunctionStatement -> highlightAsFunctionDeclaration(element, holder)
             is VB6SubroutineStatement -> highlightAsFunctionDeclaration(element, holder)
-            is VB6PropertyStatementBase -> highlightAsFunctionDeclaration(element, holder)
+            is VB6PropertyDeclaration -> highlightAsFunctionDeclaration(element, holder)
             is VB6DeclareFunctionStmt -> highlightAsFunctionDeclaration(element, holder)
             is VB6DeclareSubStmt -> highlightAsFunctionDeclaration(element, holder)
         }

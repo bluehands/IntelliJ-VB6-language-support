@@ -48,7 +48,7 @@ class MemberReferenceCompletionProvider : CompletionProvider<CompletionParameter
     }
 
     private fun variantsOf(resolvedElement: PsiElement?): List<VB6NamedElementOwner> = when (resolvedElement) {
-        is VB6TypeDeclaration -> resolvedElement.processTypeDeclarations(SuggestionTypeDeclarationVisitor())
+        is VB6TypeDeclaration -> resolvedElement.accept(SuggestionTypeDeclarationVisitor())
         is VB6TypeInferable -> variantsOfInferable(resolvedElement)
         else -> emptyList()
     }

@@ -123,8 +123,8 @@ class VB6ModuleImpl(node: ASTNode) : VB6PsiNode(node), VB6Module {
     override val namedElementOwner: VB6NamedElementOwner?
         get() = this
 
-    override fun <TReturn> processTypeDeclarations(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
-        return visitor.processModuleDeclarations(this)
+    override fun <TReturn> accept(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
+        return visitor.visitModule(this)
     }
 
     override fun getName(): String? {

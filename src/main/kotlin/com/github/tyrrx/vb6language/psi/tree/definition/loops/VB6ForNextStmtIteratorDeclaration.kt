@@ -4,7 +4,7 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.reference.references.SymbolReference
+import com.github.tyrrx.vb6language.psi.reference.references.CallOrValueReference
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.scope.VB6ScopeNode
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
@@ -30,7 +30,7 @@ class VB6ForNextStmtIteratorDeclarationImpl(node: ASTNode) :
 
     override fun createReference(): VB6Reference? {
         return identifier?.let {
-            return SymbolReference(this, it, it.textRangeInParent)
+            return CallOrValueReference(this, it, it.textRangeInParent)
         }
     }
 

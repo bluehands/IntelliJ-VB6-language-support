@@ -2,7 +2,7 @@ package com.github.tyrrx.vb6language.psi.reference.references
 
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.reference.visitor.SymbolResolveVisitor
+import com.github.tyrrx.vb6language.psi.reference.visitor.CallOrValueResolveVisitor
 import com.github.tyrrx.vb6language.psi.scope.contextAccept
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
@@ -17,7 +17,7 @@ import com.intellij.psi.PsiElement
  *      sub
  *      property (get, let, set)
  */
-class SymbolReference(
+class CallOrValueReference(
         override val myReferenceOwner: VB6ReferenceOwner,
         override val referencingNamedElement: VB6NamedElement,
         override val textRange: TextRange
@@ -32,7 +32,7 @@ class SymbolReference(
 
     override fun resolve(): PsiElement? {
         return myReferenceOwner.contextAccept(
-                SymbolResolveVisitor(
+                CallOrValueResolveVisitor(
                         myReferenceOwner,
                         referencingNamedElement
                 )

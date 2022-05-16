@@ -37,8 +37,8 @@ class VB6EnumerationStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6EnumerationSt
     override val enumMembers: List<VB6EnumerationConstant>
         get() = findChildElementsByTypeOf(this)
 
-    override fun <TReturn> processTypeDeclarations(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
-        return visitor.processEnumerationStmtDeclarations(this)
+    override fun <TReturn> accept(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
+        return visitor.visitEnum(this)
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>

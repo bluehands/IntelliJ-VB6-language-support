@@ -16,13 +16,13 @@ import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6ForNextStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.loops.VB6WhileWendStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.*
 
-class SymbolResolveVisitor(
+class CallOrValueResolveVisitor(
         override val referenceOwner: VB6ReferenceOwner,
         override val referencingIdentifier: VB6NamedElement,
 ) : ReferenceResolveVisitor {
 
     /**
-     * A [com.github.tyrrx.vb6language.psi.reference.references.SymbolReference] on project level can resolve to:
+     * A [com.github.tyrrx.vb6language.psi.reference.references.CallOrValueReference] on project level can resolve to:
      *      - Standard module
      *      - Enum type
      *      - Enum member

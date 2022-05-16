@@ -4,7 +4,7 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.reference.references.SymbolReference
+import com.github.tyrrx.vb6language.psi.reference.references.CallOrValueReference
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
@@ -27,7 +27,7 @@ class VB6AtomicExplicitProcedureCallImpl(node: ASTNode) : VB6PsiNode(node), VB6A
 
     override fun createReference(): VB6Reference? {
         return referenceIdentifier
-            ?.let { SymbolReference(this, it, it.textRangeInParent) }
+            ?.let { CallOrValueReference(this, it, it.textRangeInParent) }
     }
 
     override val referenceIdentifier: VB6NamedElement?

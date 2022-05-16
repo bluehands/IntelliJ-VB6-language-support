@@ -27,7 +27,7 @@ class VB6FileImpl(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, VB
     }
 
     override val module: VB6Module?
-        get() = firstChild?.firstChild?.let { it as VB6Module }
+        get() = firstChild?.firstChild?.let { it as? VB6Module }
 
     override val projects: Iterable<VB6Project>
         get() {

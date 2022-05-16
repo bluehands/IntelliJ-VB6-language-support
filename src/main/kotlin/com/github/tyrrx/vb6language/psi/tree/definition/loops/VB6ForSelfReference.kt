@@ -4,7 +4,7 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceFactory
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.reference.references.SymbolReference
+import com.github.tyrrx.vb6language.psi.reference.references.CallOrValueReference
 import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
@@ -26,7 +26,7 @@ class VB6ForSelfReferenceImpl(node: ASTNode) : VB6PsiNode(node), VB6ForSelfRefer
         get() = this
 
     override fun createReference(): VB6Reference? {
-        return identifier?.let { SymbolReference(this, it, it.textRangeInParent) }
+        return identifier?.let { CallOrValueReference(this, it, it.textRangeInParent) }
     }
 
     override val identifier: VB6Identifier?

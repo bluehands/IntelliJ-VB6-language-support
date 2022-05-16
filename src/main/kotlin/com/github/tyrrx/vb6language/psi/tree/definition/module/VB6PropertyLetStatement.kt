@@ -3,6 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6PropertyDeclaration
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6Block
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument
@@ -13,7 +14,7 @@ import com.github.tyrrx.vb6language.psi.visitor.ScopeNodeVisitor
 import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
-interface VB6PropertyLetStatement: VB6PropertyStatementBase {
+interface VB6PropertyLetStatement: VB6PropertyDeclaration {
 }
 
 class VB6PropertyLetStatementImpl(node: ASTNode) : VB6PsiNode(node),

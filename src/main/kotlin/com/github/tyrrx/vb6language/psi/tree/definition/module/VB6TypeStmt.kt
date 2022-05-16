@@ -37,8 +37,8 @@ class VB6TypeStmtImpl(node: ASTNode) : VB6PsiNode(node), VB6TypeStmt {
     override val members: List<VB6TypeStmtMember>
         get() = findChildElementsByTypeOf(this)
 
-    override fun <TReturn> processTypeDeclarations(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
-        return visitor.processTypeStmtDeclarations(this)
+    override fun <TReturn> accept(visitor: TypeDeclarationVisitor<TReturn>): TReturn {
+        return visitor.visitType(this)
     }
 
     override val outsideVisibleNamedElementOwners: List<VB6NamedElementOwner>

@@ -3,6 +3,7 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6PropertyDeclaration
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeClauseOwner
 import com.github.tyrrx.vb6language.psi.mixins.VB6TypeHintOwnerMixin
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
@@ -17,7 +18,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.psi.PsiElement
 
 interface VB6PropertyGetStatement :
-    VB6PropertyStatementBase,
+    VB6PropertyDeclaration,
         VB6TypeClauseOwner,
         VB6TypeHintOwnerMixin {
 }
