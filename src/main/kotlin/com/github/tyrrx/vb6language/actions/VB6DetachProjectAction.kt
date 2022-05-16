@@ -28,12 +28,6 @@ class VB6DetachProjectAction : AnAction() {
         val chooserBuilder = JBPopupFactory.getInstance().createListPopup(detachList)
         chooserBuilder.showCenteredInCurrentWindow(project)
     }
-
-    private fun showError(error: Throwable) {
-        ApplicationManager.getApplication().invokeLater {
-            Messages.showErrorDialog(error.message, "Failed to attach visual basic 6.0 project")
-        }
-    }
 }
 
 class DetachList(values: List<VB6Project>, val onChosen: (VB6Project) -> Unit) : BaseListPopupStep<VB6Project>("Detach projects", values) {
