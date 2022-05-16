@@ -51,11 +51,18 @@
                 description="Load a Visual Basic 6.0 project file and attach it to the workspace."
                 icon="AllIcons.General.Add">
         </action>
+
+        <action id="VB6.VB6DetachProjectsAction" class="com.github.tyrrx.vb6language.actions.VB6DetachProjectAction"
+                text="Detach Visual Basic 6.0 Projects"
+                description="Detach visual basic 6.0 projects"
+                icon="AllIcons.General.Remove">
+        </action>
         <group id="VB6.WorkspaceToolsGroup" text="Visual Basic 6.0" popup="true">
             <!--            <reference id="Elm.RefreshElmProjects"/>-->
             <!--            <separator/>-->
             <!--            <reference id="Elm.AttachElmProject"/>-->
             <reference id="VB6.VB6AttachProjectAction"/>
+            <reference id="VB6.VB6DetachProjectsAction"/>
             <add-to-group group-id="ToolsMenu"/>
         </group>
 

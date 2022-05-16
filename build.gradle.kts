@@ -10,7 +10,7 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.6.20"
     //Gradle IntelliJ Plugin
 
-    id("org.jetbrains.intellij") version "1.1.6"
+    id("org.jetbrains.intellij") version "1.5.2"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.0"
     // Gradle Qodana Plugin
@@ -59,7 +59,7 @@ qodana {
 }
 
 tasks.runIde {
-    jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+    //jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
 }
 
 tasks {

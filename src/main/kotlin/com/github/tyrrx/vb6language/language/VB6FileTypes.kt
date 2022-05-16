@@ -20,7 +20,7 @@ object VB6ClassFileType : LanguageFileType(VB6Language.INSTANCE) {
     }
 
     override fun getIcon(): Icon? {
-        return IconLoader.findIcon("/assets/vb6icon16x16.png")
+        return IconLoader.findIcon("/assets/vb6icon16x16.png", ClassLoader.getPlatformClassLoader())
     }
 
     override fun getCharset(file: VirtualFile, content: ByteArray?): String {
@@ -43,7 +43,7 @@ object VB6FormFileType : LanguageFileType(VB6Language.INSTANCE) {
     }
 
     override fun getIcon(): Icon? {
-        return IconLoader.findIcon("/assets/vb6icon16x16.png")
+        return IconLoader.findIcon("/assets/vb6icon16x16.png", ClassLoader.getPlatformClassLoader())
     }
 
     override fun getCharset(file: VirtualFile, content: ByteArray?): String {
@@ -66,7 +66,7 @@ object VB6ModuleFileType : LanguageFileType(VB6Language.INSTANCE) {
     }
 
     override fun getIcon(): Icon? {
-        return IconLoader.findIcon("/assets/vb6icon16x16.png")
+        return IconLoader.findIcon("/assets/vb6icon16x16.png", ClassLoader.getPlatformClassLoader())
     }
 
     override fun getCharset(file: VirtualFile, content: ByteArray?): String {
