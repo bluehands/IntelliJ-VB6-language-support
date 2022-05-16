@@ -18,14 +18,14 @@ class TypeMemberDeclarationsVisitor(
             .find { compareNames(it) }
     }
 
-    override fun visitType(type: VB6TypeStmtImpl): VB6NamedElementOwner? {
+    override fun visitType(type: VB6TypeStmt): VB6NamedElementOwner? {
         return type
             .members
             .flatMap { it.outsideVisibleNamedElementOwners }
             .find { compareNames(it) }
     }
 
-    override fun visitEnum(enum: VB6EnumerationStmtImpl): VB6NamedElementOwner? {
+    override fun visitEnum(enum: VB6EnumerationStmt): VB6NamedElementOwner? {
         return enum
             .enumMembers
             .flatMap { it.outsideVisibleNamedElementOwners }
