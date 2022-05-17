@@ -30,9 +30,7 @@
                    implementationClass="com.github.tyrrx.vb6language.highlighting.CallableAnnotator"/>
 
         <completion.contributor language="VisualBasic6"
-                                implementationClass="com.github.tyrrx.vb6language.completion.VB6CompletionContributor"/>
-<!--        <completion.contributor language="VisualBasic6"-->
-<!--                                implementationClass="com.github.tyrrx.vb6language.completion.VB6ModuleBodyContributor"/>-->
+                                implementationClass="com.github.tyrrx.vb6language.psi.completion.VB6CompletionContributor"/>
 
         <lang.formatter language="VisualBasic6" implementationClass="com.github.tyrrx.vb6language.formatting.VB6FormattingModelBuilder"/>
         
