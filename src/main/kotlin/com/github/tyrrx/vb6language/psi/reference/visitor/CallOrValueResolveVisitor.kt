@@ -121,6 +121,7 @@ class CallOrValueResolveVisitor(
 //        val blockStatement = findFirstParentOfType<VB6BlockStmt>(referenceOwner)!!
         return scope
                 .blockVisibleElementsBefore(referenceOwner)
+                .valueDeclarations()
                 .findNameOfReferencingIdentifier()
     }
 

@@ -3,6 +3,7 @@ package com.github.tyrrx.vb6language.psi.scope
 import com.github.tyrrx.vb6language.project.VB6Project
 import com.github.tyrrx.vb6language.psi.base.VB6BlockOwner
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6ValueDeclaration
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
@@ -17,6 +18,10 @@ fun VB6BlockOwner.blockVisibleElementsBefore(referenceOwner: VB6ReferenceOwner) 
                 }
                 ?.filter { it.isDefinition }
                 ?: emptyList()
+
+fun Iterable<VB6NamedElementOwner>.valueDeclarations(): List<VB6ValueDeclaration> {
+    return this.filterIsInstance<VB6ValueDeclaration>()
+}
 
 fun VB6File.globalVisibleDeclarationsOfStandardModulesWithStandardModules(): List<VB6NamedElementOwner> {
     return this.projects
