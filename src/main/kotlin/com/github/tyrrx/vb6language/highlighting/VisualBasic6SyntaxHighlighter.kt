@@ -1,8 +1,8 @@
 package com.github.tyrrx.vb6language.highlighting
 
 import com.github.tyrrx.vb6language.language.VB6Language
-import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.github.tyrrx.vb6language.language.VB6TokenSets
+import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.editor.HighlighterColors

@@ -1,11 +1,11 @@
 package com.github.tyrrx.vb6language.psi.completion.providers
 
-import com.github.tyrrx.vb6language.psi.completion.visitors.DeclarationSuggestionsCollectingVisitor
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.completion.visitors.DeclarationSuggestionsCollectingVisitor
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
+import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.scope.contextAccept
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicBlockCall
 import com.github.tyrrx.vb6language.psi.tree.definition.call.VB6AtomicInlineCall

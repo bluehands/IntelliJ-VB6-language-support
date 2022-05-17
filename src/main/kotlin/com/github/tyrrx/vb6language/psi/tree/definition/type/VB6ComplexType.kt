@@ -1,15 +1,15 @@
 package com.github.tyrrx.vb6language.psi.tree.definition.type
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
-import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.declarations.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
 import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceChain
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6Identifier
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.utils.findChildElementsByTypeOf
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6ComplexType : VB6TypeElement, VB6MemberReferenceChain, VB6TypeInferable {

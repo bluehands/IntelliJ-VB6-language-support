@@ -4,12 +4,9 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
 import com.intellij.openapi.components.*
 import com.intellij.openapi.diagnostic.Logger
-import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.util.io.FileUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.VirtualFileManager
-import com.intellij.util.io.isWritable
 import com.intellij.util.io.systemIndependentPath
 import org.jdom.Element
 import java.nio.file.Paths

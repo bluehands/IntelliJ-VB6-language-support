@@ -2,21 +2,11 @@ package com.github.tyrrx.vb6language.psi.completion
 
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.language.VB6Language
-import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
-import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
-import com.github.tyrrx.vb6language.psi.tree.definition.block.VB6BlockImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.identifier.VB6IdentifierImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleBodyElement
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleBodyElementImpl
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleBodyImpl
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleImpl
 import com.intellij.patterns.ElementPattern
 import com.intellij.patterns.PlatformPatterns
 import com.intellij.patterns.PsiElementPattern
 import com.intellij.psi.PsiElement
-import com.intellij.psi.impl.source.tree.CompositeElement
 import com.intellij.psi.tree.IElementType
 
 inline fun <reified I : PsiElement> genericPsiElement(): PsiElementPattern.Capture<I> {

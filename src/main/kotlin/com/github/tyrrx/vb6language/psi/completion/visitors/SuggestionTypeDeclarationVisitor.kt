@@ -1,7 +1,9 @@
 package com.github.tyrrx.vb6language.psi.completion.visitors
 
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.module.*
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmt
 import com.github.tyrrx.vb6language.psi.visitor.TypeDeclarationVisitor
 
 class SuggestionTypeDeclarationVisitor : TypeDeclarationVisitor<List<VB6NamedElementOwner>> {

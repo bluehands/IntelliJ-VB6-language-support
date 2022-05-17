@@ -4,7 +4,6 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
-import java.nio.file.Path
 
 interface VB6Project {
     // todo val externalComReferences:

@@ -1,10 +1,6 @@
 package com.github.tyrrx.vb6language.formatting
 
-import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.language.VB6Language
-import com.github.tyrrx.vb6language.language.VB6TokenSets
-import com.github.tyrrx.vb6language.parser.VisualBasic6Lexer
-import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.intellij.formatting.SpacingBuilder
 import com.intellij.psi.codeStyle.CodeStyleSettings
 

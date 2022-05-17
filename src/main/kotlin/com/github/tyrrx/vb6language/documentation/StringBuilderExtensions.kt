@@ -1,6 +1,5 @@
 package com.github.tyrrx.vb6language.documentation
 
-import com.github.tyrrx.vb6language.psi.base.VB6ArgumentOwner
 import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
 import com.github.tyrrx.vb6language.psi.scope.VB6VisibilityOwner

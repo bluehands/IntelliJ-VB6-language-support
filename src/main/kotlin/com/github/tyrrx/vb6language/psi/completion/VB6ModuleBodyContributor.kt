@@ -4,7 +4,10 @@ import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleBody
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6ModuleDeclarations
-import com.intellij.codeInsight.completion.*
+import com.intellij.codeInsight.completion.CompletionContributor
+import com.intellij.codeInsight.completion.CompletionInitializationContext
+import com.intellij.codeInsight.completion.CompletionParameters
+import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.icons.AllIcons
 import com.intellij.psi.PsiErrorElement

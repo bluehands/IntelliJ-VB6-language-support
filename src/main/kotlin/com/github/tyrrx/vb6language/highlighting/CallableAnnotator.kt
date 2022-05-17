@@ -2,7 +2,10 @@ package com.github.tyrrx.vb6language.highlighting
 
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.declarations.VB6PropertyDeclaration
-import com.github.tyrrx.vb6language.psi.tree.definition.module.*
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6DeclareFunctionStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6DeclareSubStmt
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6FunctionStatement
+import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6SubroutineStatement
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.Annotator
 import com.intellij.lang.annotation.HighlightSeverity

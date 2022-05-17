@@ -2,12 +2,12 @@ package com.github.tyrrx.vb6language.psi.tree.definition.variable
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.scope.VB6EnclosingVisibleNamedElements
+import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Visibility
-import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.utils.findChildElementsByTypeOf
+import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.intellij.lang.ASTNode
 
 interface VB6ModuleConstList : VB6PsiElement, VB6EnclosingVisibleNamedElements {

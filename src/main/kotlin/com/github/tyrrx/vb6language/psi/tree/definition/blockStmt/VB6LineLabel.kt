@@ -5,11 +5,6 @@ import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.declarations.VB6LineLabelDeclaration
-import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceFactory
-import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.reference.references.LineLabelReference
-import com.github.tyrrx.vb6language.psi.reference.references.VB6Reference
-import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiElement
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.utils.findFirstChildByTypeOf
 import com.github.tyrrx.vb6language.psi.visitor.NamedElementOwnerVisitor

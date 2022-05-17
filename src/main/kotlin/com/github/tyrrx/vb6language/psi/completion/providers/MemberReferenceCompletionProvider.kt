@@ -1,13 +1,13 @@
 package com.github.tyrrx.vb6language.psi.completion.providers
 
-import com.github.tyrrx.vb6language.psi.completion.visitors.SuggestionTypeDeclarationVisitor
-import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceOwner
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
-import com.github.tyrrx.vb6language.psi.inference.InferenceResult
+import com.github.tyrrx.vb6language.psi.completion.visitors.SuggestionTypeDeclarationVisitor
 import com.github.tyrrx.vb6language.psi.declarations.VB6TypeDeclaration
+import com.github.tyrrx.vb6language.psi.inference.InferenceResult
 import com.github.tyrrx.vb6language.psi.inference.VB6TypeInferable
+import com.github.tyrrx.vb6language.psi.reference.VB6MemberReferenceOwner
+import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.intellij.codeInsight.completion.CompletionParameters
 import com.intellij.codeInsight.completion.CompletionProvider
 import com.intellij.codeInsight.completion.CompletionResultSet

@@ -2,9 +2,9 @@ package com.github.tyrrx.vb6language.psi.tree.definition.module
 
 import com.github.tyrrx.vb6language.language.IPsiNodeFactory
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
-import com.github.tyrrx.vb6language.psi.declarations.VB6FunctionDeclaration
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6FunctionDeclaration
 import com.github.tyrrx.vb6language.psi.mixins.VB6VisibilityOwnerMixin
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6PsiNode
 import com.github.tyrrx.vb6language.psi.tree.definition.general.VB6Argument

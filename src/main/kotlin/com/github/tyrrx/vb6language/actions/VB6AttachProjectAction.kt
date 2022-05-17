@@ -8,7 +8,6 @@ import com.intellij.openapi.fileChooser.FileChooser
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.ui.Messages
-import java.nio.file.Path
 
 class VB6AttachProjectAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
