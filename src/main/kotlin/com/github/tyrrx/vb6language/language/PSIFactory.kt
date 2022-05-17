@@ -198,7 +198,7 @@ object PSIFactory {
                 resultHashMap[it.first] = it.second
             } else {
                 logger.error(
-                        "Duplicate usage of IElementType ${VB6IElementTypes.rules[it.first].debugName} " +
+                        "Duplicate usage of IElementType ${VB6IElementTypes.rules[it.first]} " +
                                 "as key for value ${it.second.javaClass.simpleName} " +
                                 "and value ${resultHashMap[it.first]?.javaClass?.simpleName}"
                 )
