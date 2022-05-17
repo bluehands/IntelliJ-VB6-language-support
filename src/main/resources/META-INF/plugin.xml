@@ -1,8 +1,8 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.tyrrx.vb6language</id>
-    <name>Vb6-Language</name>
-    <vendor>tyrrx</vendor>
+    <name>Visual Basic 6.0 Language</name>
+    <vendor url="https://github.com/Tyrrx/vb6-language">Tyrrx</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
@@ -56,9 +56,6 @@
                 icon="AllIcons.General.Remove">
         </action>
         <group id="VB6.WorkspaceToolsGroup" text="Visual Basic 6.0" popup="true">
-            <!--            <reference id="Elm.RefreshElmProjects"/>-->
-            <!--            <separator/>-->
-            <!--            <reference id="Elm.AttachElmProject"/>-->
             <reference id="VB6.VB6AttachProjectAction"/>
             <reference id="VB6.VB6DetachProjectsAction"/>
             <add-to-group group-id="ToolsMenu"/>
