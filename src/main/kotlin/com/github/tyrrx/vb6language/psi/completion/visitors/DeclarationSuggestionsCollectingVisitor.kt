@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.completion.visitors
+package com.github.tyrrx.vb6language.psi.completion.visitors
 
 import com.github.tyrrx.vb6language.project.VB6Project
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File

@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.completion
+package com.github.tyrrx.vb6language.psi.completion
 
 import com.github.tyrrx.vb6language.language.VB6IElementTypes
 import com.github.tyrrx.vb6language.language.VB6Language

@@ -1,7 +1,7 @@
-package com.github.tyrrx.vb6language.completion
+package com.github.tyrrx.vb6language.psi.completion
 
-import com.github.tyrrx.vb6language.completion.providers.DeclarationCompletionProvider
-import com.github.tyrrx.vb6language.completion.providers.MemberReferenceCompletionProvider
+import com.github.tyrrx.vb6language.psi.completion.providers.DeclarationCompletionProvider
+import com.github.tyrrx.vb6language.psi.completion.providers.MemberReferenceCompletionProvider
 import com.intellij.codeInsight.completion.*
 
 class VB6CompletionContributor : CompletionContributor() {

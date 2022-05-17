@@ -1,4 +1,4 @@
-package com.github.tyrrx.vb6language.completion
+package com.github.tyrrx.vb6language.psi.completion
 
 import com.github.tyrrx.vb6language.parser.VisualBasic6Parser
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module

@@ -1,6 +1,6 @@
-package com.github.tyrrx.vb6language.completion.providers
+package com.github.tyrrx.vb6language.psi.completion.providers
 
-import com.github.tyrrx.vb6language.completion.visitors.DeclarationSuggestionsCollectingVisitor
+import com.github.tyrrx.vb6language.psi.completion.visitors.DeclarationSuggestionsCollectingVisitor
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
