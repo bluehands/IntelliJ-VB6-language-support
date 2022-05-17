@@ -7,13 +7,16 @@ plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.5.30"
-    // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.1.6"
+    id("org.jetbrains.kotlin.jvm") version "1.6.20"
+    //Gradle IntelliJ Plugin
+
+    id("org.jetbrains.intellij") version "1.5.2"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "1.3.0"
     // Gradle Qodana Plugin
     id("org.jetbrains.qodana") version "0.1.12"
+    // ANTLR Plugin
+    id("org.gradle.antlr")
 }
 
 group = properties("pluginGroup")
@@ -22,6 +25,11 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    implementation("org.antlr:antlr4-intellij-adaptor:0.1")
+    antlr("org.antlr:antlr4:4.9.2")
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
@@ -50,7 +58,35 @@ qodana {
     showReport.set(System.getenv("QODANA_SHOW_REPORT").toBoolean())
 }
 
+tasks.runIde {
+    jvmArgs("--add-exports", "java.base/jdk.internal.vm=ALL-UNNAMED")
+}
+
 tasks {
+
+    compileJava {
+        dependsOn(generateGrammarSource)
+    }
+    compileKotlin {
+        dependsOn(generateGrammarSource)
+    }
+
+    generateGrammarSource {
+        arguments = arguments + listOf("-visitor", "-package", "com.github.tyrrx.vb6language.parser", "-Xexact-output-dir")
+        doLast {
+            val parserPackagePath = "${outputDirectory.canonicalPath}/com/github/tyrrx/vb6language/parser"
+            file(parserPackagePath).mkdirs()
+            copy {
+                from(outputDirectory.canonicalPath)
+                into(parserPackagePath)
+                include("VisualBasic6*")
+            }
+            delete(fileTree(outputDirectory.canonicalPath) {
+                include("VisualBasic6*")
+            })
+        }
+    }
+
     // Set the JVM compatibility versions
     properties("javaVersion").let {
         withType<JavaCompile> {
@@ -120,3 +156,4 @@ tasks {
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
     }
 }
+

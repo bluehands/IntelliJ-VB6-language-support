@@ -1,19 +1,65 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.tyrrx.vb6language</id>
-    <name>vb6-language</name>
-    <vendor>tyrrx</vendor>
+    <name>Visual Basic 6.0 Language</name>
+    <vendor url="https://github.com/Tyrrx/vb6-language">Tyrrx</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.tyrrx.vb6language.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.tyrrx.vb6language.services.MyProjectService"/>
-        <fileType name="Visual Basic 6.0" language="VisualBasic6" extensions="cls" fieldName="INSTANCE" implementationClass="com.github.tyrrx.vb6language.VisualBasic6FileType"/>
+
+        <projectService serviceImplementation="com.github.tyrrx.vb6language.project.VB6WorkspaceService"/>
+
+        <fileType name="VB6 Class" language="VisualBasic6" extensions="cls"
+                  implementationClass="com.github.tyrrx.vb6language.language.VB6ClassFileType"/>
+        <fileType name="VB6 Form" language="VisualBasic6" extensions="frm"
+                  implementationClass="com.github.tyrrx.vb6language.language.VB6FormFileType"/>
+        <fileType name="VB6 Module" language="VisualBasic6" extensions="bas"
+                  implementationClass="com.github.tyrrx.vb6language.language.VB6ModuleFileType"/>
+        <lang.ast.factory language="VisualBasic6"
+                          implementationClass="com.github.tyrrx.vb6language.language.ASTFactory"/>
+        <lang.syntaxHighlighterFactory
+                language="VisualBasic6"
+                implementationClass="com.github.tyrrx.vb6language.highlighting.VisualBasic6SyntaxHighlighterFactory"/>
+        <lang.parserDefinition language="VisualBasic6"
+                               implementationClass="com.github.tyrrx.vb6language.language.VB6ParserDefinition"/>
+
+        <annotator language="VisualBasic6"
+                   implementationClass="com.github.tyrrx.vb6language.highlighting.CallableAnnotator"/>
+
+        <completion.contributor language="VisualBasic6"
+                                implementationClass="com.github.tyrrx.vb6language.psi.completion.VB6CompletionContributor"/>
+
+        <lang.formatter language="VisualBasic6" implementationClass="com.github.tyrrx.vb6language.formatting.VB6FormattingModelBuilder"/>
+        
+        <documentationProvider implementation="com.github.tyrrx.vb6language.documentation.VB6DocumentationProvider"/>
+
     </extensions>
 
     <applicationListeners>
         <listener class="com.github.tyrrx.vb6language.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <actions>
+        <action id="VB6.VB6AttachProjectAction" class="com.github.tyrrx.vb6language.actions.VB6AttachProjectAction"
+                text="Attach Visual Basic 6.0 Project"
+                description="Load a Visual Basic 6.0 project file and attach it to the workspace."
+                icon="AllIcons.General.Add">
+        </action>
+
+        <action id="VB6.VB6DetachProjectsAction" class="com.github.tyrrx.vb6language.actions.VB6DetachProjectAction"
+                text="Detach Visual Basic 6.0 Projects"
+                description="Detach visual basic 6.0 projects"
+                icon="AllIcons.General.Remove">
+        </action>
+        <group id="VB6.WorkspaceToolsGroup" text="Visual Basic 6.0" popup="true">
+            <reference id="VB6.VB6AttachProjectAction"/>
+            <reference id="VB6.VB6DetachProjectsAction"/>
+            <add-to-group group-id="ToolsMenu"/>
+        </group>
+
+    </actions>
 </idea-plugin>
