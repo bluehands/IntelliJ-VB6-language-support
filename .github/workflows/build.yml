@@ -23,6 +23,7 @@ on:
 
 jobs:
 
+
   # Run Gradle Wrapper Validation Action to verify the wrapper's checksum
   gradleValidation:
     name: Gradle Wrapper
