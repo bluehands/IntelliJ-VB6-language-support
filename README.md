@@ -74,10 +74,34 @@ Not yet supported:
   Download the [latest release](https://github.com/Tyrrx/vb6-language/releases/latest) and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
+## Usage
+
+To use go to <kbd>Tools</kbd> > <kbd>Visual Basic 6.0</kbd> > <kbd>Attach Visual Basic 6.0 Project</kbd> 
+and select a VB6 project file (.vbp).
+Then open a class or module file and start developing.
+The Visual Basic 6.0 project will stay attached after closing the IDE.
+
+To detach a project go to <kbd>Tools</kbd> > <kbd>Visual Basic 6.0</kbd> > 
+<kbd>Detach Visual Basic 6.0 Projects</kbd> and select the project to detach.
+
+> NOTE: the plugin is still under heavy development
+
 ## Technical details
 
-The plugin uses an ANTLR-Lexer and ANTLR-Parser to analyze the Visual Basic 6.0 source code.
-The grammar which is used is derived from the community developed grammar found here: [vba grammar](https://github.com/antlr/grammars-v4/tree/master/vba).
+The plugin uses an ANTLRv4-Lexer and ANTLRv4-Parser to analyze the Visual Basic 6.0 source code.
+The grammar which is used is derived from the 
+community developed grammar found here: [vba grammar](https://github.com/antlr/grammars-v4/tree/master/vba).
+
+To support the use of ANTLRv4 grammars for custom 
+languages the [antlr4-intellij-adaptor](https://github.com/antlr/antlr4-intellij-adaptor)
+is used to create the AST (it's a syntax tree without abstractions, but they call it AST).
+
+References are resolved by traversing the PSI bottom-up using visitors.
+The global scope is defined by the workspace service that contains all the loaded projects.
+
+
+## Limitations
+Yes.
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].
