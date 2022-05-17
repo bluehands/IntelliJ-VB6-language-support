@@ -4,6 +4,7 @@ import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
 import com.github.tyrrx.vb6language.psi.base.VB6BlockOwner
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
+import com.github.tyrrx.vb6language.psi.declarations.VB6LineLabelDeclaration
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
 import com.github.tyrrx.vb6language.psi.scope.contextAccept
 import com.github.tyrrx.vb6language.psi.tree.definition.blockStmt.VB6LineLabel
@@ -28,7 +29,7 @@ class LineLabelResolveVisitor(
     private fun resolveBlock(scope: VB6BlockOwner): VB6NamedElementOwner? =
             scope.block
                     ?.outsideVisibleNamedElementOwners
-                    ?.filterIsInstance<VB6LineLabel>()
+                    ?.filterIsInstance<VB6LineLabelDeclaration>()
                     ?.find(::compareNames)
 
     override fun visitFile(scope: VB6File): VB6NamedElementOwner? {

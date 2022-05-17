@@ -51,6 +51,13 @@ Not yet supported:
 - Extended formatting
 - Enhanced syntactic error highlighting
 - Type inference of expressions
+- Structure view
+- Commenter
+- Parameter info
+- Folding
+- Surround with
+- Keyword completion
+- Inlay hints
 <!-- Plugin description end -->
 
 ## Installation

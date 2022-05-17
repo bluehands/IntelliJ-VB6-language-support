@@ -2,6 +2,9 @@ package com.github.tyrrx.vb6language.psi.reference.references
 
 import com.github.tyrrx.vb6language.psi.base.VB6NamedElement
 import com.github.tyrrx.vb6language.psi.reference.VB6ReferenceOwner
+import com.github.tyrrx.vb6language.psi.reference.visitor.CallOrValueResolveVisitor
+import com.github.tyrrx.vb6language.psi.reference.visitor.LineLabelResolveVisitor
+import com.github.tyrrx.vb6language.psi.scope.contextAccept
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
@@ -19,7 +22,12 @@ class LineLabelReference(
     }
 
     override fun resolve(): PsiElement? {
-        TODO("Not yet implemented")
+        return myReferenceOwner.contextAccept(
+                LineLabelResolveVisitor(
+                        myReferenceOwner,
+                        referencingNamedElement
+                )
+        )
     }
 
     override fun getCanonicalText(): String {
@@ -35,7 +43,17 @@ class LineLabelReference(
     }
 
     override fun isReferenceTo(element: PsiElement): Boolean {
-        TODO("Not yet implemented")
+        val otherElement = when (element) {
+            is VB6NamedElement -> element.namedElementOwner
+            else -> element
+        }
+
+        if (otherElement === myReferenceOwner) {
+            return true
+        }
+
+        val resolve = resolve()
+        return otherElement === resolve
     }
 
     override fun isSoft(): Boolean {

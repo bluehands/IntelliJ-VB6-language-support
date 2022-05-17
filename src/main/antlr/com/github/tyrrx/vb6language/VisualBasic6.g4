@@ -343,7 +343,7 @@ getStmt : GET WS fileNumber WS? COMMA WS? expression? WS? COMMA WS? expression;
 
 goSubStmt : GOSUB WS expression;
 
-goToStmt : GOTO WS expression;
+goToStmt : GOTO WS goToDestination; // expression
 
 ifThenElseStmt : inlineIfThenElse | blockIfThenElse;
 

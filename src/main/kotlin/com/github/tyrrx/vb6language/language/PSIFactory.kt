@@ -70,6 +70,7 @@ object PSIFactory {
             VisualBasic6Parser.RULE_ambiguousKeyword mapsTo VB6AmbiguousKeywordImpl.Factory,
 
             VisualBasic6Parser.RULE_argDefaultValue mapsTo VB6ArgumentDefaultValueImpl.Factory,
+            VisualBasic6Parser.RULE_goToDestination mapsTo VB6GoToDestinationImpl.Factory,
 
             VisualBasic6Parser.RULE_type_ mapsTo VB6TypeRuleImpl.Factory,
             VisualBasic6Parser.RULE_baseType mapsTo VB6BaseTypeImpl.Factory,

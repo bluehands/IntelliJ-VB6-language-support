@@ -1,12 +1,10 @@
 package com.github.tyrrx.vb6language.project
 
 import com.github.tyrrx.vb6language.psi.tree.definition.VB6File
-import com.github.tyrrx.vb6language.psi.base.VB6NamedElementOwner
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6EnumerationStmt
 import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6Module
-import com.github.tyrrx.vb6language.psi.tree.definition.module.VB6TypeStmt
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
+import java.nio.file.Path
 
 interface VB6Project {
     // todo val externalComReferences:
@@ -15,6 +13,8 @@ interface VB6Project {
     val projectName: String
 
     val modules: Iterable<VB6Module>
+
+    val associatedVirtualFiles: List<VirtualFile>
     fun containsModule(module: VB6Module): Boolean
     fun containsVB6File(file: VB6File): Boolean
 }
@@ -32,19 +32,22 @@ class VB6ProjectImpl(
     private val classModulePaths
         get() = vbpFileContext.classes?.mapNotNull { myVirtualFile.toNioPath().resolveSibling(it.path) } ?: emptyList()
 
-    private val modulePathsUnion = standardModulePaths + classModulePaths
+    private val modulePaths = standardModulePaths + classModulePaths
 
     override val projectName: String
         get() = vbpFileContext.defaultContext?.values?.filterIsInstance<VBPValue.Name>()?.first()?.name!!
 
     override val modules: Iterable<VB6Module>
-        get() = modulePathsUnion.resolveAllModulesInProject(myIntellijProject)
+        get() = modulePaths.resolveAllModulesInProject(myIntellijProject)
+
+    override val associatedVirtualFiles: List<VirtualFile>
+        get() = modulePaths.resolveAllVirtualFiles()
 
     override fun containsModule(module: VB6Module): Boolean {
         return modules.any { it == module }
     }
 
     override fun containsVB6File(file: VB6File): Boolean {
-        return modulePathsUnion.containsFile(file.path)
+        return modulePaths.containsFile(file.path)
     }
 }
