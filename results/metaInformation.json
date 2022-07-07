@@ -1,0 +1,16 @@
+{
+  "total": 165,
+  "tools inspection": {
+    "Code Inspection": 165
+  },
+  "attributes": {
+    "vcs": {
+      "sarifIdea": {
+        "repositoryUri": "https://github.com/bluehands/vb6-language",
+        "revisionId": "1a742a07d78681a5bd11787a38c72c68cddd7f77",
+        "branch": "main"
+      }
+    },
+    "deviceId": "200820300000000-737f-1ca6-45a9-8c63d06bc287"
+  }
+}

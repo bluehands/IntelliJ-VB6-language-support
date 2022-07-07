@@ -1,0 +1,77 @@
+{
+  "gradleJvm": "#JAVA_HOME",
+  "libraries": [
+    {
+      "ideaName": "Gradle: org.antlr:antlr4:4.9.2",
+      "gradleName": "org.antlr:antlr4:4.9.2",
+      "unresolved": false,
+      "groupId": "org.antlr",
+      "artifactId": "antlr4",
+      "version": "4.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.antlr:antlr4-intellij-adaptor:0.1",
+      "gradleName": "org.antlr:antlr4-intellij-adaptor:0.1",
+      "unresolved": false,
+      "groupId": "org.antlr",
+      "artifactId": "antlr4-intellij-adaptor",
+      "version": "0.1"
+    },
+    {
+      "ideaName": "Gradle: org.jetbrains:annotations:22.0.0",
+      "gradleName": "org.jetbrains:annotations:22.0.0",
+      "unresolved": false,
+      "groupId": "org.jetbrains",
+      "artifactId": "annotations",
+      "version": "22.0.0"
+    },
+    {
+      "ideaName": "Gradle: org.antlr:antlr4-runtime:4.9.2",
+      "gradleName": "org.antlr:antlr4-runtime:4.9.2",
+      "unresolved": false,
+      "groupId": "org.antlr",
+      "artifactId": "antlr4-runtime",
+      "version": "4.9.2"
+    },
+    {
+      "ideaName": "Gradle: org.antlr:ST4:4.3",
+      "gradleName": "org.antlr:ST4:4.3",
+      "unresolved": false,
+      "groupId": "org.antlr",
+      "artifactId": "ST4",
+      "version": "4.3"
+    },
+    {
+      "ideaName": "Gradle: org.antlr:antlr-runtime:3.5.2",
+      "gradleName": "org.antlr:antlr-runtime:3.5.2",
+      "unresolved": false,
+      "groupId": "org.antlr",
+      "artifactId": "antlr-runtime",
+      "version": "3.5.2"
+    },
+    {
+      "ideaName": "Gradle: org.abego.treelayout:org.abego.treelayout.core:1.0.3",
+      "gradleName": "org.abego.treelayout:org.abego.treelayout.core:1.0.3",
+      "unresolved": false,
+      "groupId": "org.abego.treelayout",
+      "artifactId": "org.abego.treelayout.core",
+      "version": "1.0.3"
+    },
+    {
+      "ideaName": "Gradle: org.glassfish:javax.json:1.0.4",
+      "gradleName": "org.glassfish:javax.json:1.0.4",
+      "unresolved": false,
+      "groupId": "org.glassfish",
+      "artifactId": "javax.json",
+      "version": "1.0.4"
+    },
+    {
+      "ideaName": "Gradle: com.ibm.icu:icu4j:61.1",
+      "gradleName": "com.ibm.icu:icu4j:61.1",
+      "unresolved": false,
+      "groupId": "com.ibm.icu",
+      "artifactId": "icu4j",
+      "version": "61.1"
+    }
+  ]
+}

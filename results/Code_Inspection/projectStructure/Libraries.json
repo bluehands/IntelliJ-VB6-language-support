@@ -1,0 +1,118 @@
+{
+  "libraries": [
+    {
+      "name": "Gradle: org.antlr:antlr4:4.9.2",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.antlr/antlr4/4.9.2/a34d0bb512c1bd54d1d59cced3f7cbc0b0d1a495/antlr4-4.9.2.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: com.jetbrains:ideaIC:2022.1.1",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/3rd-party-rt.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/ant/lib/ant.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/app.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/asm-7.1.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/asm-analysis-7.1.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/asm-commons-7.1.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/asm-tree-7.1.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/asm-util-7.1.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/byte-buddy-agent.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/dbus-java-3.2.1.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/dom-impl.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/dom-openapi.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/duplicates-analysis.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/error-prone-annotations.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/external-system-rt.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/externalProcess-rt.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/forms_rt.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/groovy.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/grpc-netty-shaded.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/idea_rt.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/intellij-coverage-agent-1.0.656.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/intellij-test-discovery.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/java-utils-1.0.6.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jffi-1.2.19.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jffi-1.2.19-native.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jna.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jnr-a64asm-1.0.0.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jnr-constants-0.9.12.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jnr-enxio-0.21.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jnr-ffi-2.1.10.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jnr-posix-3.0.50.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jnr-unixsocket-0.23.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jnr-x86asm-1.0.2.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jps-model.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jsch-agent.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/jsp-base-openapi.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/junit4.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/junixsocket-core.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/lz4-java.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/platform-objectSerializer-annotations.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/platform-statistics-devkit.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/protobuf.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/pty4j.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/rd-core.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/rd-framework.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/rd-swing.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/rd-text.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/stats.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/structuralsearch.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/testFramework.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/tests_bootstrap.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/uast-tests.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/util.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/util_rt.jar!/",
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/2022.1.1/d76b09018041a7782a5a3fdc412339cef2c51887/ideaIC-2022.1.1/lib/winp.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.antlr:antlr4-intellij-adaptor:0.1",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.antlr/antlr4-intellij-adaptor/0.1/c81fec573943ec2c5b54c0f4e2dc4f0b29755ad0/antlr4-intellij-adaptor-0.1.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.jetbrains:annotations:22.0.0",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/22.0.0/fb9bebc90794c7602e73d6ed0cb165a0c650be62/annotations-22.0.0.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.antlr:antlr4-runtime:4.9.2",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.antlr/antlr4-runtime/4.9.2/ece33ec76e002dfde574cf7b57451a91a99185c5/antlr4-runtime-4.9.2.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.antlr:ST4:4.3",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.antlr/ST4/4.3/92f2c1ad8d84abcbeead6cf7f2c53a04166293c2/ST4-4.3.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.antlr:antlr-runtime:3.5.2",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.antlr/antlr-runtime/3.5.2/cd9cd41361c155f3af0f653009dcecb08d8b4afd/antlr-runtime-3.5.2.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.abego.treelayout:org.abego.treelayout.core:1.0.3",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.abego.treelayout/org.abego.treelayout.core/1.0.3/457216e8e6578099ae63667bb1e4439235892028/org.abego.treelayout.core-1.0.3.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: org.glassfish:javax.json:1.0.4",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/org.glassfish/javax.json/1.0.4/3178f73569fd7a1e5ffc464e680f7a8cc784b85a/javax.json-1.0.4.jar!/"
+      ]
+    },
+    {
+      "name": "Gradle: com.ibm.icu:icu4j:61.1",
+      "roots": [
+        "jar://$PROJECT_DIR$/../cache/gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/61.1/28d33b5e44e72edcc66a5da7a34a42147f38d987/icu4j-61.1.jar!/"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "modules": [
+    {
+      "name": "vb6-language",
+      "languageLevel": 11
+    },
+    {
+      "name": "vb6-language.test",
+      "languageLevel": 11
+    },
+    {
+      "name": "vb6-language.main",
+      "languageLevel": 11
+    }
+  ]
+}
